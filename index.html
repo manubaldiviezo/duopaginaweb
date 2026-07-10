@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<meta name="theme-color" content="#1D1D1B">
+
+<title>DÚO — Contenido que vende | Agencia creativa Bolivia</title>
+<meta name="description" content="Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Agencia de marketing digital desde Bolivia para marcas en 5 países.">
+
+<meta property="og:title" content="DÚO — Contenido que vende | Agencia creativa Bolivia">
+<meta property="og:description" content="Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Desde Bolivia para marcas en 5 países.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/images/hero-set-produccion.png">
+<link rel="canonical" href="/">
+
+<link rel="icon" type="image/png" href="/logos/duo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DÚO Marketing — sistema de diseño
+   Naranja #EC6730 · Ámbar #F9B233 · Negro carbón #1D1D1B
+   Tipografía: Montserrat (fallback de Gotham) + Inter + Caveat (Live Wire)
+   ═══════════════════════════════════════════ */
+:root {
+  --orange: #EC6730;
+  --orange-deep: #D5541F;
+  --amber: #F9B233;
+  --bg: #131311;
+  --bg-2: #1D1D1B;
+  --bg-3: #26251f;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-hover: rgba(255, 255, 255, 0.055);
+  --line: rgba(255, 255, 255, 0.1);
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --orange-line: rgba(236, 103, 48, 0.4);
+  --text: #F7F4EF;
+  --text-2: #C3BEB4;
+  --text-3: #857F73;
+  --grad: linear-gradient(92deg, var(--orange) 0%, var(--amber) 100%);
+  --glow: 0 10px 44px rgba(236, 103, 48, 0.28);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --max: 1180px;
+  --pad: clamp(18px, 4vw, 34px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, select, textarea { font-family: inherit; }
+::selection { background: rgba(236, 103, 48, 0.4); color: #fff; }
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text);
+}
+h1 { font-size: clamp(33px, 6.4vw, 74px); }
+h2 { font-size: clamp(26px, 4.4vw, 46px); }
+h3 { font-size: clamp(18px, 2.4vw, 24px); }
+p { color: var(--text-2); font-size: clamp(15px, 1.6vw, 17px); }
+
+.grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; padding-bottom: 0.06em; }
+.script { font-family: 'Caveat', cursive; text-transform: none; letter-spacing: 0; color: var(--amber); font-weight: 700; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.eyebrow::before { content: ''; width: 22px; height: 2px; background: var(--grad); }
+
+/* ── Motivo pixel (cuadros del isotipo) ── */
+.pix { display: inline-grid; grid-template-columns: repeat(2, 5px); gap: 3px; vertical-align: middle; }
+.pix i { width: 5px; height: 5px; display: block; }
+.pix i:nth-child(1), .pix i:nth-child(2) { background: var(--amber); }
+.pix i:nth-child(3), .pix i:nth-child(4) { background: var(--orange); }
+
+/* ── Botones ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px 28px;
+  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14.5px; letter-spacing: 0.01em;
+  border-radius: 8px; white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease, background 0.3s ease;
+}
+.btn svg { width: 17px; height: 17px; }
+.btn-orange { background: var(--orange); color: #1D1D1B; box-shadow: var(--glow); }
+.btn-orange:hover { transform: translateY(-2px); background: var(--amber); box-shadow: 0 16px 52px rgba(236,103,48,0.4); }
+.btn-ghost { border: 1.5px solid var(--line); color: var(--text); }
+.btn-ghost:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+
+/* ── Header ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(19,19,17,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent; transition: border-color 0.3s ease;
+}
+header.scrolled { border-bottom-color: var(--line-soft); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo .pix { transform: scale(1.15); }
+.logo b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 19px; letter-spacing: 0.02em; }
+.logo span { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
+.header-nav { display: none; }
+@media (min-width: 900px) {
+  .header-nav { display: flex; gap: 26px; margin-left: auto; margin-right: 26px; }
+  .header-nav a { font-size: 13px; font-weight: 500; color: var(--text-2); transition: color 0.2s; }
+  .header-nav a:hover { color: var(--orange); }
+}
+.header-cta { display: none; }
+@media (min-width: 680px) {
+  .header-cta { display: inline-flex; align-items: center; padding: 10px 20px; background: var(--orange); color: #1D1D1B; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12.5px; border-radius: 6px; transition: all 0.25s; }
+  .header-cta:hover { background: var(--amber); }
+}
+
+/* ── Secciones base ── */
+section { padding: 88px 0; position: relative; }
+@media (min-width: 768px) { section { padding: 108px 0; } }
+.sec-head { max-width: 760px; margin: 0 auto 52px; text-align: center; }
+.sec-head h2 { margin-bottom: 18px; text-wrap: balance; }
+.sec-head p { font-size: clamp(15px, 1.8vw, 18px); max-width: 620px; margin: 0 auto; }
+
+/* ── Hero ── */
+.hero { padding-top: 118px; padding-bottom: 80px; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+  width: 780px; height: 620px; pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(236,103,48,0.14), transparent 66%);
+}
+.hero-inner { position: relative; z-index: 1; display: grid; gap: 24px; justify-items: center; text-align: center; max-width: 860px; margin: 0 auto; }
+.hero-canvas-wrap { width: 100%; max-width: 220px; margin: 0 auto 6px; }
+.hero-canvas-wrap canvas { width: 100%; aspect-ratio: 180 / 210; display: block; }
+.hero h1 { text-wrap: balance; }
+.hero-sub { font-size: clamp(16px, 2vw, 19px); color: var(--text-2); max-width: 560px; margin: 4px auto 8px; }
+.hero-sub strong { color: var(--text); font-weight: 600; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-top: 8px; }
+.hero-badge {
+  margin-top: 18px; display: inline-flex; align-items: center; gap: 10px;
+  padding: 9px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+  font-size: 12.5px; color: var(--text-2); font-weight: 500;
+}
+.hero-badge b { color: var(--amber); font-weight: 800; }
+.hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+
+/* ── Cinta de logos (S2) ── */
+.logos-band { padding: 46px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--bg-2); }
+.logos-title { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-3); margin-bottom: 26px; }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marquee-track { display: flex; width: max-content; gap: 0; animation: scroll 34s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logo-item { display: flex; align-items: center; justify-content: center; padding: 0 42px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.02em; color: var(--text-2); opacity: 0.6; white-space: nowrap; transition: opacity 0.3s; }
+.logo-item:hover { opacity: 1; color: var(--text); }
+.logos-grid { display: flex; flex-wrap: wrap; gap: 20px 42px; justify-content: center; }
+
+/* ── El feed infinito (S3) ── */
+.feed { background: var(--bg-2); border-bottom: 1px solid var(--line-soft); }
+.feed-marquee { overflow: hidden; margin-bottom: 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.feed-track { display: flex; width: max-content; gap: 14px; animation: scroll 40s linear infinite; }
+.feed-marquee:hover .feed-track { animation-play-state: paused; }
+.feed-post { width: 168px; flex-shrink: 0; background: #2a2a27; border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px; filter: grayscale(1); opacity: 0.5; }
+.feed-post .fp-img { aspect-ratio: 1; border-radius: 8px; background: linear-gradient(135deg, #3a3a35, #2c2c28); margin-bottom: 10px; }
+.feed-post .fp-txt { font-size: 12px; font-weight: 600; color: #b9b4aa; }
+.feed-post.duo { filter: none; opacity: 1; background: linear-gradient(160deg, rgba(236,103,48,0.16), var(--bg-3)); border: 1px solid var(--orange-line); box-shadow: var(--glow); transform: scale(1.06); }
+.feed-post.duo .fp-img { background: var(--grad); position: relative; }
+.feed-post.duo .fp-img::after { content: '▶'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #1D1D1B; font-size: 22px; }
+.feed-post.duo .fp-txt { color: #fff; font-weight: 800; font-family: 'Montserrat', sans-serif; }
+.feed-body { max-width: 720px; margin: 0 auto; text-align: center; }
+.feed-body h2 { margin-bottom: 22px; }
+.feed-body p { margin-bottom: 18px; }
+.feed-cierre { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(17px, 2.2vw, 22px); color: var(--text); text-transform: uppercase; }
+.feed-cierre .grad { display: inline; }
+
+/* ── Método (S4) ── */
+.metodo-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .metodo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .metodo-grid { grid-template-columns: repeat(4, 1fr); } }
+.pilar { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 30px 24px; transition: transform 0.35s, border-color 0.35s, background 0.35s; position: relative; overflow: hidden; }
+.pilar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.pilar:hover { transform: translateY(-6px); border-color: var(--orange-line); background: var(--card-hover); }
+.pilar:hover::before { transform: scaleX(1); }
+.pilar-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; color: var(--orange); display: block; margin-bottom: 16px; }
+.pilar h3 { font-size: 17px; margin-bottom: 10px; }
+.pilar p { font-size: 13.5px; line-height: 1.6; }
+.metodo-foot { max-width: 680px; margin: 42px auto 0; text-align: center; }
+.metodo-foot p { font-size: clamp(15px, 1.8vw, 18px); }
+.metodo-foot strong { color: var(--text); font-weight: 700; }
+
+/* ── VSL (S5) ── */
+.vsl { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.vsl-frame { max-width: 900px; margin: 0 auto 30px; position: relative; aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--orange-line); box-shadow: 0 0 60px rgba(236,103,48,0.16); background: #0d0d0b; }
+.vsl-frame iframe { width: 100%; height: 100%; border: none; }
+.vsl-ph { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; background: radial-gradient(circle at center, var(--bg-3), #0d0d0b); }
+.vsl-play { width: 84px; height: 84px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; box-shadow: var(--glow); transition: transform 0.3s; }
+.vsl-ph:hover .vsl-play { transform: scale(1.08); }
+.vsl-play svg { width: 32px; height: 32px; fill: #1D1D1B; margin-left: 4px; }
+.vsl-ph span { margin-top: 16px; font-size: 12px; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+
+/* ── Servicios: tres puertas (S6) ── */
+.puertas { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 980px) { .puertas { grid-template-columns: repeat(3, 1fr); align-items: start; } }
+.puerta { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); padding: 32px 26px; display: flex; flex-direction: column; transition: transform 0.35s, border-color 0.35s; }
+.puerta:hover { transform: translateY(-5px); border-color: var(--orange-line); }
+.puerta.dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.07), var(--card) 42%); box-shadow: 0 0 0 1px rgba(236,103,48,0.2), 0 18px 54px rgba(236,103,48,0.12); }
+.puerta-ico { font-size: 30px; margin-bottom: 14px; }
+.puerta-kick { font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); line-height: 1; margin-bottom: 4px; }
+.puerta h3 { font-size: clamp(19px, 2.2vw, 23px); margin-bottom: 16px; }
+.oferta { padding: 14px 0; border-top: 1px solid var(--line-soft); }
+.oferta:first-of-type { border-top: none; }
+.oferta-top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.oferta-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.oferta-price { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 14px; color: var(--amber); white-space: nowrap; }
+.oferta-desc { font-size: 12.5px; color: var(--text-3); line-height: 1.55; margin-top: 6px; }
+.oferta.star { background: rgba(236,103,48,0.06); border: 1px solid var(--orange-line); border-radius: 12px; padding: 16px; margin: 12px 0; }
+.oferta.star .oferta-name { color: var(--orange); }
+.star-badge { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+.honesto { font-style: italic; font-size: 12.5px; color: var(--text-3); line-height: 1.6; padding: 14px 16px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--amber); border-radius: 0 8px 8px 0; margin: 14px 0; }
+.puerta .btn { width: 100%; margin-top: auto; }
+.puerta-cta2 { text-align: center; font-size: 12.5px; font-weight: 700; color: var(--text-3); margin-top: 12px; }
+.puerta-cta2:hover { color: var(--orange); }
+.microlink { font-size: 12px; color: var(--text-3); margin-top: 14px; text-align: center; }
+.microlink a { color: var(--orange); font-weight: 700; }
+.puertas-cierre { max-width: 680px; margin: 40px auto 0; text-align: center; font-size: clamp(15px, 1.8vw, 17px); color: var(--text-2); }
+.puertas-cierre strong { color: var(--text); font-weight: 700; }
+
+/* ── Cocina abierta (S7) ── */
+.cocina { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+.cocina-grid { display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; max-width: 1040px; margin: 0 auto; }
+@media (min-width: 900px) { .cocina-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+.cocina-books { position: relative; display: flex; justify-content: center; gap: 18px; }
+.cocina-books::before { content: ''; position: absolute; inset: -10% -5%; background: radial-gradient(ellipse, rgba(236,103,48,0.2), transparent 68%); pointer-events: none; }
+.book-ph { position: relative; z-index: 1; width: 45%; aspect-ratio: 3/4; border-radius: 10px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+.book-ph:nth-child(1) { transform: rotate(-6deg) translateY(10px); }
+.book-ph:nth-child(2) { transform: rotate(5deg); }
+.cocina-txt h2 { margin-bottom: 20px; }
+.cocina-txt p { margin-bottom: 22px; }
+.cocina-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── Evento (S8) ── */
+.evento-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 720px; margin: 30px auto 0; }
+@media (min-width: 620px) { .evento-cards { grid-template-columns: 1fr 1fr; } }
+.evento-card { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 26px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+.evento-card:hover { transform: translateY(-4px); border-color: var(--orange-line); }
+.evento-card h4 { font-size: 14px; margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-weight: 700; font-family: 'Inter', sans-serif; color: var(--text-2); }
+.evento-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; color: var(--amber); }
+.evento-addon { text-align: center; margin: 20px auto 0; }
+.chip-addon { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--orange); border: 1px dashed var(--orange-line); border-radius: 999px; padding: 8px 16px; }
+.evento-micro { text-align: center; font-style: italic; font-size: 13px; color: var(--text-3); max-width: 520px; margin: 18px auto 26px; }
+
+/* ── Muro de reels (S9) ── */
+.filtros { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-bottom: 30px; }
+.filtro { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-2); background: var(--card); border: 1px solid var(--line-soft); padding: 9px 16px; border-radius: 999px; transition: all 0.25s; }
+.filtro:hover { border-color: var(--orange-line); }
+.filtro.on { background: var(--orange); color: #1D1D1B; border-color: var(--orange); }
+.reels-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (min-width: 720px) { .reels-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1040px) { .reels-grid { grid-template-columns: repeat(4, 1fr); } }
+.reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: #22221e; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; }
+.reel:hover { transform: translateY(-4px); border-color: var(--orange-line); }
+.reel video, .reel .reel-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel .reel-ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, #2c2c27, #1a1a17); color: var(--text-3); font-size: 26px; }
+.reel-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 12px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); z-index: 2; }
+.reel-cliente { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #fff; }
+.reel-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
+.reel-nicho { font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); background: rgba(255,255,255,0.08); padding: 3px 8px; border-radius: 5px; }
+.reel-metrica { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; color: var(--amber); }
+
+/* ── Resultados (S10) ── */
+.resultados { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.casos-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .casos-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .casos-grid { grid-template-columns: repeat(3, 1fr); } }
+.caso { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 26px 24px; transition: transform 0.35s, border-color 0.35s; }
+.caso:hover { transform: translateY(-5px); border-color: var(--orange-line); }
+.caso-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.caso-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13.5px; color: var(--text); }
+.caso-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); border: 1px solid var(--line-soft); border-radius: 5px; padding: 4px 9px; }
+.caso-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 16px; line-height: 1.32; text-transform: none; letter-spacing: -0.01em; margin-bottom: 18px; }
+.caso-title b { color: var(--orange); }
+.caso-metrics { display: flex; gap: 8px; flex-wrap: wrap; }
+.caso-metric { flex: 1; min-width: 84px; padding: 12px 12px; background: rgba(255,255,255,0.025); border: 1px solid var(--line-soft); border-radius: 8px; }
+.caso-metric b { display: block; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 17px; color: var(--amber); line-height: 1.1; margin-bottom: 3px; }
+.caso-metric span { font-size: 10.5px; color: var(--text-3); }
+
+/* ── Quiénes somos (S11) ── */
+.equipo-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 1020px; margin: 0 auto; }
+@media (min-width: 900px) { .equipo-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+.equipo-txt h2 { margin-bottom: 22px; }
+.equipo-txt p { margin-bottom: 18px; }
+.equipo-txt strong { color: var(--text); font-weight: 600; }
+.equipo-txt a { color: var(--orange); font-weight: 600; }
+.equipo-firma { margin-top: 22px; font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); }
+
+/* ── Contacto (S12) ── */
+.contacto { position: relative; overflow: hidden; }
+.contacto::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 120%, rgba(236,103,48,0.14), transparent 60%); pointer-events: none; }
+.contacto-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 980px; margin: 0 auto; align-items: center; }
+@media (min-width: 860px) { .contacto-grid { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.contacto-txt h2 { margin-bottom: 18px; }
+.contacto-txt p { margin-bottom: 24px; }
+.contacto-wa { display: inline-flex; }
+.form { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 7px; }
+.field input, .field select {
+  width: 100%; padding: 14px 15px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 8px; color: var(--text); font-size: 15px; transition: border-color 0.2s;
+  appearance: none; -webkit-appearance: none;
+}
+.field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23857F73' stroke-width='2.5' viewBox='0 0 24 24'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--orange); }
+.field input::placeholder { color: var(--text-3); }
+.form .btn { width: 100%; margin-top: 6px; }
+.form-micro { font-size: 11.5px; color: var(--text-3); text-align: center; margin-top: 14px; }
+
+/* ── Footer ── */
+footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
+.footer-inner { display: grid; grid-template-columns: 1fr; gap: 28px; }
+@media (min-width: 720px) { .footer-inner { grid-template-columns: 1.4fr 1fr 1fr; } }
+.footer-brand .logo { margin-bottom: 12px; }
+.footer-brand p { font-size: 13px; color: var(--text-3); max-width: 280px; }
+.footer-col h5 { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+.footer-col a { display: block; font-size: 14px; color: var(--text-2); padding: 5px 0; transition: color 0.2s; }
+.footer-col a:hover { color: var(--orange); }
+.footer-bottom { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: 12px; color: var(--text-3); }
+
+/* ── Placeholder de imagen ── */
+.ph { display: flex; align-items: center; justify-content: center; background: repeating-linear-gradient(45deg, #201f1c, #201f1c 12px, #24231f 12px, #24231f 24px); border: 1px solid var(--line-soft); border-radius: var(--radius-md); color: var(--text-3); font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-align: center; padding: 20px; }
+.ph::before { content: '🖼 '; }
+
+/* ── Reveal ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .marquee-track, .feed-track { animation: none !important; }
+}
+
+/* ── WhatsApp float ── */
+.wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 95; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 22px rgba(37,211,102,0.4); transition: transform 0.3s; }
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 29px; height: 29px; color: #fff; }
+@media (max-width: 767px) { .wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header id="header">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo" aria-label="DÚO — inicio">
+      <span class="pix"><i></i><i></i><i></i><i></i></span>
+      <span style="display:flex;flex-direction:column;line-height:1.05">
+        <b>DÚO</b>
+        <span>Marketing Digital</span>
+      </span>
+    </a>
+    <nav class="header-nav" aria-label="Navegación">
+      <a href="#metodo">Método</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="header-cta">Quiero contenido que venda</a>
+  </div>
+</header>
+
+<!-- ═══════════ S1 · HERO ═══════════ -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-canvas-wrap reveal">
+        <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
+      </div>
+      <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido que venda.</span></h1>
+      <p class="hero-sub reveal">Somos DÚO. Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Todo con un mismo método.</p>
+      <div class="hero-ctas reveal">
+        <a href="#contacto" class="btn btn-orange">Quiero contenido que venda
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#metodo" class="btn btn-ghost">Mirá cómo trabajamos</a>
+      </div>
+      <div class="hero-badge reveal">
+        <span class="dot"></span>
+        <span><b>+30 marcas</b> · 5 países · el sistema detrás de un <b>ROAS 10.55x</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S2 · CINTA DE LOGOS ═══════════ -->
+<div class="logos-band">
+  <div class="container">
+    <div class="logos-title">Marcas que confían en nuestro método</div>
+  </div>
+  <!-- Reemplazar los nombres por <img src="/logos/logo-cliente-N.png"> monocromo cuando existan -->
+  <div class="marquee" id="logos-marquee">
+    <div class="marquee-track">
+      <span class="logo-item">Femmeninas</span>
+      <span class="logo-item">Vision Arq</span>
+      <span class="logo-item">Climere</span>
+      <span class="logo-item">ProGaming</span>
+      <span class="logo-item">Ñañitos</span>
+      <span class="logo-item">Femmeninas</span>
+      <span class="logo-item">Vision Arq</span>
+      <span class="logo-item">Climere</span>
+      <span class="logo-item">ProGaming</span>
+      <span class="logo-item">Ñañitos</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ S3 · EL FEED INFINITO ═══════════ -->
+<section class="feed">
+  <div class="feed-marquee" aria-hidden="true">
+    <div class="feed-track">
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Feliz lunes! ☕</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">50% OFF 🔥</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Somos calidad y confianza</div></div>
+      <div class="feed-post duo"><div class="fp-img"></div><div class="fp-txt">Contenido que vende ✦ DÚO</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Feliz día del padre 👔</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Ya llegó el fin de semana!</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Tenemos stock disponible</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Feliz lunes! ☕</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">50% OFF 🔥</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Somos calidad y confianza</div></div>
+      <div class="feed-post duo"><div class="fp-img"></div><div class="fp-txt">Contenido que vende ✦ DÚO</div></div>
+      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Feliz día del padre 👔</div></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="feed-body reveal">
+      <span class="eyebrow" style="display:inline-flex">El problema</span>
+      <h2>El 90% del contenido se publica <span class="grad">para llenar el feed.</span></h2>
+      <p>Fotos del producto con frases bonitas. Feliz día del padre. Promos que nadie pidió. Tu marca publica — pero publicar no es vender. El contenido que vende se diseña: sabe a quién le habla, qué momento de decisión ataca y qué acción provoca.</p>
+      <p class="feed-cierre">Ese es el contenido <span class="grad">que hacemos.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S4 · MÉTODO ═══════════ -->
+<section id="metodo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">El método DÚO</span>
+      <h2>Contenido <span class="grad">con dirección.</span></h2>
+    </div>
+    <div class="metodo-grid">
+      <div class="pilar reveal">
+        <span class="pilar-num">/01</span>
+        <h3>Dirección creativa</h3>
+        <p>Antes de grabar un segundo definimos qué videos necesita tu marca: qué ángulos de venta, qué ganchos, qué formatos. Nada se graba "a ver qué sale".</p>
+      </div>
+      <div class="pilar reveal">
+        <span class="pilar-num">/02</span>
+        <h3>Producción</h3>
+        <p>Grabamos con equipo profesional o con celular según tu etapa — y te entregamos todo listo. Si ya tenés quien grabe, le damos la dirección y editamos nosotros.</p>
+      </div>
+      <div class="pilar reveal">
+        <span class="pilar-num">/03</span>
+        <h3>Campañas</h3>
+        <p>El contenido no se queda esperando likes: se convierte en anuncios en Facebook e Instagram con estrategia detrás.</p>
+      </div>
+      <div class="pilar reveal">
+        <span class="pilar-num">/04</span>
+        <h3>Medición</h3>
+        <p>Medimos qué video vende y cuál no — no por intuición: por datos. Lo que funciona se escala, lo que no, se corta.</p>
+      </div>
+    </div>
+    <div class="metodo-foot reveal">
+      <p>Cada pieza de contenido sale con un trabajo que casi nadie hace: <strong>saber por qué se graba.</strong></p>
+    </div>
+    <!-- Imagen de apoyo: <img src="/images/metodo-direccion.png" alt="Dirección de contenido DÚO"> -->
+    <div class="ph reveal" style="aspect-ratio:16/6;max-width:900px;margin:34px auto 0" role="img" aria-label="metodo-direccion.png">metodo-direccion.png</div>
+  </div>
+</section>
+
+<!-- ═══════════ S5 · VSL ═══════════ -->
+<section class="vsl">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Míralo en 3 minutos</span>
+      <h2>Todo lo que hacemos, <span class="grad">explicado en 3 minutos.</span></h2>
+    </div>
+    <div class="vsl-frame reveal" id="vsl-frame">
+      <div class="vsl-ph" id="vsl-ph">
+        <div class="vsl-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <span>Video · 3 min</span>
+      </div>
+    </div>
+    <div style="text-align:center" class="reveal">
+      <a href="#contacto" class="btn btn-orange">Quiero esto para mi marca
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S6 · SERVICIOS: TRES PUERTAS ═══════════ -->
+<section id="servicios">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Servicios</span>
+      <h2>La misma metodología. <span class="grad">Tres formas de usarla.</span></h2>
+      <p>Somos la única agencia que te vende su propia cocina: la metodología que aplicamos en cada video está documentada, publicada y a tu alcance. Elegí cómo la querés usar.</p>
+    </div>
+
+    <div class="puertas">
+
+      <!-- PUERTA 1 · APRENDERLA -->
+      <div class="puerta reveal">
+        <div class="puerta-ico">📘</div>
+        <div class="puerta-kick">Querés</div>
+        <h3>Aprenderla</h3>
+
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Estrategia de Contenido</span><span class="oferta-price">$20</span></div>
+          <div class="oferta-desc">Guía completa de la metodología.</div>
+        </div>
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Fórmula DÚO3X</span><span class="oferta-price">$20</span></div>
+          <div class="oferta-desc">Guionización estratégica en 8 pasos.</div>
+        </div>
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Pack ambos ebooks</span><span class="oferta-price">$35 / Bs 350</span></div>
+        </div>
+
+        <div class="oferta star">
+          <span class="star-badge">★ Servicio estrella</span>
+          <div class="oferta-top"><span class="oferta-name">Asesoría de contenido</span><span class="oferta-price">$75 / Bs 750</span></div>
+          <div class="oferta-desc">2 sesiones en vivo: teoría + práctica sobre TU negocio. Salís con tu estrategia de contenido armada — para vender con anuncios o sin invertir en publicidad — entregada en un hub de Notion listo para gestionar tu contenido como una agencia: calendario, guiones, pilares y seguimiento en un solo lugar. Incluye soporte por WhatsApp durante 1 mes.</div>
+        </div>
+
+        <a href="#contacto" class="btn btn-orange">Quiero la asesoría</a>
+        <a href="#cocina" class="puerta-cta2">Ver los ebooks →</a>
+      </div>
+
+      <!-- PUERTA 2 · DELEGARLA -->
+      <div class="puerta reveal">
+        <div class="puerta-ico">🎥</div>
+        <div class="puerta-kick">Querés</div>
+        <h3>Delegarla</h3>
+
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Contenido ágil</span><span class="oferta-price">Desde Bs 500</span></div>
+          <div class="oferta-desc">Desde 2 videos: grabamos tu idea con celular, editamos y te lo entregamos listo para publicar.</div>
+        </div>
+
+        <div class="oferta star">
+          <span class="star-badge">Metodología completa</span>
+          <div class="oferta-top"><span class="oferta-name">Paquete estratégico</span><span class="oferta-price">Bs XXX</span></div>
+          <div class="oferta-desc">Desde 4 videos: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes. Vos aprobás, nosotros hacemos el resto.</div>
+        </div>
+
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Producción profesional</span><span class="oferta-price">A definir</span></div>
+          <div class="oferta-desc">Cámara Sony · precios a completar con los valores actuales.</div>
+        </div>
+
+        <p class="oferta-desc" style="margin-top:10px">Producción eficiente: grabamos todo el contenido de tu paquete en una sola sesión de 15–20 minutos de material. Una interrupción mínima para tu negocio, un mes completo de contenido.</p>
+
+        <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
+
+        <a href="#contacto" class="btn btn-orange">Quiero que lo hagan por mí</a>
+      </div>
+
+      <!-- PUERTA 3 · ESCALARLA -->
+      <div class="puerta dom reveal">
+        <div class="puerta-ico">🚀</div>
+        <div class="puerta-kick">Querés</div>
+        <h3>Escalarla</h3>
+
+        <div class="oferta star">
+          <span class="star-badge">Sistema completo</span>
+          <div class="oferta-top"><span class="oferta-name">DÚO 3X</span><span class="oferta-price">A medida</span></div>
+          <div class="oferta-desc">Contenido + campañas en Facebook e Instagram + medición mensual con nuestro estratega. Analizamos primero si invertir es rentable para tu negocio — incluyendo nuestro servicio en tus costos. Si no da, te lo decimos.</div>
+        </div>
+
+        <a href="#contacto" class="btn btn-orange">Quiero el sistema completo</a>
+        <p class="microlink">Dirección estratégica: <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo →</a></p>
+      </div>
+
+    </div>
+
+    <p class="puertas-cierre reveal">De un ebook de $20 a un sistema completo de ventas: es la misma metodología en distintas profundidades. <strong>Empezá donde estés.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════════ S7 · NUESTRA COCINA ═══════════ -->
+<section class="cocina" id="cocina">
+  <div class="container">
+    <div class="cocina-grid">
+      <div class="cocina-books reveal">
+        <!-- <img src="/images/ebook-estrategia.png" alt="Ebook Estrategia de Contenido"> -->
+        <div class="book-ph ph" role="img" aria-label="ebook-estrategia.png">ebook-estrategia.png</div>
+        <!-- <img src="/images/ebook-formula.png" alt="Ebook Fórmula DÚO3X"> -->
+        <div class="book-ph ph" role="img" aria-label="ebook-formula.png">ebook-formula.png</div>
+      </div>
+      <div class="cocina-txt reveal">
+        <span class="eyebrow" style="display:inline-flex">Nuestra cocina, abierta</span>
+        <h2>Ninguna agencia te muestra su cocina. <span class="grad">Nosotros te la vendemos.</span></h2>
+        <p>La metodología que usamos para dirigir, guionar y producir cada video está documentada en dos guías: el Árbol de Coherencia para tu estrategia de contenido, y la Fórmula DÚO3X para guiones que capturan atención y venden. Checklist de validación de ideas, 25 estilos de gancho, estructuras de video para venta, valor y viralidad, y la escala para evaluar cada guion antes de grabar. No improvisamos — y vos tampoco deberías.</p>
+        <div class="cocina-ctas">
+          <a href="#contacto" class="btn btn-orange">Comprar las guías ($35 el pack)</a>
+          <a href="#servicios" class="btn btn-ghost">Prefiero que lo hagan ustedes →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S8 · EVENTOS ═══════════ -->
+<section id="eventos">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">¿Tenés un evento?</span>
+      <h2>Tu evento, <span class="grad">contado como se merece.</span></h2>
+      <p>Cobertura completa de 6 horas. Te entregamos un video de 12 a 15 minutos subido a tu YouTube + 1 Reel de 1 minuto para tus redes, en 10 días.</p>
+    </div>
+    <div class="evento-cards reveal">
+      <div class="evento-card">
+        <h4>Cobertura iPhone + sistema de luces</h4>
+        <div class="evento-price">Bs 1.150</div>
+      </div>
+      <div class="evento-card">
+        <h4>Cobertura con cámara profesional</h4>
+        <div class="evento-price">Bs 1.550</div>
+      </div>
+    </div>
+    <div class="evento-addon reveal"><span class="chip-addon">+ Dron: Bs 350 (cualquier paquete)</span></div>
+    <p class="evento-micro reveal">¿Ya hacés contenido con nosotros? El material de tu evento alimenta tus redes del mes.</p>
+    <div style="text-align:center" class="reveal">
+      <a href="#contacto" class="btn btn-orange">Cotizar mi evento</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S9 · MURO DE REELS ═══════════ -->
+<section id="trabajos">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Trabajos</span>
+      <h2>Contenido que la gente <span class="grad">eligió ver.</span></h2>
+      <p>Videos producidos con nuestra metodología, en distintos rubros. Tocá cualquiera para verlo en la cuenta real del cliente.</p>
+    </div>
+    <div class="filtros reveal" id="filtros"></div>
+    <div class="reels-grid reveal" id="reels-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ S10 · RESULTADOS ═══════════ -->
+<section class="resultados">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Resultados de campañas</span>
+      <h2>Contenido + campañas + medición. <span class="grad">Esto pasa cuando las tres cosas trabajan juntas.</span></h2>
+      <p>Resultados en Bolivia — y fuera de Bolivia. La misma metodología funciona en 5 países.</p>
+    </div>
+    <div class="casos-grid" id="casos-grid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
+<section id="equipo">
+  <div class="container">
+    <div class="equipo-grid">
+      <!-- <img src="/images/equipo-produccion.png" alt="Equipo de producción DÚO"> -->
+      <div class="ph reveal" style="aspect-ratio:4/3" role="img" aria-label="equipo-produccion.png">equipo-produccion.png</div>
+      <div class="equipo-txt reveal">
+        <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
+        <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
+        <p>DÚO nació de dos personas: la estrategia y el contenido. Hoy somos un equipo completo — estratega, guionista, editor y producción — trabajando como uno.</p>
+        <p>Dirección estratégica de <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo</a> · dirección de contenido de Valeria.</p>
+        <div class="equipo-firma">Desde Bolivia — para marcas en 5 países.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S12 · CONTACTO ═══════════ -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-txt reveal">
+        <span class="eyebrow" style="display:inline-flex">Contacto</span>
+        <h2>Contanos qué vendés. <span class="grad">Nosotros te decimos qué contenido lo vende.</span></h2>
+        <p>Respondemos en menos de 24 horas. Sin compromiso.</p>
+        <a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20contenido%20que%20venda%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-ghost contacto-wa" id="wa-directo">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+      <form class="form reveal" id="contacto-form" novalidate>
+        <div class="field">
+          <label for="c-nombre">Tu nombre</label>
+          <input type="text" id="c-nombre" name="nombre" placeholder="¿Cómo te llamás?" required>
+        </div>
+        <div class="field">
+          <label for="c-marca">Negocio / marca</label>
+          <input type="text" id="c-marca" name="marca" placeholder="El nombre de tu marca" required>
+        </div>
+        <div class="field">
+          <label for="c-necesitas">¿Qué necesitás?</label>
+          <select id="c-necesitas" name="necesitas" required>
+            <option value="" disabled selected>Elegí una opción</option>
+            <option>Aprender la metodología (asesoría / ebooks)</option>
+            <option>Contenido para mis redes</option>
+            <option>Cobertura de evento</option>
+            <option>Sistema completo con campañas</option>
+            <option>No sé todavía</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-orange">Enviar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-micro">Respondemos en menos de 24 horas · Sin compromiso.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S13 · FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <span class="pix"><i></i><i></i><i></i><i></i></span>
+          <span style="display:flex;flex-direction:column;line-height:1.05"><b>DÚO</b><span>Marketing Digital</span></span>
+        </a>
+        <p>Producimos el contenido, lanzamos las campañas y medimos lo que vuelve.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explorar</h5>
+        <a href="#metodo">Método</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h5>DÚO</h5>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram ↗</a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok ↗</a>
+        <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Conocé a nuestro estratega →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> DÚO · Marketing Digital</span>
+      <span>De Yacuiba para el mundo 🇧🇴</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20contenido%20que%20venda%20para%20mi%20marca." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.42 9.42 0 01-1.45-5.03c0-5.21 4.25-9.45 9.47-9.45 2.53 0 4.9.99 6.69 2.77a9.4 9.4 0 012.77 6.69c0 5.21-4.25 9.45-9.46 9.45z"/></svg>
+</a>
+
+<script>
+/* ═══════════ CONFIG editable ═══════════ */
+const VSL_URL = ""; // ← pegar URL de YouTube/Vimeo (embed) cuando exista
+const WHATSAPP = "59100000000"; // ← COMPLETAR número de WhatsApp de DÚO
+
+/* Datos de casos (reutilizados de la landing personal, cifras exactas) */
+const CASOS = [
+  { brand: "femmeninas.cl", tag: "Ecommerce · Chile", flag: "🇨🇱", title: '+US$50.000 gestionados con <b>retorno de 10.55x</b> durante 7 meses', metrics: [["US$50K+","gestionados"],["10.55x","ROAS"],["+7 meses","escalando"]] },
+  { brand: "Vision Arq Studio", tag: "Arquitectura · Bolivia", flag: "🇧🇴", title: '<b>6 proyectos cerrados</b> en el primer mes de campañas', metrics: [["+300","mensajes"],["20","reuniones"],["6","proyectos"]] },
+  { brand: "ProGaming EC", tag: "Gaming · Ecuador", flag: "🇪🇨", title: '<b>+25.000 prospectos</b> por WhatsApp a US$0.15 cada uno', metrics: [["+25K","conversaciones"],["US$0.15","por contacto"],["+425K","alcanzados"]] },
+  { brand: "Juguetería Ñañitos", tag: "Importadora · Bolivia", flag: "🇧🇴", title: '<b>+5.000 mensajes</b> a US$0.08 para mover inventario', metrics: [["+5.000","mensajes"],["US$0.08","por contacto"]] },
+  { brand: "Climere", tag: "Clínica estética · Bolivia", flag: "🇧🇴", title: 'Ventas <b>+30% a +50%</b> con contenido estratégico y campañas', metrics: [["+5.000","mensajes"],["+1 año","juntos"],["+30–50%","en ventas"]] }
+];
+
+/* Muro de reels — data editable. Cuando existan clips, completar videoSrc/poster/urlReal */
+const REELS = [
+  { cliente: "Femmeninas", nicho: "Moda", metrica: "1.2M vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "Climere", nicho: "Estética", metrica: "480K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "ProGaming", nicho: "Gaming", metrica: "890K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "Ñañitos", nicho: "Retail", metrica: "320K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "Vision Arq", nicho: "Servicios", metrica: "210K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "Femmeninas", nicho: "Moda", metrica: "760K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "Climere", nicho: "Estética", metrica: "540K vistas", videoSrc: "", poster: "", urlReal: "" },
+  { cliente: "ProGaming", nicho: "Gaming", metrica: "1.5M vistas", videoSrc: "", poster: "", urlReal: "" }
+];
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* WhatsApp: aplicar número configurado */
+if (WHATSAPP && WHATSAPP !== "59100000000") {
+  document.querySelectorAll('a[href*="59100000000"]').forEach(a => {
+    a.href = a.href.replace('59100000000', WHATSAPP);
+  });
+}
+
+/* Header scrolled */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* VSL */
+const vslPh = document.getElementById('vsl-ph');
+vslPh.addEventListener('click', () => {
+  if (!VSL_URL) { alert('El video se agrega en la constante VSL_URL del código.'); return; }
+  const iframe = document.createElement('iframe');
+  iframe.src = VSL_URL + (VSL_URL.includes('?') ? '&' : '?') + 'autoplay=1';
+  iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+  iframe.allowFullscreen = true;
+  document.getElementById('vsl-frame').innerHTML = '';
+  document.getElementById('vsl-frame').appendChild(iframe);
+});
+
+/* Casos */
+const casosGrid = document.getElementById('casos-grid');
+casosGrid.innerHTML = CASOS.map(c => `
+  <div class="caso reveal">
+    <div class="caso-top">
+      <span class="caso-brand">${c.brand}</span>
+      <span class="caso-tag">${c.flag} ${c.tag}</span>
+    </div>
+    <div class="caso-title">${c.title}</div>
+    <div class="caso-metrics">
+      ${c.metrics.map(m => `<div class="caso-metric"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}
+    </div>
+  </div>`).join('');
+casosGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Muro de reels + filtros + lazy-load */
+const nichos = ['Todos', ...new Set(REELS.map(r => r.nicho))];
+const filtros = document.getElementById('filtros');
+const reelsGrid = document.getElementById('reels-grid');
+filtros.innerHTML = nichos.map((n, i) => `<button class="filtro${i === 0 ? ' on' : ''}" data-nicho="${n}">${n}</button>`).join('');
+
+function renderReels(filtro) {
+  const list = filtro === 'Todos' ? REELS : REELS.filter(r => r.nicho === filtro);
+  reelsGrid.innerHTML = list.slice(0, 9).map(r => `
+    <a class="reel reveal" ${r.urlReal ? `href="${r.urlReal}" target="_blank" rel="noopener"` : ''} data-nicho="${r.nicho}">
+      ${r.videoSrc
+        ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}" ${r.poster ? `poster="${r.poster}"` : ''}></video>`
+        : `<div class="reel-ph">🎬</div>`}
+      <div class="reel-overlay">
+        <div class="reel-cliente">${r.cliente}</div>
+        <div class="reel-bottom">
+          <span class="reel-nicho">${r.nicho}</span>
+          <span class="reel-metrica">${r.metrica}</span>
+        </div>
+      </div>
+    </a>`).join('');
+  reelsGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  observeVideos();
+}
+
+/* Lazy-load: los videos solo cargan/reproducen dentro del viewport */
+let videoObserver;
+function observeVideos() {
+  if (videoObserver) videoObserver.disconnect();
+  videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) {
+        if (!v.src && v.dataset.src) v.src = v.dataset.src;
+        const play = v.play(); if (play) play.catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+  reelsGrid.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+}
+
+filtros.addEventListener('click', (e) => {
+  const b = e.target.closest('.filtro');
+  if (!b) return;
+  filtros.querySelectorAll('.filtro').forEach(f => f.classList.remove('on'));
+  b.classList.add('on');
+  renderReels(b.dataset.nicho);
+});
+renderReels('Todos');
+
+/* Formulario de contacto → arma mensaje de WhatsApp con los datos */
+document.getElementById('contacto-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nombre = document.getElementById('c-nombre').value.trim();
+  const marca = document.getElementById('c-marca').value.trim();
+  const necesitas = document.getElementById('c-necesitas').value;
+  if (!nombre || !marca || !necesitas) { e.target.reportValidity(); return; }
+  const msg = `Hola DÚO 👋 Soy ${nombre}, de ${marca}.\nNecesito: ${necesitas}.`;
+  const num = (WHATSAPP && WHATSAPP !== '59100000000') ? WHATSAPP : '59100000000';
+  window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+});
+
+/* ══════════════════════════════════════════════════
+   ANIMACIÓN DEL ISOTIPO Ü — reutilizada de la landing
+   personal, adaptada a la paleta naranja/ámbar de DÚO.
+   ══════════════════════════════════════════════════ */
+(function () {
+  const canvas = document.getElementById('duo-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const W = 180, H = 210;
+  const AMBER = '#F9B233';
+  const ORANGE = '#EC6730';
+  const WHITE = '#FAF7F1';
+
+  let raf = null, running = false, time = 0;
+  let scrollEnergy = 0, lastScrollY = window.scrollY || 0;
+  const particles = [], impacts = [], TOTAL = 24;
+
+  const squares = [
+    { x: 43, y: 43, s: 15, color: AMBER },
+    { x: 96, y: 43, s: 15, color: AMBER },
+    { x: 58, y: 68, s: 15, color: ORANGE },
+    { x: 107, y: 68, s: 15, color: ORANGE }
+  ];
+  const squarePulse = [0, 0, 0, 0];
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    ctx.setTransform(canvas.width / W, 0, 0, canvas.height / H, 0, 0);
+    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+  }
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  function bezier(p0, p1, p2, p3, t) {
+    const u = 1 - t, tt = t * t, uu = u * u;
+    return {
+      x: uu*u*p0.x + 3*uu*t*p1.x + 3*u*tt*p2.x + tt*t*p3.x,
+      y: uu*u*p0.y + 3*uu*t*p1.y + 3*u*tt*p2.y + tt*t*p3.y
+    };
+  }
+  function squareTarget(index) {
+    const q = squares[index], side = Math.floor(Math.random() * 3), u = Math.random() * q.s;
+    if (side === 0) return { x: q.x + u, y: q.y - 2.4 };
+    if (side === 1) return { x: q.x - 2.4, y: q.y + u };
+    return { x: q.x + q.s + 2.4, y: q.y + u };
+  }
+  function createParticle(i) {
+    const route = i % 5, targetIndex = Math.floor(Math.random() * squares.length), target = squareTarget(targetIndex);
+    let start;
+    if (route === 0) start = { x: -22, y: 24 + Math.random() * 64 };
+    else if (route === 1) start = { x: W + 22, y: 24 + Math.random() * 64 };
+    else if (route === 2) start = { x: 28 + Math.random() * 124, y: 5 + Math.random() * 12 };
+    else if (route === 3) start = { x: -18, y: 8 + Math.random() * 44 };
+    else start = { x: W + 18, y: 8 + Math.random() * 44 };
+    return { start, target, targetIndex, progress: Math.random(), speed: 0.0028 + Math.random() * 0.0025, size: 2.4 + Math.random() * 3.6, alpha: 0.62 + Math.random() * 0.38, jitter: Math.random() * Math.PI * 2, hold: 0, color: targetIndex < 2 ? AMBER : ORANGE };
+  }
+  function resetParticle(p) { Object.assign(p, createParticle(Math.floor(Math.random() * 9999))); p.progress = 0; }
+  function initParticles() { particles.length = 0; for (let i = 0; i < TOTAL; i++) particles.push(createParticle(i)); }
+  function particlePath(p, t) {
+    const e = ease(t), magnetX = 82 + Math.sin(p.jitter) * 28, magnetY = 48 + Math.cos(p.jitter) * 18;
+    return bezier(p.start, { x: p.start.x * 0.62 + magnetX * 0.38, y: p.start.y * 0.72 + magnetY * 0.28 }, { x: magnetX, y: magnetY }, p.target, e);
+  }
+  function drawPixel(x, y, size, color, alpha, glow = true) {
+    const px = Math.round(x - size / 2), py = Math.round(y - size / 2), ps = Math.max(2, Math.round(size));
+    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = color;
+    if (glow) { ctx.shadowColor = color; ctx.shadowBlur = 7; }
+    ctx.fillRect(px, py, ps, ps); ctx.restore();
+  }
+  function drawParticle(p, scaleBoost) {
+    const progress = Math.min(1, p.progress), pos = particlePath(p, progress);
+    const fadeIn = Math.min(1, progress * 5), fadeOut = Math.min(1, (1 - progress) * 7);
+    const alpha = Math.max(0, Math.min(fadeIn, fadeOut)) * p.alpha;
+    const x = pos.x + Math.sin(time * 0.08 + p.jitter) * 1.15, y = pos.y + Math.cos(time * 0.07 + p.jitter) * 1.0;
+    ctx.save();
+    ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
+    ctx.globalAlpha = alpha * 0.28; ctx.strokeStyle = p.color; ctx.lineWidth = 1.25; ctx.lineCap = 'round';
+    ctx.beginPath();
+    for (let i = 8; i >= 0; i--) {
+      const tt = Math.max(0, progress - i * 0.023), trail = particlePath(p, tt);
+      const tx = trail.x + Math.sin(time * 0.08 + p.jitter - i * 0.42) * 0.65, ty = trail.y + Math.cos(time * 0.07 + p.jitter - i * 0.42) * 0.65;
+      if (i === 8) ctx.moveTo(tx, ty); else ctx.lineTo(tx, ty);
+    }
+    ctx.stroke();
+    drawPixel(x, y, p.size, p.color, alpha, true);
+    if (p.size > 4.5) drawPixel(x + p.size * 0.72, y - p.size * 0.48, p.size * 0.38, p.color, alpha * 0.62, true);
+    ctx.restore();
+  }
+  function drawSoftGlow(cx, cy, radius, color, alpha) {
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+    if (color === AMBER) { g.addColorStop(0, `rgba(249,178,51,${alpha})`); g.addColorStop(0.55, `rgba(249,178,51,${alpha*0.22})`); }
+    else { g.addColorStop(0, `rgba(236,103,48,${alpha})`); g.addColorStop(0.55, `rgba(236,103,48,${alpha*0.22})`); }
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.save(); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+  }
+  function drawSolidSquare(sq, pulse) {
+    const cx = sq.x + sq.s / 2, cy = sq.y + sq.s / 2;
+    drawSoftGlow(cx, cy, 24 + pulse * 8, sq.color, 0.16 + pulse * 0.16);
+    ctx.save(); ctx.shadowColor = sq.color; ctx.shadowBlur = 12 + pulse * 14;
+    ctx.fillStyle = sq.color; ctx.fillRect(sq.x, sq.y, sq.s, sq.s);
+    ctx.shadowBlur = 0; ctx.globalAlpha = 0.28; ctx.fillStyle = '#FFFFFF'; ctx.fillRect(sq.x + 2, sq.y + 2, sq.s - 4, 2);
+    ctx.globalAlpha = 0.16; ctx.fillRect(sq.x + 2, sq.y + 2, 2, sq.s - 4); ctx.restore();
+  }
+  function drawImpactPixels(scaleBoost) {
+    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
+    for (const imp of impacts) drawPixel(imp.x, imp.y, imp.size, imp.color, Math.min(0.85, imp.life), true);
+    ctx.restore();
+  }
+  function drawU(scaleBoost) {
+    const pulse = 0.5 + Math.sin(time * 0.045) * 0.5;
+    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
+    const glow = ctx.createRadialGradient(90, 125, 0, 90, 125, 82);
+    glow.addColorStop(0, `rgba(249,178,51,${0.12 + pulse * 0.05})`); glow.addColorStop(0.58, 'rgba(249,178,51,0.035)'); glow.addColorStop(1, 'rgba(249,178,51,0)');
+    ctx.fillStyle = glow; ctx.fillRect(12, 56, 156, 138);
+    ctx.save(); ctx.globalAlpha = 0.28; ctx.strokeStyle = 'rgba(236,103,48,0.26)'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.setLineDash([5, 9]); ctx.lineDashOffset = -time * 0.42;
+    ctx.beginPath(); ctx.moveTo(68, 91); ctx.lineTo(68, 128); ctx.bezierCurveTo(68, 158, 112, 158, 112, 128); ctx.lineTo(112, 91); ctx.stroke(); ctx.restore();
+    ctx.save(); ctx.fillStyle = WHITE; ctx.beginPath();
+    ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
+    ctx.save(); ctx.globalAlpha = 0.18 + pulse * 0.06; ctx.shadowColor = WHITE; ctx.shadowBlur = 18; ctx.fillStyle = WHITE; ctx.beginPath();
+    ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
+    squares.forEach((sq, index) => drawSolidSquare(sq, pulse * 0.24 + squarePulse[index]));
+    ctx.restore();
+  }
+  function update() {
+    time++; scrollEnergy *= 0.9;
+    for (let i = 0; i < squarePulse.length; i++) squarePulse[i] *= 0.91;
+    for (let i = impacts.length - 1; i >= 0; i--) { impacts[i].life *= 0.9; if (impacts[i].life < 0.05) impacts.splice(i, 1); }
+    particles.forEach((p) => {
+      if (p.hold > 0) { p.hold--; if (p.hold <= 0) resetParticle(p); return; }
+      p.progress += p.speed + scrollEnergy * 0.00055;
+      if (p.progress >= 1) {
+        squarePulse[p.targetIndex] = Math.min(1, squarePulse[p.targetIndex] + 0.5);
+        impacts.push({ x: p.target.x, y: p.target.y, size: Math.max(2.5, p.size * 0.82), color: p.color, life: 1 });
+        if (impacts.length > 14) impacts.shift();
+        p.hold = 8 + Math.floor(Math.random() * 14);
+      }
+    });
+  }
+  function render() {
+    ctx.clearRect(0, 0, W, H);
+    const scaleBoost = Math.min(0.14, scrollEnergy * 0.014);
+    particles.forEach((p) => { if (p.hold <= 0) drawParticle(p, scaleBoost); });
+    drawImpactPixels(scaleBoost); drawU(scaleBoost);
+    const pulse = 0.5 + Math.sin(time * 0.055) * 0.5;
+    ctx.save(); ctx.globalAlpha = 0.13 + pulse * 0.05; ctx.strokeStyle = ORANGE; ctx.lineWidth = 1; ctx.setLineDash([2, 10]); ctx.lineDashOffset = -time * 0.38;
+    ctx.beginPath(); ctx.arc(90, 94, 60, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+  }
+  function tick() { update(); render(); raf = requestAnimationFrame(tick); }
+  function start() { if (running) return; running = true; resize(); if (!particles.length) { initParticles(); for (let i = 0; i < 130; i++) update(); } tick(); }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (running) resize(); }, 120); });
+  window.addEventListener('scroll', () => { const y = window.scrollY || 0; scrollEnergy = Math.min(10, scrollEnergy + Math.abs(y - lastScrollY) * 0.04); lastScrollY = y; }, { passive: true });
+  start();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) start(); else stop(); }); }, { threshold: 0.08 }).observe(canvas);
+  }
+})();
+</script>
+
+</body>
+</html>
