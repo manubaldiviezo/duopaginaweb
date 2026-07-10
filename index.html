@@ -1068,11 +1068,17 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
   function render() {
     ctx.clearRect(0, 0, W, H);
     const scaleBoost = Math.min(0.14, scrollEnergy * 0.014);
+    // Levitación suave y orgánica de todo el isotipo (U + cuadros + leads flotan juntos).
+    const floatY = Math.sin(time * 0.022) * 6 + Math.sin(time * 0.041) * 1.8;
+    const floatX = Math.sin(time * 0.014) * 2.2;
+    ctx.save();
+    ctx.translate(floatX, floatY);
     particles.forEach((p) => { if (p.hold <= 0) drawParticle(p, scaleBoost); });
     drawImpactPixels(scaleBoost); drawU(scaleBoost);
     const pulse = 0.5 + Math.sin(time * 0.055) * 0.5;
     ctx.save(); ctx.globalAlpha = 0.13 + pulse * 0.05; ctx.strokeStyle = ORANGE; ctx.lineWidth = 1; ctx.setLineDash([2, 10]); ctx.lineDashOffset = -time * 0.38;
     ctx.beginPath(); ctx.arc(90, 94, 60, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+    ctx.restore();
   }
   function tick() { update(); render(); raf = requestAnimationFrame(tick); }
   function start() { if (running) return; running = true; resize(); if (!particles.length) { initParticles(); for (let i = 0; i < 130; i++) update(); } tick(); }
