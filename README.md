@@ -33,9 +33,8 @@ Buscá estos marcadores en el código:
 |---|---|---|
 | **Número de WhatsApp de DÚO** | `index.html` JS | `const WHATSAPP = "59100000000"` |
 | **VSL (video 3 min)** | `index.html` JS | `const VSL_URL = ""` |
-| **Precio paquete "4+ videos"** | Puerta 2 · Servicios | `Bs XXX` |
-| **Precios producción Sony** | Puerta 2 · Servicios | "A definir" |
 | **Duración soporte asesoría** | Puerta 1 | (dejado en "1 mes" — confirmar) |
+| **Precio eventos sociales (bodas/cumpleaños)** | S8 | "A definir" |
 | **Logos de clientes** | `/logos/` | placeholders de texto en la cinta |
 | **Clips de reels + métricas + URLs reales** | array `REELS` en JS | `videoSrc / poster / urlReal` vacíos |
 | **Fotos** | `/images/` | placeholders con nombre |

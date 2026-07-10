@@ -261,12 +261,13 @@ section { padding: 88px 0; position: relative; }
 .cocina-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ── Evento (S8) ── */
-.evento-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 720px; margin: 30px auto 0; }
-@media (min-width: 620px) { .evento-cards { grid-template-columns: 1fr 1fr; } }
-.evento-card { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 26px 22px; text-align: center; transition: transform 0.3s, border-color 0.3s; }
+.evento-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 900px; margin: 30px auto 0; }
+@media (min-width: 560px) { .evento-cards { grid-template-columns: 1fr 1fr; } }
+.evento-card { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 24px 20px; text-align: center; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
 .evento-card:hover { transform: translateY(-4px); border-color: var(--orange-line); }
-.evento-card h4 { font-size: 14px; margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-weight: 700; font-family: 'Inter', sans-serif; color: var(--text-2); }
-.evento-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 28px; color: var(--amber); }
+.evento-card h4 { font-size: 13.5px; margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; font-family: 'Inter', sans-serif; color: var(--text-2); line-height: 1.4; }
+.evento-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 26px; color: var(--amber); }
+.evento-cd { font-size: 11.5px; color: var(--text-3); margin-top: 10px; line-height: 1.5; }
 .evento-addon { text-align: center; margin: 20px auto 0; }
 .chip-addon { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--orange); border: 1px dashed var(--orange-line); border-radius: 999px; padding: 8px 16px; }
 .evento-micro { text-align: center; font-style: italic; font-size: 13px; color: var(--text-3); max-width: 520px; margin: 18px auto 26px; }
@@ -386,7 +387,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <a href="#trabajos">Trabajos</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a href="#contacto" class="header-cta">Quiero contenido que venda</a>
+    <a href="#contacto" class="header-cta">Crear contenido estratégico</a>
   </div>
 </header>
 
@@ -400,7 +401,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido que venda.</span></h1>
       <p class="hero-sub reveal">Somos DÚO. Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Todo con un mismo método.</p>
       <div class="hero-ctas reveal">
-        <a href="#contacto" class="btn btn-orange">Quiero contenido que venda
+        <a href="#contacto" class="btn btn-orange">Quiero crear contenido estratégico
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="#metodo" class="btn btn-ghost">Mirá cómo trabajamos</a>
@@ -567,22 +568,15 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         <h3>Delegarla</h3>
 
         <div class="oferta">
-          <div class="oferta-top"><span class="oferta-name">Contenido ágil</span><span class="oferta-price">Desde Bs 500</span></div>
-          <div class="oferta-desc">Desde 2 videos: grabamos tu idea con celular, editamos y te lo entregamos listo para publicar.</div>
+          <div class="oferta-top"><span class="oferta-name">Contenido ágil · 2 videos</span><span class="oferta-price">Desde Bs 500</span></div>
+          <div class="oferta-desc">Reels y videos cortos: grabamos tu idea, editamos y te lo entregamos listo para publicar. Con celular <b>Bs 500</b> · con cámara profesional <b>Bs 750</b>.</div>
         </div>
 
         <div class="oferta star">
           <span class="star-badge">Metodología completa</span>
-          <div class="oferta-top"><span class="oferta-name">Paquete estratégico</span><span class="oferta-price">Bs XXX</span></div>
-          <div class="oferta-desc">Desde 4 videos: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes. Vos aprobás, nosotros hacemos el resto.</div>
+          <div class="oferta-top"><span class="oferta-name">Paquete estratégico · 4 videos</span><span class="oferta-price">Bs 1.350</span></div>
+          <div class="oferta-desc">Con cámara profesional: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes. Vos aprobás, nosotros hacemos el resto.</div>
         </div>
-
-        <div class="oferta">
-          <div class="oferta-top"><span class="oferta-name">Producción profesional</span><span class="oferta-price">A definir</span></div>
-          <div class="oferta-desc">Cámara Sony · precios a completar con los valores actuales.</div>
-        </div>
-
-        <p class="oferta-desc" style="margin-top:10px">Producción eficiente: grabamos todo el contenido de tu paquete en una sola sesión de 15–20 minutos de material. Una interrupción mínima para tu negocio, un mes completo de contenido.</p>
 
         <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
 
@@ -599,6 +593,11 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
           <span class="star-badge">Sistema completo</span>
           <div class="oferta-top"><span class="oferta-name">DÚO 3X</span><span class="oferta-price">A medida</span></div>
           <div class="oferta-desc">Contenido + campañas en Facebook e Instagram + medición mensual con nuestro estratega. Analizamos primero si invertir es rentable para tu negocio — incluyendo nuestro servicio en tus costos. Si no da, te lo decimos.</div>
+        </div>
+
+        <div class="oferta">
+          <div class="oferta-top"><span class="oferta-name">Solo campañas (pauta)</span><span class="oferta-price">Desde $200 / mes</span></div>
+          <div class="oferta-desc">¿Ya tenés contenido? Gestionamos tus anuncios en Facebook e Instagram con estrategia y medición. La inversión publicitaria va aparte, directo a Meta.</div>
         </div>
 
         <a href="#contacto" class="btn btn-orange">Quiero el sistema completo</a>
@@ -638,22 +637,32 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 <section id="eventos">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">¿Tenés un evento?</span>
-      <h2>Tu evento, <span class="grad">contado como se merece.</span></h2>
-      <p>Cobertura completa de 6 horas. Te entregamos un video de 12 a 15 minutos subido a tu YouTube + 1 Reel de 1 minuto para tus redes, en 10 días.</p>
+      <span class="eyebrow" style="display:inline-flex">Eventos y estudio</span>
+      <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
+      <p>Cobertura de eventos de 6 horas: un video de 12 a 15 minutos para tu YouTube + 1 Reel de 1 minuto para tus redes, en 10 días. Y sesiones de fotos en estudio, listas para subir.</p>
     </div>
     <div class="evento-cards reveal">
       <div class="evento-card">
-        <h4>Cobertura iPhone + sistema de luces</h4>
+        <h4>Cobertura de evento · iPhone + luces</h4>
         <div class="evento-price">Bs 1.150</div>
       </div>
       <div class="evento-card">
-        <h4>Cobertura con cámara profesional</h4>
+        <h4>Cobertura de evento · cámara profesional</h4>
         <div class="evento-price">Bs 1.550</div>
+      </div>
+      <div class="evento-card">
+        <h4>Eventos sociales · bodas, cumpleaños</h4>
+        <div class="evento-price">A definir</div>
+        <p class="evento-cd">Cobertura con cámara o celular, según el evento.</p>
+      </div>
+      <div class="evento-card">
+        <h4>Sesión de fotos en estudio · desde 5 fotos</h4>
+        <div class="evento-price">Bs 450</div>
+        <p class="evento-cd">Cumpleaños, graduación, aniversario — en full resolución, listas para redes.</p>
       </div>
     </div>
     <div class="evento-addon reveal"><span class="chip-addon">+ Dron: Bs 350 (cualquier paquete)</span></div>
-    <p class="evento-micro reveal">¿Ya hacés contenido con nosotros? El material de tu evento alimenta tus redes del mes.</p>
+    <p class="evento-micro reveal">📍 Estudio en Calle Juan XXIII, e/ Ballivián y Santa Cruz (frente al colegio Sagrado), Yacuiba — Tarija, Bolivia. Cubrimos otros departamentos según la cantidad de contenido o el evento.<br>¿Ya hacés contenido con nosotros? El material de tu evento alimenta tus redes del mes.</p>
     <div style="text-align:center" class="reveal">
       <a href="#contacto" class="btn btn-orange">Cotizar mi evento</a>
     </div>
@@ -710,7 +719,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         <span class="eyebrow" style="display:inline-flex">Contacto</span>
         <h2>Contanos qué vendés. <span class="grad">Nosotros te decimos qué contenido lo vende.</span></h2>
         <p>Respondemos en menos de 24 horas. Sin compromiso.</p>
-        <a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20contenido%20que%20venda%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-ghost contacto-wa" id="wa-directo">
+        <a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-ghost contacto-wa" id="wa-directo">
           <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
           Escribir por WhatsApp
         </a>
@@ -754,6 +763,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
           <span style="display:flex;flex-direction:column;line-height:1.05"><b>DÚO</b><span>Marketing Digital</span></span>
         </a>
         <p>Producimos el contenido, lanzamos las campañas y medimos lo que vuelve.</p>
+        <p style="margin-top:10px;font-size:12px">📍 Yacuiba · Tarija, Bolivia — cobertura en otros departamentos.</p>
       </div>
       <div class="footer-col">
         <h5>Explorar</h5>
@@ -776,7 +786,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </footer>
 
-<a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20contenido%20que%20venda%20para%20mi%20marca." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+<a href="https://wa.me/59100000000?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.42 9.42 0 01-1.45-5.03c0-5.21 4.25-9.45 9.47-9.45 2.53 0 4.9.99 6.69 2.77a9.4 9.4 0 012.77 6.69c0 5.21-4.25 9.45-9.46 9.45z"/></svg>
 </a>
 
