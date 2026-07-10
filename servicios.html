@@ -4,22 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
 <meta name="theme-color" content="#1D1D1B">
-
-<title>DÚO — Contenido que vende | Agencia creativa Bolivia</title>
-<meta name="description" content="Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Agencia de marketing digital desde Bolivia para marcas en 5 países.">
-
-<meta property="og:title" content="DÚO — Contenido que vende | Agencia creativa Bolivia">
-<meta property="og:description" content="Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Desde Bolivia para marcas en 5 países.">
+<title>Servicios — DÚO | Contenido, campañas, web y eventos</title>
+<meta name="description" content="Todo lo que hace DÚO: contenido estratégico, campañas en Meta, páginas web, eventos y la metodología documentada. Armá tu combo a medida.">
+<meta property="og:title" content="Servicios — DÚO Marketing Digital">
+<meta property="og:description" content="De un ebook a un sistema completo de ventas. Elegí cómo usar nuestra metodología — o armá tu combo.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://duomarketingdigital.com/">
-<meta property="og:image" content="https://duomarketingdigital.com/images/hero-set-produccion.png">
-<link rel="canonical" href="https://duomarketingdigital.com/">
-
+<link rel="canonical" href="https://duomarketingdigital.com/servicios">
 <link rel="icon" type="image/png" href="/logos/duo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-
 <style>
 /* ═══════════════════════════════════════════
    DÚO Marketing — sistema de diseño
@@ -493,24 +487,88 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .wa-float svg { width: 29px; height: 29px; color: #fff; }
 @media (max-width: 767px) { .wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; } }
 </style>
+<style>
+/* ── Propios de /servicios ── */
+.spage-hero { padding: 128px 0 46px; text-align: center; position: relative; overflow: hidden; }
+.spage-hero::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 760px; height: 560px; pointer-events: none; background: radial-gradient(ellipse, rgba(236,103,48,0.14), transparent 66%); }
+.spage-hero .container { position: relative; z-index: 1; }
+.spage-hero h1 { font-size: clamp(30px, 5.6vw, 58px); margin-bottom: 14px; }
+.spage-hero p { max-width: 560px; margin: 0 auto; }
+
+/* Tabs */
+.tabs-bar {
+  position: sticky; top: 66px; z-index: 60;
+  background: rgba(19,19,17,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
+}
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px var(--pad); max-width: var(--max); margin: 0 auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;
+  color: var(--text-2); padding: 10px 18px; border-radius: 999px; border: 1px solid transparent;
+  white-space: nowrap; transition: all 0.25s; flex-shrink: 0;
+}
+.tab:hover { color: var(--orange); }
+.tab.on { background: var(--orange); color: #1D1D1B; }
+.panel { display: none; animation: panelIn 0.45s ease; }
+.panel.on { display: block; }
+@keyframes panelIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.panel section { padding: 64px 0 78px; }
+
+/* Combo builder */
+#combo { background: var(--bg-2); border-top: 1px solid var(--line-soft); }
+.combo-grid { display: grid; grid-template-columns: 1fr; gap: 26px; max-width: 1020px; margin: 0 auto; align-items: start; }
+@media (min-width: 900px) { .combo-grid { grid-template-columns: 1.35fr 1fr; } }
+.combo-items { display: grid; gap: 10px; }
+.combo-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--line-soft); border-radius: 14px;
+  padding: 16px 18px; cursor: pointer; transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  user-select: none;
+}
+.combo-item:hover { border-color: var(--orange-line); }
+.combo-item.on { border-color: var(--orange); background: linear-gradient(180deg, rgba(236,103,48,0.08), var(--card)); }
+.combo-check { width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.25s; font-size: 13px; color: #1D1D1B; }
+.combo-item.on .combo-check { background: var(--orange); border-color: var(--orange); }
+.combo-item.on .combo-check::after { content: '✓'; font-weight: 900; }
+.combo-info { flex: 1; min-width: 0; }
+.combo-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.combo-desc { font-size: 11.5px; color: var(--text-3); margin-top: 2px; line-height: 1.45; }
+.combo-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13.5px; color: var(--amber); white-space: nowrap; }
+.combo-price .tach { text-decoration: line-through; opacity: 0.45; font-weight: 700; margin-right: 6px; }
+.combo-panel {
+  position: sticky; top: 128px;
+  background: var(--card); border: 1px solid var(--orange-line); border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  box-shadow: 0 0 0 1px rgba(236,103,48,0.14), 0 18px 54px rgba(236,103,48,0.1);
+}
+.combo-panel h3 { font-size: 17px; margin-bottom: 18px; }
+.combo-total { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.combo-total-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.combo-total-row span { font-size: 12px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; }
+.combo-total-row b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(20px, 3vw, 26px); color: var(--amber); }
+.combo-lista { font-size: 12.5px; color: var(--text-2); line-height: 1.7; margin: 14px 0 18px; min-height: 40px; }
+.combo-lista em { color: var(--text-3); font-style: italic; }
+.combo-panel .btn { width: 100%; }
+.combo-nota { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 12px; line-height: 1.5; }
+.combo-off { display: inline-block; font-size: 10px; font-weight: 900; color: #1D1D1B; background: var(--amber); border-radius: 999px; padding: 2px 8px; margin-left: 6px; letter-spacing: 0.04em; }
+</style>
 </head>
 <body>
 
-<!-- ═══════════ HEADER ═══════════ -->
-<header id="header">
+<header id="header" class="scrolled">
   <div class="container header-inner">
-    <a href="#inicio" class="logo" aria-label="DÚO — inicio">
+    <a href="/" class="logo" aria-label="DÚO — inicio">
       <img src="/logos/duo-wordmark-white.png" alt="DÚO Marketing Digital" class="logo-img">
       <img src="/logos/duo-icon.png" alt="DÚO" class="logo-icon">
     </a>
     <nav class="header-nav" aria-label="Navegación">
-      <a href="#trabajos">Trabajos</a>
-      <a href="#metodo">Método</a>
-      <a href="/servicios">Servicios</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#contacto">Contacto</a>
+      <a href="/">Inicio</a>
+      <a href="/#trabajos">Trabajos</a>
+      <a href="/#recursos">Recursos</a>
+      <a href="/#contacto">Contacto</a>
     </nav>
-    <a href="#contacto" class="header-cta">Crear contenido estratégico</a>
+    <a href="#combo" class="header-cta">Armá tu combo</a>
     <button class="menu-btn" id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -519,353 +577,272 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 
 <nav class="drawer" id="drawer" aria-label="Menú">
   <div class="drawer-nav">
-    <a href="#trabajos">Trabajos <span class="sub">Reels de clientes</span></a>
-    <a href="#metodo">Método <span class="sub">Cómo trabajamos</span></a>
-    <a href="/servicios">Servicios <span class="sub">Todo lo que hacemos</span></a>
-    <a href="#recursos">Recursos <span class="sub">Ebooks y agente IA</span></a>
-    <a href="#resultados">Resultados <span class="sub">Campañas reales</span></a>
-    <a href="#contacto">Contacto <span class="sub">Hablemos</span></a>
+    <a href="/">Inicio <span class="sub">Volver a DÚO</span></a>
+    <a href="#aprender" class="tab-jump" data-tab="aprender">Aprender <span class="sub">Ebooks y asesoría</span></a>
+    <a href="#delegar" class="tab-jump" data-tab="delegar">Contenido <span class="sub">Producción de videos</span></a>
+    <a href="#escalar" class="tab-jump" data-tab="escalar">Escalar <span class="sub">Contenido + campañas</span></a>
+    <a href="#web" class="tab-jump" data-tab="web">Páginas web <span class="sub">Como esta</span></a>
+    <a href="#combo">Armá tu combo <span class="sub">Interactivo</span></a>
   </div>
   <div class="drawer-cta">
-    <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero crear contenido estratégico</a>
+    <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Hablar con DÚO</a>
   </div>
 </nav>
 
-<!-- ═══════════ S1 · HERO ═══════════ -->
-<section class="hero" id="inicio">
+<section class="spage-hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-canvas-wrap reveal">
-        <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
-      </div>
-      <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido estratégico.</span></h1>
-      <p class="hero-sub reveal">Somos DÚO, agencia creativa. Dirigimos y producimos tu contenido, lanzamos las campañas y medimos lo que vuelve. Todo con un mismo método.</p>
-      <div class="hero-ctas reveal">
-        <a href="#contacto" class="btn btn-orange">Quiero crear contenido estratégico
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#metodo" class="btn btn-ghost">Mirá cómo trabajamos</a>
-      </div>
-      <div class="hero-badge reveal">
-        <span class="dot"></span>
-        <span><b>+30 marcas</b> · 5 países · el sistema detrás de un <b>ROAS 10.55x</b></span>
-      </div>
-    </div>
+    <span class="eyebrow" style="display:inline-flex">Servicios DÚO</span>
+    <h1>Todo lo que hacemos, <span class="grad">en un solo lugar.</span></h1>
+    <p>La misma metodología en distintas profundidades. Explorá por pestañas — o bajá y armá tu combo.</p>
   </div>
 </section>
 
-<!-- ═══════════ S2 · TIRA DINÁMICA DE TRABAJOS ═══════════ -->
-<section class="strip-sec" id="trabajos">
-  <div class="container">
-    <div class="sec-head reveal" style="margin-bottom: 34px;">
-      <span class="eyebrow" style="display:inline-flex">Nuestro trabajo</span>
-      <h2>Contenido que la gente <span class="grad">eligió ver.</span></h2>
-      <p>Dirigido, producido y editado por DÚO para clientes reales. Tocá cualquiera para verlo en su cuenta.</p>
-    </div>
-  </div>
-  <div class="reel-strip" id="reel-strip">
-    <div class="reel-track" id="reel-track"></div>
-  </div>
-</section>
-
-<!-- ═══════════ S5 · VSL ═══════════ -->
-<section class="vsl">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Míralo en 3 minutos</span>
-      <h2>Todo lo que hacemos, <span class="grad">explicado en 3 minutos.</span></h2>
-    </div>
-    <div class="vsl-frame reveal" id="vsl-frame">
-      <div class="vsl-ph" id="vsl-ph">
-        <div class="vsl-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <span>Video · 3 min</span>
-      </div>
-    </div>
-    <div style="text-align:center" class="reveal">
-      <a href="#contacto" class="btn btn-orange">Quiero esto para mi marca
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ S3 · CINTA DE LOGOS ═══════════ -->
-<div class="logos-band">
-  <div class="container">
-    <div class="logos-title">Marcas que confían en nuestro método</div>
-  </div>
-  <!-- Reemplazar los nombres por <img src="/logos/logo-cliente-N.png"> monocromo cuando existan -->
-  <div class="marquee" id="logos-marquee">
-    <div class="marquee-track">
-      <span class="logo-item">Femmeninas</span>
-      <span class="logo-item">Vision Arq</span>
-      <span class="logo-item">Climere</span>
-      <span class="logo-item">ProGaming</span>
-      <span class="logo-item">Ñañitos</span>
-      <span class="logo-item">Femmeninas</span>
-      <span class="logo-item">Vision Arq</span>
-      <span class="logo-item">Climere</span>
-      <span class="logo-item">ProGaming</span>
-      <span class="logo-item">Ñañitos</span>
-    </div>
+<div class="tabs-bar">
+  <div class="tabs" id="tabs" role="tablist">
+    <button class="tab on" data-panel="aprender" role="tab">📘 Aprender</button>
+    <button class="tab" data-panel="delegar" role="tab">🎥 Contenido</button>
+    <button class="tab" data-panel="escalar" role="tab">🚀 Escalar</button>
+    <button class="tab" data-panel="web" role="tab">💻 Páginas web</button>
+    <button class="tab" data-panel="eventos" role="tab">📸 Eventos</button>
   </div>
 </div>
 
-<!-- ═══════════ S3 · EL FEED INFINITO ═══════════ -->
-<section class="feed">
-  <div class="feed-marquee" aria-hidden="true">
-    <div class="feed-track">
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Feliz lunes! ☕</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">50% OFF 🔥</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Somos calidad y confianza</div></div>
-      <div class="feed-post duo"><div class="fp-img"></div><div class="fp-txt">Contenido que vende ✦ DÚO</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Feliz día del padre 👔</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Ya llegó el fin de semana!</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Tenemos stock disponible</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">¡Feliz lunes! ☕</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">50% OFF 🔥</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Somos calidad y confianza</div></div>
-      <div class="feed-post duo"><div class="fp-img"></div><div class="fp-txt">Contenido que vende ✦ DÚO</div></div>
-      <div class="feed-post"><div class="fp-img"></div><div class="fp-txt">Feliz día del padre 👔</div></div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="feed-body reveal">
-      <span class="eyebrow" style="display:inline-flex">El problema</span>
-      <h2>El 90% del contenido se publica <span class="grad">para llenar el feed.</span></h2>
-      <p>Fotos del producto con frases bonitas. Feliz día del padre. Promos que nadie pidió. Tu marca publica — pero publicar no es vender. El contenido que vende se diseña: sabe a quién le habla, qué momento de decisión ataca y qué acción provoca.</p>
-      <p class="feed-cierre">Ese es el contenido <span class="grad">que hacemos.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ S4 · MÉTODO ═══════════ -->
-<section id="metodo">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">El método DÚO</span>
-      <h2>Contenido <span class="grad">con dirección.</span></h2>
-    </div>
-    <div class="metodo-grid">
-      <div class="pilar reveal">
-        <span class="pilar-num">/01</span>
-        <h3>Dirección creativa</h3>
-        <p>Antes de grabar un segundo definimos qué videos necesita tu marca: qué ángulos de venta, qué ganchos, qué formatos. Nada se graba "a ver qué sale".</p>
+<!-- ═══ PANEL: APRENDER ═══ -->
+<div class="panel on" id="panel-aprender">
+  <section id="aprender">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Querés aprenderla</span>
+        <h2>La metodología, <span class="grad">en tus manos.</span></h2>
+        <p>Somos la única agencia que te vende su propia cocina — documentada y a tu alcance.</p>
       </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/02</span>
-        <h3>Producción</h3>
-        <p>Grabamos con equipo profesional o con celular según tu etapa — y te entregamos todo listo. Si ya tenés quien grabe, le damos la dirección y editamos nosotros.</p>
-      </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/03</span>
-        <h3>Campañas</h3>
-        <p>El contenido no se queda esperando likes: se convierte en anuncios en Facebook e Instagram con estrategia detrás.</p>
-      </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/04</span>
-        <h3>Medición</h3>
-        <p>Medimos qué video vende y cuál no — no por intuición: por datos. Lo que funciona se escala, lo que no, se corta.</p>
-      </div>
-    </div>
-    <div class="metodo-foot reveal">
-      <p>Cada pieza de contenido sale con un trabajo que casi nadie hace: <strong>saber por qué se graba.</strong></p>
-    </div>
-    <!-- Imagen de apoyo: <img src="/images/metodo-direccion.png" alt="Dirección de contenido DÚO"> -->
-    <div class="ph reveal" style="aspect-ratio:16/6;max-width:900px;margin:34px auto 0" role="img" aria-label="metodo-direccion.png">metodo-direccion.png</div>
-  </div>
-</section>
-
-<!-- ═══════════ SERVICIOS · RESUMEN (detalle en /servicios) ═══════════ -->
-<section id="servicios">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Servicios</span>
-      <h2>La misma metodología. <span class="grad">Elegí cómo usarla.</span></h2>
-      <p>De un ebook a un sistema completo de ventas — y todo lo del medio.</p>
-    </div>
-    <div class="serv-grid">
-      <a href="/servicios#aprender" class="serv-card reveal">
-        <span class="serv-ico">📘</span>
-        <h3>Aprender la metodología</h3>
-        <p>Ebooks y asesoría 1:1 — salís con tu estrategia armada en un hub de Notion.</p>
-        <span class="serv-precio">Desde $20</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
-      <a href="/servicios#delegar" class="serv-card reveal">
-        <span class="serv-ico">🎥</span>
-        <h3>Contenido para tus redes</h3>
-        <p>Grabamos, editamos y publicamos por vos. Con estrategia completa desde 4 videos.</p>
-        <span class="serv-precio">Desde Bs 500</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
-      <a href="/servicios#escalar" class="serv-card serv-dom reveal">
-        <span class="serv-badge">Sistema completo</span>
-        <span class="serv-ico">🚀</span>
-        <h3>Contenido + campañas</h3>
-        <p>Producción, anuncios en Facebook e Instagram y medición mensual. DÚO 3X, a medida.</p>
-        <span class="serv-precio">Desde $200/mes</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
-      <a href="/servicios#web" class="serv-card reveal">
-        <span class="serv-ico">💻</span>
-        <h3>Páginas web</h3>
-        <p>Sitios como este: diseñados para convertir, listos para recibir tus anuncios.</p>
-        <span class="serv-precio">Desde Bs 1.500 / $150</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
-      <a href="/servicios#eventos" class="serv-card reveal">
-        <span class="serv-ico">📸</span>
-        <h3>Eventos y estudio</h3>
-        <p>Cobertura de eventos sociales y sesiones de fotos en estudio o exterior.</p>
-        <span class="serv-precio">Desde Bs 450</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
-      <a href="/servicios#combo" class="serv-card serv-combo reveal">
-        <span class="serv-ico">🧩</span>
-        <h3>Armá tu combo</h3>
-        <p>Elegí lo que tu marca necesita y armá tu propuesta al instante. Único en Bolivia.</p>
-        <span class="serv-precio">Interactivo</span>
-        <span class="serv-link">Probar →</span>
-      </a>
-    </div>
-    <div style="text-align:center;margin-top:36px" class="reveal">
-      <a href="/servicios" class="btn btn-orange">Ver todos los servicios
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ RECURSOS · LA COCINA ABIERTA (#recursos) ═══════════ -->
-<section class="cocina" id="recursos">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Recursos DÚO</span>
-      <h2>Ninguna agencia te muestra su cocina. <span class="grad">Nosotros te la abrimos.</span></h2>
-      <p>La metodología que usamos con cada cliente, documentada. Empezá gratis.</p>
-    </div>
-    <div class="rec-grid">
-      <div class="rec-card rec-free reveal">
-        <span class="rec-pill free">Gratis · Lead magnet</span>
-        <h3>EL SISTEMA</h3>
-        <p>La estructura de campañas con la que gestionamos más de $50.000 USD en Meta Ads. El ebook completo del sistema, gratis para tu marca.</p>
-        <a class="btn btn-orange" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20ebook%20gratis%20*EL%20SISTEMA*%20de%20campa%C3%B1as." target="_blank" rel="noopener">Quiero EL SISTEMA gratis</a>
-      </div>
-      <div class="rec-card reveal">
-        <span class="rec-pill">$15</span>
-        <h3>Agente Estratega Digital · IA</h3>
-        <p>Nuestro GPT entrenado con la metodología DÚO: piensa tu estrategia, tu contenido y tus anuncios como un estratega — disponible 24/7.</p>
-        <a class="btn btn-ghost" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20*Agente%20Estratega%20Digital*%20($15)." target="_blank" rel="noopener">Quiero el agente</a>
-      </div>
-      <div class="rec-card reveal">
-        <span class="rec-pill">$20 c/u · Pack $35</span>
-        <h3>Ebooks de la metodología</h3>
-        <p>Estrategia de Contenido (el Árbol de Coherencia completo) + Fórmula DÚO3X (guiones en 8 pasos, más de 25 estilos de gancho).</p>
-        <a class="btn btn-ghost" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20los%20*ebooks%20de%20la%20metodolog%C3%ADa*." target="_blank" rel="noopener">Quiero los ebooks</a>
-      </div>
-    </div>
-    <p class="rec-nota reveal">¿Preferís que lo hagamos nosotros? <a href="/servicios">Mirá los servicios →</a></p>
-  </div>
-</section>
-<!-- ═══════════ S10 · RESULTADOS ═══════════ -->
-<section class="resultados" id="resultados">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Resultados de campañas</span>
-      <h2>Contenido + campañas + medición. <span class="grad">Esto pasa cuando las tres cosas trabajan juntas.</span></h2>
-      <p>Resultados en Bolivia — y fuera de Bolivia. La misma metodología funciona en 5 países.</p>
-    </div>
-    <div class="casos-grid" id="casos-grid"></div>
-  </div>
-</section>
-
-<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
-<section id="equipo">
-  <div class="container">
-    <div class="equipo-grid">
-      <!-- <img src="/images/equipo-produccion.png" alt="Equipo de producción DÚO"> -->
-      <div class="ph reveal" style="aspect-ratio:4/3" role="img" aria-label="equipo-produccion.png">equipo-produccion.png</div>
-      <div class="equipo-txt reveal">
-        <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-        <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-        <p>DÚO nació de dos personas: la estrategia y el contenido. Hoy somos un equipo completo — estratega, guionista, editor y producción — trabajando como uno.</p>
-        <p>Dirección estratégica de <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo</a> · dirección de contenido de Valeria.</p>
-        <div class="equipo-firma">Desde Bolivia — para marcas en 5 países.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ S12 · CONTACTO ═══════════ -->
-<section class="contacto" id="contacto">
-  <div class="container">
-    <div class="contacto-grid">
-      <div class="contacto-txt reveal">
-        <span class="eyebrow" style="display:inline-flex">Contacto</span>
-        <h2>Contanos qué vendés. <span class="grad">Nosotros te decimos qué contenido lo vende.</span></h2>
-        <p>Respondemos en menos de 24 horas. Sin compromiso.</p>
-        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-ghost contacto-wa" id="wa-directo">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
-          Escribir por WhatsApp
-        </a>
-      </div>
-      <form class="form reveal" id="contacto-form" novalidate>
-        <div class="field">
-          <label for="c-nombre">Tu nombre</label>
-          <input type="text" id="c-nombre" name="nombre" placeholder="¿Cómo te llamás?" required>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta reveal">
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Estrategia de Contenido — Guía completa</span><span class="oferta-price">$20</span></div>
+            <div class="oferta-desc">El Árbol de Coherencia completo para tu estrategia.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Fórmula DÚO3X — Guionización estratégica</span><span class="oferta-price">$20</span></div>
+            <div class="oferta-desc">Guiones en 8 pasos, +25 estilos de gancho, estructuras para venta, valor y viralidad.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Pack ambos ebooks</span><span class="oferta-price">$35 / Bs 350</span></div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Agente Estratega Digital · IA</span><span class="oferta-price">$15</span></div>
+            <div class="oferta-desc">Nuestro GPT entrenado con la metodología DÚO, disponible 24/7.</div>
+          </div>
+          <div class="oferta star">
+            <span class="star-badge">★ Servicio estrella</span>
+            <div class="oferta-top"><span class="oferta-name">Asesoría de contenido</span><span class="oferta-price">$75 / Bs 750</span></div>
+            <div class="oferta-desc">2 sesiones en vivo: teoría + práctica sobre TU negocio. Salís con tu estrategia de contenido armada — para vender con anuncios o sin invertir en publicidad — entregada en un hub de Notion listo para gestionar tu contenido como una agencia: calendario, guiones, pilares y seguimiento. Incluye soporte por WhatsApp durante 1 mes.</div>
+          </div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20la%20*Asesor%C3%ADa%20de%20contenido*%20($75%20/%20Bs%20750)." target="_blank" rel="noopener" class="btn btn-orange">Quiero la asesoría</a>
         </div>
-        <div class="field">
-          <label for="c-marca">Negocio / marca</label>
-          <input type="text" id="c-marca" name="marca" placeholder="El nombre de tu marca" required>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: DELEGAR ═══ -->
+<div class="panel" id="panel-delegar">
+  <section id="delegar">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Querés delegarla</span>
+        <h2>Contenido para tus redes, <span class="grad">llave en mano.</span></h2>
+        <p>Grabamos, editamos y publicamos. Vos aprobás, nosotros hacemos el resto.</p>
+      </div>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta reveal">
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Contenido ágil · 2 videos</span><span class="oferta-price">Desde Bs 500</span></div>
+            <div class="oferta-desc">Reels y videos cortos: grabamos tu idea, editamos y te lo entregamos listo. Con celular <b>Bs 500</b> · con cámara profesional <b>Bs 750</b>.</div>
+          </div>
+          <div class="oferta star">
+            <span class="star-badge">Metodología completa</span>
+            <div class="oferta-top"><span class="oferta-name">Paquete estratégico · 4 videos</span><span class="oferta-price">Bs 1.350</span></div>
+            <div class="oferta-desc">Con cámara profesional: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">+ Anuncios con 50% de descuento</span><span class="oferta-price"><span style="text-decoration:line-through;opacity:0.5">$100</span> $50 / Bs 500 al mes</span></div>
+            <div class="oferta-desc">Si nos encargamos de tu producción completa (desde 4 videos), la gestión de tus anuncios en Facebook e Instagram te cuesta la mitad. Tu contenido y tus campañas, con el mismo equipo.</div>
+          </div>
+          <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20que%20produzcan%20el%20*contenido%20de%20mis%20redes*." target="_blank" rel="noopener" class="btn btn-orange">Quiero que lo hagan por mí</a>
         </div>
-        <div class="field">
-          <label for="c-necesitas">¿Qué necesitás?</label>
-          <select id="c-necesitas" name="necesitas" required>
-            <option value="" disabled selected>Elegí una opción</option>
-            <option>Aprender la metodología (asesoría / ebooks)</option>
-            <option>Contenido para mis redes</option>
-            <option>Cobertura de evento</option>
-            <option>Sistema completo con campañas</option>
-            <option>No sé todavía</option>
-          </select>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: ESCALAR ═══ -->
+<div class="panel" id="panel-escalar">
+  <section id="escalar">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Querés escalarla</span>
+        <h2>El sistema completo <span class="grad">DÚO 3X.</span></h2>
+        <p>Contenido + campañas + medición, trabajando como una sola máquina.</p>
+      </div>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta dom reveal">
+          <div class="oferta star">
+            <span class="star-badge">Sistema completo</span>
+            <div class="oferta-top"><span class="oferta-name">DÚO 3X</span><span class="oferta-price">Desde $200 / mes</span></div>
+            <div class="oferta-desc">Producción de videos + campañas en Facebook e Instagram + medición mensual con nuestro estratega. Y según tu proyecto sumamos: automatización con IA, mini-landing, artes publicitarias diseñadas — hasta el logotipo si te hace falta. Analizamos primero si invertir es rentable para tu negocio; si no da, te lo decimos.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Solo anuncios (ya tenés contenido)</span><span class="oferta-price">Desde $100 / mes</span></div>
+            <div class="oferta-desc">Prendemos y optimizamos anuncios con lo que tu marca ya tiene. Para negocios que inviertan desde $150 USD (Bs 1.500) al mes en publicidad — ese pago va directo a Meta. No incluye estrategia digital, ni de contenido ni guionización.</div>
+          </div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20*sistema%20completo%20D%C3%9AO%203X*%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero el sistema completo</a>
+          <p class="microlink">Dirección estratégica: <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo →</a></p>
         </div>
-        <button type="submit" class="btn btn-orange">Enviar
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <p class="form-micro">Respondemos en menos de 24 horas · Sin compromiso.</p>
-      </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: WEB ═══ -->
+<div class="panel" id="panel-web">
+  <section id="web">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Páginas web</span>
+        <h2>Sitios que convierten. <span class="grad">Como este que estás viendo.</span></h2>
+        <p>Esta web es nuestra carta de presentación: la hicimos nosotros, con el mismo cuidado que le pondríamos a la tuya.</p>
+      </div>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta reveal">
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Página web / landing de venta</span><span class="oferta-price">Desde Bs 1.500 / $150</span></div>
+            <div class="oferta-desc">Diseño premium a tu marca, animaciones, WhatsApp integrado, optimizada para móvil y lista para recibir el tráfico de tus anuncios. Dominio y hosting orientamos nosotros.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Artes y piezas publicitarias</span><span class="oferta-price">A cotizar</span></div>
+            <div class="oferta-desc">Imágenes y artes publicitarios diseñados para tus campañas y redes. También logotipos e identidad si tu marca lo necesita.</div>
+          </div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20una%20*p%C3%A1gina%20web*%20como%20la%20de%20ustedes." target="_blank" rel="noopener" class="btn btn-orange">Quiero mi página web</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: EVENTOS ═══ -->
+<div class="panel" id="panel-eventos">
+  <section id="eventos">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Eventos y estudio</span>
+        <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
+        <p>Cobertura de eventos sociales — bodas, cumpleaños, graduaciones — de 6 horas: un video de 12 a 15 minutos para tu YouTube + 1 Reel de 1 minuto, en 10 días. Y sesiones de fotos en estudio o exterior.</p>
+      </div>
+      <div class="evento-cards reveal">
+        <div class="evento-card">
+          <h4>Cobertura de eventos sociales · iPhone + luces</h4>
+          <div class="evento-price">Bs 1.150</div>
+          <p class="evento-cd">Bodas, cumpleaños, graduaciones y más.</p>
+        </div>
+        <div class="evento-card">
+          <h4>Cobertura de eventos sociales · cámara profesional</h4>
+          <div class="evento-price">Bs 1.550</div>
+          <p class="evento-cd">La misma cobertura, con factura de cine.</p>
+        </div>
+        <div class="evento-card">
+          <h4>Sesión de fotos · estudio o exterior</h4>
+          <div class="evento-price">Bs 450</div>
+          <p class="evento-cd">Desde 5 fotos: cumpleaños, graduación, aniversario — en full resolución, listas para redes.</p>
+        </div>
+      </div>
+      <div class="evento-addon reveal"><span class="chip-addon">+ Dron: Bs 350 (cualquier paquete)</span></div>
+      <div class="evento-mapa reveal">
+        <iframe src="https://www.google.com/maps?q=Calle+Juan+XXIII+entre+Ballivi%C3%A1n+y+Santa+Cruz,+Yacuiba,+Tarija,+Bolivia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Estudio DÚO en Yacuiba"></iframe>
+        <div class="evento-mapa-info">
+          <b>📍 Nuestro estudio</b>
+          <span>Calle Juan XXIII, e/ Ballivián y Santa Cruz (frente al colegio Sagrado) · Yacuiba, Tarija — Bolivia.</span>
+          <span>Cubrimos otros departamentos según la cantidad de contenido o el evento.</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:30px" class="reveal">
+        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20*cobertura%20de%20mi%20evento*." target="_blank" rel="noopener" class="btn btn-orange">Cotizar mi evento</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ ARMÁ TU COMBO ═══ -->
+<section id="combo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Único en Bolivia</span>
+      <h2>Armá tu combo <span class="grad">en 30 segundos.</span></h2>
+      <p>Marcá lo que tu marca necesita. Abajo se arma tu propuesta — y nos llega directo por WhatsApp.</p>
+    </div>
+    <div class="combo-grid">
+      <div class="combo-items reveal" id="combo-items">
+        <div class="combo-item" data-id="prod2cel" data-grupo="prod" data-bs="500" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">2 videos · celular</span><span class="combo-desc">Grabación ágil, edición y entrega lista para publicar.</span></span>
+          <span class="combo-price">Bs 500</span>
+        </div>
+        <div class="combo-item" data-id="prod2cam" data-grupo="prod" data-bs="750" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">2 videos · cámara profesional</span><span class="combo-desc">La misma agilidad, con factura de cine.</span></span>
+          <span class="combo-price">Bs 750</span>
+        </div>
+        <div class="combo-item" data-id="prod4" data-grupo="prod" data-bs="1350" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">4 videos · paquete estratégico ★</span><span class="combo-desc">Estrategia DÚO3X + guiones + producción + edición + publicación. Activa el 50% off en anuncios.</span></span>
+          <span class="combo-price">Bs 1.350</span>
+        </div>
+        <div class="combo-item" data-id="pauta" data-bs="1000" data-bs-off="500" data-tipo="mensual">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">Gestión de anuncios <span class="combo-off" id="off-badge" style="display:none">50% OFF ✓</span></span><span class="combo-desc">Campañas en Facebook e Instagram. Con el paquete de 4 videos: $50/Bs 500 al mes en vez de $100/Bs 1.000.</span></span>
+          <span class="combo-price" id="pauta-price">Bs 1.000/mes</span>
+        </div>
+        <div class="combo-item" data-id="web" data-bs="1500" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">Página web</span><span class="combo-desc">Como esta: diseñada para convertir y recibir tus anuncios.</span></span>
+          <span class="combo-price">Desde Bs 1.500</span>
+        </div>
+        <div class="combo-item" data-id="evento" data-bs="1150" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">Cobertura de evento social</span><span class="combo-desc">6 horas, video de 12-15 min + Reel. Desde iPhone + luces.</span></span>
+          <span class="combo-price">Desde Bs 1.150</span>
+        </div>
+        <div class="combo-item" data-id="fotos" data-bs="450" data-tipo="unico">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">Sesión de fotos · estudio o exterior</span><span class="combo-desc">Desde 5 fotos en full resolución.</span></span>
+          <span class="combo-price">Desde Bs 450</span>
+        </div>
+        <div class="combo-item" data-id="extras" data-bs="0" data-tipo="cotizar">
+          <span class="combo-check"></span>
+          <span class="combo-info"><span class="combo-name">Automatización IA · artes · logotipo</span><span class="combo-desc">Respuestas automáticas en WhatsApp/redes, piezas publicitarias, identidad. Lo cotizamos según tu proyecto.</span></span>
+          <span class="combo-price">A cotizar</span>
+        </div>
+      </div>
+      <div class="combo-panel reveal">
+        <h3>Tu combo DÚO</h3>
+        <div class="combo-total">
+          <div class="combo-total-row"><span>Inversión única</span><b id="total-unico">Bs 0</b></div>
+          <div class="combo-total-row"><span>Mensual</span><b id="total-mensual">Bs 0</b></div>
+        </div>
+        <div class="combo-lista" id="combo-lista"><em>Marcá los servicios que necesitás y acá aparece tu combo.</em></div>
+        <a href="#" class="btn btn-orange" id="combo-wa" target="_blank" rel="noopener">Enviar mi combo por WhatsApp</a>
+        <p class="combo-nota">Precios «desde», referenciales. La propuesta final se define según tu proyecto — sin compromiso.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ S13 · FOOTER ═══════════ -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="#inicio" class="logo">
-          <img src="/logos/duo-wordmark-white.png" alt="DÚO Marketing Digital" class="logo-img" style="height:34px">
-        </a>
-        <p style="margin-top:12px">Producimos el contenido, lanzamos las campañas y medimos lo que vuelve.</p>
-        <p style="margin-top:10px;font-size:12px">📍 Yacuiba · Tarija, Bolivia — cobertura en otros departamentos.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Explorar</h5>
-        <a href="#metodo">Método</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#trabajos">Trabajos</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-      <div class="footer-col">
-        <h5>DÚO</h5>
-        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram ↗</a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok ↗</a>
-        <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Conocé a nuestro estratega →</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="border:none;margin:0;padding:0">
       <span>© <span id="year"></span> DÚO · Marketing Digital</span>
+      <a href="/" style="color:var(--orange);font-weight:700">← Volver al inicio</a>
       <span>De Yacuiba para el mundo 🇧🇴</span>
     </div>
   </div>
@@ -876,45 +853,9 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 </a>
 
 <script>
-/* ═══════════ CONFIG editable ═══════════ */
-const VSL_URL = ""; // ← pegar URL de YouTube/Vimeo (embed) cuando exista
-const WHATSAPP = "59177897077";
-
-/* Datos de casos (reutilizados de la landing personal, cifras exactas) */
-const CASOS = [
-  { brand: "femmeninas.cl", tag: "Ecommerce · Chile", flag: "🇨🇱", img: "/images/casos/01-femmeninas-ads-manager-roas.webp", title: '+US$50.000 gestionados con <b>retorno de 10.55x</b> durante 7 meses', metrics: [["US$50K+","gestionados"],["10.55x","ROAS"],["+7 meses","escalando"]] },
-  { brand: "Vision Arq Studio", tag: "Arquitectura · Bolivia", flag: "🇧🇴", img: "/images/casos/02-vision-arq-ads-manager.webp", title: '<b>6 proyectos cerrados</b> en el primer mes de campañas', metrics: [["+300","mensajes"],["20","reuniones"],["6","proyectos"]] },
-  { brand: "ProGaming EC", tag: "Gaming · Ecuador", flag: "🇪🇨", img: "/images/casos/05-progaming-ads-manager-whatsapp.webp", title: '<b>+25.000 prospectos</b> por WhatsApp a US$0.15 cada uno', metrics: [["+25K","conversaciones"],["US$0.15","por contacto"],["+425K","alcanzados"]] },
-  { brand: "Juguetería Ñañitos", tag: "Importadora · Bolivia", flag: "🇧🇴", img: "/images/casos/04-nanitos-ads-manager-manychat.webp", title: '<b>+5.000 mensajes</b> a US$0.08 para mover inventario', metrics: [["+5.000","mensajes"],["US$0.08","por contacto"]] },
-  { brand: "Climere", tag: "Clínica estética · Bolivia", flag: "🇧🇴", img: "/images/casos/03-climere-ads-manager-consultas.webp", title: 'Ventas <b>+30% a +50%</b> con contenido estratégico y campañas', metrics: [["+5.000","mensajes"],["+1 año","juntos"],["+30–50%","en ventas"]] }
-];
-
-/* Muro de reels — data editable. Cuando existan clips, completar videoSrc/poster/urlReal */
-const REELS = [
-  { cliente: "Femmeninas", nicho: "Moda", metrica: "1.2M vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Climere", nicho: "Estética", metrica: "480K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "ProGaming", nicho: "Gaming", metrica: "890K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Ñañitos", nicho: "Retail", metrica: "320K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Vision Arq", nicho: "Servicios", metrica: "210K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Femmeninas", nicho: "Moda", metrica: "760K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Climere", nicho: "Estética", metrica: "540K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "ProGaming", nicho: "Gaming", metrica: "1.5M vistas", videoSrc: "", poster: "", urlReal: "" }
-];
-
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* WhatsApp: aplicar número configurado */
-if (WHATSAPP && WHATSAPP !== "59177897077") {
-  document.querySelectorAll('a[href*="59177897077"]').forEach(a => {
-    a.href = a.href.replace('59177897077', WHATSAPP);
-  });
-}
-
-/* Header scrolled */
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
-
-/* Menú hamburguesa / drawer */
+/* Menú hamburguesa */
 const menuBtn = document.getElementById('menu-btn');
 const drawer = document.getElementById('drawer');
 function toggleDrawer(open) {
@@ -928,265 +869,76 @@ menuBtn.addEventListener('click', () => toggleDrawer());
 drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('open')) toggleDrawer(false); });
 
-/* Spotlight que sigue el cursor en las cards de servicios */
-document.querySelectorAll('.serv-card').forEach(card => {
-  card.addEventListener('pointermove', (e) => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-  });
-});
-
-/* Reveal on scroll */
+/* Reveal */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* VSL */
-const vslPh = document.getElementById('vsl-ph');
-vslPh.addEventListener('click', () => {
-  if (!VSL_URL) { alert('El video se agrega en la constante VSL_URL del código.'); return; }
-  const iframe = document.createElement('iframe');
-  iframe.src = VSL_URL + (VSL_URL.includes('?') ? '&' : '?') + 'autoplay=1';
-  iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-  iframe.allowFullscreen = true;
-  document.getElementById('vsl-frame').innerHTML = '';
-  document.getElementById('vsl-frame').appendChild(iframe);
-});
+/* Tabs */
+const tabs = document.querySelectorAll('.tab');
+function showPanel(name) {
+  tabs.forEach(t => t.classList.toggle('on', t.dataset.panel === name));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === 'panel-' + name));
+  document.querySelectorAll('#panel-' + name + ' .reveal').forEach(el => { el.classList.add('visible'); });
+}
+tabs.forEach(t => t.addEventListener('click', () => {
+  showPanel(t.dataset.panel);
+  history.replaceState(null, '', '#' + t.dataset.panel);
+}));
+document.querySelectorAll('.tab-jump').forEach(a => a.addEventListener('click', () => showPanel(a.dataset.tab)));
+const hash = location.hash.replace('#', '');
+if (['aprender','delegar','escalar','web','eventos'].includes(hash)) showPanel(hash);
 
-/* Casos */
-const casosGrid = document.getElementById('casos-grid');
-casosGrid.innerHTML = CASOS.map(c => `
-  <div class="caso reveal">
-    ${c.img ? `<div class="caso-img"><img src="${c.img}" alt="Resultados reales de ${c.brand} en Meta Ads" loading="lazy"></div>` : ''}
-    <div class="caso-body">
-      <div class="caso-top">
-        <span class="caso-brand">${c.brand}</span>
-        <span class="caso-tag">${c.flag} ${c.tag}</span>
-      </div>
-      <div class="caso-title">${c.title}</div>
-      <div class="caso-metrics">
-        ${c.metrics.map(m => `<div class="caso-metric"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}
-      </div>
-    </div>
-  </div>`).join('');
-casosGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
+/* ══ Armá tu combo ══ */
+const items = document.querySelectorAll('.combo-item');
+const fmt = n => 'Bs ' + n.toLocaleString('es-BO');
 
-/* Tira dinámica de reels (loop continuo + lazy-load) */
-const reelTrack = document.getElementById('reel-track');
+function calcular() {
+  let unico = 0, mensual = 0;
+  const lista = [];
+  const prod4on = document.querySelector('[data-id="prod4"]').classList.contains('on');
 
-function reelCard(r) {
-  return `
-    <a class="reel" ${r.urlReal ? `href="${r.urlReal}" target="_blank" rel="noopener"` : ''}>
-      ${r.videoSrc
-        ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}" ${r.poster ? `poster="${r.poster}"` : ''}></video>`
-        : `<div class="reel-ph">🎬</div>`}
-      <div class="reel-overlay">
-        <div class="reel-cliente">${r.cliente}</div>
-        <div class="reel-bottom">
-          <span class="reel-nicho">${r.nicho}</span>
-          <span class="reel-metrica">${r.metrica}</span>
-        </div>
-      </div>
-    </a>`;
+  // 50% off dinámico en pauta
+  const pauta = document.querySelector('[data-id="pauta"]');
+  const offBadge = document.getElementById('off-badge');
+  const pautaPrice = document.getElementById('pauta-price');
+  const pautaBs = prod4on ? +pauta.dataset.bsOff : +pauta.dataset.bs;
+  offBadge.style.display = prod4on ? 'inline-block' : 'none';
+  pautaPrice.innerHTML = prod4on
+    ? '<span class="tach">Bs 1.000</span>Bs 500/mes'
+    : 'Bs 1.000/mes';
+
+  items.forEach(it => {
+    if (!it.classList.contains('on')) return;
+    const nombre = it.querySelector('.combo-name').textContent.replace('50% OFF ✓', '').trim();
+    if (it.dataset.tipo === 'cotizar') { lista.push(nombre + ' (a cotizar)'); return; }
+    const bs = it.dataset.id === 'pauta' ? pautaBs : +it.dataset.bs;
+    if (it.dataset.tipo === 'mensual') { mensual += bs; lista.push(nombre + ' — ' + fmt(bs) + '/mes'); }
+    else { unico += bs; lista.push(nombre + ' — desde ' + fmt(bs)); }
+  });
+
+  document.getElementById('total-unico').textContent = fmt(unico);
+  document.getElementById('total-mensual').textContent = fmt(mensual) + (mensual ? '/mes' : '');
+  document.getElementById('combo-lista').innerHTML = lista.length
+    ? '• ' + lista.join('<br>• ')
+    : '<em>Marcá los servicios que necesitás y acá aparece tu combo.</em>';
+
+  const msg = lista.length
+    ? 'Hola DÚO 👋 Armé mi combo en la web:\n• ' + lista.join('\n• ') + '\n\nTotal referencial: ' + fmt(unico) + (mensual ? ' + ' + fmt(mensual) + '/mes' : '') + '.\n¿Me pasan la propuesta?'
+    : 'Hola DÚO 👋 Quiero armar un combo de servicios para mi marca.';
+  document.getElementById('combo-wa').href = 'https://wa.me/59177897077?text=' + encodeURIComponent(msg);
 }
 
-/* Pista duplicada para el loop infinito del marquee */
-reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join('');
-
-/* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
-const videoObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    const v = e.target;
-    if (e.isIntersecting) {
-      if (!v.src && v.dataset.src) v.src = v.dataset.src;
-      const play = v.play(); if (play) play.catch(() => {});
-    } else {
-      v.pause();
-    }
-  });
-}, { threshold: 0.2 });
-reelTrack.querySelectorAll('video').forEach(v => videoObserver.observe(v));
-
-/* Formulario de contacto → arma mensaje de WhatsApp con los datos */
-document.getElementById('contacto-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const nombre = document.getElementById('c-nombre').value.trim();
-  const marca = document.getElementById('c-marca').value.trim();
-  const necesitas = document.getElementById('c-necesitas').value;
-  if (!nombre || !marca || !necesitas) { e.target.reportValidity(); return; }
-  const msg = `Hola DÚO 👋 Soy ${nombre}, de ${marca}.\nNecesito: ${necesitas}.`;
-  const num = (WHATSAPP && WHATSAPP !== '59177897077') ? WHATSAPP : '59177897077';
-  window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-});
-
-/* ══════════════════════════════════════════════════
-   ANIMACIÓN DEL ISOTIPO Ü — reutilizada de la landing
-   personal, adaptada a la paleta naranja/ámbar de DÚO.
-   ══════════════════════════════════════════════════ */
-(function () {
-  const canvas = document.getElementById('duo-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const W = 180, H = 210;
-  const AMBER = '#F9B233';
-  const ORANGE = '#EC6730';
-  const WHITE = '#FAF7F1';
-
-  let raf = null, running = false, time = 0;
-  let scrollEnergy = 0, lastScrollY = window.scrollY || 0;
-  const particles = [], impacts = [], TOTAL = 24;
-
-  const squares = [
-    { x: 43, y: 43, s: 15, color: AMBER },
-    { x: 96, y: 43, s: 15, color: AMBER },
-    { x: 58, y: 68, s: 15, color: ORANGE },
-    { x: 107, y: 68, s: 15, color: ORANGE }
-  ];
-  const squarePulse = [0, 0, 0, 0];
-
-  function resize() {
-    const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-    ctx.setTransform(canvas.width / W, 0, 0, canvas.height / H, 0, 0);
-    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+items.forEach(it => it.addEventListener('click', () => {
+  const grupo = it.dataset.grupo;
+  if (grupo && !it.classList.contains('on')) {
+    document.querySelectorAll('[data-grupo="' + grupo + '"]').forEach(o => o.classList.remove('on'));
   }
-  const ease = t => 1 - Math.pow(1 - t, 3);
-  function bezier(p0, p1, p2, p3, t) {
-    const u = 1 - t, tt = t * t, uu = u * u;
-    return {
-      x: uu*u*p0.x + 3*uu*t*p1.x + 3*u*tt*p2.x + tt*t*p3.x,
-      y: uu*u*p0.y + 3*uu*t*p1.y + 3*u*tt*p2.y + tt*t*p3.y
-    };
-  }
-  function squareTarget(index) {
-    const q = squares[index], side = Math.floor(Math.random() * 3), u = Math.random() * q.s;
-    if (side === 0) return { x: q.x + u, y: q.y - 2.4 };
-    if (side === 1) return { x: q.x - 2.4, y: q.y + u };
-    return { x: q.x + q.s + 2.4, y: q.y + u };
-  }
-  function createParticle(i) {
-    const route = i % 5, targetIndex = Math.floor(Math.random() * squares.length), target = squareTarget(targetIndex);
-    let start;
-    if (route === 0) start = { x: -22, y: 24 + Math.random() * 64 };
-    else if (route === 1) start = { x: W + 22, y: 24 + Math.random() * 64 };
-    else if (route === 2) start = { x: 28 + Math.random() * 124, y: 5 + Math.random() * 12 };
-    else if (route === 3) start = { x: -18, y: 8 + Math.random() * 44 };
-    else start = { x: W + 18, y: 8 + Math.random() * 44 };
-    return { start, target, targetIndex, progress: Math.random(), speed: 0.0028 + Math.random() * 0.0025, size: 2.4 + Math.random() * 3.6, alpha: 0.62 + Math.random() * 0.38, jitter: Math.random() * Math.PI * 2, hold: 0, color: targetIndex < 2 ? AMBER : ORANGE };
-  }
-  function resetParticle(p) { Object.assign(p, createParticle(Math.floor(Math.random() * 9999))); p.progress = 0; }
-  function initParticles() { particles.length = 0; for (let i = 0; i < TOTAL; i++) particles.push(createParticle(i)); }
-  function particlePath(p, t) {
-    const e = ease(t), magnetX = 82 + Math.sin(p.jitter) * 28, magnetY = 48 + Math.cos(p.jitter) * 18;
-    return bezier(p.start, { x: p.start.x * 0.62 + magnetX * 0.38, y: p.start.y * 0.72 + magnetY * 0.28 }, { x: magnetX, y: magnetY }, p.target, e);
-  }
-  function drawPixel(x, y, size, color, alpha, glow = true) {
-    const px = Math.round(x - size / 2), py = Math.round(y - size / 2), ps = Math.max(2, Math.round(size));
-    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = color;
-    if (glow) { ctx.shadowColor = color; ctx.shadowBlur = 7; }
-    ctx.fillRect(px, py, ps, ps); ctx.restore();
-  }
-  function drawParticle(p, scaleBoost) {
-    const progress = Math.min(1, p.progress), pos = particlePath(p, progress);
-    const fadeIn = Math.min(1, progress * 5), fadeOut = Math.min(1, (1 - progress) * 7);
-    const alpha = Math.max(0, Math.min(fadeIn, fadeOut)) * p.alpha;
-    const x = pos.x + Math.sin(time * 0.08 + p.jitter) * 1.15, y = pos.y + Math.cos(time * 0.07 + p.jitter) * 1.0;
-    ctx.save();
-    ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
-    ctx.globalAlpha = alpha * 0.28; ctx.strokeStyle = p.color; ctx.lineWidth = 1.25; ctx.lineCap = 'round';
-    ctx.beginPath();
-    for (let i = 8; i >= 0; i--) {
-      const tt = Math.max(0, progress - i * 0.023), trail = particlePath(p, tt);
-      const tx = trail.x + Math.sin(time * 0.08 + p.jitter - i * 0.42) * 0.65, ty = trail.y + Math.cos(time * 0.07 + p.jitter - i * 0.42) * 0.65;
-      if (i === 8) ctx.moveTo(tx, ty); else ctx.lineTo(tx, ty);
-    }
-    ctx.stroke();
-    drawPixel(x, y, p.size, p.color, alpha, true);
-    if (p.size > 4.5) drawPixel(x + p.size * 0.72, y - p.size * 0.48, p.size * 0.38, p.color, alpha * 0.62, true);
-    ctx.restore();
-  }
-  function drawSoftGlow(cx, cy, radius, color, alpha) {
-    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
-    if (color === AMBER) { g.addColorStop(0, `rgba(249,178,51,${alpha})`); g.addColorStop(0.55, `rgba(249,178,51,${alpha*0.22})`); }
-    else { g.addColorStop(0, `rgba(236,103,48,${alpha})`); g.addColorStop(0.55, `rgba(236,103,48,${alpha*0.22})`); }
-    g.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.save(); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-  }
-  function drawSolidSquare(sq, pulse) {
-    const cx = sq.x + sq.s / 2, cy = sq.y + sq.s / 2;
-    drawSoftGlow(cx, cy, 24 + pulse * 8, sq.color, 0.16 + pulse * 0.16);
-    ctx.save(); ctx.shadowColor = sq.color; ctx.shadowBlur = 12 + pulse * 14;
-    ctx.fillStyle = sq.color; ctx.fillRect(sq.x, sq.y, sq.s, sq.s);
-    ctx.shadowBlur = 0; ctx.globalAlpha = 0.28; ctx.fillStyle = '#FFFFFF'; ctx.fillRect(sq.x + 2, sq.y + 2, sq.s - 4, 2);
-    ctx.globalAlpha = 0.16; ctx.fillRect(sq.x + 2, sq.y + 2, 2, sq.s - 4); ctx.restore();
-  }
-  function drawImpactPixels(scaleBoost) {
-    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
-    for (const imp of impacts) drawPixel(imp.x, imp.y, imp.size, imp.color, Math.min(0.85, imp.life), true);
-    ctx.restore();
-  }
-  function drawU(scaleBoost) {
-    const pulse = 0.5 + Math.sin(time * 0.045) * 0.5;
-    ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(1 + scaleBoost, 1 + scaleBoost); ctx.translate(-W / 2, -H / 2);
-    const glow = ctx.createRadialGradient(90, 125, 0, 90, 125, 82);
-    glow.addColorStop(0, `rgba(249,178,51,${0.12 + pulse * 0.05})`); glow.addColorStop(0.58, 'rgba(249,178,51,0.035)'); glow.addColorStop(1, 'rgba(249,178,51,0)');
-    ctx.fillStyle = glow; ctx.fillRect(12, 56, 156, 138);
-    ctx.save(); ctx.globalAlpha = 0.28; ctx.strokeStyle = 'rgba(236,103,48,0.26)'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.setLineDash([5, 9]); ctx.lineDashOffset = -time * 0.42;
-    ctx.beginPath(); ctx.moveTo(68, 91); ctx.lineTo(68, 128); ctx.bezierCurveTo(68, 158, 112, 158, 112, 128); ctx.lineTo(112, 91); ctx.stroke(); ctx.restore();
-    // La U blanca sólida del logo, con brillo cálido suave.
-    ctx.save(); ctx.fillStyle = WHITE; ctx.beginPath();
-    ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
-    ctx.save(); ctx.globalAlpha = 0.18 + pulse * 0.06; ctx.shadowColor = WHITE; ctx.shadowBlur = 18; ctx.fillStyle = WHITE; ctx.beginPath();
-    ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
-    squares.forEach((sq, index) => drawSolidSquare(sq, pulse * 0.24 + squarePulse[index]));
-    ctx.restore();
-  }
-  function update() {
-    time++; scrollEnergy *= 0.9;
-    for (let i = 0; i < squarePulse.length; i++) squarePulse[i] *= 0.91;
-    for (let i = impacts.length - 1; i >= 0; i--) { impacts[i].life *= 0.9; if (impacts[i].life < 0.05) impacts.splice(i, 1); }
-    particles.forEach((p) => {
-      if (p.hold > 0) { p.hold--; if (p.hold <= 0) resetParticle(p); return; }
-      p.progress += p.speed + scrollEnergy * 0.00055;
-      if (p.progress >= 1) {
-        squarePulse[p.targetIndex] = Math.min(1, squarePulse[p.targetIndex] + 0.5);
-        impacts.push({ x: p.target.x, y: p.target.y, size: Math.max(2.5, p.size * 0.82), color: p.color, life: 1 });
-        if (impacts.length > 14) impacts.shift();
-        p.hold = 8 + Math.floor(Math.random() * 14);
-      }
-    });
-  }
-  function render() {
-    ctx.clearRect(0, 0, W, H);
-    const scaleBoost = Math.min(0.14, scrollEnergy * 0.014);
-    // Levitación suave y orgánica de todo el isotipo (U + cuadros + leads flotan juntos).
-    const floatY = Math.sin(time * 0.022) * 6 + Math.sin(time * 0.041) * 1.8;
-    const floatX = Math.sin(time * 0.014) * 2.2;
-    ctx.save();
-    ctx.translate(floatX, floatY);
-    particles.forEach((p) => { if (p.hold <= 0) drawParticle(p, scaleBoost); });
-    drawImpactPixels(scaleBoost); drawU(scaleBoost);
-    const pulse = 0.5 + Math.sin(time * 0.055) * 0.5;
-    ctx.save(); ctx.globalAlpha = 0.13 + pulse * 0.05; ctx.strokeStyle = ORANGE; ctx.lineWidth = 1; ctx.setLineDash([2, 10]); ctx.lineDashOffset = -time * 0.38;
-    ctx.beginPath(); ctx.arc(90, 94, 60, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
-    ctx.restore();
-  }
-  function tick() { update(); render(); raf = requestAnimationFrame(tick); }
-  function start() { if (running) return; running = true; resize(); if (!particles.length) { initParticles(); for (let i = 0; i < 130; i++) update(); } tick(); }
-  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
-  let resizeTimer;
-  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (running) resize(); }, 120); });
-  window.addEventListener('scroll', () => { const y = window.scrollY || 0; scrollEnergy = Math.min(10, scrollEnergy + Math.abs(y - lastScrollY) * 0.04); lastScrollY = y; }, { passive: true });
-  start();
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) start(); else stop(); }); }, { threshold: 0.08 }).observe(canvas);
-  }
-})();
+  it.classList.toggle('on');
+  calcular();
+}));
+calcular();
 </script>
 
 </body>
