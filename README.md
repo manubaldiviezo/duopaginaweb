@@ -40,9 +40,10 @@ Buscá estos marcadores en el código:
 | **Fotos** | `/images/` | placeholders con nombre |
 
 ### Imágenes esperadas en `/images/`
-`hero-set-produccion.png` · `feed-interrupcion.png` · `metodo-direccion.png` · `servicio-celular.png` · `servicio-sony.png` · `servicio-diseno.png` · `equipo-produccion.png` · `cta-energia.png` · `ebook-estrategia.png` · `ebook-formula.png`
+Ver **PROMPTS.md**: tiene el prompt de ChatGPT listo para generar cada imagen, con nombre de archivo exacto y proporción. Mientras no existan, se muestran placeholders oscuros con el nombre del archivo.
 
-Mientras no existan, se muestran placeholders oscuros con el nombre del archivo.
+### Assets de marca ya cargados
+`/logos/duo-icon.png` (isotipo Ü degradado) · `/logos/duo-wordmark-white.png` (logotipo blanco, header/footer) · `/logos/duo-wordmark-gradient.png` · `/images/casos/*.webp` (capturas reales de Ads Manager, reutilizadas de la landing personal).
 
 ## Deploy en Vercel
 1. Importar el repo `duo-marketing-web`.

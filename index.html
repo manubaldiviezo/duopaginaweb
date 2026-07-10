@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://duomarketingdigital.com/images/hero-set-produccion.png">
 <link rel="canonical" href="https://duomarketingdigital.com/">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231D1D1B'/%3E%3Crect x='9' y='9' width='6' height='6' rx='1' fill='%23F9B233'/%3E%3Crect x='17' y='9' width='6' height='6' rx='1' fill='%23F9B233'/%3E%3Crect x='9' y='17' width='6' height='6' rx='1' fill='%23EC6730'/%3E%3Crect x='17' y='17' width='6' height='6' rx='1' fill='%23EC6730'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/logos/duo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
@@ -123,6 +123,7 @@ header {
 header.scrolled { border-bottom-color: var(--line-soft); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
 .logo { display: flex; align-items: center; gap: 10px; }
+.logo-img { height: 30px; width: auto; }
 .logo .pix { transform: scale(1.15); }
 .logo b { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 19px; letter-spacing: 0.02em; }
 .logo span { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
@@ -273,15 +274,19 @@ section { padding: 88px 0; position: relative; }
 .chip-addon { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--orange); border: 1px dashed var(--orange-line); border-radius: 999px; padding: 8px 16px; }
 .evento-micro { text-align: center; font-style: italic; font-size: 13px; color: var(--text-3); max-width: 520px; margin: 18px auto 26px; }
 
-/* ── Muro de reels (S9) ── */
-.filtros { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-bottom: 30px; }
-.filtro { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--text-2); background: var(--card); border: 1px solid var(--line-soft); padding: 9px 16px; border-radius: 999px; transition: all 0.25s; }
-.filtro:hover { border-color: var(--orange-line); }
-.filtro.on { background: var(--orange); color: #1D1D1B; border-color: var(--orange); }
-.reels-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-@media (min-width: 720px) { .reels-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1040px) { .reels-grid { grid-template-columns: repeat(4, 1fr); } }
-.reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: #22221e; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; }
+/* ── Tira dinámica de reels (S2) ── */
+.strip-sec { padding: 78px 0 70px; border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+.reel-strip {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.reel-track { display: flex; width: max-content; gap: 14px; animation: scroll 52s linear infinite; padding: 6px 0 12px; }
+.reel-strip:hover .reel-track { animation-play-state: paused; }
+.reel-track .reel { width: 186px; flex-shrink: 0; }
+@media (max-width: 600px) { .reel-track .reel { width: 156px; } .reel-track { animation-duration: 42s; } }
+
+.reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: #22221e; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
 .reel:hover { transform: translateY(-4px); border-color: var(--orange-line); }
 .reel video, .reel .reel-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .reel .reel-ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, #2c2c27, #1a1a17); color: var(--text-3); font-size: 26px; }
@@ -296,8 +301,12 @@ section { padding: 88px 0; position: relative; }
 .casos-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 @media (min-width: 640px) { .casos-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .casos-grid { grid-template-columns: repeat(3, 1fr); } }
-.caso { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 26px 24px; transition: transform 0.35s, border-color 0.35s; }
+.caso { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 0; overflow: hidden; transition: transform 0.35s, border-color 0.35s; }
 .caso:hover { transform: translateY(-5px); border-color: var(--orange-line); }
+.caso-img { aspect-ratio: 16/9; overflow: hidden; border-bottom: 1px solid var(--line-soft); background: #201f1b; }
+.caso-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.caso:hover .caso-img img { transform: scale(1.04); }
+.caso-body { padding: 22px 22px 24px; }
 .caso-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
 .caso-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13.5px; color: var(--text); }
 .caso-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); border: 1px solid var(--line-soft); border-radius: 5px; padding: 4px 9px; }
@@ -376,16 +385,12 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 <header id="header">
   <div class="container header-inner">
     <a href="#inicio" class="logo" aria-label="DÚO — inicio">
-      <span class="pix"><i></i><i></i><i></i><i></i></span>
-      <span style="display:flex;flex-direction:column;line-height:1.05">
-        <b>DÚO</b>
-        <span>Marketing Digital</span>
-      </span>
+      <img src="/logos/duo-wordmark-white.png" alt="DÚO Marketing Digital" class="logo-img">
     </a>
     <nav class="header-nav" aria-label="Navegación">
+      <a href="#trabajos">Trabajos</a>
       <a href="#metodo">Método</a>
       <a href="#servicios">Servicios</a>
-      <a href="#trabajos">Trabajos</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="#contacto" class="header-cta">Crear contenido estratégico</a>
@@ -399,8 +404,8 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <div class="hero-canvas-wrap reveal">
         <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
       </div>
-      <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido que venda.</span></h1>
-      <p class="hero-sub reveal">Somos DÚO. Producimos el contenido, lanzamos las campañas y medimos lo que vuelve. Todo con un mismo método.</p>
+      <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido estratégico.</span></h1>
+      <p class="hero-sub reveal">Somos DÚO, agencia creativa. Dirigimos y producimos tu contenido, lanzamos las campañas y medimos lo que vuelve. Todo con un mismo método.</p>
       <div class="hero-ctas reveal">
         <a href="#contacto" class="btn btn-orange">Quiero crear contenido estratégico
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -415,7 +420,21 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════ S2 · CINTA DE LOGOS ═══════════ -->
+<!-- ═══════════ S2 · TIRA DINÁMICA DE TRABAJOS ═══════════ -->
+<section class="strip-sec" id="trabajos">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-bottom: 34px;">
+      <span class="eyebrow" style="display:inline-flex">Nuestro trabajo</span>
+      <h2>Contenido que la gente <span class="grad">eligió ver.</span></h2>
+      <p>Dirigido, producido y editado por DÚO para clientes reales. Tocá cualquiera para verlo en su cuenta.</p>
+    </div>
+  </div>
+  <div class="reel-strip" id="reel-strip">
+    <div class="reel-track" id="reel-track"></div>
+  </div>
+</section>
+
+<!-- ═══════════ S3 · CINTA DE LOGOS ═══════════ -->
 <div class="logos-band">
   <div class="container">
     <div class="logos-title">Marcas que confían en nuestro método</div>
@@ -597,8 +616,8 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         </div>
 
         <div class="oferta">
-          <div class="oferta-top"><span class="oferta-name">Solo campañas (pauta)</span><span class="oferta-price">Desde $200 / mes</span></div>
-          <div class="oferta-desc">¿Ya tenés contenido? Gestionamos tus anuncios en Facebook e Instagram con estrategia y medición. La inversión publicitaria va aparte, directo a Meta.</div>
+          <div class="oferta-top"><span class="oferta-name">Solo anuncios (para quienes ya tienen contenido)</span><span class="oferta-price">Desde $100 / mes</span></div>
+          <div class="oferta-desc">Prendemos y optimizamos anuncios con el contenido que tu marca ya tiene. Para negocios que puedan invertir desde $150 USD (Bs 1.500) al mes en publicidad — ese pago va directo a Meta. No incluye estrategia digital, ni estrategia de contenido ni guionización.</div>
         </div>
 
         <a href="#contacto" class="btn btn-orange">Quiero el sistema completo</a>
@@ -667,19 +686,6 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     <div style="text-align:center" class="reveal">
       <a href="#contacto" class="btn btn-orange">Cotizar mi evento</a>
     </div>
-  </div>
-</section>
-
-<!-- ═══════════ S9 · MURO DE REELS ═══════════ -->
-<section id="trabajos">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Trabajos</span>
-      <h2>Contenido que la gente <span class="grad">eligió ver.</span></h2>
-      <p>Videos producidos con nuestra metodología, en distintos rubros. Tocá cualquiera para verlo en la cuenta real del cliente.</p>
-    </div>
-    <div class="filtros reveal" id="filtros"></div>
-    <div class="reels-grid reveal" id="reels-grid"></div>
   </div>
 </section>
 
@@ -760,10 +766,9 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="#inicio" class="logo">
-          <span class="pix"><i></i><i></i><i></i><i></i></span>
-          <span style="display:flex;flex-direction:column;line-height:1.05"><b>DÚO</b><span>Marketing Digital</span></span>
+          <img src="/logos/duo-wordmark-white.png" alt="DÚO Marketing Digital" class="logo-img" style="height:34px">
         </a>
-        <p>Producimos el contenido, lanzamos las campañas y medimos lo que vuelve.</p>
+        <p style="margin-top:12px">Producimos el contenido, lanzamos las campañas y medimos lo que vuelve.</p>
         <p style="margin-top:10px;font-size:12px">📍 Yacuiba · Tarija, Bolivia — cobertura en otros departamentos.</p>
       </div>
       <div class="footer-col">
@@ -798,11 +803,11 @@ const WHATSAPP = "59100000000"; // ← COMPLETAR número de WhatsApp de DÚO
 
 /* Datos de casos (reutilizados de la landing personal, cifras exactas) */
 const CASOS = [
-  { brand: "femmeninas.cl", tag: "Ecommerce · Chile", flag: "🇨🇱", title: '+US$50.000 gestionados con <b>retorno de 10.55x</b> durante 7 meses', metrics: [["US$50K+","gestionados"],["10.55x","ROAS"],["+7 meses","escalando"]] },
-  { brand: "Vision Arq Studio", tag: "Arquitectura · Bolivia", flag: "🇧🇴", title: '<b>6 proyectos cerrados</b> en el primer mes de campañas', metrics: [["+300","mensajes"],["20","reuniones"],["6","proyectos"]] },
-  { brand: "ProGaming EC", tag: "Gaming · Ecuador", flag: "🇪🇨", title: '<b>+25.000 prospectos</b> por WhatsApp a US$0.15 cada uno', metrics: [["+25K","conversaciones"],["US$0.15","por contacto"],["+425K","alcanzados"]] },
-  { brand: "Juguetería Ñañitos", tag: "Importadora · Bolivia", flag: "🇧🇴", title: '<b>+5.000 mensajes</b> a US$0.08 para mover inventario', metrics: [["+5.000","mensajes"],["US$0.08","por contacto"]] },
-  { brand: "Climere", tag: "Clínica estética · Bolivia", flag: "🇧🇴", title: 'Ventas <b>+30% a +50%</b> con contenido estratégico y campañas', metrics: [["+5.000","mensajes"],["+1 año","juntos"],["+30–50%","en ventas"]] }
+  { brand: "femmeninas.cl", tag: "Ecommerce · Chile", flag: "🇨🇱", img: "/images/casos/01-femmeninas-ads-manager-roas.webp", title: '+US$50.000 gestionados con <b>retorno de 10.55x</b> durante 7 meses', metrics: [["US$50K+","gestionados"],["10.55x","ROAS"],["+7 meses","escalando"]] },
+  { brand: "Vision Arq Studio", tag: "Arquitectura · Bolivia", flag: "🇧🇴", img: "/images/casos/02-vision-arq-ads-manager.webp", title: '<b>6 proyectos cerrados</b> en el primer mes de campañas', metrics: [["+300","mensajes"],["20","reuniones"],["6","proyectos"]] },
+  { brand: "ProGaming EC", tag: "Gaming · Ecuador", flag: "🇪🇨", img: "/images/casos/05-progaming-ads-manager-whatsapp.webp", title: '<b>+25.000 prospectos</b> por WhatsApp a US$0.15 cada uno', metrics: [["+25K","conversaciones"],["US$0.15","por contacto"],["+425K","alcanzados"]] },
+  { brand: "Juguetería Ñañitos", tag: "Importadora · Bolivia", flag: "🇧🇴", img: "/images/casos/04-nanitos-ads-manager-manychat.webp", title: '<b>+5.000 mensajes</b> a US$0.08 para mover inventario', metrics: [["+5.000","mensajes"],["US$0.08","por contacto"]] },
+  { brand: "Climere", tag: "Clínica estética · Bolivia", flag: "🇧🇴", img: "/images/casos/03-climere-ads-manager-consultas.webp", title: 'Ventas <b>+30% a +50%</b> con contenido estratégico y campañas', metrics: [["+5.000","mensajes"],["+1 año","juntos"],["+30–50%","en ventas"]] }
 ];
 
 /* Muro de reels — data editable. Cuando existan clips, completar videoSrc/poster/urlReal */
@@ -852,27 +857,26 @@ vslPh.addEventListener('click', () => {
 const casosGrid = document.getElementById('casos-grid');
 casosGrid.innerHTML = CASOS.map(c => `
   <div class="caso reveal">
-    <div class="caso-top">
-      <span class="caso-brand">${c.brand}</span>
-      <span class="caso-tag">${c.flag} ${c.tag}</span>
-    </div>
-    <div class="caso-title">${c.title}</div>
-    <div class="caso-metrics">
-      ${c.metrics.map(m => `<div class="caso-metric"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}
+    ${c.img ? `<div class="caso-img"><img src="${c.img}" alt="Resultados reales de ${c.brand} en Meta Ads" loading="lazy"></div>` : ''}
+    <div class="caso-body">
+      <div class="caso-top">
+        <span class="caso-brand">${c.brand}</span>
+        <span class="caso-tag">${c.flag} ${c.tag}</span>
+      </div>
+      <div class="caso-title">${c.title}</div>
+      <div class="caso-metrics">
+        ${c.metrics.map(m => `<div class="caso-metric"><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}
+      </div>
     </div>
   </div>`).join('');
 casosGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* Muro de reels + filtros + lazy-load */
-const nichos = ['Todos', ...new Set(REELS.map(r => r.nicho))];
-const filtros = document.getElementById('filtros');
-const reelsGrid = document.getElementById('reels-grid');
-filtros.innerHTML = nichos.map((n, i) => `<button class="filtro${i === 0 ? ' on' : ''}" data-nicho="${n}">${n}</button>`).join('');
+/* Tira dinámica de reels (loop continuo + lazy-load) */
+const reelTrack = document.getElementById('reel-track');
 
-function renderReels(filtro) {
-  const list = filtro === 'Todos' ? REELS : REELS.filter(r => r.nicho === filtro);
-  reelsGrid.innerHTML = list.slice(0, 9).map(r => `
-    <a class="reel reveal" ${r.urlReal ? `href="${r.urlReal}" target="_blank" rel="noopener"` : ''} data-nicho="${r.nicho}">
+function reelCard(r) {
+  return `
+    <a class="reel" ${r.urlReal ? `href="${r.urlReal}" target="_blank" rel="noopener"` : ''}>
       ${r.videoSrc
         ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}" ${r.poster ? `poster="${r.poster}"` : ''}></video>`
         : `<div class="reel-ph">🎬</div>`}
@@ -883,37 +887,25 @@ function renderReels(filtro) {
           <span class="reel-metrica">${r.metrica}</span>
         </div>
       </div>
-    </a>`).join('');
-  reelsGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  observeVideos();
+    </a>`;
 }
 
-/* Lazy-load: los videos solo cargan/reproducen dentro del viewport */
-let videoObserver;
-function observeVideos() {
-  if (videoObserver) videoObserver.disconnect();
-  videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      const v = e.target;
-      if (e.isIntersecting) {
-        if (!v.src && v.dataset.src) v.src = v.dataset.src;
-        const play = v.play(); if (play) play.catch(() => {});
-      } else {
-        v.pause();
-      }
-    });
-  }, { threshold: 0.35 });
-  reelsGrid.querySelectorAll('video').forEach(v => videoObserver.observe(v));
-}
+/* Pista duplicada para el loop infinito del marquee */
+reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join('');
 
-filtros.addEventListener('click', (e) => {
-  const b = e.target.closest('.filtro');
-  if (!b) return;
-  filtros.querySelectorAll('.filtro').forEach(f => f.classList.remove('on'));
-  b.classList.add('on');
-  renderReels(b.dataset.nicho);
-});
-renderReels('Todos');
+/* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
+const videoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) {
+      if (!v.src && v.dataset.src) v.src = v.dataset.src;
+      const play = v.play(); if (play) play.catch(() => {});
+    } else {
+      v.pause();
+    }
+  });
+}, { threshold: 0.2 });
+reelTrack.querySelectorAll('video').forEach(v => videoObserver.observe(v));
 
 /* Formulario de contacto → arma mensaje de WhatsApp con los datos */
 document.getElementById('contacto-form').addEventListener('submit', (e) => {
@@ -1044,9 +1036,13 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
     ctx.fillStyle = glow; ctx.fillRect(12, 56, 156, 138);
     ctx.save(); ctx.globalAlpha = 0.28; ctx.strokeStyle = 'rgba(236,103,48,0.26)'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.setLineDash([5, 9]); ctx.lineDashOffset = -time * 0.42;
     ctx.beginPath(); ctx.moveTo(68, 91); ctx.lineTo(68, 128); ctx.bezierCurveTo(68, 158, 112, 158, 112, 128); ctx.lineTo(112, 91); ctx.stroke(); ctx.restore();
-    ctx.save(); ctx.fillStyle = WHITE; ctx.beginPath();
+    // La U con el degradado oficial de marca: ámbar → naranja profundo.
+    const uGrad = ctx.createLinearGradient(57, 88, 123, 166);
+    uGrad.addColorStop(0, AMBER);
+    uGrad.addColorStop(1, '#E85D25');
+    ctx.save(); ctx.fillStyle = uGrad; ctx.beginPath();
     ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
-    ctx.save(); ctx.globalAlpha = 0.18 + pulse * 0.06; ctx.shadowColor = WHITE; ctx.shadowBlur = 18; ctx.fillStyle = WHITE; ctx.beginPath();
+    ctx.save(); ctx.globalAlpha = 0.16 + pulse * 0.06; ctx.shadowColor = ORANGE; ctx.shadowBlur = 20; ctx.fillStyle = uGrad; ctx.beginPath();
     ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
     squares.forEach((sq, index) => drawSolidSquare(sq, pulse * 0.24 + squarePulse[index]));
     ctx.restore();
