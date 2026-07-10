@@ -263,8 +263,27 @@ section { padding: 88px 0; position: relative; }
 .cocina-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* ── Evento (S8) ── */
-.evento-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 900px; margin: 30px auto 0; }
+.evento-cards { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 980px; margin: 30px auto 0; }
 @media (min-width: 560px) { .evento-cards { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 880px) { .evento-cards { grid-template-columns: repeat(3, 1fr); } }
+
+.evento-mapa {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 900px;
+  margin: 30px auto 0;
+  background: var(--card);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  align-items: stretch;
+}
+@media (min-width: 720px) { .evento-mapa { grid-template-columns: 1.3fr 1fr; } }
+.evento-mapa iframe { width: 100%; height: 230px; border: 0; display: block; filter: grayscale(0.35) contrast(1.04); }
+@media (min-width: 720px) { .evento-mapa iframe { height: 100%; min-height: 220px; } }
+.evento-mapa-info { padding: 24px 24px; display: flex; flex-direction: column; gap: 9px; justify-content: center; }
+.evento-mapa-info b { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text); }
+.evento-mapa-info span { font-size: 13px; color: var(--text-3); line-height: 1.6; }
 .evento-card { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 24px 20px; text-align: center; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
 .evento-card:hover { transform: translateY(-4px); border-color: var(--orange-line); }
 .evento-card h4 { font-size: 13.5px; margin-bottom: 10px; text-transform: none; letter-spacing: 0; font-weight: 700; font-family: 'Inter', sans-serif; color: var(--text-2); line-height: 1.4; }
@@ -659,30 +678,37 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Eventos y estudio</span>
       <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
-      <p>Cobertura de eventos de 6 horas: un video de 12 a 15 minutos para tu YouTube + 1 Reel de 1 minuto para tus redes, en 10 días. Y sesiones de fotos en estudio, listas para subir.</p>
+      <p>Cobertura de eventos sociales — bodas, cumpleaños, graduaciones — de 6 horas: un video de 12 a 15 minutos para tu YouTube + 1 Reel de 1 minuto para tus redes, en 10 días. Y sesiones de fotos en estudio o exterior, listas para subir.</p>
     </div>
     <div class="evento-cards reveal">
       <div class="evento-card">
-        <h4>Cobertura de evento · iPhone + luces</h4>
+        <h4>Cobertura de eventos sociales · iPhone + luces</h4>
         <div class="evento-price">Bs 1.150</div>
+        <p class="evento-cd">Bodas, cumpleaños, graduaciones y más.</p>
       </div>
       <div class="evento-card">
-        <h4>Cobertura de evento · cámara profesional</h4>
+        <h4>Cobertura de eventos sociales · cámara profesional</h4>
         <div class="evento-price">Bs 1.550</div>
+        <p class="evento-cd">La misma cobertura, con factura de cine.</p>
       </div>
       <div class="evento-card">
-        <h4>Eventos sociales · bodas, cumpleaños</h4>
-        <div class="evento-price">A definir</div>
-        <p class="evento-cd">Cobertura con cámara o celular, según el evento.</p>
-      </div>
-      <div class="evento-card">
-        <h4>Sesión de fotos en estudio · desde 5 fotos</h4>
+        <h4>Sesión de fotos · estudio o exterior</h4>
         <div class="evento-price">Bs 450</div>
-        <p class="evento-cd">Cumpleaños, graduación, aniversario — en full resolución, listas para redes.</p>
+        <p class="evento-cd">Desde 5 fotos: cumpleaños, graduación, aniversario — en full resolución, listas para redes.</p>
       </div>
     </div>
     <div class="evento-addon reveal"><span class="chip-addon">+ Dron: Bs 350 (cualquier paquete)</span></div>
-    <p class="evento-micro reveal">📍 Estudio en Calle Juan XXIII, e/ Ballivián y Santa Cruz (frente al colegio Sagrado), Yacuiba — Tarija, Bolivia. Cubrimos otros departamentos según la cantidad de contenido o el evento.<br>¿Ya hacés contenido con nosotros? El material de tu evento alimenta tus redes del mes.</p>
+
+    <div class="evento-mapa reveal">
+      <iframe src="https://www.google.com/maps?q=Calle+Juan+XXIII+entre+Ballivi%C3%A1n+y+Santa+Cruz,+Yacuiba,+Tarija,+Bolivia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Estudio DÚO en Yacuiba"></iframe>
+      <div class="evento-mapa-info">
+        <b>📍 Nuestro estudio</b>
+        <span>Calle Juan XXIII, e/ Ballivián y Santa Cruz (frente al colegio Sagrado) · Yacuiba, Tarija — Bolivia.</span>
+        <span>Cubrimos otros departamentos según la cantidad de contenido o el evento.</span>
+      </div>
+    </div>
+
+    <p class="evento-micro reveal">¿Ya hacés contenido con nosotros? El material de tu evento alimenta tus redes del mes.</p>
     <div style="text-align:center" class="reveal">
       <a href="#contacto" class="btn btn-orange">Cotizar mi evento</a>
     </div>
@@ -1036,13 +1062,10 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
     ctx.fillStyle = glow; ctx.fillRect(12, 56, 156, 138);
     ctx.save(); ctx.globalAlpha = 0.28; ctx.strokeStyle = 'rgba(236,103,48,0.26)'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.setLineDash([5, 9]); ctx.lineDashOffset = -time * 0.42;
     ctx.beginPath(); ctx.moveTo(68, 91); ctx.lineTo(68, 128); ctx.bezierCurveTo(68, 158, 112, 158, 112, 128); ctx.lineTo(112, 91); ctx.stroke(); ctx.restore();
-    // La U con el degradado oficial de marca: ámbar → naranja profundo.
-    const uGrad = ctx.createLinearGradient(57, 88, 123, 166);
-    uGrad.addColorStop(0, AMBER);
-    uGrad.addColorStop(1, '#E85D25');
-    ctx.save(); ctx.fillStyle = uGrad; ctx.beginPath();
+    // La U blanca sólida del logo, con brillo cálido suave.
+    ctx.save(); ctx.fillStyle = WHITE; ctx.beginPath();
     ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
-    ctx.save(); ctx.globalAlpha = 0.16 + pulse * 0.06; ctx.shadowColor = ORANGE; ctx.shadowBlur = 20; ctx.fillStyle = uGrad; ctx.beginPath();
+    ctx.save(); ctx.globalAlpha = 0.18 + pulse * 0.06; ctx.shadowColor = WHITE; ctx.shadowBlur = 18; ctx.fillStyle = WHITE; ctx.beginPath();
     ctx.moveTo(57, 88); ctx.lineTo(74, 88); ctx.lineTo(74, 126); ctx.bezierCurveTo(74, 146, 106, 146, 106, 126); ctx.lineTo(106, 88); ctx.lineTo(123, 88); ctx.lineTo(123, 127); ctx.bezierCurveTo(123, 166, 57, 166, 57, 127); ctx.closePath(); ctx.fill(); ctx.restore();
     squares.forEach((sq, index) => drawSolidSquare(sq, pulse * 0.24 + squarePulse[index]));
     ctx.restore();
