@@ -552,6 +552,37 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .combo-panel .btn { width: 100%; }
 .combo-nota { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 12px; line-height: 1.5; }
 .combo-off { display: inline-block; font-size: 10px; font-weight: 900; color: #1D1D1B; background: var(--amber); border-radius: 999px; padding: 2px 8px; margin-left: 6px; letter-spacing: 0.04em; }
+
+/* ── Bloque estratega + mockup TikTok ── */
+.estr-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 860px; margin: 64px auto 0; }
+@media (min-width: 800px) { .estr-grid { grid-template-columns: 0.85fr 1.15fr; } }
+.estr-mock { display: flex; justify-content: center; }
+.estr-texto h3 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(22px, 3.4vw, 30px); line-height: 1.15; margin: 14px 0 14px; }
+.estr-texto p { color: var(--text-2); font-size: 15px; line-height: 1.75; }
+.estr-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.tk-phone {
+  position: relative; width: min(250px, 72vw); aspect-ratio: 9 / 19;
+  border-radius: 42px; border: 9px solid #000; background: #101010; overflow: hidden;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,0.09), 0 44px 88px rgba(0,0,0,0.55), 0 0 90px rgba(236,103,48,0.12);
+  transform: rotate(-3.5deg);
+  animation: tkfloat 7s ease-in-out infinite;
+}
+@keyframes tkfloat { 0%, 100% { transform: rotate(-3.5deg) translateY(0); } 50% { transform: rotate(-2.2deg) translateY(-12px); } }
+@media (prefers-reduced-motion: reduce) { .tk-phone { animation: none; } }
+.tk-phone::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 22px; background: #000; border-radius: 12px; z-index: 3; }
+.tk-phone > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; z-index: 2; }
+.tk-screen { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 50px 16px 14px; gap: 6px; background: linear-gradient(180deg, #161616, #0c0c0c); }
+.tk-avatar { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 30px; color: #1D1D1B; background: linear-gradient(135deg, var(--amber), var(--orange)); }
+.tk-handle { font-weight: 800; font-size: 13.5px; color: #fff; }
+.tk-name { font-size: 11px; color: #aaa; }
+.tk-stats { display: flex; gap: 14px; font-size: 10px; color: #999; margin-top: 4px; }
+.tk-stats b { display: block; font-size: 13px; color: #fff; font-weight: 800; }
+.tk-follow { margin-top: 6px; background: #FE2C55; color: #fff; font-weight: 800; font-size: 12px; padding: 7px 34px; border-radius: 6px; }
+.tk-bio { font-size: 10.5px; color: #ccc; line-height: 1.5; margin-top: 6px; }
+.tk-grid { margin-top: auto; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+.tk-tile { position: relative; aspect-ratio: 3 / 4; border-radius: 4px; background: linear-gradient(160deg, #1f1f1f, #131313); }
+.tk-tile::after { content: '▶'; position: absolute; left: 7px; bottom: 5px; font-size: 9px; color: #ddd; opacity: 0.85; }
+.tk-tile.pin::before { content: 'Fijado'; position: absolute; top: 5px; left: 5px; font-size: 8px; font-weight: 700; background: #FE2C55; color: #fff; padding: 1.5px 5px; border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -698,7 +729,32 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
             <div class="oferta-desc">Prendemos y optimizamos anuncios con lo que tu marca ya tiene. Para negocios que inviertan desde $150 USD (Bs 1.500) al mes en publicidad — ese pago va directo a Meta. No incluye estrategia digital, ni de contenido ni guionización.</div>
           </div>
           <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20*sistema%20completo%20D%C3%9AO%203X*%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero el sistema completo</a>
-          <p class="microlink">Dirección estratégica: <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo →</a></p>
+        </div>
+      </div>
+
+      <div class="estr-grid reveal">
+        <div class="estr-mock">
+          <div class="tk-phone">
+            <div class="tk-screen">
+              <div class="tk-avatar">M</div>
+              <div class="tk-handle">@manu_estrategadigital</div>
+              <div class="tk-name">Manu | Estratega Digital</div>
+              <div class="tk-stats"><span><b>1.020</b> Siguiendo</span><span><b>2.180</b> Seguidores</span><span><b>10.8K</b> Me gusta</span></div>
+              <div class="tk-follow">Seguir</div>
+              <div class="tk-bio">Te ayudo a vender con anuncios 🔥<br>Marketing estratégico + IA</div>
+              <div class="tk-grid"><div class="tk-tile pin"></div><div class="tk-tile pin"></div><div class="tk-tile pin"></div><div class="tk-tile"></div><div class="tk-tile"></div><div class="tk-tile"></div></div>
+            </div>
+            <img src="https://manubaldiviezo.lat/images/tiktok-perfil.png" alt="Perfil de TikTok de Manu Baldiviezo, estratega de DÚO" loading="lazy" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="estr-texto">
+          <span class="eyebrow" style="display:inline-flex">Dirección estratégica</span>
+          <h3>Tus campañas las dirige alguien que da la cara.</h3>
+          <p>Detrás de cada cuenta que gestionamos está <strong>Manu Baldiviezo</strong>, nuestro estratega digital: +5 años haciendo Meta Ads y mostrando cómo trabaja, en público, todos los días.</p>
+          <div class="estr-btns">
+            <a class="btn btn-ghost" href="https://www.tiktok.com/@manu_estrategadigital" target="_blank" rel="noopener">Ver su TikTok ↗</a>
+            <a class="btn btn-ghost" href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">manubaldiviezo.lat →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -840,6 +896,11 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 
 <footer>
   <div class="container">
+    <div class="footer-bottom" style="border:none;margin:0 0 14px;padding:0;justify-content:center;gap:22px">
+      <a href="https://www.instagram.com/duo_agenciamkt" target="_blank" rel="noopener" style="color:var(--text-2)">Instagram · @duo_agenciamkt ↗</a>
+      <a href="https://www.tiktok.com/@duo_agenciamkt" target="_blank" rel="noopener" style="color:var(--text-2)">TikTok · @duo_agenciamkt ↗</a>
+      <a href="https://www.facebook.com/61565101730927" target="_blank" rel="noopener" style="color:var(--text-2)">Facebook · DÚO Marketing Digital ↗</a>
+    </div>
     <div class="footer-bottom" style="border:none;margin:0;padding:0">
       <span>© <span id="year"></span> DÚO · Marketing Digital</span>
       <a href="/" style="color:var(--orange);font-weight:700">← Volver al inicio</a>
