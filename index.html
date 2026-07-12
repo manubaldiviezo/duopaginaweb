@@ -269,11 +269,22 @@ section { padding: 88px 0; position: relative; }
 .serv-card.serv-dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.08), var(--card) 46%); box-shadow: 0 0 0 1px rgba(236,103,48,0.18), 0 16px 48px rgba(236,103,48,0.1); }
 .serv-badge { position: absolute; top: 14px; right: 14px; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 4px 10px; border-radius: 999px; }
 .serv-card.serv-combo { border-style: dashed; border-color: rgba(249,178,51,0.4); }
-.serv-ico { font-size: 26px; margin-bottom: 12px; }
-.serv-card h3 { font-size: 16px; margin-bottom: 8px; }
-.serv-card p { font-size: 13px; color: var(--text-3); line-height: 1.55; margin-bottom: 16px; }
-.serv-precio { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15px; color: var(--amber); margin-top: auto; }
-.serv-link { font-size: 12.5px; font-weight: 700; color: var(--orange); margin-top: 6px; }
+.serv-ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; margin-bottom: 16px; flex-shrink: 0;
+  border-radius: 12px; border: 1px solid var(--orange-line);
+  background: linear-gradient(160deg, rgba(236,103,48,0.14), rgba(249,178,51,0.05));
+  color: var(--orange);
+}
+.serv-ico svg { width: 21px; height: 21px; }
+.serv-card:hover .serv-ico { color: var(--amber); }
+.serv-body { flex: 1; }
+.serv-card h3 { font-size: 15.5px; margin-bottom: 7px; }
+.serv-card p { font-size: 13px; color: var(--text-3); line-height: 1.55; }
+.serv-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+.serv-precio { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14.5px; color: var(--amber); }
+.serv-link { font-size: 12.5px; font-weight: 700; color: var(--orange); transition: transform 0.25s; }
+.serv-card:hover .serv-link { transform: translateX(3px); }
 
 /* ── Recursos (tienda de la cocina) ── */
 .rec-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1000px; margin: 0 auto; }
@@ -413,9 +424,19 @@ section { padding: 88px 0; position: relative; }
 
 /* ── Resultados (S10) ── */
 .resultados { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
-.casos-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-@media (min-width: 640px) { .casos-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .casos-grid { grid-template-columns: repeat(3, 1fr); } }
+.casos-grid {
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(400px, 86vw);
+  gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px 4px 16px; -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: var(--orange-line) transparent;
+  mask-image: linear-gradient(90deg, #000 96%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, #000 96%, transparent);
+}
+.casos-grid::-webkit-scrollbar { height: 6px; }
+.casos-grid::-webkit-scrollbar-thumb { background: var(--line-soft); border-radius: 999px; }
+.casos-grid .caso { scroll-snap-align: start; }
+.casos-hint { text-align: center; font-size: 12px; color: var(--text-3); margin-top: 14px; }
+@media (min-width: 1024px) { .casos-hint { display: none; } .casos-grid { grid-auto-columns: 400px; } }
 .caso { background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); padding: 0; overflow: hidden; transition: transform 0.35s, border-color 0.35s; }
 .caso:hover { transform: translateY(-5px); border-color: var(--orange-line); }
 .caso-img { aspect-ratio: 16/9; overflow: hidden; border-bottom: 1px solid var(--line-soft); background: #201f1b; }
@@ -507,7 +528,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <a href="#trabajos">Trabajos</a>
       <a href="#metodo">Método</a>
       <a href="/servicios">Servicios</a>
-      <a href="#recursos">Recursos</a>
+      <a href="/servicios#aprender">Recursos</a>
       <a href="#contacto">Contacto</a>
     </nav>
     <a href="#contacto" class="header-cta">Crear contenido estratégico</a>
@@ -522,7 +543,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     <a href="#trabajos">Trabajos <span class="sub">Reels de clientes</span></a>
     <a href="#metodo">Método <span class="sub">Cómo trabajamos</span></a>
     <a href="/servicios">Servicios <span class="sub">Todo lo que hacemos</span></a>
-    <a href="#recursos">Recursos <span class="sub">Ebooks y agente IA</span></a>
+    <a href="/servicios#aprender">Recursos <span class="sub">Ebooks y agente IA</span></a>
     <a href="#resultados">Resultados <span class="sub">Campañas reales</span></a>
     <a href="#contacto">Contacto <span class="sub">Hablemos</span></a>
   </div>
@@ -634,48 +655,54 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <p>De un ebook a un sistema completo de ventas — y todo lo del medio.</p>
     </div>
     <div class="serv-grid">
-      <a href="/servicios#aprender" class="serv-card reveal">
-        <span class="serv-ico">📘</span>
-        <h3>Aprender la metodología</h3>
-        <p>Ebooks y asesoría 1:1 — salís con tu estrategia armada en un hub de Notion.</p>
-        <span class="serv-precio">Desde $20</span>
-        <span class="serv-link">Ver más →</span>
-      </a>
       <a href="/servicios#delegar" class="serv-card reveal">
-        <span class="serv-ico">🎥</span>
-        <h3>Contenido para tus redes</h3>
-        <p>Grabamos, editamos y publicamos por vos. Con estrategia completa desde 4 videos.</p>
-        <span class="serv-precio">Desde Bs 500</span>
-        <span class="serv-link">Ver más →</span>
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+        <div class="serv-body">
+          <h3>Contenido para tus redes</h3>
+          <p>Grabamos, editamos y publicamos por vos.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Desde Bs 500</span><span class="serv-link">Ver →</span></div>
       </a>
       <a href="/servicios#escalar" class="serv-card serv-dom reveal">
         <span class="serv-badge">Enfoque DÚO</span>
-        <span class="serv-ico">🚀</span>
-        <h3>Contenido estratégico · DÚO 3X</h3>
-        <p>Plan de contenido, dirección creativa, guiones y producción — posicionamiento con viralidad. ¿Querés vender con pauta? También está ese camino.</p>
-        <span class="serv-precio">Desde $200/mes</span>
-        <span class="serv-link">Ver más →</span>
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+        <div class="serv-body">
+          <h3>Contenido estratégico · DÚO 3X</h3>
+          <p>Plan de contenido, dirección creativa, guiones y producción.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Desde $200/mes</span><span class="serv-link">Ver →</span></div>
+      </a>
+      <a href="/servicios#aprender" class="serv-card reveal">
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <div class="serv-body">
+          <h3>Aprender la metodología</h3>
+          <p>Ebooks, el agente de IA y asesoría 1:1 con nuestro método.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Desde $15</span><span class="serv-link">Ver →</span></div>
       </a>
       <a href="/servicios#web" class="serv-card reveal">
-        <span class="serv-ico">💻</span>
-        <h3>Páginas web</h3>
-        <p>Sitios como este: diseñados para convertir, listos para recibir tus anuncios.</p>
-        <span class="serv-precio">Desde Bs 1.500 / $150</span>
-        <span class="serv-link">Ver más →</span>
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+        <div class="serv-body">
+          <h3>Páginas web</h3>
+          <p>Sitios que convierten, listos para tus anuncios.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Desde Bs 1.500</span><span class="serv-link">Ver →</span></div>
       </a>
       <a href="/servicios#eventos" class="serv-card reveal">
-        <span class="serv-ico">📸</span>
-        <h3>Eventos y estudio</h3>
-        <p>Cobertura de eventos sociales y sesiones de fotos en estudio o exterior.</p>
-        <span class="serv-precio">Desde Bs 450</span>
-        <span class="serv-link">Ver más →</span>
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+        <div class="serv-body">
+          <h3>Eventos y estudio</h3>
+          <p>Cobertura social y sesiones en estudio o exterior.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Desde Bs 450</span><span class="serv-link">Ver →</span></div>
       </a>
       <a href="/servicios#combo" class="serv-card serv-combo reveal">
-        <span class="serv-ico">🧩</span>
-        <h3>Armá tu combo</h3>
-        <p>Elegí lo que tu marca necesita y armá tu propuesta al instante. Único en Bolivia.</p>
-        <span class="serv-precio">Interactivo</span>
-        <span class="serv-link">Probar →</span>
+        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+        <div class="serv-body">
+          <h3>Armá tu combo</h3>
+          <p>Marcá lo que necesitás y recibí tu propuesta al instante.</p>
+        </div>
+        <div class="serv-foot"><span class="serv-precio">Interactivo</span><span class="serv-link">Probar →</span></div>
       </a>
     </div>
     <div style="text-align:center;margin-top:36px" class="reveal">
@@ -686,46 +713,16 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════ RECURSOS · LA COCINA ABIERTA (#recursos) ═══════════ -->
-<section class="cocina" id="recursos">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Recursos DÚO</span>
-      <h2>Ninguna agencia te muestra su cocina. <span class="grad">Nosotros te la abrimos.</span></h2>
-      <p>La metodología que usamos con cada cliente, documentada. Empezá gratis.</p>
-    </div>
-    <div class="rec-grid">
-      <div class="rec-card rec-free reveal">
-        <span class="rec-pill free">Gratis · Lead magnet</span>
-        <h3>EL SISTEMA</h3>
-        <p>La estructura de campañas con la que gestionamos más de $50.000 USD en Meta Ads. El ebook completo del sistema, gratis para tu marca.</p>
-        <a class="btn btn-orange" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20ebook%20gratis%20*EL%20SISTEMA*%20de%20campa%C3%B1as." target="_blank" rel="noopener">Quiero EL SISTEMA gratis</a>
-      </div>
-      <div class="rec-card reveal">
-        <span class="rec-pill">$15</span>
-        <h3>Agente Estratega Digital · IA</h3>
-        <p>Nuestro GPT entrenado con la metodología DÚO: piensa tu estrategia, tu contenido y tus anuncios como un estratega — disponible 24/7.</p>
-        <a class="btn btn-ghost" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20el%20*Agente%20Estratega%20Digital*%20($15)." target="_blank" rel="noopener">Quiero el agente</a>
-      </div>
-      <div class="rec-card reveal">
-        <span class="rec-pill">$20 c/u · Pack $35</span>
-        <h3>Ebooks de la metodología</h3>
-        <p>Estrategia de Contenido (el Árbol de Coherencia completo) + Fórmula DÚO3X (guiones en 8 pasos, más de 25 estilos de gancho).</p>
-        <a class="btn btn-ghost" href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20los%20*ebooks%20de%20la%20metodolog%C3%ADa*." target="_blank" rel="noopener">Quiero los ebooks</a>
-      </div>
-    </div>
-    <p class="rec-nota reveal">¿Preferís que lo hagamos nosotros? <a href="/servicios">Mirá los servicios →</a></p>
-  </div>
-</section>
 <!-- ═══════════ S10 · RESULTADOS ═══════════ -->
 <section class="resultados" id="resultados">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Resultados de campañas</span>
-      <h2>Contenido + campañas + medición. <span class="grad">Esto pasa cuando las tres cosas trabajan juntas.</span></h2>
+      <h2>Estrategia + campañas + medición. <span class="grad">Esto pasa cuando las tres trabajan juntas.</span></h2>
       <p>Resultados en Bolivia — y fuera de Bolivia. La misma metodología funciona en 5 países.</p>
     </div>
-    <div class="casos-grid" id="casos-grid"></div>
+    <div class="casos-grid reveal" id="casos-grid"></div>
+    <p class="casos-hint reveal">Deslizá para ver más casos →</p>
   </div>
 </section>
 
@@ -753,11 +750,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <div class="contacto-txt reveal">
         <span class="eyebrow" style="display:inline-flex">Contacto</span>
         <h2>Contanos qué vendés. <span class="grad">Nosotros te decimos qué contenido lo vende.</span></h2>
-        <p>Respondemos en menos de 24 horas. Sin compromiso.</p>
-        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-ghost contacto-wa" id="wa-directo">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/></svg>
-          Escribir por WhatsApp
-        </a>
+        <p>Completá el formulario y tu mensaje nos llega directo al WhatsApp. Respondemos en menos de 24 horas, sin compromiso.</p>
       </div>
       <form class="form reveal" id="contacto-form" novalidate>
         <div class="field">

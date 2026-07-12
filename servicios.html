@@ -532,9 +532,15 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .combo-item.on .combo-check { background: var(--orange); border-color: var(--orange); }
 .combo-item.on .combo-check::after { content: '✓'; font-weight: 900; }
 .combo-info { flex: 1; min-width: 0; }
-.combo-name { font-size: 14px; font-weight: 700; color: var(--text); }
-.combo-desc { font-size: 11.5px; color: var(--text-3); margin-top: 2px; line-height: 1.45; }
+.combo-name { display: block; font-size: 14px; font-weight: 700; color: var(--text); }
+.combo-desc { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 3px; line-height: 1.45; }
 .combo-price { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13.5px; color: var(--amber); white-space: nowrap; }
+@media (max-width: 560px) {
+  .combo-item { padding: 14px; gap: 11px; }
+  .combo-name { font-size: 13.5px; }
+  .combo-desc { font-size: 11px; }
+  .combo-price { font-size: 12px; }
+}
 .combo-price .tach { text-decoration: line-through; opacity: 0.45; font-weight: 700; margin-right: 6px; }
 .combo-panel {
   position: sticky; top: 128px;
@@ -561,16 +567,15 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .estr-texto p { color: var(--text-2); font-size: 15px; line-height: 1.75; }
 .estr-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 .tk-phone {
-  position: relative; width: min(280px, 72vw); aspect-ratio: 782 / 1600;
-  border-radius: 42px; border: 9px solid #000; background: #101010; overflow: hidden;
+  position: relative; width: min(250px, 58vw); aspect-ratio: 782 / 1600;
+  border-radius: 34px; border: 8px solid #000; background: #000; overflow: hidden;
   box-shadow: 0 0 0 1.5px rgba(255,255,255,0.09), 0 44px 88px rgba(0,0,0,0.55), 0 0 90px rgba(236,103,48,0.12);
   transform: rotate(-3.5deg);
   animation: tkfloat 7s ease-in-out infinite;
 }
 @keyframes tkfloat { 0%, 100% { transform: rotate(-3.5deg) translateY(0); } 50% { transform: rotate(-2.2deg) translateY(-12px); } }
 @media (prefers-reduced-motion: reduce) { .tk-phone { animation: none; } }
-.tk-phone::before { content: ''; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 84px; height: 22px; background: #000; border-radius: 12px; z-index: 3; }
-.tk-phone > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; z-index: 2; }
+.tk-phone > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; z-index: 2; }
 .tk-screen { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 50px 16px 14px; gap: 6px; background: linear-gradient(180deg, #161616, #0c0c0c); }
 .tk-avatar { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 30px; color: #1D1D1B; background: linear-gradient(135deg, var(--amber), var(--orange)); }
 .tk-handle { font-weight: 800; font-size: 13.5px; color: #fff; }
@@ -611,7 +616,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     <a href="/">Inicio <span class="sub">Volver a DÚO</span></a>
     <a href="#aprender" class="tab-jump" data-tab="aprender">Aprender <span class="sub">Ebooks y asesoría</span></a>
     <a href="#delegar" class="tab-jump" data-tab="delegar">Contenido <span class="sub">Producción de videos</span></a>
-    <a href="#escalar" class="tab-jump" data-tab="escalar">Escalar <span class="sub">Contenido + campañas</span></a>
+    <a href="#escalar" class="tab-jump" data-tab="escalar">Escalar <span class="sub">Posicionarte o vender</span></a>
     <a href="#web" class="tab-jump" data-tab="web">Páginas web <span class="sub">Como esta</span></a>
     <a href="#combo">Armá tu combo <span class="sub">Interactivo</span></a>
   </div>
@@ -630,11 +635,11 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 
 <div class="tabs-bar">
   <div class="tabs" id="tabs" role="tablist">
-    <button class="tab on" data-panel="aprender" role="tab">📘 Aprender</button>
-    <button class="tab" data-panel="delegar" role="tab">🎥 Contenido</button>
-    <button class="tab" data-panel="escalar" role="tab">🚀 Escalar</button>
-    <button class="tab" data-panel="web" role="tab">💻 Páginas web</button>
-    <button class="tab" data-panel="eventos" role="tab">📸 Eventos</button>
+    <button class="tab on" data-panel="aprender" role="tab">Aprender</button>
+    <button class="tab" data-panel="delegar" role="tab">Contenido</button>
+    <button class="tab" data-panel="escalar" role="tab">Escalar</button>
+    <button class="tab" data-panel="web" role="tab">Páginas web</button>
+    <button class="tab" data-panel="eventos" role="tab">Eventos</button>
   </div>
 </div>
 
@@ -733,7 +738,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         <div class="puerta reveal">
           <div class="oferta">
             <div class="oferta-top"><span class="oferta-name">Estrategia digital completa · Programa de 3 meses</span><span class="oferta-price">Desde $195 / mes</span></div>
-            <div class="oferta-desc">Para vender con anuncios de manera estratégica. Incluye el documento de estrategia digital (estructura del funnel y de campañas, presupuestos, objetivos, análisis y mejora de tu oferta), investigación de qué anuncios usar por tipo de campaña, estrategia de guionización con dirección creativa — <strong>los guiones te llegan listos para producir</strong> — campañas, testeo de formatos y ángulos de venta, y medición. Nos encargamos de todo menos la producción del contenido.</div>
+            <div class="oferta-desc">Para vender con anuncios de manera estratégica: documento de estrategia digital (funnel, campañas, presupuestos, oferta), <strong>guiones listos para producir</strong>, testeo de ángulos de venta y medición. Todo menos la producción del contenido.</div>
           </div>
           <div class="honesto">Este programa lo dirige Manu Baldiviezo, nuestro estratega, desde su marca personal. Para arrancar una estrategia de ventas con pauta tu marca necesita al menos 6 a 10 anuncios e invertir desde Bs 1.500 al mes en Meta — si todavía no estás ahí, el contenido estratégico es tu primer paso.</div>
           <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener" class="btn btn-ghost">Ver el programa completo en manubaldiviezo.lat →</a>
@@ -849,43 +854,43 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <div class="combo-items reveal" id="combo-items">
         <div class="combo-item" data-id="prod2cel" data-grupo="prod" data-bs="500" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">2 videos · celular</span><span class="combo-desc">Grabación ágil, edición y entrega lista para publicar.</span></span>
+          <span class="combo-info"><span class="combo-name">2 videos · celular</span><span class="combo-desc">Grabación, edición y entrega.</span></span>
           <span class="combo-price">Bs 500</span>
         </div>
         <div class="combo-item" data-id="prod2cam" data-grupo="prod" data-bs="750" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">2 videos · cámara profesional</span><span class="combo-desc">La misma agilidad, con factura de cine.</span></span>
+          <span class="combo-info"><span class="combo-name">2 videos · cámara profesional</span><span class="combo-desc">Los mismos videos, factura de cine.</span></span>
           <span class="combo-price">Bs 750</span>
         </div>
         <div class="combo-item" data-id="prod4" data-grupo="prod" data-bs="1350" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">4 videos · paquete estratégico ★</span><span class="combo-desc">Estrategia DÚO3X + guiones + producción + edición + publicación. Activa el 50% off en anuncios.</span></span>
+          <span class="combo-info"><span class="combo-name">4 videos · paquete estratégico</span><span class="combo-desc">Guiones + producción + publicación. Activa el 50% off en anuncios.</span></span>
           <span class="combo-price">Bs 1.350</span>
         </div>
         <div class="combo-item" data-id="pauta" data-bs="1000" data-bs-off="500" data-tipo="mensual">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">Gestión de anuncios <span class="combo-off" id="off-badge" style="display:none">50% OFF ✓</span></span><span class="combo-desc">Campañas en Facebook e Instagram. Con el paquete de 4 videos: $50/Bs 500 al mes en vez de $100/Bs 1.000.</span></span>
+          <span class="combo-info"><span class="combo-name">Gestión de anuncios <span class="combo-off" id="off-badge" style="display:none">50% OFF ✓</span></span><span class="combo-desc">Campañas en Facebook e Instagram. Mitad de precio con el paquete de 4 videos.</span></span>
           <span class="combo-price" id="pauta-price">Bs 1.000/mes</span>
         </div>
         <div class="combo-item" data-id="web" data-bs="1500" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">Página web</span><span class="combo-desc">Como esta: diseñada para convertir y recibir tus anuncios.</span></span>
-          <span class="combo-price">Desde Bs 1.500</span>
+          <span class="combo-info"><span class="combo-name">Página web</span><span class="combo-desc">Como esta, diseñada para convertir.</span></span>
+          <span class="combo-price">Bs 1.500</span>
         </div>
         <div class="combo-item" data-id="evento" data-bs="1150" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">Cobertura de evento social</span><span class="combo-desc">6 horas, video de 12-15 min + Reel. Desde iPhone + luces.</span></span>
-          <span class="combo-price">Desde Bs 1.150</span>
+          <span class="combo-info"><span class="combo-name">Cobertura de evento social</span><span class="combo-desc">6 horas, video resumen + reel.</span></span>
+          <span class="combo-price">Bs 1.150</span>
         </div>
         <div class="combo-item" data-id="fotos" data-bs="450" data-tipo="unico">
           <span class="combo-check"></span>
           <span class="combo-info"><span class="combo-name">Sesión de fotos · estudio o exterior</span><span class="combo-desc">Desde 5 fotos en full resolución.</span></span>
-          <span class="combo-price">Desde Bs 450</span>
+          <span class="combo-price">Bs 450</span>
         </div>
         <div class="combo-item" data-id="extras" data-bs="0" data-tipo="cotizar">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">Automatización IA · artes · logotipo</span><span class="combo-desc">Respuestas automáticas en WhatsApp/redes, piezas publicitarias, identidad. Lo cotizamos según tu proyecto.</span></span>
-          <span class="combo-price">A cotizar</span>
+          <span class="combo-info"><span class="combo-name">Automatización IA · artes · logotipo</span><span class="combo-desc">Se cotiza según tu proyecto.</span></span>
+          <span class="combo-price">Cotizar</span>
         </div>
       </div>
       <div class="combo-panel reveal">
