@@ -588,6 +588,22 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .tk-tile { position: relative; aspect-ratio: 3 / 4; border-radius: 4px; background: linear-gradient(160deg, #1f1f1f, #131313); }
 .tk-tile::after { content: '▶'; position: absolute; left: 7px; bottom: 5px; font-size: 9px; color: #ddd; opacity: 0.85; }
 .tk-tile.pin::before { content: 'Fijado'; position: absolute; top: 5px; left: 5px; font-size: 8px; font-weight: 700; background: #FE2C55; color: #fff; padding: 1.5px 5px; border-radius: 3px; }
+
+/* ── Panel Escalar: dimensiones de cards y textos ── */
+#panel-escalar .puerta { padding: 26px 22px; }
+#panel-escalar .oferta { padding: 18px 0; }
+#panel-escalar .oferta.star { padding: 18px; margin: 0 0 8px; }
+#panel-escalar .oferta-top { align-items: flex-start; }
+#panel-escalar .oferta-name { font-size: 15px; line-height: 1.35; }
+#panel-escalar .oferta-price { font-size: 14.5px; }
+#panel-escalar .oferta-desc { font-size: 13px; line-height: 1.68; margin-top: 8px; }
+#panel-escalar .honesto { margin: 14px 0 16px; font-size: 12.5px; }
+#panel-escalar .puerta .btn { margin-top: 4px; }
+@media (max-width: 640px) {
+  #panel-escalar .puerta { padding: 22px 18px; }
+  #panel-escalar .oferta-top { flex-direction: column; gap: 4px; }
+  #panel-escalar .oferta-price { white-space: normal; }
+}
 </style>
 </head>
 <body>
