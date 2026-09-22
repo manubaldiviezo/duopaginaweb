@@ -691,6 +691,37 @@ html { scroll-behavior: smooth; }
 @media (min-width: 640px) { .incluye-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .incluye-grid { grid-template-columns: repeat(3, 1fr); } }
 
+/* ── Tarjetas de servicio ── */
+.sv-grid { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 1060px; margin: 0 auto; }
+.sv { position: relative; display: flex; flex-direction: column; padding: 26px 24px 22px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s, border-color 0.3s, background 0.3s; }
+.sv::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+.sv:hover { transform: translateY(-5px); border-color: var(--orange-line); background: var(--card-hover); }
+.sv:hover::before { transform: scaleX(1); }
+.sv-ico { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(236,103,48,0.12); border: 1px solid var(--orange-line); color: var(--orange); margin-bottom: 16px; transition: color 0.3s; }
+.sv-ico svg { width: 21px; height: 21px; }
+.sv:hover .sv-ico { color: var(--amber); }
+.sv h3 { font-size: 16.5px; line-height: 1.3; margin-bottom: 9px; }
+.sv > p { font-size: 13.2px; line-height: 1.6; color: var(--text-3); margin-bottom: 14px; }
+.sv-lista { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 8px; }
+.sv-lista li { position: relative; padding-left: 20px; font-size: 12.7px; line-height: 1.5; color: var(--text-2); }
+.sv-lista li::before { content: ""; position: absolute; left: 0; top: 6px; width: 10px; height: 6px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg); }
+.sv-lista b { color: var(--text); font-weight: 700; }
+.sv-foot { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--line-soft); }
+.sv-precio { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; line-height: 1; color: var(--amber); white-space: nowrap; }
+.sv-nota { font-size: 11px; color: var(--text-3); }
+.sv-badge { position: absolute; top: 0; right: 22px; font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 5px 11px; border-radius: 0 0 8px 8px; }
+.sv-dom { border-color: var(--orange-line); background: linear-gradient(170deg, rgba(236,103,48,0.10), var(--card) 52%); box-shadow: 0 0 0 1px rgba(236,103,48,0.16), 0 16px 48px rgba(236,103,48,0.10); }
+.sv-dom::before { transform: scaleX(1); }
+.sv-dom .sv-ico { color: var(--amber); }
+.sv-pie { max-width: 720px; margin: 24px auto 0; text-align: center; font-size: 12.8px; line-height: 1.6; color: var(--text-3); }
+.sv-pie strong { color: var(--text-2); font-weight: 600; }
+.sv-cta { display: flex; justify-content: center; margin-top: 28px; }
+@media (min-width: 700px) {
+  .sv-grid { grid-template-columns: repeat(2, 1fr); }
+  .sv-dom { grid-column: 1 / -1; }
+}
+@media (min-width: 1000px) { .sv-grid { grid-template-columns: repeat(3, 1fr); } }
+
 </style>
 </head>
 <body>
@@ -781,7 +812,6 @@ html { scroll-behavior: smooth; }
         <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
         <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
         <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
-        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
         <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
         <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
         <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
@@ -795,7 +825,6 @@ html { scroll-behavior: smooth; }
         <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
         <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
         <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
-        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
         <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
         <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
         <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
@@ -871,142 +900,201 @@ html { scroll-behavior: smooth; }
 
 <div class="panel" id="panel-delegar">
   <section id="delegar">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Quieres delegarla</span>
-        <h2>Contenido para tus redes, <span class="grad">llave en mano.</span></h2>
-        <p>Grabamos, editamos y publicamos. Tú aprobás, nosotros hacemos el resto.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Contenido ágil · 2 videos</span><span class="oferta-price">Desde Bs 500</span></div>
-            <div class="oferta-desc">Reels y videos cortos: grabamos tu idea, editamos y te lo entregamos listo. Con celular <b>Bs 500</b> · con cámara profesional <b>Bs 750</b>.</div>
-          </div>
-          <div class="oferta star">
-            <span class="star-badge">Metodología completa</span>
-            <div class="oferta-top"><span class="oferta-name">Paquete estratégico · 4 videos</span><span class="oferta-price">Bs 1.350</span></div>
-            <div class="oferta-desc">Con cámara profesional: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">+ Anuncios con 50% de descuento</span><span class="oferta-price"><span style="text-decoration:line-through;opacity:0.5">$100</span> $50 / Bs 500 al mes</span></div>
-            <div class="oferta-desc">Si nos encargamos de tu producción completa (desde 4 videos), la gestión de tus anuncios en Facebook e Instagram te cuesta la mitad. Tu contenido y tus campañas, con el mismo equipo.</div>
-          </div>
-          <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20que%20produzcan%20el%20*contenido%20de%20mis%20redes*." target="_blank" rel="noopener" class="btn btn-orange">Quiero que lo hagan por mí</a>
-        </div>
-      </div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Producción de contenido</span>
+      <h2>Nosotros grabamos. <span class="grad">Tu marca aparece.</span></h2>
+      <p>Vamos a tu local, grabamos con equipo propio y te lo entregamos listo para publicar.</p>
     </div>
-  </section>
+    <div class="sv-grid reveal">
+        <article class="sv sv-dom">
+          <span class="sv-badge">El más pedido</span>
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></span>
+          <h3>Paquete de arranque</h3>
+          <p>Si tu marca todavía no tiene contenido, empieza acá.</p>
+          <ul class="sv-lista">
+            <li><b>4 videos</b> con edición profesional</li>
+            <li><b>4 artes</b> para tus redes</li>
+            <li><b>Manual de marca básico</b> — perfil, portada y miniaturas para destacadas</li>
+            <li><b>Multienlace</b> de regalo la primera vez</li>
+          </ul>
+          <div class="sv-foot"><span class="sv-precio">Bs 1.450</span><span class="sv-nota">planificación, grabación y edición</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+          <h3>2 videos · celular</h3>
+          <p>Grabación, edición y entrega. Para probar formatos sin comprometerse.</p>
+          <div class="sv-foot"><span class="sv-precio">Bs 500</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+          <h3>2 videos · cámara profesional</h3>
+          <p>Los mismos videos, con factura de cine.</p>
+          <div class="sv-foot"><span class="sv-precio">Bs 750</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span>
+          <h3>Edición de video</h3>
+          <p>Si ya tienes el material grabado y solo necesitas el armado: cortes, ritmo, subtítulos y música.</p>
+          <div class="sv-foot"><span class="sv-precio">desde Bs 120</span><span class="sv-nota">por video</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></span>
+          <h3>Manejo de redes</h3>
+          <p>Publicación, optimización de perfiles y seguimiento. Se suma a cualquier paquete.</p>
+          <div class="sv-foot"><span class="sv-precio">a cotizar</span></div>
+        </article>
+    </div>
+    <p class="sv-pie reveal">Nosotros planificamos, grabamos y editamos. <strong>La publicación va aparte</strong>, salvo que el contenido lleve anuncios pagados.</p>
+    <div class="sv-cta reveal">
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20la%20producci%C3%B3n%20de%20contenido." target="_blank" rel="noopener" class="btn btn-orange">Quiero mi contenido
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ═══ PANEL: ESCALAR ═══ -->
 
 <div class="panel" id="panel-web">
   <section id="web">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Páginas web</span>
-        <h2>Sitios que convierten. <span class="grad">Como este que estás viendo.</span></h2>
-        <p>Esta web es nuestra carta de presentación: la hicimos nosotros, con el mismo cuidado que le pondríamos a la tuya.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Página web / landing de venta</span><span class="oferta-price">Desde Bs 1.500 / $150</span></div>
-            <div class="oferta-desc">Diseño premium a tu marca, animaciones, WhatsApp integrado, optimizada para móvil y lista para recibir el tráfico de tus anuncios. Dominio y hosting orientamos nosotros.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Artes y piezas publicitarias</span><span class="oferta-price">A cotizar</span></div>
-            <div class="oferta-desc">Imágenes y artes publicitarios diseñados para tus campañas y redes. También logotipos e identidad si tu marca lo necesita.</div>
-          </div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20una%20*p%C3%A1gina%20web*%20como%20la%20de%20ustedes." target="_blank" rel="noopener" class="btn btn-orange">Quiero mi página web</a>
-        </div>
-      </div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Páginas web</span>
+      <h2>Sitios que convierten. <span class="grad">Como este que estás viendo.</span></h2>
+      <p>Esta web la hicimos nosotros, con el mismo cuidado que le pondríamos a la tuya.</p>
     </div>
-  </section>
+    <div class="sv-grid reveal">
+        <article class="sv sv-dom">
+          <span class="sv-badge">Incluido en el paquete Integral</span>
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+          <h3>Página web / landing</h3>
+          <p>Diseño a medida de tu marca, con animaciones, WhatsApp integrado y lista para recibir el tráfico de tus anuncios.</p>
+          <ul class="sv-lista">
+            <li>Optimizada para celular</li>
+            <li>Formulario que llega directo a tu WhatsApp</li>
+            <li>Te orientamos con dominio y hosting</li>
+          </ul>
+          <div class="sv-foot"><span class="sv-precio">desde Bs 1.500</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2"/><circle cx="6" cy="12" r="3"/><path d="M3 21h18"/></svg></span>
+          <h3>Artes y piezas publicitarias</h3>
+          <p>Imágenes para campañas y redes. También logotipo e identidad si tu marca lo necesita.</p>
+          <div class="sv-foot"><span class="sv-precio">a cotizar</span></div>
+        </article>
+    </div>
+    <div class="sv-cta reveal">
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20una%20p%C3%A1gina%20web." target="_blank" rel="noopener" class="btn btn-orange">Quiero mi página web
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ═══ PANEL: EVENTOS ═══ -->
 
 <div class="panel" id="panel-eventos">
   <section id="eventos">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Eventos y estudio</span>
-        <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
-        <p>Cobertura de eventos sociales — bodas, cumpleaños, graduaciones — de 6 horas: un video de 12 a 15 minutos para tu YouTube + 1 Reel de 1 minuto, en 10 días. Y sesiones de fotos en estudio o exterior.</p>
-      </div>
-      <div class="evento-cards reveal">
-        <div class="evento-card">
-          <h4>Cobertura de eventos sociales · iPhone + luces</h4>
-          <div class="evento-price">Bs 1.150</div>
-          <p class="evento-cd">Bodas, cumpleaños, graduaciones y más.</p>
-        </div>
-        <div class="evento-card">
-          <h4>Cobertura de eventos sociales · cámara profesional</h4>
-          <div class="evento-price">Bs 1.550</div>
-          <p class="evento-cd">La misma cobertura, con factura de cine.</p>
-        </div>
-        <div class="evento-card">
-          <h4>Sesión de fotos · estudio o exterior</h4>
-          <div class="evento-price">Bs 450</div>
-          <p class="evento-cd">Desde 5 fotos: cumpleaños, graduación, aniversario — en full resolución, listas para redes.</p>
-        </div>
-      </div>
-      <div class="evento-addon reveal"><span class="chip-addon">+ Dron: Bs 350 (cualquier paquete)</span></div>
-      <div class="evento-mapa reveal">
-        <iframe src="https://www.google.com/maps?q=Calle+Juan+XXIII+entre+Ballivi%C3%A1n+y+Santa+Cruz,+Yacuiba,+Tarija,+Bolivia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Estudio DÚO en Yacuiba"></iframe>
-        <div class="evento-mapa-info">
-          <b>📍 Nuestro estudio</b>
-          <span>Calle Juan XXIII, e/ Ballivián y Santa Cruz (frente al colegio Sagrado) · Yacuiba, Tarija — Bolivia.</span>
-          <span>Cubrimos otros departamentos según la cantidad de contenido o el evento.</span>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:30px" class="reveal">
-        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20*cobertura%20de%20mi%20evento*." target="_blank" rel="noopener" class="btn btn-orange">Cotizar mi evento</a>
-      </div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Eventos y estudio</span>
+      <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
+      <p>Cobertura de 6 horas: un video de 12 a 15 minutos más un reel de 1 minuto, entregado en 10 días.</p>
     </div>
-  </section>
+    <div class="sv-grid reveal">
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+          <h3>Cobertura de evento · iPhone + luces</h3>
+          <p>Bodas, cumpleaños, graduaciones y más.</p>
+          <div class="sv-foot"><span class="sv-precio">Bs 1.150</span><span class="sv-nota">6 horas</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+          <h3>Cobertura de evento · cámara profesional</h3>
+          <p>La misma cobertura, con factura de cine.</p>
+          <div class="sv-foot"><span class="sv-precio">Bs 1.550</span><span class="sv-nota">6 horas</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+          <h3>Sesión de fotos · estudio o exterior</h3>
+          <p>Desde 5 fotos en full resolución, listas para redes.</p>
+          <div class="sv-foot"><span class="sv-precio">Bs 450</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M5 5l3 3M19 5l-3 3M5 19l3-3M19 19l-3-3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg></span>
+          <h3>Tomas con dron</h3>
+          <p>Se suma a cualquier paquete de cobertura.</p>
+          <div class="sv-foot"><span class="sv-precio">+ Bs 350</span></div>
+        </article>
+    </div>
+    <p class="sv-pie reveal">📍 Nuestro estudio: calle Juan XXIII, entre Ballivián y Santa Cruz (frente al colegio Sagrado) · Yacuiba, Tarija. <strong>Cubrimos otros departamentos</strong> según el evento.</p>
+    <div class="sv-cta reveal">
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20la%20cobertura%20de%20un%20evento." target="_blank" rel="noopener" class="btn btn-orange">Cotizar mi evento
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ═══ ARMÁ TU COMBO ═══ -->
 
 <div class="panel" id="panel-aprender">
   <section id="aprender">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Quieres aprenderla</span>
-        <h2>La metodología, <span class="grad">en tus manos.</span></h2>
-        <p>Somos la única agencia que te vende su propia cocina — documentada y a tu alcance.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Estrategia de Contenido — Guía completa</span><span class="oferta-price">$20</span></div>
-            <div class="oferta-desc">El Árbol de Coherencia completo para tu estrategia.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Fórmula DÚO3X — Guionización estratégica</span><span class="oferta-price">$20</span></div>
-            <div class="oferta-desc">Guiones en 8 pasos, +25 estilos de gancho, estructuras para venta, valor y viralidad.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Pack ambos ebooks</span><span class="oferta-price">$35 / Bs 350</span></div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Agente Estratega Digital · IA</span><span class="oferta-price">$15</span></div>
-            <div class="oferta-desc">Nuestro GPT entrenado con la metodología DÚO, disponible 24/7.</div>
-          </div>
-          <div class="oferta star">
-            <span class="star-badge">★ Servicio estrella</span>
-            <div class="oferta-top"><span class="oferta-name">Asesoría de contenido</span><span class="oferta-price">$75 / Bs 750</span></div>
-            <div class="oferta-desc">2 sesiones en vivo: teoría + práctica sobre TU negocio. Salís con tu estrategia de contenido armada — para vender con anuncios o sin invertir en publicidad — entregada en un hub de Notion listo para gestionar tu contenido como una agencia: calendario, guiones, pilares y seguimiento. Incluye soporte por WhatsApp durante 1 mes.</div>
-          </div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20la%20*Asesor%C3%ADa%20de%20contenido*%20(%2475%20%2F%20Bs%20750)." target="_blank" rel="noopener" class="btn btn-orange">Quiero la asesoría</a>
-        </div>
-      </div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Aprender el método</span>
+      <h2>La metodología, <span class="grad">en tus manos.</span></h2>
+      <p>Somos la única agencia que te vende su propia cocina, documentada y a tu alcance.</p>
     </div>
-  </section>
+    <div class="sv-grid reveal">
+        <article class="sv sv-dom">
+          <span class="sv-badge">Servicio estrella</span>
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <h3>Asesoría de contenido</h3>
+          <p>Dos sesiones en vivo sobre TU negocio: teoría y práctica.</p>
+          <ul class="sv-lista">
+            <li>Sales con tu estrategia de contenido armada</li>
+            <li>Entregada en un hub de Notion: calendario, guiones y pilares</li>
+            <li>Soporte por WhatsApp durante 1 mes</li>
+          </ul>
+          <div class="sv-foot"><span class="sv-precio">$75 / Bs 750</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <h3>Estrategia de Contenido</h3>
+          <p>El Árbol de Coherencia completo para armar tu estrategia.</p>
+          <div class="sv-foot"><span class="sv-precio">$20</span><span class="sv-nota">ebook</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <h3>Fórmula DÚO3X · Guionización</h3>
+          <p>Guiones en 8 pasos, más de 25 estilos de gancho y estructuras para venta, valor y viralidad.</p>
+          <div class="sv-foot"><span class="sv-precio">$20</span><span class="sv-nota">ebook</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+          <h3>Pack de los dos ebooks</h3>
+          <p>La estrategia y la guionización juntas.</p>
+          <div class="sv-foot"><span class="sv-precio">$35 / Bs 350</span></div>
+        </article>
+        <article class="sv">
+          <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
+          <h3>Agente Estratega Digital</h3>
+          <p>Nuestro GPT entrenado con la metodología DÚO, disponible a toda hora.</p>
+          <div class="sv-foot"><span class="sv-precio">$15</span></div>
+        </article>
+    </div>
+    <div class="sv-cta reveal">
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20la%20asesor%C3%ADa%20de%20contenido." target="_blank" rel="noopener" class="btn btn-orange">Quiero la asesoría
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ═══ PANEL: DELEGAR ═══ -->
@@ -1029,15 +1117,10 @@ html { scroll-behavior: smooth; }
           <span class="combo-info"><span class="combo-name">2 videos · cámara profesional</span><span class="combo-desc">Los mismos videos, factura de cine.</span></span>
           <span class="combo-price">Bs 750</span>
         </div>
-        <div class="combo-item" data-id="prod4" data-grupo="prod" data-bs="1350" data-tipo="unico">
+        <div class="combo-item" data-id="prod4" data-grupo="prod" data-bs="1450" data-tipo="unico">
           <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">4 videos · paquete estratégico</span><span class="combo-desc">Guiones + producción + publicación. Activa el 50% off en anuncios.</span></span>
-          <span class="combo-price">Bs 1.350</span>
-        </div>
-        <div class="combo-item" data-id="pauta" data-bs="1000" data-bs-off="500" data-tipo="mensual">
-          <span class="combo-check"></span>
-          <span class="combo-info"><span class="combo-name">Gestión de anuncios <span class="combo-off" id="off-badge" style="display:none">50% OFF ✓</span></span><span class="combo-desc">Campañas en Facebook e Instagram. Mitad de precio con el paquete de 4 videos.</span></span>
-          <span class="combo-price" id="pauta-price">Bs 1.000/mes</span>
+          <span class="combo-info"><span class="combo-name">Paquete de arranque · 4 videos</span><span class="combo-desc">4 videos + 4 artes + manual de marca básico + multienlace.</span></span>
+          <span class="combo-price">Bs 1.450</span>
         </div>
         <div class="combo-item" data-id="web" data-bs="1500" data-tipo="unico">
           <span class="combo-check"></span>
@@ -1157,23 +1240,13 @@ const fmt = n => 'Bs ' + n.toLocaleString('es-BO');
 function calcular() {
   let unico = 0, mensual = 0;
   const lista = [];
-  const prod4on = document.querySelector('[data-id="prod4"]').classList.contains('on');
 
-  // 50% off dinámico en pauta
-  const pauta = document.querySelector('[data-id="pauta"]');
-  const offBadge = document.getElementById('off-badge');
-  const pautaPrice = document.getElementById('pauta-price');
-  const pautaBs = prod4on ? +pauta.dataset.bsOff : +pauta.dataset.bs;
-  offBadge.style.display = prod4on ? 'inline-block' : 'none';
-  pautaPrice.innerHTML = prod4on
-    ? '<span class="tach">Bs 1.000</span>Bs 500/mes'
-    : 'Bs 1.000/mes';
 
   items.forEach(it => {
     if (!it.classList.contains('on')) return;
-    const nombre = it.querySelector('.combo-name').textContent.replace('50% OFF ✓', '').trim();
+    const nombre = it.querySelector('.combo-name').textContent.trim();
     if (it.dataset.tipo === 'cotizar') { lista.push(nombre + ' (a cotizar)'); return; }
-    const bs = it.dataset.id === 'pauta' ? pautaBs : +it.dataset.bs;
+    const bs = +it.dataset.bs;
     if (it.dataset.tipo === 'mensual') { mensual += bs; lista.push(nombre + ' — ' + fmt(bs) + '/mes'); }
     else { unico += bs; lista.push(nombre + ' — desde ' + fmt(bs)); }
   });
