@@ -1839,7 +1839,7 @@ reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join(''
     const dt = previo ? Math.min(ahora - previo, 50) : 16;
     previo = ahora;
     if (visible && !arrastrando && !lento && ahora - ultimoGesto > 220) {
-      tira.scrollLeft += (mitad() / 13000) * dt;   /* la pista completa en ~13 s */
+      tira.scrollLeft += (mitad() / 7000) * dt;    /* la pista completa en ~7 s */
       normalizar();
     }
     desdeReparto += dt;
