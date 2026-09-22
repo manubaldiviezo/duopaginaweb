@@ -637,6 +637,33 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .nota-manu a { font-size: 13px; font-weight: 700; color: var(--orange); }
 @media (max-width: 640px) { .paq-tabla th, .paq-tabla td { padding: 11px 9px; } .pt-precio { font-size: 22px; } .paq-tabla tbody th { font-size: 12.2px; } }
 
+/* ── En móvil la comparativa se apila: una tarjeta por paquete ── */
+@media (max-width: 719px) {
+  .paq-tabla-wrap { overflow: visible; }
+  .paq-tabla { min-width: 0; display: block; }
+  .paq-tabla thead { display: none; }
+  .paq-tabla tbody { display: block; }
+  .paq-tabla tbody tr { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 8px; padding: 11px 13px; border: 1px solid var(--line-soft); border-bottom: none; background: var(--card); }
+  .paq-tabla tbody tr:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+  .paq-tabla tbody tr:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); border-bottom: 1px solid var(--line-soft); }
+  .paq-tabla tbody th, .paq-tabla tbody td { padding: 0; border: none !important; background: none !important; }
+  .paq-tabla tbody th { font-size: 12.4px; line-height: 1.35; }
+  .paq-tabla tbody td { min-width: 42px; text-align: center; position: relative; padding-top: 15px !important; }
+  /* cada celda dice a qué paquete pertenece */
+  .paq-tabla tbody td::before { content: attr(data-paq); position: absolute; top: 0; left: 0; right: 0; font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+  .paq-tabla tbody td:nth-child(3)::before { color: var(--amber); }
+  .paq-cabecera-movil { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
+  .pcm { text-align: center; padding: 13px 8px; border: 1px solid var(--line-soft); border-radius: var(--radius-sm); background: var(--card); }
+  .pcm.dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.14), var(--card) 70%); }
+  .pcm b { display: block; font-family: 'Montserrat', sans-serif; font-size: 10.5px; font-weight: 900; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-2); margin-bottom: 5px; }
+  .pcm i { display: block; font-style: normal; font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 900; color: var(--text); line-height: 1; }
+  .pcm.dom i { color: var(--amber); }
+  .pcm u { display: block; text-decoration: none; font-size: 9.5px; color: var(--text-3); margin-top: 4px; }
+}
+@media (min-width: 720px) { .paq-cabecera-movil { display: none; } }
+
+/* Evita los pocos px de desborde lateral en pantallas angostas. */
+html, body { overflow-x: clip; max-width: 100%; }
 </style>
 </head>
 <body>
@@ -772,11 +799,16 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <p>Los tres incluyen estrategia, dirección creativa y gestión de campañas. Lo que cambia es el volumen de contenido.</p>
     </div>
 
+    <div class="paq-cabecera-movil reveal">
+      <div class="pcm"><b>Inicial</b><i>2.500</i><u>Bs/mes</u></div>
+      <div class="pcm dom"><b>Escala</b><i>3.500</i><u>Bs/mes</u></div>
+      <div class="pcm"><b>Integral</b><i>4.250</i><u>Bs/mes</u></div>
+    </div>
     <div class="paq-tabla-wrap reveal">
       <table class="paq-tabla">
         <thead>
           <tr>
-            <td></td>
+            <td data-paq="Inicial"></td>
             <th scope="col"><span class="pt-nom">Inicial</span><span class="pt-precio">2.500 <i>Bs/mes</i></span></th>
             <th scope="col" class="pt-dom"><span class="pt-badge">El más elegido</span><span class="pt-nom">Escala</span><span class="pt-precio">3.500 <i>Bs/mes</i></span></th>
             <th scope="col"><span class="pt-nom">Integral</span><span class="pt-precio">4.250 <i>Bs/mes</i></span></th>
@@ -785,31 +817,31 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         <tbody>
             <tr>
               <th scope="row">Planificación estratégica</th>
-              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+              <td><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Escala"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Integral"><span class="tick" aria-label="incluido">✓</span></td>
             </tr>
             <tr>
               <th scope="row">Dirección creativa</th>
-              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+              <td data-paq="Inicial"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Escala"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Integral"><span class="tick" aria-label="incluido">✓</span></td>
             </tr>
             <tr>
               <th scope="row">Gestión de anuncios en Facebook e Instagram</th>
-              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+              <td data-paq="Inicial"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Escala"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Integral"><span class="tick" aria-label="incluido">✓</span></td>
             </tr>
             <tr>
               <th scope="row">Videos con edición profesional</th>
-              <td><b>4</b></td><td><b>8</b></td><td><b>8</b></td>
+              <td data-paq="Inicial"><b>4</b></td><td data-paq="Escala"><b>8</b></td><td data-paq="Integral"><b>8</b></td>
             </tr>
             <tr>
               <th scope="row">Artes</th>
-              <td><b>4</b></td><td><b>6</b></td><td><b>6</b></td>
+              <td data-paq="Inicial"><b>4</b></td><td data-paq="Escala"><b>6</b></td><td data-paq="Integral"><b>6</b></td>
             </tr>
             <tr>
               <th scope="row">Asesoría para creación de contenido</th>
-              <td><span class="nope" aria-label="no incluido">—</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+              <td data-paq="Inicial"><span class="nope" aria-label="no incluido">—</span></td><td data-paq="Escala"><span class="tick" aria-label="incluido">✓</span></td><td data-paq="Integral"><span class="tick" aria-label="incluido">✓</span></td>
             </tr>
             <tr>
               <th scope="row">Sitio web (landing page)</th>
-              <td><span class="nope" aria-label="no incluido">—</span></td><td><span class="nope" aria-label="no incluido">—</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+              <td data-paq="Inicial"><span class="nope" aria-label="no incluido">—</span></td><td data-paq="Escala"><span class="nope" aria-label="no incluido">—</span></td><td data-paq="Integral"><span class="tick" aria-label="incluido">✓</span></td>
             </tr>
         </tbody>
       </table>

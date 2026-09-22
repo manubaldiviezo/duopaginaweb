@@ -495,14 +495,19 @@ section { padding: 88px 0; position: relative; }
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.reel-track { display: flex; width: max-content; gap: 14px; animation: scroll 78s linear infinite; padding: 6px 0 12px; }
+.reel-track { display: flex; width: max-content; gap: 14px; padding: 6px 0 12px; will-change: transform; }
+.reel-strip { cursor: grab; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior-x: contain; }
+.reel-strip::-webkit-scrollbar { display: none; }
+.reel-strip.arrastrando { cursor: grabbing; }
+.reel-strip.arrastrando .reel { pointer-events: none; }
 /* El muro nunca se detiene: en tactil el :hover queda pegado al tocar. */
 .reel-track .reel { width: 186px; flex-shrink: 0; }
-@media (max-width: 600px) { .reel-track .reel { width: 156px; } .reel-track { animation-duration: 64s; } }
+@media (max-width: 600px) { .reel-track .reel { width: 156px; } }
 
-.reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: #22221e; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
+.reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: transparent center/cover no-repeat; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
 .reel:hover { transform: translateY(-4px); border-color: var(--orange-line); }
 .reel video, .reel .reel-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel img.reel-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .reel .reel-ph { display: flex; align-items: center; justify-content: center; background: linear-gradient(160deg, #2c2c27, #1a1a17); color: var(--text-3); font-size: 26px; }
 .reel-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 34px 12px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); z-index: 2; }
 .reel-cliente { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px; color: #fff; }
@@ -557,13 +562,20 @@ section { padding: 88px 0; position: relative; }
 .equipo-firma { margin-top: 22px; font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); text-align: center; }
 
 /* ── Caras del equipo (círculos con anillo de marca) ── */
-.caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px 46px; margin: 0 auto; }
+.caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px 52px; margin: 0 auto; }
 .cara { margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.cara-foto { display: block; width: 152px; height: 152px; border-radius: 50%; padding: 2.5px; background: var(--grad); box-shadow: 0 10px 34px rgba(236,103,48,0.22); margin-bottom: 13px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
-.cara:hover .cara-foto { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(236,103,48,0.34); }
+.cara-foto { display: block; width: clamp(148px, 40vw, 196px); aspect-ratio: 1; border-radius: 50%; padding: 3px; background: var(--grad); box-shadow: 0 12px 38px rgba(236,103,48,0.24); margin-bottom: 14px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.cara:hover .cara-foto { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(236,103,48,0.36); }
 .cara-foto img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-.cara b { font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 800; color: var(--text); line-height: 1.25; }
-.cara-rol { font-size: 12px; font-weight: 600; color: var(--amber); }
+.cara b { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); line-height: 1.25; }
+.cara-rol { font-size: 12.5px; font-weight: 600; color: var(--amber); }
+
+/* ── Red de especialistas ── */
+.equipo-red { max-width: 700px; margin: 30px auto 0; text-align: center; }
+.red-intro { font-size: 13.6px; line-height: 1.6; color: var(--text-3); margin-bottom: 15px; }
+.red-intro strong { color: var(--text-2); font-weight: 600; }
+.red-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.red-lista li { font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; color: var(--text-2); background: rgba(255,255,255,0.05); border: 1px solid var(--line-soft); padding: 7px 13px; border-radius: 999px; }
 
 /* ── Detrás de cámara ── */
 .bts { max-width: 620px; margin: 34px auto 0; }
@@ -573,9 +585,9 @@ section { padding: 88px 0; position: relative; }
 /* ── La foto del dúo ── */
 .duo-foto { position: relative; margin: 30px auto 0; max-width: 700px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line-soft); }
 .duo-foto img { display: block; width: 100%; height: auto; }
-.duo-foto figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; display: flex; flex-direction: column; gap: 5px; background: linear-gradient(transparent, rgba(10,10,8,0.92)); }
-.duo-foto figcaption b { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #fff; }
-.duo-foto figcaption span { font-size: 13px; line-height: 1.5; color: var(--text-2); max-width: 460px; }
+
+
+
 .bts-clip { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3); display: block; }
 .bts-pie { text-align: center; font-size: 12.8px; color: var(--text-3); margin-top: 14px; }
 .bts-pie strong { color: var(--text-2); font-weight: 600; }
@@ -638,6 +650,79 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 .wa-float:hover { transform: scale(1.08); }
 .wa-float svg { width: 29px; height: 29px; color: #fff; }
 @media (max-width: 767px) { .wa-float { bottom: 16px; right: 16px; width: 52px; height: 52px; } }
+/* ── Caso destacado ── */
+.caso-hero { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 980px; margin: 0 auto 34px; background: linear-gradient(160deg, rgba(236,103,48,0.10), var(--bg-3) 55%); border: 1px solid var(--orange-line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 22px 70px rgba(236,103,48,0.14); }
+.ch-media { position: relative; background: #0f0f0d; }
+.ch-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.ch-body { padding: 26px 26px 28px; }
+.ch-flag { display: inline-flex; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); background: rgba(255,255,255,0.06); padding: 5px 11px; border-radius: 999px; margin-bottom: 13px; }
+.caso-hero h3 { font-family: 'Montserrat', sans-serif; font-size: clamp(22px, 3.4vw, 30px); font-weight: 900; color: var(--text); margin-bottom: 11px; letter-spacing: -0.01em; }
+.ch-lead { font-size: 14.5px; line-height: 1.6; color: var(--text-2); margin-bottom: 20px; }
+.ch-lead strong { color: var(--amber); font-weight: 700; }
+.ch-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 17px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); margin-bottom: 16px; }
+.ch-metrics div { display: flex; flex-direction: column; gap: 3px; }
+.ch-metrics b { font-family: 'Montserrat', sans-serif; font-size: clamp(19px, 3vw, 25px); font-weight: 900; line-height: 1; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.ch-metrics span { font-size: 11px; color: var(--text-3); line-height: 1.35; }
+.ch-nota { font-size: 12.8px; line-height: 1.6; color: var(--text-3); }
+.casos-otros { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+@media (min-width: 860px) { .caso-hero { grid-template-columns: 1.05fr 1fr; } .ch-body { padding: 34px 34px 36px; } }
+
+/* ── Lo que incluye el servicio ── */
+.incluye { max-width: 1060px; margin: 0 auto 38px; }
+.incluye-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 18px; }
+.incluye-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.inc { display: flex; flex-direction: column; gap: 6px; padding: 19px 20px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+.inc:hover { border-color: var(--orange-line); background: var(--card-hover); transform: translateY(-3px); }
+.inc-ico { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: rgba(236,103,48,0.11); border: 1px solid var(--orange-line); color: var(--orange); margin-bottom: 4px; }
+.inc-ico svg { width: 18px; height: 18px; }
+.inc b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: var(--text); }
+.inc span:last-child { font-size: 12.6px; line-height: 1.55; color: var(--text-3); }
+.inc-dom { border-color: var(--orange-line); background: linear-gradient(160deg, rgba(236,103,48,0.09), var(--card) 60%); }
+.inc-dom .inc-ico { color: var(--amber); }
+@media (min-width: 640px) { .incluye-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .incluye-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Evita los pocos px de desborde lateral en pantallas angostas. */
+html, body { overflow-x: clip; max-width: 100%; }
+/* ── Las dos vías ── */
+.vias { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.vias-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 920px; margin: 0 auto; }
+.via { position: relative; padding: 28px 24px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); transition: border-color 0.3s, transform 0.3s; }
+.via:hover { border-color: var(--orange-line); transform: translateY(-4px); }
+.via-tag { display: inline-flex; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); background: rgba(249,178,51,0.12); border: 1px solid rgba(249,178,51,0.32); padding: 5px 11px; border-radius: 999px; margin-bottom: 14px; }
+.via-tag-pago { color: #1D1D1B; background: var(--grad); border-color: transparent; }
+.via h3 { font-size: 19px; margin-bottom: 10px; }
+.via p { font-size: 13.5px; line-height: 1.6; color: var(--text-3); margin-bottom: 16px; }
+.via ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.via li { position: relative; padding-left: 20px; font-size: 12.8px; line-height: 1.5; color: var(--text-2); }
+.via li::before { content: ""; position: absolute; left: 0; top: 6px; width: 10px; height: 6px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg); }
+.vias-cierre { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 14px; line-height: 1.65; color: var(--text-3); }
+.vias-cierre strong { color: var(--text); font-weight: 600; }
+@media (min-width: 780px) { .vias-grid { grid-template-columns: 1fr 1fr; } }
+
+/* ── Banner de Instagram del caso destacado ── */
+.ig-banner { display: block; margin: 18px 0; padding: 14px; background: rgba(255,255,255,0.035); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); transition: border-color 0.3s, background 0.3s; }
+.ig-banner:hover { border-color: var(--orange-line); background: rgba(255,255,255,0.055); }
+.ig-top { display: flex; align-items: center; gap: 11px; margin-bottom: 11px; }
+.ig-av { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1.5px solid var(--orange-line); }
+.ig-datos { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.ig-datos b { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; color: var(--text); }
+.ig-datos span { font-size: 11.6px; color: var(--text-3); }
+.ig-datos strong { color: var(--amber); font-weight: 700; }
+.ig-ver { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--orange); white-space: nowrap; }
+.ig-feed { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.ig-feed img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; display: block; }
+
+/* ── Cinta de logos de clientes ── */
+.logos-cinta { margin-bottom: 30px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+.logos-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+.logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 46s linear infinite; }
+.logo-item { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; width: 84px; }
+.logo-item img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-soft); filter: grayscale(1); opacity: 0.55; transition: filter 0.35s, opacity 0.35s, transform 0.35s; }
+.logo-item:hover img { filter: none; opacity: 1; transform: scale(1.08); }
+.logo-item i { font-style: normal; font-size: 9.5px; font-weight: 600; color: var(--text-3); text-align: center; line-height: 1.25; }
+@media (max-width: 560px) { .ig-feed { grid-template-columns: repeat(3, 1fr); } .ig-ver { display: none; } }
+
 </style>
 </head>
 <body>
@@ -701,66 +786,40 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════ S2 · TIRA DINÁMICA DE TRABAJOS ═══════════ -->
-<section class="strip-sec" id="trabajos">
-  <div class="container">
-    <div class="sec-head reveal" style="margin-bottom: 34px;">
-      <span class="eyebrow" style="display:inline-flex">Nuestro trabajo</span>
-      <h2>Contenido que la gente <span class="grad">eligió ver.</span></h2>
-      <p>Dirigido, producido y editado por DÚO. Puedes ver más en nuestros compartidos de TikTok</p>
-    </div>
-  </div>
-  <div class="reel-strip" id="reel-strip">
-    <div class="reel-track" id="reel-track"></div>
-  </div>
-</section>
-
-<!-- ═══════════ S5 · VSL ═══════════ -->
-<!-- ═══════════ VSL · OCULTA hasta grabar el video (2026-09-22) ═══════════
-<section class="vsl">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Míralo en 3 minutos</span>
-      <h2>Todo lo que hacemos, <span class="grad">explicado en 3 minutos.</span></h2>
-    </div>
-    <div class="vsl-frame reveal" id="vsl-frame">
-      <div class="vsl-ph" id="vsl-ph">
-        <div class="vsl-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <span>Video · 3 min</span>
-      </div>
-    </div>
-    <div style="text-align:center" class="reveal">
-      <a href="#contacto" class="btn btn-orange">Quiero esto para mi marca
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-══════════════════════════════════════════════════════════════════ -->
 <!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
 <section id="equipo">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
       <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web. Una sola cabeza pensando tu marca.</p>
+      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web.</p>
     </div>
 
     <div class="caras">
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, dirección estratégica de DÚO" loading="lazy" width="560" height="560"></span>
-        <b>Manu Baldiviezo</b><span class="cara-rol">Dirección estratégica</span>
+        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
       </figure>
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, dirección de contenido de DÚO" loading="lazy" width="560" height="560"></span>
-        <b>Valeria</b><span class="cara-rol">Dirección de contenido</span>
+        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Valeria</b><span class="cara-rol">Directora creativa</span>
       </figure>
     </div>
 
     <figure class="duo-foto reveal">
-      <img src="/images/equipo/duo.jpg" alt="Manu y Valeria, el dúo detrás de la agencia" loading="lazy" width="1200" height="676">
-      <figcaption><b>Somos pareja y somos socios.</b><span>De ahí el nombre. Tu marca no pasa por un equipo que rota: pasa por nosotros dos, todos los días.</span></figcaption>
+      <img src="/images/equipo/duo.jpg" alt="Manu y Valeria, dirección de DÚO" loading="lazy" width="1200" height="676">
     </figure>
+
+    <div class="equipo-red reveal">
+      <p class="red-intro">Detrás de cada entrega hay un equipo de <strong>especialistas freelance</strong> de distintos departamentos de Bolivia. Cada uno en lo suyo.</p>
+      <ul class="red-lista">
+        <li>Editores de video</li>
+        <li>Diseñadores gráficos</li>
+        <li>Desarrollador</li>
+        <li>Trafficker digital</li>
+        <li>Community manager</li>
+      </ul>
+    </div>
 
     <div class="bts reveal">
       <span class="bts-label">Detrás de cámara</span>
@@ -772,10 +831,54 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
           <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
           <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
       </div>
-      <p class="bts-pie">Dirigimos, grabamos y editamos nosotros. <strong>Sin tercerizar.</strong></p>
+      <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
     </div>
 
-    <div class="equipo-firma reveal">Desde Bolivia — trabajamos online con negocios de todo el país y del exterior.</div>
+    <div class="equipo-firma reveal">Trabajamos online con negocios de todo el país y del exterior.</div>
+  </div>
+</section>
+
+<!-- ═══════════ S2 · TIRA DINÁMICA DE TRABAJOS ═══════════ -->
+<section class="strip-sec" id="trabajos">
+  <div class="container">
+    <div class="sec-head reveal" style="margin-bottom: 34px;">
+      <span class="eyebrow" style="display:inline-flex">Contenido orgánico · sin pauta</span>
+      <h2>Esto lo vio la gente <span class="grad">sin que pagáramos un peso.</span></h2>
+      <p>Producción audiovisual y estrategia de contenido orgánico: videos que la gente eligió ver y compartir. <strong>Cero publicidad pagada detrás.</strong></p>
+    </div>
+  </div>
+    <div class="logos-cinta reveal">
+      <span class="logos-label">Marcas que confiaron</span>
+      <div class="logos-pista">
+      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Juguetería Abbanissi" loading="lazy" width="220" height="220"><i>Juguetería Abbanissi</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
+      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
+      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
+      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy Café Bistró" loading="lazy" width="220" height="220"><i>Yummy Café Bistró</i></span>
+      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Juguetería Abbanissi" loading="lazy" width="220" height="220"><i>Juguetería Abbanissi</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
+      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
+      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
+      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy Café Bistró" loading="lazy" width="220" height="220"><i>Yummy Café Bistró</i></span>
+      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
+      </div>
+    </div>
+
+  <div class="reel-strip" id="reel-strip">
+    <div class="reel-track" id="reel-track"></div>
   </div>
 </section>
 
@@ -784,12 +887,79 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   <canvas class="cosmos" aria-hidden="true"></canvas>
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Resultados de campañas</span>
-      <h2>Estrategia + campañas + medición. <span class="grad">Esto pasa cuando las tres trabajan juntas.</span></h2>
-      <p>Resultados en Bolivia — y fuera de Bolivia. La misma metodología funciona en 5 países.</p>
+      <span class="eyebrow" style="display:inline-flex">Campañas pagadas · Meta Ads</span>
+      <h2>No son campañas que arrancan. <span class="grad">Son campañas que se sostienen.</span></h2>
+      <p>Cualquiera prende una campaña. Lo difícil es que siga vendiendo el mes doce. Resultados en Bolivia y en 5 países.</p>
     </div>
+    <article class="caso-hero reveal">
+      <div class="ch-media">
+        <img src="/images/casos/01-femmeninas-ads-manager-roas.webp" alt="Administrador de anuncios de Meta con el retorno de femmeninas.cl" loading="lazy">
+      </div>
+      <div class="ch-body">
+        <span class="ch-flag">🇨🇱 Ecommerce · Chile</span>
+        <h3>femmeninas.cl</h3>
+        <p class="ch-lead">Casi <strong>un año</strong> sosteniendo la pauta de un ecommerce: optimización y escala continua, sin parar de vender.</p>
+        <div class="ch-metrics">
+          <div><b>10.55x</b><span>de retorno</span></div>
+          <div><b>+US$50K</b><span>gestionados en Meta</span></div>
+          <div><b>24/7</b><span>campañas activas</span></div>
+        </div>
+        <a class="ig-banner" href="https://www.instagram.com/femmeninas.cl/" target="_blank" rel="noopener">
+          <span class="ig-top">
+            <img class="ig-av" src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl en Instagram" loading="lazy" width="200" height="200">
+            <span class="ig-datos"><b>@femmeninas.cl</b><span><strong>993 mil</strong> seguidores en Instagram</span></span>
+            <span class="ig-ver">Ver perfil ↗</span>
+          </span>
+          <span class="ig-feed">
+            <img src="/images/femme/f1.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+            <img src="/images/femme/f2.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+            <img src="/images/femme/f3.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+            <img src="/images/femme/f4.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+            <img src="/images/femme/f5.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+            <img src="/images/femme/f6.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
+          </span>
+        </a>
+        <p class="ch-nota">No es una campaña que salió bien un mes. Es una cuenta sostenida durante casi un año, con inversión creciente y una estructura que se optimiza todas las semanas.</p>
+      </div>
+    </article>
+
+    <p class="casos-otros reveal">Y no es el único caso.</p>
     <div class="casos-grid reveal" id="casos-grid"></div>
     <p class="casos-hint reveal">Deslizá para ver más casos →</p>
+  </div>
+</section>
+
+<!-- ═══════════ LAS DOS VÍAS ═══════════ -->
+<section class="vias">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Cómo hacemos crecer una marca</span>
+      <h2>Hay dos formas de que te vean. <span class="grad">Trabajamos las dos.</span></h2>
+      <p>No empujamos siempre lo mismo. Primero definimos qué necesita tu negocio hoy — y recién ahí elegimos el camino.</p>
+    </div>
+    <div class="vias-grid">
+      <article class="via reveal">
+        <span class="via-tag">Sin pagar</span>
+        <h3>Contenido orgánico</h3>
+        <p>Producimos videos pensados para que la gente los vea, los guarde y los comparta. Alcance que se gana, no que se compra. Es lo que ves en la cinta de arriba.</p>
+        <ul>
+          <li>Marca que aparece todos los días</li>
+          <li>Comunidad que te sigue de verdad</li>
+          <li>Contenido que sigue trabajando meses después</li>
+        </ul>
+      </article>
+      <article class="via reveal">
+        <span class="via-tag via-tag-pago">Con inversión</span>
+        <h3>Campañas en Meta</h3>
+        <p>Ponemos presupuesto detrás del contenido para llegar a quien te compra. Facebook e Instagram, con estructura, medición y optimización semanal.</p>
+        <ul>
+          <li>Ventas y mensajes que se pueden medir</li>
+          <li>Público nuevo que todavía no te conoce</li>
+          <li>Lo que funciona se escala; lo que no, se cambia</li>
+        </ul>
+      </article>
+    </div>
+    <p class="vias-cierre reveal">¿Cuál te toca? Depende de tu etapa y de lo que quieras lograr: <strong>vender</strong>, <strong>posicionar tu marca</strong> o <strong>que lleguen a tu perfil</strong>. Eso lo definimos juntos antes de grabar nada.</p>
   </div>
 </section>
 
@@ -798,8 +968,19 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Servicios</span>
-      <h2>Un método. <span class="grad">Tres paquetes.</span></h2>
-      <p>Los tres incluyen estrategia, dirección creativa y campañas. Cambia cuánto producimos.</p>
+      <h2>Producimos tu contenido. <span class="grad">Y lo convertimos en ventas.</span></h2>
+      <p>Grabamos, editamos y pautamos nosotros. Elegí cuánto volumen necesitás por mes.</p>
+    </div>
+    <div class="incluye reveal">
+      <span class="incluye-label">Lo que hacemos por vos, todos los meses</span>
+      <div class="incluye-grid">
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span><b>Estrategia y guiones</b><span>Qué videos necesita tu marca, con qué ángulo y qué gancho.</span></div>
+        <div class="inc inc-dom"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><b>Producción audiovisual</b><span>Vamos a tu local y grabamos con equipo propio. En Yacuiba y en otros departamentos según el proyecto.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><b>Edición profesional</b><span>Cortes, ritmo, subtítulos y musicalización. Listo para publicar.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2"/><circle cx="6" cy="12" r="3"/><path d="M3 21h18"/></svg></span><b>Artes gráficas</b><span>Piezas para feed, historias y anuncios, con tu identidad.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><b>Campañas en Meta</b><span>Facebook e Instagram: montaje, optimización y escala.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><b>Sitio web</b><span>Landing lista para recibir tus anuncios y convertir.</span></div>
+      </div>
     </div>
     <div class="rutas">
       <a href="/servicios#escalar" class="ruta reveal">
@@ -979,7 +1160,6 @@ const WHATSAPP = "59177897077";
 
 /* Datos de casos (reutilizados de la landing personal, cifras exactas) */
 const CASOS = [
-  { brand: "femmeninas.cl", tag: "Ecommerce · Chile", flag: "🇨🇱", img: "/images/casos/01-femmeninas-ads-manager-roas.webp", title: '+US$50.000 gestionados con <b>retorno de 10.55x</b> durante 7 meses', metrics: [["US$50K+","gestionados"],["10.55x","ROAS"],["+7 meses","escalando"]] },
   { brand: "Vision Arq Studio", tag: "Arquitectura · Bolivia", flag: "🇧🇴", img: "/images/casos/02-vision-arq-ads-manager.webp", title: '<b>6 proyectos cerrados</b> en el primer mes de campañas', metrics: [["+300","mensajes"],["20","reuniones"],["6","proyectos"]] },
   { brand: "ProGaming EC", tag: "Gaming · Ecuador", flag: "🇪🇨", img: "/images/casos/05-progaming-ads-manager-whatsapp.webp", title: '<b>+25.000 prospectos</b> por WhatsApp a US$0.15 cada uno', metrics: [["+25K","conversaciones"],["US$0.15","por contacto"],["+425K","alcanzados"]] },
   { brand: "Juguetería Ñañitos", tag: "Importadora · Bolivia", flag: "🇧🇴", img: "/images/casos/04-nanitos-ads-manager-manychat.webp", title: '<b>+5.000 mensajes</b> a US$0.08 para mover inventario', metrics: [["+5.000","mensajes"],["US$0.08","por contacto"]] },
@@ -987,20 +1167,6 @@ const CASOS = [
 ];
 
 /* Muro de reels — data editable. Cuando existan clips, completar videoSrc/poster/urlReal */
-const REELS = [
-  { cliente: "Abbanissi", nicho: "Juguetería", metrica: "667.3K", videoSrc: "/reels/01-abbanissi.mp4", poster: "/reels/posters/01-abbanissi.jpg", urlReal: "https://www.tiktok.com/@jugueteriaabbanissi/video/7481773766524013830" },
-  { cliente: "Climere", nicho: "Estética", metrica: "295.1K", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
-  { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
-  { cliente: "Marena", nicho: "Moda", metrica: "193.5K", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
-  { cliente: "Pastela", nicho: "Comida", metrica: "167K", videoSrc: "/reels/05-pastela.mp4", poster: "/reels/posters/05-pastela.jpg", urlReal: "https://www.tiktok.com/@pastela.fb/video/7439828303768210743" },
-  { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
-  { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
-  { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
-  { cliente: "OHM", nicho: "Electrodomésticos", metrica: "54.6K", videoSrc: "/reels/09-ohm.mp4", poster: "/reels/posters/09-ohm.jpg", urlReal: "https://www.tiktok.com/@ohm_refrigeracion/video/7430617852417281285" },
-  { cliente: "Abigail Zegarra", nicho: "Pastelería", metrica: "47.1K", videoSrc: "/reels/10-abigail.mp4", poster: "/reels/posters/10-abigail.jpg", urlReal: "https://www.tiktok.com/@abigailzegarrapasteleria/video/7522470708639730950" },
-  { cliente: "Yacuiba VS", nicho: "Eventos", metrica: "45.5K", videoSrc: "/reels/11-yacuibavs.mp4", poster: "/reels/posters/11-yacuibavs.jpg", urlReal: "https://www.tiktok.com/@yacuibavs/video/7447700376570088709" },
-  { cliente: "Yummy", nicho: "Café", metrica: "40.4K", videoSrc: "/reels/12-yummy.mp4", poster: "/reels/posters/12-yummy.jpg", urlReal: "https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214" }
-];
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1084,8 +1250,9 @@ const reelTrack = document.getElementById('reel-track');
 function reelCard(r) {
   return `
     <a class="reel" ${r.urlReal ? `href="${r.urlReal}" target="_blank" rel="noopener"` : ''}>
+      ${r.poster ? `<img class="reel-poster" src="${r.poster}" alt="" loading="eager" decoding="async">` : ''}
       ${r.videoSrc
-        ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}" ${r.poster ? `poster="${r.poster}"` : ''}></video>`
+        ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}"></video>`
         : `<div class="reel-ph">🎬</div>`}
       ${r.metrica ? `<span class="reel-vistas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>${r.metrica}</span>` : ''}
       <div class="reel-overlay">
@@ -1097,8 +1264,76 @@ function reelCard(r) {
     </a>`;
 }
 
+/* Muro de trabajos — clips reales de los compartidos de TikTok. */
+const REELS = [
+  { cliente: "Abbanissi", nicho: "Juguetería", metrica: "667.3K", videoSrc: "/reels/01-abbanissi.mp4", poster: "/reels/posters/01-abbanissi.jpg", urlReal: "https://www.tiktok.com/@jugueteriaabbanissi/video/7481773766524013830" },
+  { cliente: "Climere", nicho: "Estética", metrica: "295.1K", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
+  { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
+  { cliente: "Marena", nicho: "Moda", metrica: "193.5K", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
+  { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
+  { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
+  { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
+  { cliente: "Abigail Zegarra", nicho: "Pastelería", metrica: "47.1K", videoSrc: "/reels/10-abigail.mp4", poster: "/reels/posters/10-abigail.jpg", urlReal: "https://www.tiktok.com/@abigailzegarrapasteleria/video/7522470708639730950" },
+  { cliente: "Yacuiba VS", nicho: "Eventos", metrica: "45.5K", videoSrc: "/reels/11-yacuibavs.mp4", poster: "/reels/posters/11-yacuibavs.jpg", urlReal: "https://www.tiktok.com/@yacuibavs/video/7447700376570088709" },
+  { cliente: "Yummy", nicho: "Café", metrica: "40.4K", videoSrc: "/reels/12-yummy.mp4", poster: "/reels/posters/12-yummy.jpg", urlReal: "https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214" }
+];
+
 /* Pista duplicada para el loop infinito del marquee */
 reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join('');
+
+/* Carrusel del muro: avanza solo y se puede arrastrar sin que se detenga.
+   Se mueve el scroll del contenedor, no una animación CSS, para que el gesto
+   del dedo y el avance automático convivan. */
+(function () {
+  const tira = document.querySelector(".reel-strip");
+  if (!tira || !reelTrack) return;
+  const lento = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let arrastrando = false, xInicio = 0, scrollInicio = 0, ultimoGesto = 0;
+
+  function mitad() { return reelTrack.scrollWidth / 2; }
+  function normalizar() {
+    const m = mitad();
+    if (m <= 0) return;
+    if (tira.scrollLeft >= m) tira.scrollLeft -= m;
+    else if (tira.scrollLeft < 0) tira.scrollLeft += m;
+  }
+
+  let previo = 0;
+  function avanzar(ahora) {
+    const dt = previo ? Math.min(ahora - previo, 50) : 16;
+    previo = ahora;
+    // se frena un instante mientras el dedo arrastra, y retoma solo
+    if (!arrastrando && !lento && ahora - ultimoGesto > 220) {
+      tira.scrollLeft += (mitad() / 42000) * dt;  // la pista completa en ~42 s
+      normalizar();
+    }
+    requestAnimationFrame(avanzar);
+  }
+  requestAnimationFrame(avanzar);
+
+  const punteroBaja = (e) => {
+    arrastrando = true; tira.classList.add("arrastrando");
+    xInicio = e.touches ? e.touches[0].clientX : e.clientX;
+    scrollInicio = tira.scrollLeft;
+  };
+  const punteroMueve = (e) => {
+    if (!arrastrando) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
+    tira.scrollLeft = scrollInicio - (x - xInicio);
+    normalizar();
+  };
+  const punteroSube = () => {
+    arrastrando = false; ultimoGesto = performance.now();
+    tira.classList.remove("arrastrando");
+  };
+  tira.addEventListener("mousedown", punteroBaja);
+  window.addEventListener("mousemove", punteroMueve);
+  window.addEventListener("mouseup", punteroSube);
+  tira.addEventListener("touchstart", punteroBaja, { passive: true });
+  tira.addEventListener("touchmove", punteroMueve, { passive: true });
+  tira.addEventListener("touchend", punteroSube);
+  tira.addEventListener("scroll", () => { if (!arrastrando) ultimoGesto = performance.now(); }, { passive: true });
+})();
 
 /* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
 const videoObserver = new IntersectionObserver((entries) => {
