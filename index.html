@@ -869,6 +869,35 @@ html, body { overflow-x: clip; max-width: 100%; }
 body { padding-top: 0 !important; }
 .hero { padding-top: clamp(86px, 13vh, 130px); }
 
+/* ── La historia ── */
+.historia { max-width: 720px; margin: 0 auto 38px; }
+.historia p { font-size: 14.2px; line-height: 1.75; color: var(--text-3); margin-bottom: 16px; }
+.historia strong { color: var(--text); font-weight: 600; }
+.historia-dato { position: relative; padding: 19px 21px; background: rgba(236,103,48,0.06); border-left: 2px solid var(--orange); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13.4px !important; color: var(--text-2) !important; }
+.historia-dato b { color: var(--amber); font-weight: 700; }
+.historia-dato span { display: block; margin-top: 9px; font-size: 12.6px; color: var(--text-3); }
+
+/* ── La escalera DÚO3X ── */
+.escalera { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+.esc-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1060px; margin: 0 auto; }
+.esc { position: relative; display: flex; flex-direction: column; padding: 30px 24px 24px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+.esc:hover { transform: translateY(-5px); border-color: var(--orange-line); }
+.esc-n { position: absolute; top: 18px; right: 20px; font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 900; line-height: 1; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; opacity: 0.22; }
+.esc-tag { display: inline-flex; align-self: flex-start; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); background: rgba(255,255,255,0.06); border: 1px solid var(--line-soft); padding: 5px 11px; border-radius: 999px; margin-bottom: 14px; }
+.esc-pronto { color: var(--amber); border-color: rgba(249,178,51,0.4); background: rgba(249,178,51,0.12); }
+.esc-activo { color: #1D1D1B; background: var(--grad); border-color: transparent; }
+.esc h3 { font-size: 19px; margin-bottom: 9px; }
+.esc-que { font-size: 13.4px; line-height: 1.6; color: var(--text-3); margin-bottom: 17px; }
+.esc-lista { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 9px; }
+.esc-lista li { position: relative; padding-left: 20px; font-size: 12.8px; line-height: 1.5; color: var(--text-2); }
+.esc-lista li::before { content: ""; position: absolute; left: 0; top: 6px; width: 10px; height: 6px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg); }
+.esc-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.esc-quien { font-size: 11.5px; font-weight: 600; color: var(--text-3); }
+.esc-cta { font-size: 12.8px; font-weight: 700; color: var(--orange); white-space: nowrap; transition: transform 0.25s; }
+.esc:hover .esc-cta { transform: translateX(3px); }
+.esc-dom { border-color: var(--orange-line); background: linear-gradient(170deg, rgba(236,103,48,0.10), var(--card) 52%); box-shadow: 0 0 0 1px rgba(236,103,48,0.16), 0 16px 48px rgba(236,103,48,0.10); }
+@media (min-width: 880px) { .esc-grid { grid-template-columns: repeat(3, 1fr); } }
+
 </style>
 </head>
 <body>
@@ -1041,6 +1070,61 @@ body { padding-top: 0 !important; }
   </div>
 </section>
 
+<!-- ═══════════ QUIÉNES SOMOS ═══════════ -->
+<section id="equipo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
+      <h2>Empezamos con una laptop <span class="grad">y un celular.</span></h2>
+      <p>Hace dos años. Lo único que teníamos de sobra era ganas de entender por qué a unos les funcionaba y a otros no.</p>
+    </div>
+
+    <div class="historia reveal">
+      <p>Esa obsesión por entender se volvió un método. No un plan de contenido: un <strong>plan de marketing digital armado como se arma una investigación</strong> — diagnóstico, hipótesis, medición y corrección. Si un negocio no vende, primero averiguamos por qué. Recién después grabamos.</p>
+      <p>Lo mejoramos con cada cuenta. Hoy trabajamos con agentes de inteligencia artificial entrenados con nuestra propia base: libros, metodologías y los procesos que fuimos documentando. Investigan el mercado, cruzan datos y arman el diagnóstico. <strong>Nosotros decidimos.</strong> Eso es lo que no se delega.</p>
+      <p class="historia-dato">Un ejemplo concreto: las campañas de <b>femmeninas.cl</b> quedaron automatizadas, con revisión y optimización diaria. Ya no hay que tocarlas a mano — se supervisa que todo marche y se decide lo importante. <span>Eso libera horas que van a pensar tu cuenta, no a ejecutarla.</span></p>
+      <p>Creemos que este método puede ayudar a muchos más negocios a crecer de forma sostenida. Por eso lo documentamos, lo enseñamos y lo seguimos afinando.</p>
+    </div>
+
+    <div class="caras">
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
+      </figure>
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Valeria</b><span class="cara-rol">Directora creativa</span>
+      </figure>
+    </div>
+
+    <div class="equipo-red reveal">
+      <p class="red-intro">Detrás de cada entrega hay un equipo de <strong>especialistas freelance</strong> de distintos departamentos de Bolivia. Cada uno en lo suyo.</p>
+      <ul class="red-lista">
+        <li>Editores de video</li>
+        <li>Diseñadores gráficos</li>
+        <li>Desarrollador</li>
+        <li>Trafficker digital</li>
+        <li>Community manager</li>
+      </ul>
+    </div>
+
+    <div class="bts reveal">
+      <span class="bts-label">Detrás de cámara</span>
+      <div class="bts-grid">
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+      </div>
+      <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
+    </div>
+
+    <div class="equipo-firma reveal">Trabajamos online con negocios de todo el país y del exterior.</div>
+  </div>
+</section>
+
 <!-- ═══════════ LAS DOS VÍAS ═══════════ -->
 <section class="vias">
   <div class="container">
@@ -1194,52 +1278,66 @@ body { padding-top: 0 !important; }
   </div>
 </section>
 
-<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
-<section id="equipo">
+
+
+<!-- ═══════════ LA ESCALERA DÚO3X ═══════════ -->
+<section class="escalera" id="duo3x">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web.</p>
+      <span class="eyebrow" style="display:inline-flex">El método DÚO3X</span>
+      <h2>Tres formas de trabajar con nosotros. <span class="grad">Elige según dónde estés.</span></h2>
+      <p>El mismo método, en tres profundidades. Puedes aprenderlo, ejecutarlo con nuestro acompañamiento, o dejarlo en nuestras manos.</p>
     </div>
 
-    <div class="caras">
-      <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
-        <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
-      </figure>
-      <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
-        <b>Valeria</b><span class="cara-rol">Directora creativa</span>
-      </figure>
+    <div class="esc-grid">
+      <article class="esc reveal">
+        <span class="esc-n">01</span>
+        <span class="esc-tag esc-pronto">Noviembre</span>
+        <h3>Reto DÚO3X</h3>
+        <p class="esc-que">Tres días para armar la estrategia de contenido de tu negocio, con nosotros guiando paso a paso.</p>
+        <ul class="esc-lista">
+          <li>Sales con tu plan escrito, no con apuntes</li>
+          <li>Queda grabado: lo repasas cuando quieras</li>
+          <li>Acceso a la comunidad</li>
+        </ul>
+        <div class="esc-foot">
+          <span class="esc-quien">Lo haces tú</span>
+          <a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20que%20me%20avisen%20cuando%20abra%20el%20Reto%20D%C3%9AO3X%20de%20noviembre." target="_blank" rel="noopener" class="esc-cta" data-origen="Reto DÚO3X">Avisarme →</a>
+        </div>
+      </article>
+
+      <article class="esc reveal">
+        <span class="esc-n">02</span>
+        <span class="esc-tag">Programa de 3 meses</span>
+        <h3>Formación y consultoría</h3>
+        <p class="esc-que">Te entregamos el sistema completo y te acompañamos mientras tu equipo lo ejecuta.</p>
+        <ul class="esc-lista">
+          <li>Tu plan de marketing digital a 3 meses, listo para ejecutar</li>
+          <li>Los procesos y manuales de función que usamos nosotros</li>
+          <li>Acompañamiento durante todo el programa</li>
+        </ul>
+        <div class="esc-foot">
+          <span class="esc-quien">Lo haces tú, con nosotros al lado</span>
+          <a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20del%20programa%20de%20formaci%C3%B3n%20y%20consultor%C3%ADa%20de%203%20meses." target="_blank" rel="noopener" class="esc-cta" data-origen="Formación 3 meses">Consultar →</a>
+        </div>
+      </article>
+
+      <article class="esc esc-dom reveal">
+        <span class="esc-n">03</span>
+        <span class="esc-tag esc-activo">Disponible ahora</span>
+        <h3>Servicio de agencia</h3>
+        <p class="esc-que">Nos encargamos de todo: estrategia, producción, campañas y medición.</p>
+        <ul class="esc-lista">
+          <li>Planificación, guiones y dirección creativa</li>
+          <li>Grabación, edición y artes</li>
+          <li>Campañas en Meta con optimización semanal</li>
+        </ul>
+        <div class="esc-foot">
+          <span class="esc-quien">Lo hacemos nosotros</span>
+          <a href="#servicios" class="esc-cta">Ver paquetes →</a>
+        </div>
+      </article>
     </div>
-
-
-    <div class="equipo-red reveal">
-      <p class="red-intro">Detrás de cada entrega hay un equipo de <strong>especialistas freelance</strong> de distintos departamentos de Bolivia. Cada uno en lo suyo.</p>
-      <ul class="red-lista">
-        <li>Editores de video</li>
-        <li>Diseñadores gráficos</li>
-        <li>Desarrollador</li>
-        <li>Trafficker digital</li>
-        <li>Community manager</li>
-      </ul>
-    </div>
-
-    <div class="bts reveal">
-      <span class="bts-label">Detrás de cámara</span>
-      <div class="bts-grid">
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
-      </div>
-      <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
-    </div>
-
-    <div class="equipo-firma reveal">Trabajamos online con negocios de todo el país y del exterior.</div>
   </div>
 </section>
 
