@@ -664,6 +664,33 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 
 /* Evita los pocos px de desborde lateral en pantallas angostas. */
 html, body { overflow-x: clip; max-width: 100%; }
+/* El header y la barra de pestañas son sticky: sin esto el titulo queda tapado al navegar por ancla. */
+section[id] { scroll-margin-top: 148px; }
+html { scroll-behavior: smooth; }
+@media (max-width: 719px) { section[id] { scroll-margin-top: 132px; } }
+/* ── Lo que incluye ── */
+.incluye { max-width: 1060px; margin: 0 auto 32px; }
+.incluye-label, .logos-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 18px; }
+.incluye-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.inc { display: flex; flex-direction: column; gap: 6px; padding: 19px 20px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+.inc:hover { border-color: var(--orange-line); background: var(--card-hover); transform: translateY(-3px); }
+.inc-ico { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: rgba(236,103,48,0.11); border: 1px solid var(--orange-line); color: var(--orange); margin-bottom: 4px; }
+.inc-ico svg { width: 18px; height: 18px; }
+.inc b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: var(--text); }
+.inc span:last-child { font-size: 12.6px; line-height: 1.55; color: var(--text-3); }
+.inc-dom { border-color: var(--orange-line); background: linear-gradient(160deg, rgba(236,103,48,0.09), var(--card) 60%); }
+.inc-dom .inc-ico { color: var(--amber); }
+/* ── Cinta de logos ── */
+.logos-cinta { margin: 0 auto 34px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+.logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 52s linear infinite; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logo-item { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; width: 84px; }
+.logo-item img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-soft); filter: grayscale(1); opacity: 0.55; transition: filter 0.35s, opacity 0.35s, transform 0.35s; }
+.logo-item:hover img { filter: none; opacity: 1; transform: scale(1.08); }
+.logo-item i { font-style: normal; font-size: 9.5px; font-weight: 600; color: var(--text-3); text-align: center; line-height: 1.25; }
+@media (min-width: 640px) { .incluye-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .incluye-grid { grid-template-columns: repeat(3, 1fr); } }
+
 </style>
 </head>
 <body>
@@ -705,98 +732,74 @@ html, body { overflow-x: clip; max-width: 100%; }
   <div class="container">
     <span class="eyebrow" style="display:inline-flex">Servicios DÚO</span>
     <h1>Todo lo que hacemos, <span class="grad">en un solo lugar.</span></h1>
-    <p>La misma metodología en distintas profundidades. Explorá por pestañas — o bajá y armá tu combo.</p>
+    <p>Producimos tu contenido y lo convertimos en ventas. Empezá por los paquetes — o bajá y armá tu combo.</p>
   </div>
 </section>
 
 <div class="tabs-bar">
   <div class="tabs" id="tabs" role="tablist">
-    <button class="tab on" data-panel="aprender" role="tab">Aprender</button>
+    <button class="tab on" data-panel="escalar" role="tab">Paquetes</button>
     <button class="tab" data-panel="delegar" role="tab">Contenido</button>
-    <button class="tab" data-panel="escalar" role="tab">Escalar</button>
     <button class="tab" data-panel="web" role="tab">Páginas web</button>
     <button class="tab" data-panel="eventos" role="tab">Eventos</button>
+    <button class="tab" data-panel="aprender" role="tab">Aprender</button>
   </div>
 </div>
 
 <!-- ═══ PANEL: APRENDER ═══ -->
-<div class="panel on" id="panel-aprender">
-  <section id="aprender">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Querés aprenderla</span>
-        <h2>La metodología, <span class="grad">en tus manos.</span></h2>
-        <p>Somos la única agencia que te vende su propia cocina — documentada y a tu alcance.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Estrategia de Contenido — Guía completa</span><span class="oferta-price">$20</span></div>
-            <div class="oferta-desc">El Árbol de Coherencia completo para tu estrategia.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Fórmula DÚO3X — Guionización estratégica</span><span class="oferta-price">$20</span></div>
-            <div class="oferta-desc">Guiones en 8 pasos, +25 estilos de gancho, estructuras para venta, valor y viralidad.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Pack ambos ebooks</span><span class="oferta-price">$35 / Bs 350</span></div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Agente Estratega Digital · IA</span><span class="oferta-price">$15</span></div>
-            <div class="oferta-desc">Nuestro GPT entrenado con la metodología DÚO, disponible 24/7.</div>
-          </div>
-          <div class="oferta star">
-            <span class="star-badge">★ Servicio estrella</span>
-            <div class="oferta-top"><span class="oferta-name">Asesoría de contenido</span><span class="oferta-price">$75 / Bs 750</span></div>
-            <div class="oferta-desc">2 sesiones en vivo: teoría + práctica sobre TU negocio. Salís con tu estrategia de contenido armada — para vender con anuncios o sin invertir en publicidad — entregada en un hub de Notion listo para gestionar tu contenido como una agencia: calendario, guiones, pilares y seguimiento. Incluye soporte por WhatsApp durante 1 mes.</div>
-          </div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20la%20*Asesor%C3%ADa%20de%20contenido*%20($75%20/%20Bs%20750)." target="_blank" rel="noopener" class="btn btn-orange">Quiero la asesoría</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ═══ PANEL: DELEGAR ═══ -->
-<div class="panel" id="panel-delegar">
-  <section id="delegar">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Querés delegarla</span>
-        <h2>Contenido para tus redes, <span class="grad">llave en mano.</span></h2>
-        <p>Grabamos, editamos y publicamos. Vos aprobás, nosotros hacemos el resto.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Contenido ágil · 2 videos</span><span class="oferta-price">Desde Bs 500</span></div>
-            <div class="oferta-desc">Reels y videos cortos: grabamos tu idea, editamos y te lo entregamos listo. Con celular <b>Bs 500</b> · con cámara profesional <b>Bs 750</b>.</div>
-          </div>
-          <div class="oferta star">
-            <span class="star-badge">Metodología completa</span>
-            <div class="oferta-top"><span class="oferta-name">Paquete estratégico · 4 videos</span><span class="oferta-price">Bs 1.350</span></div>
-            <div class="oferta-desc">Con cámara profesional: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">+ Anuncios con 50% de descuento</span><span class="oferta-price"><span style="text-decoration:line-through;opacity:0.5">$100</span> $50 / Bs 500 al mes</span></div>
-            <div class="oferta-desc">Si nos encargamos de tu producción completa (desde 4 videos), la gestión de tus anuncios en Facebook e Instagram te cuesta la mitad. Tu contenido y tus campañas, con el mismo equipo.</div>
-          </div>
-          <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20que%20produzcan%20el%20*contenido%20de%20mis%20redes*." target="_blank" rel="noopener" class="btn btn-orange">Quiero que lo hagan por mí</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ═══ PANEL: ESCALAR ═══ -->
-<div class="panel" id="panel-escalar">
+<div class="panel on" id="panel-escalar">
   <section id="escalar">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Paquetes</span>
       <h2>Elegí por <span class="grad">cuánto querés producir.</span></h2>
       <p>Los tres incluyen estrategia, dirección creativa y gestión de campañas. Lo que cambia es el volumen de contenido.</p>
+    </div>
+
+    <div class="incluye reveal">
+      <span class="incluye-label">Lo que hacemos por vos, todos los meses</span>
+      <div class="incluye-grid">
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span><b>Estrategia y guiones</b><span>Qué videos necesita tu marca, con qué ángulo y qué gancho.</span></div>
+        <div class="inc inc-dom"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span><b>Producción audiovisual</b><span>Vamos a tu local y grabamos con equipo propio. En Yacuiba y en otros departamentos según el proyecto.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span><b>Edición profesional</b><span>Cortes, ritmo, subtítulos y musicalización. Listo para publicar.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="17" r="2"/><circle cx="6" cy="12" r="3"/><path d="M3 21h18"/></svg></span><b>Artes gráficas</b><span>Piezas para feed, historias y anuncios, con tu identidad.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span><b>Campañas en Meta</b><span>Facebook e Instagram: montaje, optimización y escala.</span></div>
+        <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><b>Sitio web</b><span>Landing lista para recibir tus anuncios y convertir.</span></div>
+      </div>
+    </div>
+
+    <div class="logos-cinta reveal">
+      <span class="logos-label">Marcas que ya trabajan con nosotros</span>
+      <div class="logos-pista">
+        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
+        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
+        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
+        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
+        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
+        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
+        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
+        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
+        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
+        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
+        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
+        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
+        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
+        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
+        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
+        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
+        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
+        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
+        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+      </div>
     </div>
 
     <div class="paq-cabecera-movil reveal">
@@ -865,6 +868,40 @@ html, body { overflow-x: clip; max-width: 100%; }
 </div>
 
 <!-- ═══ PANEL: WEB ═══ -->
+
+<div class="panel" id="panel-delegar">
+  <section id="delegar">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Querés delegarla</span>
+        <h2>Contenido para tus redes, <span class="grad">llave en mano.</span></h2>
+        <p>Grabamos, editamos y publicamos. Vos aprobás, nosotros hacemos el resto.</p>
+      </div>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta reveal">
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Contenido ágil · 2 videos</span><span class="oferta-price">Desde Bs 500</span></div>
+            <div class="oferta-desc">Reels y videos cortos: grabamos tu idea, editamos y te lo entregamos listo. Con celular <b>Bs 500</b> · con cámara profesional <b>Bs 750</b>.</div>
+          </div>
+          <div class="oferta star">
+            <span class="star-badge">Metodología completa</span>
+            <div class="oferta-top"><span class="oferta-name">Paquete estratégico · 4 videos</span><span class="oferta-price">Bs 1.350</span></div>
+            <div class="oferta-desc">Con cámara profesional: estrategia DÚO3X, guiones, producción, edición Y publicación en tus redes.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">+ Anuncios con 50% de descuento</span><span class="oferta-price"><span style="text-decoration:line-through;opacity:0.5">$100</span> $50 / Bs 500 al mes</span></div>
+            <div class="oferta-desc">Si nos encargamos de tu producción completa (desde 4 videos), la gestión de tus anuncios en Facebook e Instagram te cuesta la mitad. Tu contenido y tus campañas, con el mismo equipo.</div>
+          </div>
+          <div class="honesto">¿Por qué la estrategia entra recién desde 4 videos? Porque una estrategia de contenido necesita volumen mínimo para probarse y funcionar. Con menos, ejecutamos tu idea — y te lo decimos así de claro.</div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20que%20produzcan%20el%20*contenido%20de%20mis%20redes*." target="_blank" rel="noopener" class="btn btn-orange">Quiero que lo hagan por mí</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: ESCALAR ═══ -->
+
 <div class="panel" id="panel-web">
   <section id="web">
     <div class="container">
@@ -891,6 +928,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 </div>
 
 <!-- ═══ PANEL: EVENTOS ═══ -->
+
 <div class="panel" id="panel-eventos">
   <section id="eventos">
     <div class="container">
@@ -933,6 +971,45 @@ html, body { overflow-x: clip; max-width: 100%; }
 </div>
 
 <!-- ═══ ARMÁ TU COMBO ═══ -->
+
+<div class="panel" id="panel-aprender">
+  <section id="aprender">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow" style="display:inline-flex">Querés aprenderla</span>
+        <h2>La metodología, <span class="grad">en tus manos.</span></h2>
+        <p>Somos la única agencia que te vende su propia cocina — documentada y a tu alcance.</p>
+      </div>
+      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
+        <div class="puerta reveal">
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Estrategia de Contenido — Guía completa</span><span class="oferta-price">$20</span></div>
+            <div class="oferta-desc">El Árbol de Coherencia completo para tu estrategia.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Fórmula DÚO3X — Guionización estratégica</span><span class="oferta-price">$20</span></div>
+            <div class="oferta-desc">Guiones en 8 pasos, +25 estilos de gancho, estructuras para venta, valor y viralidad.</div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Pack ambos ebooks</span><span class="oferta-price">$35 / Bs 350</span></div>
+          </div>
+          <div class="oferta">
+            <div class="oferta-top"><span class="oferta-name">Agente Estratega Digital · IA</span><span class="oferta-price">$15</span></div>
+            <div class="oferta-desc">Nuestro GPT entrenado con la metodología DÚO, disponible 24/7.</div>
+          </div>
+          <div class="oferta star">
+            <span class="star-badge">★ Servicio estrella</span>
+            <div class="oferta-top"><span class="oferta-name">Asesoría de contenido</span><span class="oferta-price">$75 / Bs 750</span></div>
+            <div class="oferta-desc">2 sesiones en vivo: teoría + práctica sobre TU negocio. Salís con tu estrategia de contenido armada — para vender con anuncios o sin invertir en publicidad — entregada en un hub de Notion listo para gestionar tu contenido como una agencia: calendario, guiones, pilares y seguimiento. Incluye soporte por WhatsApp durante 1 mes.</div>
+          </div>
+          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20la%20*Asesor%C3%ADa%20de%20contenido*%20($75%20/%20Bs%20750)." target="_blank" rel="noopener" class="btn btn-orange">Quiero la asesoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PANEL: DELEGAR ═══ -->
 <section id="combo">
   <div class="container">
     <div class="sec-head reveal">
@@ -1046,11 +1123,30 @@ function showPanel(name) {
   document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === 'panel-' + name));
   document.querySelectorAll('#panel-' + name + ' .reveal').forEach(el => { el.classList.add('visible'); });
 }
-tabs.forEach(t => t.addEventListener('click', () => {
+/* El header y la barra de pestañas son sticky: al cambiar de panel hay que
+   reposicionar el scroll o el título queda tapado detrás de la barra. */
+function alturaFija() {
+  const h = document.querySelector("header");
+  const b = document.querySelector(".tabs-bar");
+  return (h ? h.offsetHeight : 0) + (b ? b.offsetHeight : 0) + 14;
+}
+function irAlPanel(name) {
+  const panel = document.getElementById("panel-" + name);
+  if (!panel) return;
+  requestAnimationFrame(() => {
+    const y = panel.getBoundingClientRect().top + window.scrollY - alturaFija();
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  });
+}
+tabs.forEach(t => t.addEventListener("click", () => {
   showPanel(t.dataset.panel);
-  history.replaceState(null, '', '#' + t.dataset.panel);
+  history.replaceState(null, "", "#" + t.dataset.panel);
+  irAlPanel(t.dataset.panel);
 }));
-document.querySelectorAll('.tab-jump').forEach(a => a.addEventListener('click', () => showPanel(a.dataset.tab)));
+document.querySelectorAll(".tab-jump").forEach(a => a.addEventListener("click", () => {
+  showPanel(a.dataset.tab);
+  irAlPanel(a.dataset.tab);
+}));
 const hash = location.hash.replace('#', '');
 if (['aprender','delegar','escalar','web','eventos'].includes(hash)) showPanel(hash);
 
