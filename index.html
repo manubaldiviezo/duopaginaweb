@@ -1423,14 +1423,39 @@ const REELS = [
 /* Pista duplicada para el loop infinito del marquee */
 reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join('');
 
-/* Carrusel del muro: avanza solo y se puede arrastrar sin que se detenga.
-   Se mueve el scroll del contenedor, no una animación CSS, para que el gesto
-   del dedo y el avance automático convivan. */
+/* Carrusel del muro: avanza solo, se puede arrastrar sin frenarse, y los
+   videos se reproducen segun su posicion dentro de la propia cinta. */
 (function () {
   const tira = document.querySelector(".reel-strip");
   if (!tira || !reelTrack) return;
+  const videos = [...reelTrack.querySelectorAll("video")];
   const lento = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let arrastrando = false, xInicio = 0, scrollInicio = 0, ultimoGesto = 0;
+  let visible = false, arrastrando = false, xInicio = 0, scrollInicio = 0, ultimoGesto = 0;
+
+  /* La visibilidad se mide directamente en el bucle: un IntersectionObserver
+     sobre un scroller horizontal no dispara de forma confiable. */
+  function seccionVisible() {
+    const r = tira.getBoundingClientRect();
+    return r.bottom > -200 && r.top < innerHeight + 200;
+  }
+
+  /* (b) Dentro de la cinta: se reproduce lo que se ve, se pausa lo que salio.
+     El margen extra hace que el de al lado ya este listo al entrar. */
+  function repartir() {
+    visible = seccionVisible();
+    const r = tira.getBoundingClientRect();
+    if (!visible) { videos.forEach(v => { if (!v.paused) v.pause(); }); return; }
+    videos.forEach(v => {
+      const b = v.getBoundingClientRect();
+      const dentro = b.right > r.left - 300 && b.left < r.right + 300;
+      if (dentro) {
+        if (!v.src && v.dataset.src) v.src = v.dataset.src;
+        if (v.paused) { const pl = v.play(); if (pl) pl.catch(() => {}); }
+      } else if (!v.paused) {
+        v.pause();
+      }
+    });
+  }
 
   function mitad() { return reelTrack.scrollWidth / 2; }
   function normalizar() {
@@ -1440,41 +1465,52 @@ reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join(''
     else if (tira.scrollLeft < 0) tira.scrollLeft += m;
   }
 
-  let previo = 0;
+  let previo = 0, desdeReparto = 0;
   function avanzar(ahora) {
     const dt = previo ? Math.min(ahora - previo, 50) : 16;
     previo = ahora;
-    // se frena un instante mientras el dedo arrastra, y retoma solo
-    if (!arrastrando && !lento && ahora - ultimoGesto > 220) {
-      tira.scrollLeft += (mitad() / 42000) * dt;  // la pista completa en ~42 s
+    if (visible && !arrastrando && !lento && ahora - ultimoGesto > 220) {
+      tira.scrollLeft += (mitad() / 24000) * dt;   /* la pista completa en ~24 s */
       normalizar();
     }
+    desdeReparto += dt;
+    if (desdeReparto > 400) { desdeReparto = 0; repartir(); }
     requestAnimationFrame(avanzar);
   }
   requestAnimationFrame(avanzar);
 
-  const punteroBaja = (e) => {
+  const baja = e => {
     arrastrando = true; tira.classList.add("arrastrando");
     xInicio = e.touches ? e.touches[0].clientX : e.clientX;
     scrollInicio = tira.scrollLeft;
   };
-  const punteroMueve = (e) => {
+  const mueve = e => {
     if (!arrastrando) return;
     const x = e.touches ? e.touches[0].clientX : e.clientX;
     tira.scrollLeft = scrollInicio - (x - xInicio);
     normalizar();
   };
-  const punteroSube = () => {
+  const sube = () => {
     arrastrando = false; ultimoGesto = performance.now();
     tira.classList.remove("arrastrando");
+    repartir();
   };
-  tira.addEventListener("mousedown", punteroBaja);
-  window.addEventListener("mousemove", punteroMueve);
-  window.addEventListener("mouseup", punteroSube);
-  tira.addEventListener("touchstart", punteroBaja, { passive: true });
-  tira.addEventListener("touchmove", punteroMueve, { passive: true });
-  tira.addEventListener("touchend", punteroSube);
+  tira.addEventListener("mousedown", baja);
+  window.addEventListener("mousemove", mueve);
+  window.addEventListener("mouseup", sube);
+  tira.addEventListener("touchstart", baja, { passive: true });
+  tira.addEventListener("touchmove", mueve, { passive: true });
+  tira.addEventListener("touchend", sube);
   tira.addEventListener("scroll", () => { if (!arrastrando) ultimoGesto = performance.now(); }, { passive: true });
+
+  /* Si el sistema pide menos movimiento, la cinta no se desplaza sola pero
+     los videos igual se reproducen y se puede arrastrar a mano. */
+  /* Respaldos: si el navegador frena el bucle de animacion (pestaña en segundo
+     plano, ahorro de bateria), el scroll y el regreso a la pestaña reactivan. */
+  addEventListener("scroll", repartir, { passive: true });
+  addEventListener("resize", repartir);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) repartir(); });
+  repartir();
 })();
 
 /* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
@@ -1489,7 +1525,8 @@ const videoObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.2 });
-reelTrack.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+/* El muro tiene su propio manejo mas abajo: al ser un scroller horizontal,
+   observar contra el viewport no alcanzaba y los videos nunca recibian src. */
 /* Los clips de "detrás de cámara" usan el mismo observador: cargan y se pausan solos. */
 document.querySelectorAll('.bts-clip').forEach(v => videoObserver.observe(v));
 
