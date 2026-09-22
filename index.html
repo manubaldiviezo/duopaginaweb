@@ -804,6 +804,71 @@ html, body { overflow-x: clip; max-width: 100%; }
   .paq-tabla tbody td:nth-child(3)::before { color: var(--amber); }
 }
 
+.ch-hitos { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-direction: column; gap: 11px; }
+.ch-hitos li { position: relative; padding-left: 23px; font-size: 13px; line-height: 1.55; color: var(--text-3); }
+.ch-hitos li::before { content: ""; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--grad); }
+.ch-hitos b { color: var(--text); font-weight: 700; }
+
+/* ── Precalificación ── */
+.pre-fondo { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 18px; background: rgba(8,8,7,0.82); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); animation: preIn 0.25s ease; }
+.pre-fondo[hidden] { display: none; }
+@keyframes preIn { from { opacity: 0 } to { opacity: 1 } }
+.pre { position: relative; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; padding: 32px 28px 26px; background: linear-gradient(165deg, rgba(236,103,48,0.09), var(--bg-2) 45%); border: 1px solid var(--orange-line); border-radius: var(--radius-lg); box-shadow: 0 30px 90px rgba(0,0,0,0.6); animation: preUp 0.3s cubic-bezier(.2,.8,.3,1); }
+@keyframes preUp { from { transform: translateY(18px); opacity: 0 } to { transform: none; opacity: 1 } }
+.pre-cerrar { position: absolute; top: 12px; right: 14px; width: 32px; height: 32px; font-size: 24px; line-height: 1; color: var(--text-3); background: none; border: none; cursor: pointer; transition: color 0.25s; }
+.pre-cerrar:hover { color: var(--text); }
+.pre-paso { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 11px; }
+.pre h3 { font-family: 'Montserrat', sans-serif; font-size: 23px; font-weight: 900; color: var(--text); margin-bottom: 9px; }
+.pre-sub { font-size: 13.2px; line-height: 1.6; color: var(--text-3); margin-bottom: 22px; }
+.pre-campo label { display: block; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800; color: var(--text); margin-bottom: 11px; }
+.pre-campo input { width: 100%; padding: 13px 15px; font-family: Inter, sans-serif; font-size: 14.5px; color: var(--text); background: rgba(255,255,255,0.05); border: 1px solid var(--line); border-radius: var(--radius-sm); outline: none; transition: border-color 0.25s; }
+.pre-campo input:focus { border-color: var(--orange); }
+.pre-campo input::placeholder { color: var(--text-3); }
+.pre-ops { display: flex; flex-direction: column; gap: 8px; }
+.pre-ops button { text-align: left; padding: 13px 15px; font-family: Inter, sans-serif; font-size: 13.6px; font-weight: 500; color: var(--text-2); background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.22s; }
+.pre-ops button:hover { border-color: var(--orange-line); background: rgba(236,103,48,0.09); color: var(--text); transform: translateX(3px); }
+.pre-ops button.on { border-color: var(--orange); background: rgba(236,103,48,0.16); color: var(--text); }
+.pre-cierre { margin-top: 13px; font-size: 12.3px; line-height: 1.55; color: var(--text-3); }
+.pre-acciones { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+.pre-acciones .btn { flex: 1; justify-content: center; }
+.pre-atras { padding: 12px 16px; font-size: 13px; font-weight: 600; color: var(--text-3); background: none; border: none; cursor: pointer; transition: color 0.25s; }
+.pre-atras:hover { color: var(--text); }
+
+/* ── Agendar ── */
+.agenda { background: var(--bg-2); border-top: 1px solid var(--line-soft); }
+.agenda-grid { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 940px; margin: 0 auto; }
+.ag-paso { position: relative; display: flex; flex-direction: column; gap: 7px; padding: 26px 22px 22px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); transition: border-color 0.3s, transform 0.3s; }
+.ag-paso:hover { border-color: var(--orange-line); transform: translateY(-4px); }
+.ag-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 900; color: #1D1D1B; background: var(--grad); margin-bottom: 4px; }
+.ag-paso b { font-family: 'Montserrat', sans-serif; font-size: 15.5px; font-weight: 800; color: var(--text); }
+.ag-paso > span:last-child { font-size: 13px; line-height: 1.55; color: var(--text-3); }
+.agenda-cta { display: flex; flex-direction: column; align-items: center; gap: 11px; margin-top: 32px; }
+.agenda-nota { font-size: 12.3px; color: var(--text-3); }
+@media (min-width: 780px) { .agenda-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Menú flotante: el botón deja de ocupar una barra fija ── */
+.header-flota #header { background: transparent !important; border-color: transparent !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; box-shadow: none !important; pointer-events: none; }
+.header-flota #header .container > *:not(.menu-flota) { pointer-events: auto; }
+.menu-flota { position: fixed; top: 16px; right: 16px; z-index: 120; width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(19,19,17,0.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--line); box-shadow: 0 8px 26px rgba(0,0,0,0.42); pointer-events: auto; transition: background 0.3s, border-color 0.3s, transform 0.3s; }
+.menu-flota:hover { border-color: var(--orange-line); background: rgba(19,19,17,0.9); transform: scale(1.06); }
+
+/* ── Header sin barra: solo el logo y el menú, flotando ── */
+#header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: transparent; border: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; pointer-events: none; transition: none; }
+#header.scrolled { background: transparent; border: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+#header .header-inner { padding-top: 14px; padding-bottom: 14px; }
+#header .logo, #header .menu-btn { pointer-events: auto; }
+/* la navegación y el botón de la barra se mudan al menú desplegable */
+#header .header-nav, #header .header-cta { display: none !important; }
+.logo { position: relative; z-index: 2; padding: 9px 13px; border-radius: 14px; background: rgba(19,19,17,0.62); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); transition: border-color 0.3s, background 0.3s; }
+.logo:hover { border-color: var(--orange-line); background: rgba(19,19,17,0.86); }
+.menu-btn { position: relative; z-index: 2; width: 50px; height: 50px; border-radius: 50%; background: rgba(19,19,17,0.68); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 26px rgba(0,0,0,0.4); transition: background 0.3s, border-color 0.3s, transform 0.3s; }
+.menu-btn:hover { border-color: var(--orange-line); background: rgba(19,19,17,0.92); transform: scale(1.06); }
+.menu-btn.open { background: var(--grad); border-color: transparent; }
+.menu-btn.open span { background: #1D1D1B; }
+/* el contenido ya no necesita dejarle lugar a la barra */
+body { padding-top: 0 !important; }
+.hero { padding-top: clamp(86px, 13vh, 130px); }
+
 </style>
 </head>
 <body>
@@ -836,10 +901,11 @@ html, body { overflow-x: clip; max-width: 100%; }
     <a href="/servicios">Servicios <span class="sub">Todo lo que hacemos</span></a>
     <a href="/servicios#aprender">Recursos <span class="sub">Ebooks y agente IA</span></a>
     <a href="#resultados">Resultados <span class="sub">Campañas reales</span></a>
+    <a href="#agendar">Agendar reunión</a>
     <a href="#contacto">Contacto <span class="sub">Hablemos</span></a>
   </div>
   <div class="drawer-cta">
-    <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero crear contenido estratégico</a>
+    <a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero crear contenido estratégico</a>
   </div>
 </nav>
 
@@ -939,7 +1005,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       <div class="ch-body">
         <span class="ch-flag">🇨🇱 Ecommerce · Chile</span>
         <h3>femmeninas.cl</h3>
-        <p class="ch-lead">Casi <strong>un año</strong> sosteniendo la pauta de un ecommerce: optimización y escala continua, sin parar de vender.</p>
+        <p class="ch-lead"><strong>Un año</strong> trabajando juntos con resultados consistentes. En los primeros <strong>dos meses</strong> reescribimos la estructura completa de la cuenta.</p>
         <div class="ch-metrics">
           <div><b>10.55x</b><span>de retorno</span></div>
           <div><b>+US$50K</b><span>gestionados en Meta</span></div>
@@ -960,7 +1026,12 @@ html, body { overflow-x: clip; max-width: 100%; }
             <img src="/images/femme/f6.webp" alt="Publicación de femmeninas.cl" loading="lazy" width="340" height="425">
           </span>
         </a>
-        <p class="ch-nota">No es una campaña que salió bien un mes. Es una cuenta sostenida durante casi un año, con inversión creciente y una estructura que se optimiza todas las semanas.</p>
+        <ul class="ch-hitos">
+          <li><b>15 campañas apagadas.</b> La cuenta estaba dispersa: presupuesto repartido entre estructuras que competían entre sí.</li>
+          <li><b>Una sola estructura consolidada.</b> Reconstruida desde cero según el objetivo real del negocio, no según lo que ya estaba corriendo.</li>
+          <li><b>Optimización y escala continua.</b> Lo que funciona se amplía, lo que no se corta. Todas las semanas, durante un año.</li>
+        </ul>
+        <p class="ch-nota">De acá salió el método que hoy aplicamos en cada cuenta: definir el objetivo comercial real, elegir los tipos de campaña que le corresponden y construir un embudo que escale con el tiempo. <strong>Funciona igual si vendes por WhatsApp o por un sitio web</strong> — lo que cambia es el camino, no el criterio.</p>
       </div>
     </article>
 
@@ -1037,7 +1108,7 @@ html, body { overflow-x: clip; max-width: 100%; }
       </div>
       <div class="arr-precio">
         <b>1.450</b><span>Bs</span>
-        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20el%20paquete%20de%20arranque." target="_blank" rel="noopener" class="btn btn-orange">Consultar</a>
+        <a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20el%20paquete%20de%20arranque." target="_blank" rel="noopener" class="btn btn-orange">Consultar</a>
       </div>
     </div>
 
@@ -1115,7 +1186,7 @@ html, body { overflow-x: clip; max-width: 100%; }
 
     <div class="serv-ctas reveal">
       <a href="/servicios" class="btn btn-ghost">Ver todos los servicios</a>
-      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20una%20propuesta%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Pedir mi propuesta
+      <a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20una%20propuesta%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Pedir mi propuesta
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -1212,6 +1283,31 @@ html, body { overflow-x: clip; max-width: 100%; }
   </div>
 </section>
 
+
+<!-- ═══════════ AGENDAR ═══════════ -->
+<section class="agenda" id="agendar">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Agenda una reunión</span>
+      <h2>Media hora. <span class="grad">Y sabes si te servimos.</span></h2>
+      <p>No es una llamada de venta. Miramos tu cuenta, te decimos qué haríamos primero y cuánto costaría. Si no somos lo que necesitas, te lo decimos.</p>
+    </div>
+
+    <div class="agenda-grid">
+      <div class="ag-paso reveal"><span class="ag-num">1</span><b>Cuéntanos tu caso</b><span>Cuatro preguntas para entender qué vendes y en qué punto estás.</span></div>
+      <div class="ag-paso reveal"><span class="ag-num">2</span><b>Reunión por Meet o Zoom</b><span>30 minutos. Revisamos tu situación y te mostramos cómo trabajamos.</span></div>
+      <div class="ag-paso reveal"><span class="ag-num">3</span><b>Propuesta concreta</b><span>Qué haríamos, en qué orden y cuánto sale. Decides con todo sobre la mesa.</span></div>
+    </div>
+
+    <div class="agenda-cta reveal">
+      <button type="button" class="btn btn-orange js-precalifica" data-origen="Agendar reunión">Agendar mi reunión
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <span class="agenda-nota">Sin costo. Sin compromiso.</span>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ S12 · CONTACTO ═══════════ -->
 <section class="contacto" id="contacto">
   <canvas class="cosmos" aria-hidden="true"></canvas>
@@ -1284,14 +1380,62 @@ html, body { overflow-x: clip; max-width: 100%; }
   </div>
 </footer>
 
-<a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+<a href="https://wa.me/59175175144?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20crear%20contenido%20estrat%C3%A9gico%20para%20mi%20marca." target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.2 5.07 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36a9.42 9.42 0 01-1.45-5.03c0-5.21 4.25-9.45 9.47-9.45 2.53 0 4.9.99 6.69 2.77a9.4 9.4 0 012.77 6.69c0 5.21-4.25 9.45-9.46 9.45z"/></svg>
 </a>
+
+<!-- ═══════════ PRECALIFICACIÓN — se abre antes de ir a WhatsApp ═══════════ -->
+<div class="pre-fondo" id="pre-fondo" hidden>
+  <div class="pre" role="dialog" aria-modal="true" aria-labelledby="pre-titulo">
+    <button class="pre-cerrar" id="pre-cerrar" aria-label="Cerrar">&times;</button>
+    <span class="pre-paso" id="pre-paso">Paso 1 de 4</span>
+    <h3 id="pre-titulo">Antes de escribirnos</h3>
+    <p class="pre-sub">Cuatro preguntas rápidas. Así llegamos a la conversación sabiendo de qué hablamos — y no te hacemos perder el tiempo.</p>
+
+    <form id="pre-form">
+      <div class="pre-campo" data-paso="1">
+        <label>¿Qué vende tu negocio?</label>
+        <input type="text" id="pre-rubro" placeholder="Ej: ropa femenina, clínica estética, pizzería" required>
+      </div>
+
+      <div class="pre-campo" data-paso="2" hidden>
+        <label>¿Qué necesitas resolver primero?</label>
+        <div class="pre-ops" id="pre-objetivo">
+          <button type="button" data-v="Vender más con anuncios">Vender más con anuncios</button>
+          <button type="button" data-v="Que mi marca aparezca y crezca">Que mi marca aparezca y crezca</button>
+          <button type="button" data-v="Necesito contenido, no tengo nada">Necesito contenido, no tengo nada</button>
+          <button type="button" data-v="Una página web">Una página web</button>
+          <button type="button" data-v="Todavía no lo tengo claro">Todavía no lo tengo claro</button>
+        </div>
+      </div>
+
+      <div class="pre-campo" data-paso="3" hidden>
+        <label>¿Inviertes hoy en publicidad?</label>
+        <div class="pre-ops" id="pre-inversion">
+          <button type="button" data-v="Todavía no invierto">Todavía no invierto</button>
+          <button type="button" data-v="Menos de Bs 2.000 al mes">Menos de Bs 2.000 al mes</button>
+          <button type="button" data-v="Entre Bs 2.000 y Bs 10.000 al mes">Entre Bs 2.000 y Bs 10.000</button>
+          <button type="button" data-v="Más de Bs 10.000 al mes">Más de Bs 10.000 al mes</button>
+        </div>
+      </div>
+
+      <div class="pre-campo" data-paso="4" hidden>
+        <label>¿Cómo te llamas?</label>
+        <input type="text" id="pre-nombre" placeholder="Tu nombre y el de tu marca">
+        <p class="pre-cierre">Te escribimos por WhatsApp para coordinar una reunión por Meet o Zoom. Sin costo y sin compromiso.</p>
+      </div>
+
+      <div class="pre-acciones">
+        <button type="button" class="pre-atras" id="pre-atras" hidden>Atrás</button>
+        <button type="submit" class="btn btn-orange" id="pre-seguir">Continuar</button>
+      </div>
+    </form>
+  </div>
 
 <script>
 /* ═══════════ CONFIG editable ═══════════ */
 const VSL_URL = ""; // ← pegar URL de YouTube/Vimeo (embed) cuando exista
-const WHATSAPP = "59177897077";
+const WHATSAPP = "59175175144";
 
 /* Datos de casos (reutilizados de la landing personal, cifras exactas) */
 const CASOS = [
@@ -1305,9 +1449,9 @@ const CASOS = [
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* WhatsApp: aplicar número configurado */
-if (WHATSAPP && WHATSAPP !== "59177897077") {
-  document.querySelectorAll('a[href*="59177897077"]').forEach(a => {
-    a.href = a.href.replace('59177897077', WHATSAPP);
+if (WHATSAPP && WHATSAPP !== "59175175144") {
+  document.querySelectorAll('a[href*="59175175144"]').forEach(a => {
+    a.href = a.href.replace('59175175144', WHATSAPP);
   });
 }
 
@@ -1530,9 +1674,101 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
   const necesitas = document.getElementById('c-necesitas').value;
   if (!nombre || !marca || !necesitas) { e.target.reportValidity(); return; }
   const msg = `Hola DÚO 👋 Soy ${nombre}, de ${marca}.\nNecesito: ${necesitas}.`;
-  const num = (WHATSAPP && WHATSAPP !== '59177897077') ? WHATSAPP : '59177897077';
+  const num = (WHATSAPP && WHATSAPP !== '59175175144') ? WHATSAPP : '59175175144';
   window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
 });
+
+
+/* ══ Precalificación antes de WhatsApp ══
+   Todo boton que llevaba directo al chat ahora abre estas cuatro preguntas.
+   El mensaje llega armado, para que la conversacion empiece con contexto. */
+(function () {
+  const fondo = document.getElementById("pre-fondo");
+  if (!fondo) return;
+  const form = document.getElementById("pre-form");
+  const paso = document.getElementById("pre-paso");
+  const atras = document.getElementById("pre-atras");
+  const seguir = document.getElementById("pre-seguir");
+  const campos = [...form.querySelectorAll(".pre-campo")];
+  const TOTAL = campos.length;
+  let actual = 1, origen = "", datos = {};
+
+  function pintar() {
+    campos.forEach(c => { c.hidden = +c.dataset.paso !== actual; });
+    paso.textContent = "Paso " + actual + " de " + TOTAL;
+    atras.hidden = actual === 1;
+    seguir.textContent = actual === TOTAL ? "Abrir WhatsApp" : "Continuar";
+    const vis = campos.find(c => !c.hidden);
+    const inp = vis && vis.querySelector("input");
+    if (inp) setTimeout(() => inp.focus(), 80);
+  }
+
+  function abrir(desde) {
+    origen = desde || "";
+    actual = 1; datos = {};
+    form.reset();
+    form.querySelectorAll(".pre-ops button").forEach(b => b.classList.remove("on"));
+    fondo.hidden = false;
+    document.body.style.overflow = "hidden";
+    pintar();
+  }
+  function cerrar() {
+    fondo.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  /* las opciones se eligen tocando: al elegir, avanza sola */
+  form.querySelectorAll(".pre-ops").forEach(grupo => {
+    grupo.addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      grupo.querySelectorAll("button").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      datos[grupo.id] = b.dataset.v;
+      if (actual < TOTAL) { actual++; pintar(); }
+    });
+  });
+
+  atras.addEventListener("click", () => { if (actual > 1) { actual--; pintar(); } });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    if (actual === 1) {
+      const v = document.getElementById("pre-rubro").value.trim();
+      if (!v) { document.getElementById("pre-rubro").reportValidity(); return; }
+      datos.rubro = v; actual++; pintar(); return;
+    }
+    if (actual < TOTAL) { actual++; pintar(); return; }
+
+    datos.nombre = document.getElementById("pre-nombre").value.trim();
+    const l = [];
+    l.push("Hola DÚO 👋");
+    if (datos.nombre) l.push("Soy " + datos.nombre + ".");
+    if (datos.rubro) l.push("Mi negocio: " + datos.rubro + ".");
+    if (datos["pre-objetivo"]) l.push("Lo que necesito: " + datos["pre-objetivo"] + ".");
+    if (datos["pre-inversion"]) l.push("Inversión en publicidad: " + datos["pre-inversion"] + ".");
+    if (origen) l.push("(Vengo de: " + origen + ")");
+    l.push("Quiero agendar una reunión.");
+    window.open("https://wa.me/59175175144?text=" + encodeURIComponent(l.join("\n")), "_blank", "noopener");
+    cerrar();
+  });
+
+  document.getElementById("pre-cerrar").addEventListener("click", cerrar);
+  fondo.addEventListener("click", e => { if (e.target === fondo) cerrar(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !fondo.hidden) cerrar(); });
+
+  /* Todo lo que apuntaba al chat pasa por acá primero */
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(a => {
+    if (a.closest("#pre-fondo")) return;
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      abrir(a.dataset.origen || a.textContent.trim().slice(0, 40));
+    });
+  });
+  document.querySelectorAll(".js-precalifica").forEach(b => {
+    b.addEventListener("click", () => abrir(b.dataset.origen || "Agendar"));
+  });
+  window.abrirPrecalificacion = abrir;
+})();
 
 /* ══════════════════════════════════════════════════
    ANIMACIÓN DEL ISOTIPO Ü — reutilizada de la landing
@@ -1762,5 +1998,8 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
 })();
 </script>
 
+
+
+</div>
 </body>
 </html>
