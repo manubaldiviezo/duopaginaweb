@@ -317,6 +317,14 @@ section { padding: 88px 0; position: relative; }
 .ruta-precio { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15px; color: var(--amber); white-space: nowrap; }
 .ruta-link { font-size: 12.5px; font-weight: 700; color: var(--orange); white-space: nowrap; transition: transform 0.25s; }
 .ruta:hover .ruta-link { transform: translateX(3px); }
+.paq-precio { display: flex; align-items: baseline; gap: 6px; margin: 2px 0 16px; }
+.paq-precio b { font-family: 'Montserrat', sans-serif; font-size: 33px; font-weight: 900; line-height: 1; color: var(--text); letter-spacing: -0.01em; }
+.paq-precio span { font-size: 12px; font-weight: 600; color: var(--text-3); }
+.paq-hereda { font-size: 12px; font-weight: 600; color: var(--amber); margin-bottom: 12px; }
+.paq-nota { max-width: 680px; margin: 26px auto 0; text-align: center; font-size: 13.2px; line-height: 1.6; color: var(--text-3); }
+.paq-nota strong { color: var(--text-2); font-weight: 600; }
+.ruta-lista li b { color: var(--text); font-weight: 700; }
+.ruta-link { display: block; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-soft); }
 .ruta-badge { position: absolute; top: 0; right: 24px; z-index: 2; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 5px 11px; border-radius: 0 0 8px 8px; }
 .ruta-dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.09), var(--card) 46%); box-shadow: 0 0 0 1px rgba(236,103,48,0.18), 0 18px 52px rgba(236,103,48,0.12); }
 .ruta-dom::before { opacity: 1; }
@@ -382,7 +390,17 @@ section { padding: 88px 0; position: relative; }
 .pilar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
 .pilar:hover { transform: translateY(-6px); border-color: var(--orange-line); background: var(--card-hover); }
 .pilar:hover::before { transform: scaleX(1); }
-.pilar-num { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 14px; color: var(--orange); display: block; margin-bottom: 16px; }
+.pilar-num { position: absolute; top: 18px; right: 20px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 30px; line-height: 1; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; opacity: 0.30; transition: opacity 0.35s; }
+.pilar:hover .pilar-num { opacity: 0.62; }
+.pilar-ico { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 13px; background: rgba(236,103,48,0.12); border: 1px solid var(--orange-line); color: var(--orange); margin-bottom: 17px; transition: color 0.35s, background 0.35s; }
+.pilar-ico svg { width: 22px; height: 22px; }
+.pilar:hover .pilar-ico { color: var(--amber); background: rgba(249,178,51,0.14); }
+/* hilo que une los cuatro pasos en escritorio */
+@media (min-width: 1024px) {
+  .metodo-grid { position: relative; }
+  .metodo-grid::before { content: ""; position: absolute; top: 53px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--orange-line) 15%, var(--orange-line) 85%, transparent); z-index: 0; }
+  .pilar { z-index: 1; }
+}
 .pilar h3 { font-size: 17px; margin-bottom: 10px; }
 .pilar p { font-size: 13.5px; line-height: 1.6; }
 .metodo-foot { max-width: 680px; margin: 42px auto 0; text-align: center; }
@@ -477,10 +495,10 @@ section { padding: 88px 0; position: relative; }
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.reel-track { display: flex; width: max-content; gap: 14px; animation: scroll 52s linear infinite; padding: 6px 0 12px; }
-.reel-strip:hover .reel-track { animation-play-state: paused; }
+.reel-track { display: flex; width: max-content; gap: 14px; animation: scroll 78s linear infinite; padding: 6px 0 12px; }
+/* El muro nunca se detiene: en tactil el :hover queda pegado al tocar. */
 .reel-track .reel { width: 186px; flex-shrink: 0; }
-@media (max-width: 600px) { .reel-track .reel { width: 156px; } .reel-track { animation-duration: 42s; } }
+@media (max-width: 600px) { .reel-track .reel { width: 156px; } .reel-track { animation-duration: 64s; } }
 
 .reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: #22221e; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
 .reel:hover { transform: translateY(-4px); border-color: var(--orange-line); }
@@ -550,7 +568,14 @@ section { padding: 88px 0; position: relative; }
 /* ── Detrás de cámara ── */
 .bts { max-width: 620px; margin: 34px auto 0; }
 .bts-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
-.bts-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.bts-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+
+/* ── La foto del dúo ── */
+.duo-foto { position: relative; margin: 30px auto 0; max-width: 700px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line-soft); }
+.duo-foto img { display: block; width: 100%; height: auto; }
+.duo-foto figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px 22px 20px; display: flex; flex-direction: column; gap: 5px; background: linear-gradient(transparent, rgba(10,10,8,0.92)); }
+.duo-foto figcaption b { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #fff; }
+.duo-foto figcaption span { font-size: 13px; line-height: 1.5; color: var(--text-2); max-width: 460px; }
 .bts-clip { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3); display: block; }
 .bts-pie { text-align: center; font-size: 12.8px; color: var(--text-3); margin-top: 14px; }
 .bts-pie strong { color: var(--text-2); font-weight: 600; }
@@ -661,7 +686,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
         <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
       </div>
       <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido estratégico.</span></h1>
-      <p class="hero-sub reveal">Somos DÚO, agencia creativa. Dirigimos y producimos tu contenido, lanzamos campañas estratégicas y escalamos con resultados medibles. Todo con un mismo método.</p>
+      <p class="hero-sub reveal">Somos DÚO, agencia creativa. Dirigimos y producimos tu contenido, lanzamos campañas y escalamos con resultados medibles. Trabajamos <strong>online</strong> con negocios de todo el país y del exterior.</p>
       <div class="hero-ctas reveal">
         <a href="#contacto" class="btn btn-orange">Quiero crear contenido estratégico
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -670,7 +695,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       </div>
       <div class="hero-badge reveal">
         <span class="dot"></span>
-        <span><b>+30 marcas</b> · El mismo método y proceso</span>
+        <span><b>+30 marcas</b> · Bolivia y el exterior, <b>100% online</b></span>
       </div>
     </div>
   </div>
@@ -712,115 +737,45 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </section>
 ══════════════════════════════════════════════════════════════════ -->
-<!-- ═══════════ S4 · MÉTODO ═══════════ -->
-<section id="metodo">
+<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
+<section id="equipo">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">El método DÚO</span>
-      <h2>Contenido <span class="grad">con dirección.</span></h2>
-    </div>
-    <div class="metodo-grid">
-      <div class="pilar reveal">
-        <span class="pilar-num">/01</span>
-        <h3>Dirección creativa</h3>
-        <p>Antes de grabar un segundo definimos qué videos necesita tu marca: qué ángulos de venta, qué ganchos, qué formatos. Nada se graba "a ver qué sale".</p>
-      </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/02</span>
-        <h3>Producción</h3>
-        <p>Grabamos con equipo profesional o con celular según tu etapa — y te entregamos todo listo. Si ya tenés quien grabe, le damos la dirección y editamos nosotros.</p>
-      </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/03</span>
-        <h3>Campañas</h3>
-        <p>El contenido no se queda esperando likes: se convierte en anuncios en Facebook e Instagram con estrategia detrás.</p>
-      </div>
-      <div class="pilar reveal">
-        <span class="pilar-num">/04</span>
-        <h3>Medición</h3>
-        <p>Medimos qué lo que funciona y lo que no — no por intuición: por datos. Lo que funciona se escala, lo que no, se cambia.</p>
-      </div>
-    </div>
-    <div class="metodo-foot reveal">
-      <p>Cada pieza de contenido se crea con una metodología de psicología del consumidor y el ciclo de ventas: <strong>sabemos por qué se graba cada idea, guión y escena.</strong></p>
-    </div>
-    <!-- Imagen de apoyo: <img src="/images/metodo-direccion.png" alt="Dirección de contenido DÚO"> -->
-  </div>
-</section>
-
-<!-- ═══════════ SERVICIOS · RESUMEN (detalle en /servicios) ═══════════ -->
-<section id="servicios">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Servicios</span>
-      <h2>Una metodología. <span class="grad">Tres formas de usarla.</span></h2>
-      <p>La diferencia no es el precio: es cuánto te involucrás vos.</p>
-    </div>
-    <div class="rutas">
-      <a href="/servicios#aprender" class="ruta reveal">
-        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-        <span class="ruta-kicker">Lo hacés vos</span>
-        <h3>Aprendé la metodología</h3>
-        <p class="ruta-sub">Te damos el método y tu equipo lo ejecuta.</p>
-        <ul class="ruta-lista">
-          <li>Ebooks del método DÚO 3X</li>
-          <li>Agente de IA con nuestro criterio</li>
-          <li>Asesoría 1:1</li>
-        </ul>
-        <div class="ruta-foot"><span class="ruta-precio">Desde $15</span><span class="ruta-link">Ver →</span></div>
-      </a>
-      <a href="/servicios#escalar" class="ruta ruta-dom reveal">
-        <span class="ruta-badge">Enfoque DÚO</span>
-        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-        <span class="ruta-kicker">Lo hacemos juntos</span>
-        <h3>Contenido estratégico · DÚO 3X</h3>
-        <p class="ruta-sub">El sistema completo, funcionando todos los meses.</p>
-        <ul class="ruta-lista">
-          <li>Dirección creativa y guiones</li>
-          <li>Producción del contenido</li>
-          <li>Campañas con estrategia detrás</li>
-          <li>Medición: se escala lo que funciona</li>
-        </ul>
-        <div class="ruta-foot"><span class="ruta-precio">Desde $200/mes</span><span class="ruta-link">Ver →</span></div>
-      </a>
-      <a href="/servicios#delegar" class="ruta reveal">
-        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
-        <span class="ruta-kicker">Lo hacemos nosotros</span>
-        <h3>Contenido para tus redes</h3>
-        <p class="ruta-sub">Producción lista para publicar, sin plan mensual.</p>
-        <ul class="ruta-lista">
-          <li>Grabamos y editamos</li>
-          <li>Entregamos listo para subir</li>
-          <li>Publicamos por vos si querés</li>
-        </ul>
-        <div class="ruta-foot"><span class="ruta-precio">Desde Bs 500</span><span class="ruta-link">Ver →</span></div>
-      </a>
+      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
+      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
+      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web. Una sola cabeza pensando tu marca.</p>
     </div>
 
-    <div class="complementos">
-      <a href="/servicios#web" class="comp reveal">
-        <span class="comp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-        <span class="comp-body"><b>Páginas web</b><span>Sitios que convierten, listos para tus anuncios.</span></span>
-        <span class="comp-precio">Desde Bs 1.500</span>
-      </a>
-      <a href="/servicios#eventos" class="comp reveal">
-        <span class="comp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
-        <span class="comp-body"><b>Eventos y estudio</b><span>Cobertura social y sesiones en estudio o exterior.</span></span>
-        <span class="comp-precio">Desde Bs 450</span>
-      </a>
+    <div class="caras">
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, dirección estratégica de DÚO" loading="lazy" width="560" height="560"></span>
+        <b>Manu Baldiviezo</b><span class="cara-rol">Dirección estratégica</span>
+      </figure>
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, dirección de contenido de DÚO" loading="lazy" width="560" height="560"></span>
+        <b>Valeria</b><span class="cara-rol">Dirección de contenido</span>
+      </figure>
     </div>
 
-    <a href="/servicios#combo" class="combo-cta reveal">
-      <span class="combo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
-      <span class="combo-txt"><b>¿No sabés cuál te sirve?</b> Marcá lo que necesitás y recibí tu propuesta al instante.</span>
-      <span class="combo-link">Armar mi combo →</span>
-    </a>
+    <figure class="duo-foto reveal">
+      <img src="/images/equipo/duo.jpg" alt="Manu y Valeria, el dúo detrás de la agencia" loading="lazy" width="1200" height="676">
+      <figcaption><b>Somos pareja y somos socios.</b><span>De ahí el nombre. Tu marca no pasa por un equipo que rota: pasa por nosotros dos, todos los días.</span></figcaption>
+    </figure>
 
-    <div style="text-align:center;margin-top:36px" class="reveal">
-      <a href="/servicios" class="btn btn-orange">Ver todos los servicios
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+    <div class="bts reveal">
+      <span class="bts-label">Detrás de cámara</span>
+      <div class="bts-grid">
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+      </div>
+      <p class="bts-pie">Dirigimos, grabamos y editamos nosotros. <strong>Sin tercerizar.</strong></p>
     </div>
+
+    <div class="equipo-firma reveal">Desde Bolivia — trabajamos online con negocios de todo el país y del exterior.</div>
   </div>
 </section>
 
@@ -838,39 +793,106 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   </div>
 </section>
 
-<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
-<section id="equipo">
+<!-- ═══════════ SERVICIOS · RESUMEN (detalle en /servicios) ═══════════ -->
+<section id="servicios">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-      <p>DÚO nació de dos personas: la estrategia y el contenido. Hoy somos un equipo completo — estratega, guionista, editor y producción — trabajando como uno.</p>
+      <span class="eyebrow" style="display:inline-flex">Servicios</span>
+      <h2>Un método. <span class="grad">Tres paquetes.</span></h2>
+      <p>Los tres incluyen estrategia, dirección creativa y campañas. Cambia cuánto producimos.</p>
+    </div>
+    <div class="rutas">
+      <a href="/servicios#escalar" class="ruta reveal">
+        <span class="ruta-kicker">Para empezar a vender</span>
+        <h3>Inicial</h3>
+        <div class="paq-precio"><b>2.500</b><span>Bs / mes</span></div>
+        <ul class="ruta-lista">
+          <li>Planificación estratégica</li>
+          <li>Dirección creativa</li>
+          <li>Gestión de anuncios en Facebook e Instagram</li>
+          <li><b>4 videos</b> con edición profesional</li>
+          <li><b>4 artes</b></li>
+        </ul>
+        <span class="ruta-link">Ver qué incluye →</span>
+      </a>
+      <a href="/servicios#escalar" class="ruta ruta-dom reveal">
+        <span class="ruta-badge">El más elegido</span>
+        <span class="ruta-kicker">Para escalar lo que funciona</span>
+        <h3>Escala</h3>
+        <div class="paq-precio"><b>3.500</b><span>Bs / mes</span></div>
+        <p class="paq-hereda">Todo lo del paquete Inicial, y además:</p>
+        <ul class="ruta-lista">
+          <li><b>8 videos</b> con edición profesional</li>
+          <li><b>6 artes</b></li>
+          <li>Asesoría para creación de contenido</li>
+        </ul>
+        <span class="ruta-link">Ver qué incluye →</span>
+      </a>
+      <a href="/servicios#web" class="ruta reveal">
+        <span class="ruta-kicker">Para vender también fuera de redes</span>
+        <h3>Integral</h3>
+        <div class="paq-precio"><b>4.250</b><span>Bs / mes</span></div>
+        <p class="paq-hereda">Todo lo del paquete Escala, y además:</p>
+        <ul class="ruta-lista">
+          <li><b>Sitio web</b> (landing page) lista para tus anuncios</li>
+        </ul>
+        <span class="ruta-link">Ver qué incluye →</span>
+      </a>
     </div>
 
-    <div class="caras">
-        <figure class="cara reveal">
-          <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, dirección estratégica de DÚO" loading="lazy" width="560" height="560"></span>
-          <b>Manu Baldiviezo</b><span class="cara-rol">Dirección estratégica</span>
-        </figure>
-        <figure class="cara reveal">
-          <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, dirección de contenido de DÚO" loading="lazy" width="560" height="560"></span>
-          <b>Valeria</b><span class="cara-rol">Dirección de contenido</span>
-        </figure>
-    </div>
+    <p class="paq-nota reveal">Trabajamos con negocios que buscan crecer en un plazo de <strong>1 a 3 meses</strong>. Podés arrancar con el paquete que más necesitás y seguir el mes siguiente con uno más bajo.</p>
 
-    <div class="bts reveal">
-      <span class="bts-label">Detrás de cámara</span>
-      <div class="bts-grid">
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+    <a href="/servicios" class="combo-cta reveal">
+      <span class="combo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+      <span class="combo-txt"><b>¿Necesitás algo distinto?</b> Eventos, sesiones de estudio o aprender el método por tu cuenta.</span>
+      <span class="combo-link">Ver todo →</span>
+    </a>
+
+    <div style="text-align:center;margin-top:36px" class="reveal">
+      <a href="/servicios" class="btn btn-orange">Ver todos los servicios
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S4 · MÉTODO ═══════════ -->
+<section id="metodo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">El método DÚO</span>
+      <h2>Contenido <span class="grad">con dirección.</span></h2>
+    </div>
+    <div class="metodo-grid">
+      <div class="pilar reveal">
+        <span class="pilar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></span>
+        <span class="pilar-num">/01</span>
+        <h3>Dirección creativa</h3>
+        <p>Antes de grabar un segundo definimos qué videos necesita tu marca: qué ángulos de venta, qué ganchos, qué formatos. Nada se graba "a ver qué sale".</p>
       </div>
-      <p class="bts-pie">Dirigimos, grabamos y editamos nosotros. <strong>Sin tercerizar.</strong></p>
+      <div class="pilar reveal">
+        <span class="pilar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+        <span class="pilar-num">/02</span>
+        <h3>Producción</h3>
+        <p>Grabamos con equipo profesional o con celular según tu etapa — y te entregamos todo listo. Si ya tenés quien grabe, le damos la dirección y editamos nosotros.</p>
+      </div>
+      <div class="pilar reveal">
+        <span class="pilar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v3a1 1 0 0 0 1 1h3l4 4V7L7 11H4a1 1 0 0 0-1 1z"/><path d="M16 8a5 5 0 0 1 0 8"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></span>
+        <span class="pilar-num">/03</span>
+        <h3>Campañas</h3>
+        <p>El contenido no se queda esperando likes: se convierte en anuncios en Facebook e Instagram con estrategia detrás.</p>
+      </div>
+      <div class="pilar reveal">
+        <span class="pilar-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span>
+        <span class="pilar-num">/04</span>
+        <h3>Medición</h3>
+        <p>Medimos qué lo que funciona y lo que no — no por intuición: por datos. Lo que funciona se escala, lo que no, se cambia.</p>
+      </div>
     </div>
-
-    <div class="equipo-firma reveal">Desde Bolivia — para marcas en 5 países.</div>
+    <div class="metodo-foot reveal">
+      <p>Cada pieza de contenido se crea con una metodología de psicología del consumidor y el ciclo de ventas: <strong>sabemos por qué se graba cada idea, guión y escena.</strong></p>
+    </div>
+    <!-- Imagen de apoyo: <img src="/images/metodo-direccion.png" alt="Dirección de contenido DÚO"> -->
   </div>
 </section>
 

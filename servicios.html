@@ -607,6 +607,36 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   #panel-escalar .oferta-top { flex-direction: column; gap: 4px; }
   #panel-escalar .oferta-price { white-space: normal; }
 }
+/* ── Tabla comparativa de paquetes ── */
+.paq-tabla-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.paq-tabla { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 620px; }
+.paq-tabla th, .paq-tabla td { padding: 13px 14px; text-align: center; vertical-align: middle; }
+.paq-tabla thead th { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--card); vertical-align: bottom; padding: 20px 14px 16px; position: relative; }
+.paq-tabla thead th:first-of-type { border-radius: var(--radius-sm) 0 0 0; }
+.paq-tabla thead th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+.pt-nom { display: block; font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-2); margin-bottom: 7px; }
+.pt-precio { display: block; font-family: 'Montserrat', sans-serif; font-size: 27px; font-weight: 900; line-height: 1; color: var(--text); }
+.pt-precio i { display: block; font-style: normal; font-size: 11px; font-weight: 600; color: var(--text-3); margin-top: 5px; }
+.pt-dom { background: linear-gradient(180deg, rgba(236,103,48,0.14), var(--card) 70%) !important; border-left: 1px solid var(--orange-line) !important; border-right: 1px solid var(--orange-line) !important; }
+.pt-dom .pt-precio { color: var(--amber); }
+.pt-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.paq-tabla tbody th { text-align: left; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--line-soft); }
+.paq-tabla tbody td { font-size: 14px; color: var(--text-2); border-bottom: 1px solid var(--line-soft); }
+.paq-tabla tbody td b { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--text); }
+.paq-tabla tbody tr:nth-child(2n) th, .paq-tabla tbody tr:nth-child(2n) td { background: rgba(255,255,255,0.016); }
+.paq-tabla tbody td:nth-child(3) { border-left: 1px solid var(--orange-line); border-right: 1px solid var(--orange-line); background: rgba(236,103,48,0.045) !important; }
+.paq-tabla tbody tr:last-child td:nth-child(3) { border-bottom: 1px solid var(--orange-line); border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.tick { color: var(--amber); font-size: 15px; font-weight: 700; }
+.nope { color: var(--text-3); opacity: 0.5; }
+.paq-nota { max-width: 680px; margin: 26px auto 0; text-align: center; font-size: 13.2px; line-height: 1.6; color: var(--text-3); }
+.paq-nota strong { color: var(--text-2); font-weight: 600; }
+.paq-ctas { display: flex; justify-content: center; margin-top: 26px; }
+.nota-manu { max-width: 700px; margin: 40px auto 0; padding: 22px 24px; border: 1px dashed rgba(255,255,255,0.14); border-radius: var(--radius-sm); background: rgba(255,255,255,0.02); }
+.nota-manu b { display: block; font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 800; color: var(--text); margin-bottom: 9px; }
+.nota-manu p { font-size: 13px; line-height: 1.6; color: var(--text-3); margin-bottom: 11px; }
+.nota-manu a { font-size: 13px; font-weight: 700; color: var(--orange); }
+@media (max-width: 640px) { .paq-tabla th, .paq-tabla td { padding: 11px 9px; } .pt-precio { font-size: 22px; } .paq-tabla tbody th { font-size: 12.2px; } }
+
 </style>
 </head>
 <body>
@@ -735,62 +765,71 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 <!-- ═══ PANEL: ESCALAR ═══ -->
 <div class="panel" id="panel-escalar">
   <section id="escalar">
-    <div class="container">
-      <div class="sec-head reveal">
-        <span class="eyebrow" style="display:inline-flex">Querés escalarla</span>
-        <h2>Posicionarte o vender: <span class="grad">no es lo mismo.</span></h2>
-        <p>Son dos caminos distintos según el momento de tu marca. Acá te decimos cuál te toca — con honestidad.</p>
-      </div>
-      <div class="puertas" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">
-        <div class="puerta dom reveal">
-          <div class="oferta star">
-            <span class="star-badge">Enfoque DÚO</span>
-            <div class="oferta-top"><span class="oferta-name">DÚO 3X · Contenido estratégico</span><span class="oferta-price">Desde $200 / mes</span></div>
-            <div class="oferta-desc">Para posicionar tu marca y buscar viralidad: plan de contenido simplificado, dirección creativa y guiones con estructura narrativa según cada formato — más la producción de tus videos. Publicás con intención, no por publicar.</div>
-          </div>
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Solo anuncios (ya tenés contenido)</span><span class="oferta-price">Desde $100 / mes</span></div>
-            <div class="oferta-desc">Prendemos y optimizamos campañas con el contenido que tu marca ya tiene. Para negocios que inviertan desde Bs 1.500 ($150) al mes en publicidad — ese pago va directo a Meta. No incluye estrategia ni guionización.</div>
-          </div>
-          <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20*contenido%20estrat%C3%A9gico%20D%C3%9AO%203X*%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Quiero contenido estratégico</a>
-        </div>
-        <div class="puerta reveal">
-          <div class="oferta">
-            <div class="oferta-top"><span class="oferta-name">Estrategia digital completa · Programa de 3 meses</span><span class="oferta-price">Desde $195 / mes</span></div>
-            <div class="oferta-desc">Para vender con anuncios de manera estratégica: documento de estrategia digital (funnel, campañas, presupuestos, oferta), <strong>guiones listos para producir</strong>, testeo de ángulos de venta y medición. Todo menos la producción del contenido.</div>
-          </div>
-          <div class="honesto">Este programa lo dirige Manu Baldiviezo, nuestro estratega, desde su marca personal. Para arrancar una estrategia de ventas con pauta tu marca necesita al menos 6 a 10 anuncios e invertir desde Bs 1.500 al mes en Meta — si todavía no estás ahí, el contenido estratégico es tu primer paso.</div>
-          <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener" class="btn btn-ghost">Ver el programa completo en manubaldiviezo.lat →</a>
-        </div>
-      </div>
-
-      <div class="estr-grid reveal">
-        <div class="estr-mock">
-          <div class="tk-phone">
-            <div class="tk-screen">
-              <div class="tk-avatar">M</div>
-              <div class="tk-handle">@manu_estrategadigital</div>
-              <div class="tk-name">Manu | Estratega Digital</div>
-              <div class="tk-stats"><span><b>1.020</b> Siguiendo</span><span><b>2.180</b> Seguidores</span><span><b>10.8K</b> Me gusta</span></div>
-              <div class="tk-follow">Seguir</div>
-              <div class="tk-bio">Te ayudo a vender con anuncios 🔥<br>Marketing estratégico + IA</div>
-              <div class="tk-grid"><div class="tk-tile pin"></div><div class="tk-tile pin"></div><div class="tk-tile pin"></div><div class="tk-tile"></div><div class="tk-tile"></div><div class="tk-tile"></div></div>
-            </div>
-            <img src="https://www.manubaldiviezo.lat/images/tiktok-perfil.png" alt="Perfil de TikTok de Manu Baldiviezo, estratega de DÚO" loading="lazy" onerror="this.style.display='none'">
-          </div>
-        </div>
-        <div class="estr-texto">
-          <span class="eyebrow" style="display:inline-flex">Dirección estratégica</span>
-          <h3>Tus campañas las dirige alguien que da la cara.</h3>
-          <p>Detrás de cada cuenta que gestionamos está <strong>Manu Baldiviezo</strong>, nuestro estratega digital: +5 años haciendo Meta Ads y mostrando cómo trabaja, en público, todos los días.</p>
-          <div class="estr-btns">
-            <a class="btn btn-ghost" href="https://www.tiktok.com/@manu_estrategadigital" target="_blank" rel="noopener">Ver su TikTok ↗</a>
-            <a class="btn btn-ghost" href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">manubaldiviezo.lat →</a>
-          </div>
-        </div>
-      </div>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Paquetes</span>
+      <h2>Elegí por <span class="grad">cuánto querés producir.</span></h2>
+      <p>Los tres incluyen estrategia, dirección creativa y gestión de campañas. Lo que cambia es el volumen de contenido.</p>
     </div>
-  </section>
+
+    <div class="paq-tabla-wrap reveal">
+      <table class="paq-tabla">
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col"><span class="pt-nom">Inicial</span><span class="pt-precio">2.500 <i>Bs/mes</i></span></th>
+            <th scope="col" class="pt-dom"><span class="pt-badge">El más elegido</span><span class="pt-nom">Escala</span><span class="pt-precio">3.500 <i>Bs/mes</i></span></th>
+            <th scope="col"><span class="pt-nom">Integral</span><span class="pt-precio">4.250 <i>Bs/mes</i></span></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <th scope="row">Planificación estratégica</th>
+              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Dirección creativa</th>
+              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Gestión de anuncios en Facebook e Instagram</th>
+              <td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Videos con edición profesional</th>
+              <td><b>4</b></td><td><b>8</b></td><td><b>8</b></td>
+            </tr>
+            <tr>
+              <th scope="row">Artes</th>
+              <td><b>4</b></td><td><b>6</b></td><td><b>6</b></td>
+            </tr>
+            <tr>
+              <th scope="row">Asesoría para creación de contenido</th>
+              <td><span class="nope" aria-label="no incluido">—</span></td><td><span class="tick" aria-label="incluido">✓</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Sitio web (landing page)</th>
+              <td><span class="nope" aria-label="no incluido">—</span></td><td><span class="nope" aria-label="no incluido">—</span></td><td><span class="tick" aria-label="incluido">✓</span></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="paq-nota reveal">Trabajamos con negocios que buscan crecer en un plazo de <strong>1 a 3 meses</strong>. Podés arrancar con el paquete que más necesitás y seguir el mes siguiente con uno más bajo.</p>
+
+    <div class="paq-ctas reveal">
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20los%20paquetes." target="_blank" rel="noopener" class="btn btn-orange">Consultar por WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="nota-manu reveal">
+      <b>¿Ya tenés contenido y solo necesitás la estrategia de pauta?</b>
+      <p>El programa de estrategia digital lo dirige Manu Baldiviezo desde su marca personal. Para arrancar con pauta tu marca necesita al menos 6 a 10 anuncios e invertir desde Bs 1.500 al mes en Meta — si todavía no estás ahí, el contenido estratégico es tu primer paso.</p>
+      <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Ver el programa completo en manubaldiviezo.lat →</a>
+    </div>
+  </div>
+</section>
 </div>
 
 <!-- ═══ PANEL: WEB ═══ -->
