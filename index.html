@@ -12,7 +12,16 @@
 <meta property="og:description" content="Producimos el contenido, lanzamos las campañas y escalamos resultados. Desde Bolivia para marcas en 5 países.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://duomarketingdigital.com/">
-<meta property="og:image" content="https://duomarketingdigital.com/images/hero-set-produccion.png">
+<meta property="og:image" content="https://duomarketingdigital.com/images/og-duo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DÚO — Tu marca no necesita más publicaciones. Necesita contenido estratégico.">
+<meta property="og:site_name" content="DÚO Marketing Digital">
+<meta property="og:locale" content="es_BO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DÚO — Contenido que vende | Agencia creativa Bolivia">
+<meta name="twitter:description" content="Producimos el contenido, lanzamos las campañas y escalamos resultados. Desde Bolivia para marcas en 5 países.">
+<meta name="twitter:image" content="https://duomarketingdigital.com/images/og-duo.jpg">
 <link rel="canonical" href="https://duomarketingdigital.com/">
 
 <link rel="icon" type="image/png" href="/logos/duo-icon.png">
@@ -288,6 +297,65 @@ section { padding: 88px 0; position: relative; }
 .serv-link { font-size: 12.5px; font-weight: 700; color: var(--orange); transition: transform 0.25s; }
 .serv-card:hover .serv-link { transform: translateX(3px); }
 
+/* ── Servicios · tres rutas (jerarquía por nivel de involucramiento) ── */
+.rutas { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1060px; margin: 0 auto; align-items: stretch; }
+.ruta { position: relative; display: flex; flex-direction: column; padding: 28px 24px 24px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); overflow: hidden; transition: transform 0.3s, border-color 0.3s, background 0.3s; }
+.ruta::before { content: ""; position: absolute; top: -60%; left: 50%; width: 150%; height: 120%; transform: translateX(-50%); background: radial-gradient(ellipse at 50% 0%, rgba(236,103,48,0.10), transparent 62%); opacity: 0; transition: opacity 0.35s; pointer-events: none; }
+.ruta:hover { transform: translateY(-6px); border-color: var(--orange-line); background: var(--card-hover); }
+.ruta:hover::before { opacity: 1; }
+.ruta > * { position: relative; z-index: 1; }
+.ruta-ico { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: rgba(236,103,48,0.12); border: 1px solid var(--orange-line); color: var(--orange); margin-bottom: 18px; transition: color 0.3s; }
+.ruta-ico svg { width: 20px; height: 20px; }
+.ruta:hover .ruta-ico { color: var(--amber); }
+.ruta-kicker { display: block; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 7px; }
+.ruta h3 { font-size: 17px; line-height: 1.25; margin-bottom: 8px; }
+.ruta-sub { font-size: 13px; color: var(--text-3); line-height: 1.55; margin-bottom: 18px; }
+.ruta-lista { list-style: none; padding: 0; margin: 0 0 22px; display: flex; flex-direction: column; gap: 9px; }
+.ruta-lista li { position: relative; padding-left: 21px; font-size: 12.8px; line-height: 1.5; color: var(--text-2); }
+.ruta-lista li::before { content: ""; position: absolute; left: 0; top: 6px; width: 11px; height: 7px; border-left: 2px solid var(--orange); border-bottom: 2px solid var(--orange); transform: rotate(-45deg); }
+.ruta-foot { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.ruta-precio { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 15px; color: var(--amber); white-space: nowrap; }
+.ruta-link { font-size: 12.5px; font-weight: 700; color: var(--orange); white-space: nowrap; transition: transform 0.25s; }
+.ruta:hover .ruta-link { transform: translateX(3px); }
+.ruta-badge { position: absolute; top: 0; right: 24px; z-index: 2; font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 5px 11px; border-radius: 0 0 8px 8px; }
+.ruta-dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.09), var(--card) 46%); box-shadow: 0 0 0 1px rgba(236,103,48,0.18), 0 18px 52px rgba(236,103,48,0.12); }
+.ruta-dom::before { opacity: 1; }
+
+/* ── Complementos (segundo nivel, no compiten con las rutas) ── */
+.complementos { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 1060px; margin: 16px auto 0; }
+.comp { display: flex; align-items: center; gap: 15px; padding: 17px 20px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+.comp:hover { border-color: var(--orange-line); background: var(--card-hover); transform: translateY(-3px); }
+.comp-ico { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 9px; background: rgba(255,255,255,0.05); color: var(--text-3); transition: color 0.3s; }
+.comp-ico svg { width: 17px; height: 17px; }
+.comp:hover .comp-ico { color: var(--orange); }
+.comp-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.comp-body b { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 800; color: var(--text); }
+.comp-body span { font-size: 12.3px; color: var(--text-3); line-height: 1.45; }
+.comp-precio { margin-left: auto; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13.5px; color: var(--amber); white-space: nowrap; }
+
+/* ── CTA del combo (herramienta, no servicio) ── */
+.combo-cta { display: flex; align-items: center; gap: 16px; max-width: 1060px; margin: 16px auto 0; padding: 19px 24px; border: 1px dashed rgba(249,178,51,0.42); border-radius: var(--radius-sm); background: rgba(249,178,51,0.035); transition: background 0.3s, border-color 0.3s; }
+.combo-cta:hover { background: rgba(249,178,51,0.07); border-color: rgba(249,178,51,0.7); }
+.combo-ico { display: inline-flex; flex-shrink: 0; color: var(--amber); }
+.combo-ico svg { width: 21px; height: 21px; }
+.combo-txt { font-size: 13.2px; color: var(--text-2); line-height: 1.5; }
+.combo-txt b { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--text); }
+.combo-link { margin-left: auto; font-size: 12.8px; font-weight: 700; color: var(--orange); white-space: nowrap; transition: transform 0.25s; }
+.combo-cta:hover .combo-link { transform: translateX(3px); }
+
+@media (min-width: 720px) {
+  .complementos { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .rutas { grid-template-columns: repeat(3, 1fr); }
+  .ruta-dom { transform: scale(1.035); z-index: 2; }
+  .ruta-dom:hover { transform: scale(1.035) translateY(-6px); }
+}
+@media (max-width: 719px) {
+  .combo-cta { flex-wrap: wrap; }
+  .combo-link { margin-left: 0; width: 100%; }
+}
+
 /* ── Recursos (tienda de la cocina) ── */
 .rec-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1000px; margin: 0 auto; }
 @media (min-width: 880px) { .rec-grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
@@ -423,6 +491,9 @@ section { padding: 88px 0; position: relative; }
 .reel-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
 .reel-nicho { font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); background: rgba(255,255,255,0.08); padding: 3px 8px; border-radius: 5px; }
 .reel-metrica { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 13px; color: var(--amber); }
+.reel-vistas { position: absolute; top: 9px; right: 9px; z-index: 3; display: inline-flex; align-items: center; gap: 4px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.01em; color: #fff; background: rgba(12,12,10,0.62); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); border: 1px solid rgba(255,255,255,0.16); padding: 4px 8px 4px 7px; border-radius: 999px; white-space: nowrap; }
+.reel-vistas svg { width: 9px; height: 9px; fill: var(--amber); flex-shrink: 0; }
+.reel-nicho { white-space: nowrap; }
 
 /* ── Resultados (S10) ── */
 .resultados { background: var(--bg-2); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -457,12 +528,39 @@ section { padding: 88px 0; position: relative; }
 
 /* ── Quiénes somos (S11) ── */
 .equipo-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 1020px; margin: 0 auto; }
-@media (min-width: 900px) { .equipo-grid { grid-template-columns: 1fr 1fr; gap: 60px; } }
+/* Una sola columna mientras no haya foto real del equipo. Al agregarla,
+   volver a: @media (min-width: 900px) { .equipo-grid { grid-template-columns: 1fr 1fr; gap: 60px; } } */
+.equipo-grid { max-width: 720px; text-align: center; }
+.equipo-txt .eyebrow { margin-left: auto; margin-right: auto; }
 .equipo-txt h2 { margin-bottom: 22px; }
 .equipo-txt p { margin-bottom: 18px; }
 .equipo-txt strong { color: var(--text); font-weight: 600; }
 .equipo-txt a { color: var(--orange); font-weight: 600; }
-.equipo-firma { margin-top: 22px; font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); }
+.equipo-firma { margin-top: 22px; font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); text-align: center; }
+
+/* ── Caras del equipo (círculos con anillo de marca) ── */
+.caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px 46px; margin: 0 auto; }
+.cara { margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.cara-foto { display: block; width: 152px; height: 152px; border-radius: 50%; padding: 2.5px; background: var(--grad); box-shadow: 0 10px 34px rgba(236,103,48,0.22); margin-bottom: 13px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.cara:hover .cara-foto { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(236,103,48,0.34); }
+.cara-foto img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.cara b { font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 800; color: var(--text); line-height: 1.25; }
+.cara-rol { font-size: 12px; font-weight: 600; color: var(--amber); }
+
+/* ── Detrás de cámara ── */
+.bts { max-width: 620px; margin: 34px auto 0; }
+.bts-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+.bts-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.bts-clip { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3); display: block; }
+.bts-pie { text-align: center; font-size: 12.8px; color: var(--text-3); margin-top: 14px; }
+.bts-pie strong { color: var(--text-2); font-weight: 600; }
+
+@media (max-width: 559px) {
+  .bts-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 900px) {
+  .bts { max-width: 700px; }
+}
 
 /* ── Contacto (S12) ── */
 .contacto { position: relative; overflow: hidden; }
@@ -593,6 +691,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 </section>
 
 <!-- ═══════════ S5 · VSL ═══════════ -->
+<!-- ═══════════ VSL · OCULTA hasta grabar el video (2026-09-22) ═══════════
 <section class="vsl">
   <div class="container">
     <div class="sec-head reveal">
@@ -612,6 +711,7 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
     </div>
   </div>
 </section>
+══════════════════════════════════════════════════════════════════ -->
 <!-- ═══════════ S4 · MÉTODO ═══════════ -->
 <section id="metodo">
   <div class="container">
@@ -645,7 +745,6 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       <p>Cada pieza de contenido se crea con una metodología de psicología del consumidor y el ciclo de ventas: <strong>sabemos por qué se graba cada idea, guión y escena.</strong></p>
     </div>
     <!-- Imagen de apoyo: <img src="/images/metodo-direccion.png" alt="Dirección de contenido DÚO"> -->
-    <div class="ph reveal" style="aspect-ratio:16/6;max-width:900px;margin:34px auto 0" role="img" aria-label="metodo-direccion.png">metodo-direccion.png</div>
   </div>
 </section>
 
@@ -654,60 +753,69 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Servicios</span>
-      <h2>La misma metodología. <span class="grad">Elegí cómo usarla.</span></h2>
-      <p>De un ebook a un sistema completo de ventas — y todo lo del medio.</p>
+      <h2>Una metodología. <span class="grad">Tres formas de usarla.</span></h2>
+      <p>La diferencia no es el precio: es cuánto te involucrás vos.</p>
     </div>
-    <div class="serv-grid">
-      <a href="/servicios#delegar" class="serv-card reveal">
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
-        <div class="serv-body">
-          <h3>Contenido para tus redes</h3>
-          <p>Grabamos, editamos y publicamos por vos.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Desde Bs 500</span><span class="serv-link">Ver →</span></div>
+    <div class="rutas">
+      <a href="/servicios#aprender" class="ruta reveal">
+        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <span class="ruta-kicker">Lo hacés vos</span>
+        <h3>Aprendé la metodología</h3>
+        <p class="ruta-sub">Te damos el método y tu equipo lo ejecuta.</p>
+        <ul class="ruta-lista">
+          <li>Ebooks del método DÚO 3X</li>
+          <li>Agente de IA con nuestro criterio</li>
+          <li>Asesoría 1:1</li>
+        </ul>
+        <div class="ruta-foot"><span class="ruta-precio">Desde $15</span><span class="ruta-link">Ver →</span></div>
       </a>
-      <a href="/servicios#escalar" class="serv-card serv-dom reveal">
-        <span class="serv-badge">Enfoque DÚO</span>
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-        <div class="serv-body">
-          <h3>Contenido estratégico · DÚO 3X</h3>
-          <p>Plan de contenido, dirección creativa, guiones y producción.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Desde $200/mes</span><span class="serv-link">Ver →</span></div>
+      <a href="/servicios#escalar" class="ruta ruta-dom reveal">
+        <span class="ruta-badge">Enfoque DÚO</span>
+        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+        <span class="ruta-kicker">Lo hacemos juntos</span>
+        <h3>Contenido estratégico · DÚO 3X</h3>
+        <p class="ruta-sub">El sistema completo, funcionando todos los meses.</p>
+        <ul class="ruta-lista">
+          <li>Dirección creativa y guiones</li>
+          <li>Producción del contenido</li>
+          <li>Campañas con estrategia detrás</li>
+          <li>Medición: se escala lo que funciona</li>
+        </ul>
+        <div class="ruta-foot"><span class="ruta-precio">Desde $200/mes</span><span class="ruta-link">Ver →</span></div>
       </a>
-      <a href="/servicios#aprender" class="serv-card reveal">
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-        <div class="serv-body">
-          <h3>Aprender la metodología</h3>
-          <p>Ebooks, el agente de IA y asesoría 1:1 con nuestro método.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Desde $15</span><span class="serv-link">Ver →</span></div>
-      </a>
-      <a href="/servicios#web" class="serv-card reveal">
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-        <div class="serv-body">
-          <h3>Páginas web</h3>
-          <p>Sitios que convierten, listos para tus anuncios.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Desde Bs 1.500</span><span class="serv-link">Ver →</span></div>
-      </a>
-      <a href="/servicios#eventos" class="serv-card reveal">
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
-        <div class="serv-body">
-          <h3>Eventos y estudio</h3>
-          <p>Cobertura social y sesiones en estudio o exterior.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Desde Bs 450</span><span class="serv-link">Ver →</span></div>
-      </a>
-      <a href="/servicios#combo" class="serv-card serv-combo reveal">
-        <span class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
-        <div class="serv-body">
-          <h3>Armá tu combo</h3>
-          <p>Marcá lo que necesitás y recibí tu propuesta al instante.</p>
-        </div>
-        <div class="serv-foot"><span class="serv-precio">Interactivo</span><span class="serv-link">Probar →</span></div>
+      <a href="/servicios#delegar" class="ruta reveal">
+        <span class="ruta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></span>
+        <span class="ruta-kicker">Lo hacemos nosotros</span>
+        <h3>Contenido para tus redes</h3>
+        <p class="ruta-sub">Producción lista para publicar, sin plan mensual.</p>
+        <ul class="ruta-lista">
+          <li>Grabamos y editamos</li>
+          <li>Entregamos listo para subir</li>
+          <li>Publicamos por vos si querés</li>
+        </ul>
+        <div class="ruta-foot"><span class="ruta-precio">Desde Bs 500</span><span class="ruta-link">Ver →</span></div>
       </a>
     </div>
+
+    <div class="complementos">
+      <a href="/servicios#web" class="comp reveal">
+        <span class="comp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+        <span class="comp-body"><b>Páginas web</b><span>Sitios que convierten, listos para tus anuncios.</span></span>
+        <span class="comp-precio">Desde Bs 1.500</span>
+      </a>
+      <a href="/servicios#eventos" class="comp reveal">
+        <span class="comp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+        <span class="comp-body"><b>Eventos y estudio</b><span>Cobertura social y sesiones en estudio o exterior.</span></span>
+        <span class="comp-precio">Desde Bs 450</span>
+      </a>
+    </div>
+
+    <a href="/servicios#combo" class="combo-cta reveal">
+      <span class="combo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+      <span class="combo-txt"><b>¿No sabés cuál te sirve?</b> Marcá lo que necesitás y recibí tu propuesta al instante.</span>
+      <span class="combo-link">Armar mi combo →</span>
+    </a>
+
     <div style="text-align:center;margin-top:36px" class="reveal">
       <a href="/servicios" class="btn btn-orange">Ver todos los servicios
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -733,17 +841,36 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 <!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
 <section id="equipo">
   <div class="container">
-    <div class="equipo-grid">
-      <!-- <img src="/images/equipo-produccion.png" alt="Equipo de producción DÚO"> -->
-      <div class="ph reveal" style="aspect-ratio:4/3" role="img" aria-label="equipo-produccion.png">equipo-produccion.png</div>
-      <div class="equipo-txt reveal">
-        <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-        <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-        <p>DÚO nació de dos personas: la estrategia y el contenido. Hoy somos un equipo completo — estratega, guionista, editor y producción — trabajando como uno.</p>
-        <p>Dirección estratégica de <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Manu Baldiviezo</a> · dirección de contenido de Valeria.</p>
-        <div class="equipo-firma">Desde Bolivia — para marcas en 5 países.</div>
-      </div>
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
+      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
+      <p>DÚO nació de dos personas: la estrategia y el contenido. Hoy somos un equipo completo — estratega, guionista, editor y producción — trabajando como uno.</p>
     </div>
+
+    <div class="caras">
+        <figure class="cara reveal">
+          <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, dirección estratégica de DÚO" loading="lazy" width="560" height="560"></span>
+          <b>Manu Baldiviezo</b><span class="cara-rol">Dirección estratégica</span>
+        </figure>
+        <figure class="cara reveal">
+          <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, dirección de contenido de DÚO" loading="lazy" width="560" height="560"></span>
+          <b>Valeria</b><span class="cara-rol">Dirección de contenido</span>
+        </figure>
+    </div>
+
+    <div class="bts reveal">
+      <span class="bts-label">Detrás de cámara</span>
+      <div class="bts-grid">
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+      </div>
+      <p class="bts-pie">Dirigimos, grabamos y editamos nosotros. <strong>Sin tercerizar.</strong></p>
+    </div>
+
+    <div class="equipo-firma reveal">Desde Bolivia — para marcas en 5 países.</div>
   </div>
 </section>
 
@@ -806,8 +933,8 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
       </div>
       <div class="footer-col">
         <h5>Seguinos</h5>
-        <a href="https://www.instagram.com/duo_agenciamkt" target="_blank" rel="noopener">Instagram · @duo_agenciamkt ↗</a>
-        <a href="https://www.tiktok.com/@duo_agenciamkt" target="_blank" rel="noopener">TikTok · @duo_agenciamkt ↗</a>
+        <a href="https://www.instagram.com/duo_agenciamkt" target="_blank" rel="noopener">Instagram · @duo_marketingdigital ↗</a>
+        <a href="https://www.tiktok.com/@duo_marketingdigital" target="_blank" rel="noopener">TikTok · @duo_marketingdigital ↗</a>
         <a href="https://www.facebook.com/61565101730927" target="_blank" rel="noopener">Facebook · DÚO Marketing Digital ↗</a>
         <a href="https://www.manubaldiviezo.lat" target="_blank" rel="noopener">Conocé a nuestro estratega →</a>
       </div>
@@ -839,14 +966,18 @@ const CASOS = [
 
 /* Muro de reels — data editable. Cuando existan clips, completar videoSrc/poster/urlReal */
 const REELS = [
-  { cliente: "Femmeninas", nicho: "Moda", metrica: "1.2M vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Climere", nicho: "Estética", metrica: "480K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "ProGaming", nicho: "Gaming", metrica: "890K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Ñañitos", nicho: "Retail", metrica: "320K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Vision Arq", nicho: "Servicios", metrica: "210K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Femmeninas", nicho: "Moda", metrica: "760K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "Climere", nicho: "Estética", metrica: "540K vistas", videoSrc: "", poster: "", urlReal: "" },
-  { cliente: "ProGaming", nicho: "Gaming", metrica: "1.5M vistas", videoSrc: "", poster: "", urlReal: "" }
+  { cliente: "Abbanissi", nicho: "Juguetería", metrica: "667.3K", videoSrc: "/reels/01-abbanissi.mp4", poster: "/reels/posters/01-abbanissi.jpg", urlReal: "https://www.tiktok.com/@jugueteriaabbanissi/video/7481773766524013830" },
+  { cliente: "Climere", nicho: "Estética", metrica: "295.1K", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
+  { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
+  { cliente: "Marena", nicho: "Moda", metrica: "193.5K", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
+  { cliente: "Pastela", nicho: "Comida", metrica: "167K", videoSrc: "/reels/05-pastela.mp4", poster: "/reels/posters/05-pastela.jpg", urlReal: "https://www.tiktok.com/@pastela.fb/video/7439828303768210743" },
+  { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
+  { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
+  { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
+  { cliente: "OHM", nicho: "Electrodomésticos", metrica: "54.6K", videoSrc: "/reels/09-ohm.mp4", poster: "/reels/posters/09-ohm.jpg", urlReal: "https://www.tiktok.com/@ohm_refrigeracion/video/7430617852417281285" },
+  { cliente: "Abigail Zegarra", nicho: "Pastelería", metrica: "47.1K", videoSrc: "/reels/10-abigail.mp4", poster: "/reels/posters/10-abigail.jpg", urlReal: "https://www.tiktok.com/@abigailzegarrapasteleria/video/7522470708639730950" },
+  { cliente: "Yacuiba VS", nicho: "Eventos", metrica: "45.5K", videoSrc: "/reels/11-yacuibavs.mp4", poster: "/reels/posters/11-yacuibavs.jpg", urlReal: "https://www.tiktok.com/@yacuibavs/video/7447700376570088709" },
+  { cliente: "Yummy", nicho: "Café", metrica: "40.4K", videoSrc: "/reels/12-yummy.mp4", poster: "/reels/posters/12-yummy.jpg", urlReal: "https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214" }
 ];
 
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -891,17 +1022,21 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* VSL */
+/* VSL — la sección está oculta hasta grabar el video.
+   El guard evita que un getElementById nulo corte el resto del script. */
 const vslPh = document.getElementById('vsl-ph');
-vslPh.addEventListener('click', () => {
-  if (!VSL_URL) { alert('El video se agrega en la constante VSL_URL del código.'); return; }
-  const iframe = document.createElement('iframe');
-  iframe.src = VSL_URL + (VSL_URL.includes('?') ? '&' : '?') + 'autoplay=1';
-  iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-  iframe.allowFullscreen = true;
-  document.getElementById('vsl-frame').innerHTML = '';
-  document.getElementById('vsl-frame').appendChild(iframe);
-});
+if (vslPh && VSL_URL) {
+  vslPh.addEventListener('click', () => {
+    const frame = document.getElementById('vsl-frame');
+    if (!frame) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = VSL_URL + (VSL_URL.includes('?') ? '&' : '?') + 'autoplay=1';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    frame.innerHTML = '';
+    frame.appendChild(iframe);
+  });
+}
 
 /* Casos */
 const casosGrid = document.getElementById('casos-grid');
@@ -930,11 +1065,11 @@ function reelCard(r) {
       ${r.videoSrc
         ? `<video muted loop playsinline preload="none" data-src="${r.videoSrc}" ${r.poster ? `poster="${r.poster}"` : ''}></video>`
         : `<div class="reel-ph">🎬</div>`}
+      ${r.metrica ? `<span class="reel-vistas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>${r.metrica}</span>` : ''}
       <div class="reel-overlay">
         <div class="reel-cliente">${r.cliente}</div>
         <div class="reel-bottom">
           <span class="reel-nicho">${r.nicho}</span>
-          <span class="reel-metrica">${r.metrica}</span>
         </div>
       </div>
     </a>`;
@@ -956,6 +1091,8 @@ const videoObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.2 });
 reelTrack.querySelectorAll('video').forEach(v => videoObserver.observe(v));
+/* Los clips de "detrás de cámara" usan el mismo observador: cargan y se pausan solos. */
+document.querySelectorAll('.bts-clip').forEach(v => videoObserver.observe(v));
 
 /* Formulario de contacto → arma mensaje de WhatsApp con los datos */
 document.getElementById('contacto-form').addEventListener('submit', (e) => {
