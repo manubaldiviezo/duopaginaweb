@@ -714,14 +714,14 @@ html, body { overflow-x: clip; max-width: 100%; }
 /* ── Cinta de logos de clientes ── */
 .logos-cinta { margin-bottom: 30px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
 .logos-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
-.logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 46s linear infinite; }
+.logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 40s linear infinite; }
 .logo-item { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; width: 84px; }
 .logo-item img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.92); border: 1.5px solid rgba(255,255,255,0.15); opacity: 1; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
 .logo-item:hover img { transform: scale(1.1); border-color: var(--orange-line); box-shadow: 0 8px 26px rgba(236,103,48,0.32); }
 .logo-item i { font-style: normal; font-size: 10px; font-weight: 600; color: var(--text-2); text-align: center; line-height: 1.25; }
 @media (max-width: 560px) { .ig-feed { grid-template-columns: repeat(3, 1fr); } .ig-ver { display: none; } }
 
-.logos-pauta .logos-pista { animation-direction: reverse; animation-duration: 52s; }
+.logos-pauta .logos-pista { animation-direction: reverse; }
 .logos-pauta { margin-bottom: 34px; }
 
 /* ── Paquete de arranque ── */
@@ -898,6 +898,89 @@ body { padding-top: 0 !important; }
 .esc-dom { border-color: var(--orange-line); background: linear-gradient(170deg, rgba(236,103,48,0.10), var(--card) 52%); box-shadow: 0 0 0 1px rgba(236,103,48,0.16), 0 16px 48px rgba(236,103,48,0.10); }
 @media (min-width: 880px) { .esc-grid { grid-template-columns: repeat(3, 1fr); } }
 
+/* ── Hero ── */
+.hero-kicker { display: inline-block; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.17em; text-transform: uppercase; color: var(--amber); margin-bottom: 15px; }
+.hero-cifras { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 760px; margin: 42px auto 0; padding-top: 30px; border-top: 1px solid var(--line-soft); }
+.cifra { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cifra b { font-family: 'Montserrat', sans-serif; font-size: clamp(27px, 6vw, 40px); font-weight: 900; line-height: 1; letter-spacing: -0.02em; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; font-variant-numeric: tabular-nums; }
+.cifra span { font-size: 11.5px; line-height: 1.4; color: var(--text-3); text-align: center; }
+@media (min-width: 640px) { .hero-cifras { grid-template-columns: repeat(3, 1fr); gap: 22px; } }
+
+/* ── Video de presentación ── */
+.presenta-marco { max-width: 900px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--orange-line); box-shadow: 0 0 60px rgba(236,103,48,0.16); background: #0d0d0b; }
+.presenta-marco video { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+
+/* ── Garantía ── */
+.garantia { background: var(--bg-2); border-top: 1px solid var(--line-soft); }
+.gar { display: flex; flex-direction: column; gap: 18px; max-width: 880px; margin: 0 auto; padding: 32px 28px; background: linear-gradient(150deg, rgba(249,178,51,0.10), var(--bg-3) 62%); border: 1px solid rgba(249,178,51,0.34); border-radius: var(--radius-lg); }
+.gar-ico { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; flex-shrink: 0; border-radius: 14px; background: rgba(249,178,51,0.14); border: 1px solid rgba(249,178,51,0.4); color: var(--amber); }
+.gar-ico svg { width: 26px; height: 26px; }
+.gar h3 { font-size: clamp(17px, 2.6vw, 22px); line-height: 1.35; margin-bottom: 11px; }
+.gar p { font-size: 13.6px; line-height: 1.7; color: var(--text-3); }
+.gar strong { color: var(--text); font-weight: 600; }
+@media (min-width: 720px) { .gar { flex-direction: row; align-items: flex-start; gap: 24px; padding: 36px 34px; } }
+
+/* ── Testimonios ── */
+.testi-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1060px; margin: 0 auto; }
+.testi { margin: 0; display: flex; flex-direction: column; gap: 18px; padding: 26px 24px; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius-md); transition: border-color 0.3s, transform 0.3s; }
+.testi:hover { border-color: var(--orange-line); transform: translateY(-4px); }
+.testi blockquote { margin: 0; font-size: 14px; line-height: 1.7; color: var(--text-2); }
+.testi blockquote::before { content: "\201C"; display: block; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 0.6; color: var(--orange); opacity: 0.5; margin-bottom: 8px; }
+.testi figcaption { display: flex; align-items: center; gap: 11px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-soft); }
+.testi figcaption img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.9); }
+.testi figcaption span { display: flex; flex-direction: column; gap: 1px; }
+.testi figcaption b { font-family: 'Montserrat', sans-serif; font-size: 13.5px; font-weight: 800; color: var(--text); }
+.testi figcaption i { font-style: normal; font-size: 11.5px; color: var(--amber); }
+@media (min-width: 760px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Prueba social del hero ── */
+.hero-prueba { display: flex; flex-direction: column; align-items: center; gap: 13px; margin-top: 42px; padding-top: 30px; border-top: 1px solid var(--line-soft); }
+.hp-logos { display: flex; align-items: center; }
+.hp-logos img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.92); border: 2px solid var(--bg); margin-left: -11px; transition: transform 0.3s; }
+.hp-logos img:first-child { margin-left: 0; }
+.hp-logos img:hover { transform: translateY(-4px) scale(1.08); z-index: 2; }
+.hero-prueba > span { font-size: 12.8px; color: var(--text-3); text-align: center; }
+.hero-prueba b { color: var(--text-2); font-weight: 700; }
+
+/* ── Pulido general ── */
+/* Títulos más apretados: a tamaños grandes el interletrado por defecto queda suelto. */
+h1 { letter-spacing: -0.025em; }
+h2 { letter-spacing: -0.018em; }
+h3 { letter-spacing: -0.008em; }
+
+/* Un resplandor tenue detrás de cada sección impar da profundidad sin pesar. */
+section { position: relative; }
+.vias::after, .escalera::after, .garantia::after {
+  content: ""; position: absolute; top: 0; left: 50%; width: min(900px, 90vw); height: 320px;
+  transform: translateX(-50%); pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(236,103,48,0.08), transparent 68%);
+}
+.vias > .container, .escalera > .container, .garantia > .container { position: relative; z-index: 1; }
+
+/* El foco del teclado tiene que verse: accesibilidad y percepción de calidad. */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px;
+}
+
+/* Botones: un realce mínimo al pasar y al presionar. */
+.btn { transition: transform 0.22s cubic-bezier(.2,.8,.3,1), box-shadow 0.22s, background 0.25s, border-color 0.25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-orange:hover { box-shadow: 0 12px 34px rgba(236,103,48,0.36); }
+
+/* Las tarjetas entran escalonadas, no todas de golpe. */
+.sv-grid > *, .esc-grid > *, .vias-grid > *, .incluye-grid > * { transition-delay: calc(var(--i, 0) * 70ms); }
+
+/* Selección de texto con el color de la marca. */
+::selection { background: rgba(236,103,48,0.32); color: #fff; }
+
+/* La barra de desplazamiento acompaña la paleta. */
+html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(236,103,48,0.42); border-radius: 999px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: rgba(236,103,48,0.7); }
+
 </style>
 </head>
 <body>
@@ -946,18 +1029,47 @@ body { padding-top: 0 !important; }
       <div class="hero-canvas-wrap reveal">
         <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
       </div>
-      <h1 class="reveal">Tu marca no necesita más publicaciones.<br><span class="grad">Necesita contenido estratégico.</span></h1>
-      <p class="hero-sub reveal">Somos DÚO, agencia creativa. Dirigimos y producimos tu contenido, lanzamos campañas y escalamos con resultados medibles. Trabajamos <strong>online</strong> con negocios de todo el país y del exterior.</p>
+      <span class="hero-kicker reveal">Agencia creativa · Bolivia y el exterior</span>
+      <h1 class="reveal">Producimos tu contenido.<br><span class="grad">Y lo convertimos en ventas.</span></h1>
+      <p class="hero-sub reveal">Estrategia, producción audiovisual y campañas en Meta. Un solo equipo para las tres cosas — porque separadas no funcionan.</p>
       <div class="hero-ctas reveal">
-        <a href="#contacto" class="btn btn-orange">Quiero crear contenido estratégico
+        <button type="button" class="btn btn-orange js-precalifica" data-origen="Hero">Agendar mi reunión
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#metodo" class="btn btn-ghost">Mira cómo trabajamos</a>
+        </button>
+        <a href="#trabajos" class="btn btn-ghost">Ver nuestro trabajo</a>
       </div>
-      <div class="hero-badge reveal">
-        <span class="dot"></span>
-        <span><b>+30 marcas</b> · Bolivia y el exterior, <b>100% online</b></span>
+
+      <div class="hero-prueba reveal">
+        <div class="hp-logos">
+          <img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" width="220" height="220" decoding="async">
+          <img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" width="220" height="220" decoding="async">
+          <img src="/logos/clientes/climere.webp" alt="Climere" width="220" height="220" decoding="async">
+          <img src="/logos/clientes/nanitos.webp" alt="Ñañitos" width="220" height="220" decoding="async">
+          <img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" width="220" height="220" decoding="async">
+        </div>
+        <span>Producimos el contenido de <b>14 marcas</b> en Bolivia, Chile y Ecuador.</span>
       </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRESENTACIÓN EN VIDEO ═══════════
+     Para publicarlo: subir el archivo a /reels/duo-presentacion.mp4 y su
+     miniatura a /images/duo-presentacion.jpg, y quitar el atributo hidden
+     de la sección y cambiar data-poster por poster y data-src por src.
+     Mientras esté oculta, no se pide ningún archivo al servidor. -->
+<section class="presenta" id="presentacion" hidden>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Somos nosotros</span>
+      <h2>Un minuto <span class="grad">para conocernos.</span></h2>
+      <p>Quiénes somos, cómo trabajamos y qué puedes esperar si decides que trabajemos juntos.</p>
+    </div>
+    <div class="presenta-marco reveal">
+      <video controls playsinline preload="none" data-poster="/images/duo-presentacion.jpg">
+        <source data-src="/reels/duo-presentacion.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -1382,6 +1494,34 @@ body { padding-top: 0 !important; }
 </section>
 
 
+<!-- ═══════════ GARANTÍA ═══════════ -->
+<section class="garantia">
+  <div class="container">
+    <div class="gar reveal">
+      <span class="gar-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      </span>
+      <div class="gar-txt">
+        <h3>Si el primer mes no entregamos lo acordado, lo devolvemos.</h3>
+        <p>No prometemos resultados: dependen de tu producto, tu precio y tu mercado. Lo que sí garantizamos es <strong>nuestro trabajo</strong> — la cantidad de piezas, la calidad y los plazos que firmamos. Si eso no se cumple, te devolvemos el mes. Sin discutir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LO QUE DICEN ═══════════
+     Para activarla: completar el array TESTIMONIOS del script y quitar el
+     hidden de esta sección. Lo ideal son capturas o audios reales. -->
+<section class="testimonios" id="testimonios" hidden>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Lo que dicen</span>
+      <h2>No lo decimos nosotros. <span class="grad">Lo dicen ellos.</span></h2>
+    </div>
+    <div class="testi-grid reveal" id="testi-grid"></div>
+  </div>
+</section>
+
 <!-- ═══════════ AGENDAR ═══════════ -->
 <section class="agenda" id="agendar">
   <div class="container">
@@ -1704,7 +1844,7 @@ reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join(''
     const dt = previo ? Math.min(ahora - previo, 50) : 16;
     previo = ahora;
     if (visible && !arrastrando && !lento && ahora - ultimoGesto > 220) {
-      tira.scrollLeft += (mitad() / 24000) * dt;   /* la pista completa en ~24 s */
+      tira.scrollLeft += (mitad() / 13000) * dt;   /* la pista completa en ~13 s */
       normalizar();
     }
     desdeReparto += dt;
@@ -1775,6 +1915,34 @@ document.getElementById('contacto-form').addEventListener('submit', (e) => {
   const num = (WHATSAPP && WHATSAPP !== '59175175144') ? WHATSAPP : '59175175144';
   window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
 });
+
+
+
+
+
+/* Escalona la aparición de las tarjetas dentro de cada grilla. */
+document.querySelectorAll(".sv-grid, .esc-grid, .vias-grid, .incluye-grid").forEach(g => {
+  [...g.children].forEach((el, i) => el.style.setProperty("--i", i));
+});
+
+/* Testimonios — se completan acá. Cada uno: texto, quien lo dijo y su marca. */
+const TESTIMONIOS = [
+  // { texto: "…", quien: "Nombre", marca: "Marca", logo: "/logos/clientes/archivo.webp" },
+];
+(function () {
+  const grid = document.getElementById("testi-grid");
+  const sec = document.getElementById("testimonios");
+  if (!grid || !TESTIMONIOS.length) return;
+  sec.hidden = false;
+  grid.innerHTML = TESTIMONIOS.map(t => `
+    <figure class="testi">
+      <blockquote>${t.texto}</blockquote>
+      <figcaption>
+        ${t.logo ? `<img src="${t.logo}" alt="${t.marca}" width="80" height="80" decoding="async">` : ""}
+        <span><b>${t.quien}</b><i>${t.marca}</i></span>
+      </figcaption>
+    </figure>`).join("");
+})();
 
 
 /* ══ Precalificación antes de WhatsApp ══
