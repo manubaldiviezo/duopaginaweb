@@ -224,7 +224,7 @@ section { padding: 88px 0; position: relative; }
 .marquee-track { display: flex; width: max-content; gap: 0; animation: scroll 34s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.logo-item { display: flex; align-items: center; justify-content: center; padding: 0 42px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.02em; color: var(--text-2); opacity: 0.6; white-space: nowrap; transition: opacity 0.3s; }
+.logo-item { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; width: 94px; }
 .logo-item:hover { opacity: 1; color: var(--text); }
 .logos-grid { display: flex; flex-wrap: wrap; gap: 20px 42px; justify-content: center; }
 
@@ -685,9 +685,9 @@ html { scroll-behavior: smooth; }
 .logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 52s linear infinite; }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .logo-item { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; width: 84px; }
-.logo-item img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-soft); filter: grayscale(1); opacity: 0.55; transition: filter 0.35s, opacity 0.35s, transform 0.35s; }
-.logo-item:hover img { filter: none; opacity: 1; transform: scale(1.08); }
-.logo-item i { font-style: normal; font-size: 9.5px; font-weight: 600; color: var(--text-3); text-align: center; line-height: 1.25; }
+.logo-item img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.92); border: 1.5px solid rgba(255,255,255,0.15); opacity: 1; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
+.logo-item:hover img { transform: scale(1.1); border-color: var(--orange-line); box-shadow: 0 8px 26px rgba(236,103,48,0.32); }
+.logo-item i { font-style: normal; font-size: 10px; font-weight: 600; color: var(--text-2); text-align: center; line-height: 1.25; }
 @media (min-width: 640px) { .incluye-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .incluye-grid { grid-template-columns: repeat(3, 1fr); } }
 
@@ -771,34 +771,34 @@ html { scroll-behavior: smooth; }
     <div class="logos-cinta reveal">
       <span class="logos-label">Marcas que ya trabajan con nosotros</span>
       <div class="logos-pista">
-        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
-        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
-        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
-        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
-        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
-        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
-        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
-        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
-        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
-        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
-        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
-        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
-        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
-        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
-        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
-        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
-        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
-        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
-        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
-        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
-        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
-        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
-        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
-        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
-        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
-        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" decoding="async" width="220" height="220"><i>femmeninas.cl</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
+        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
+        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
+        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
+        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
+        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
+        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
+        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" decoding="async" width="220" height="220"><i>Versus Yacuiba</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
+        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
+        <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" decoding="async" width="220" height="220"><i>femmeninas.cl</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
+        <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
+        <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+        <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
+        <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
+        <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
+        <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
+        <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
+        <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
+        <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" decoding="async" width="220" height="220"><i>Versus Yacuiba</i></span>
+        <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
+        <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
       </div>
     </div>
 

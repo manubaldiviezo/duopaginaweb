@@ -238,7 +238,7 @@ section { padding: 88px 0; position: relative; }
 .marquee-track { display: flex; width: max-content; gap: 0; animation: scroll 34s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
 @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.logo-item { display: flex; align-items: center; justify-content: center; padding: 0 42px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.02em; color: var(--text-2); opacity: 0.6; white-space: nowrap; transition: opacity 0.3s; }
+.logo-item { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; width: 94px; }
 .logo-item:hover { opacity: 1; color: var(--text); }
 .logos-grid { display: flex; flex-wrap: wrap; gap: 20px 42px; justify-content: center; }
 
@@ -562,13 +562,13 @@ section { padding: 88px 0; position: relative; }
 .equipo-firma { margin-top: 22px; font-family: 'Caveat', cursive; font-size: 22px; color: var(--amber); text-align: center; }
 
 /* ── Caras del equipo (círculos con anillo de marca) ── */
-.caras { display: flex; flex-wrap: wrap; justify-content: center; gap: 26px 52px; margin: 0 auto; }
+.caras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 30px; max-width: 520px; margin: 0 auto; justify-items: center; align-items: start; }
 .cara { margin: 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 3px; }
-.cara-foto { display: block; width: clamp(148px, 40vw, 196px); aspect-ratio: 1; border-radius: 50%; padding: 3px; background: var(--grad); box-shadow: 0 12px 38px rgba(236,103,48,0.24); margin-bottom: 14px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.cara-foto { display: block; width: min(100%, 178px); aspect-ratio: 1; border-radius: 50%; padding: 3px; background: var(--grad); box-shadow: 0 12px 38px rgba(236,103,48,0.24); margin-bottom: 14px; transition: transform 0.35s ease, box-shadow 0.35s ease; }
 .cara:hover .cara-foto { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(236,103,48,0.36); }
 .cara-foto img { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-.cara b { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 800; color: var(--text); line-height: 1.25; }
-.cara-rol { font-size: 12.5px; font-weight: 600; color: var(--amber); }
+.cara b { font-family: 'Montserrat', sans-serif; font-size: clamp(12.5px, 3.4vw, 15px); font-weight: 800; color: var(--text); line-height: 1.25; }
+.cara-rol { font-size: clamp(10.5px, 2.9vw, 12.5px); font-weight: 600; color: var(--amber); }
 
 /* ── Red de especialistas ── */
 .equipo-red { max-width: 700px; margin: 30px auto 0; text-align: center; }
@@ -716,13 +716,93 @@ html, body { overflow-x: clip; max-width: 100%; }
 .logos-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
 .logos-pista { display: flex; width: max-content; gap: 34px; animation: scroll 46s linear infinite; }
 .logo-item { display: flex; flex-direction: column; align-items: center; gap: 7px; flex-shrink: 0; width: 84px; }
-.logo-item img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line-soft); filter: grayscale(1); opacity: 0.55; transition: filter 0.35s, opacity 0.35s, transform 0.35s; }
-.logo-item:hover img { filter: none; opacity: 1; transform: scale(1.08); }
-.logo-item i { font-style: normal; font-size: 9.5px; font-weight: 600; color: var(--text-3); text-align: center; line-height: 1.25; }
+.logo-item img { width: 62px; height: 62px; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,0.92); border: 1.5px solid rgba(255,255,255,0.15); opacity: 1; transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s; }
+.logo-item:hover img { transform: scale(1.1); border-color: var(--orange-line); box-shadow: 0 8px 26px rgba(236,103,48,0.32); }
+.logo-item i { font-style: normal; font-size: 10px; font-weight: 600; color: var(--text-2); text-align: center; line-height: 1.25; }
 @media (max-width: 560px) { .ig-feed { grid-template-columns: repeat(3, 1fr); } .ig-ver { display: none; } }
 
 .logos-pauta .logos-pista { animation-direction: reverse; animation-duration: 52s; }
 .logos-pauta { margin-bottom: 34px; }
+
+/* ── Paquete de arranque ── */
+.arranque { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 1000px; margin: 0 auto 40px; padding: 28px 26px; background: linear-gradient(150deg, rgba(249,178,51,0.10), var(--bg-3) 60%); border: 1px solid rgba(249,178,51,0.34); border-radius: var(--radius-lg); }
+.arr-tag { display: inline-flex; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.13em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 5px 12px; border-radius: 999px; margin-bottom: 13px; }
+.arranque h3 { font-size: clamp(20px, 3vw, 25px); margin-bottom: 10px; }
+.arr-txt > p { font-size: 13.8px; line-height: 1.6; color: var(--text-3); margin-bottom: 17px; }
+.arr-txt strong { color: var(--text-2); font-weight: 600; }
+.arr-lista { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.arr-lista li { position: relative; padding-left: 22px; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+.arr-lista li::before { content: ""; position: absolute; left: 0; top: 6px; width: 11px; height: 7px; border-left: 2px solid var(--amber); border-bottom: 2px solid var(--amber); transform: rotate(-45deg); }
+.arr-lista b { color: var(--text); font-weight: 700; }
+.arr-precio { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding-top: 18px; border-top: 1px solid var(--line-soft); }
+.arr-precio b { font-family: 'Montserrat', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; color: transparent; background: var(--grad); -webkit-background-clip: text; background-clip: text; }
+.arr-precio > span { font-size: 12px; font-weight: 600; color: var(--text-3); margin-bottom: 14px; }
+
+/* ── Paquetes de campañas ── */
+.paq-bloque { max-width: 1000px; margin: 0 auto; }
+.paq-kicker { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.paq-titulo { text-align: center; font-size: clamp(20px, 3.2vw, 27px); margin-bottom: 11px; }
+.paq-sub { max-width: 680px; margin: 0 auto 26px; text-align: center; font-size: 13.6px; line-height: 1.6; color: var(--text-3); }
+.paq-sub strong { color: var(--amber); font-weight: 700; }
+.paq-tabla-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.paq-tabla { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 620px; }
+.paq-tabla th, .paq-tabla td { padding: 13px 14px; text-align: center; vertical-align: middle; }
+.paq-tabla thead th { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); background: var(--card); vertical-align: bottom; padding: 20px 14px 16px; position: relative; }
+.pt-nom { display: block; font-family: 'Montserrat', sans-serif; font-size: 12.5px; font-weight: 900; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-2); margin-bottom: 7px; }
+.pt-precio { display: block; font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 900; line-height: 1; color: var(--text); }
+.pt-precio i { display: block; font-style: normal; font-size: 10.5px; font-weight: 600; color: var(--text-3); margin-top: 5px; }
+.pt-dom { background: linear-gradient(180deg, rgba(236,103,48,0.16), var(--card) 70%) !important; border-left: 1px solid var(--orange-line) !important; border-right: 1px solid var(--orange-line) !important; }
+.pt-dom .pt-precio { color: var(--amber); }
+.pt-badge { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; color: #1D1D1B; background: var(--grad); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.paq-tabla tbody th { text-align: left; font-size: 13px; font-weight: 500; color: var(--text-2); border-bottom: 1px solid var(--line-soft); }
+.paq-tabla tbody td { font-size: 14px; color: var(--text-2); border-bottom: 1px solid var(--line-soft); }
+.paq-tabla tbody td b { font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--text); }
+.paq-tabla tbody tr:nth-child(2n) th, .paq-tabla tbody tr:nth-child(2n) td { background: rgba(255,255,255,0.016); }
+.paq-tabla tbody td:nth-child(3) { border-left: 1px solid var(--orange-line); border-right: 1px solid var(--orange-line); background: rgba(236,103,48,0.05) !important; }
+.paq-tabla tbody tr:last-child td:nth-child(3) { border-bottom: 1px solid var(--orange-line); }
+.tick { color: var(--amber); font-size: 15px; font-weight: 700; }
+.nope { color: var(--text-3); opacity: 0.5; }
+.paq-cabecera-movil { display: none; }
+.paq-nota { max-width: 680px; margin: 24px auto 0; text-align: center; font-size: 13px; line-height: 1.6; color: var(--text-3); }
+.paq-nota strong { color: var(--text-2); font-weight: 600; }
+
+/* ── Servicios sueltos ── */
+.sueltos { display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 1000px; margin: 32px auto 0; }
+.suelto { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; background: var(--card); border: 1px dashed rgba(255,255,255,0.16); border-radius: var(--radius-sm); }
+.suelto b { font-family: 'Montserrat', sans-serif; font-size: 14.5px; font-weight: 800; color: var(--text); }
+.suelto span { font-size: 12.8px; line-height: 1.55; color: var(--text-3); }
+.suelto i { font-style: normal; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--amber); margin-top: 6px; }
+.suelto i u { display: block; text-decoration: none; font-family: Inter, sans-serif; font-size: 10.5px; font-weight: 600; color: var(--text-3); margin-top: 2px; }
+.paq-legal { max-width: 700px; margin: 26px auto 0; text-align: center; font-size: 12.6px; line-height: 1.6; color: var(--text-3); }
+.paq-legal strong { color: var(--text-2); font-weight: 600; }
+.serv-ctas { display: flex; flex-wrap: wrap; gap: 13px; justify-content: center; margin-top: 30px; }
+
+@media (min-width: 780px) {
+  .arranque { grid-template-columns: 1.6fr 1fr; align-items: center; }
+  .arr-precio { border-top: none; border-left: 1px solid var(--line-soft); padding: 0 0 0 26px; }
+  .sueltos { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 719px) {
+  .paq-cabecera-movil { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
+  .pcm { text-align: center; padding: 13px 8px; border: 1px solid var(--line-soft); border-radius: var(--radius-sm); background: var(--card); }
+  .pcm.dom { border-color: var(--orange-line); background: linear-gradient(180deg, rgba(236,103,48,0.16), var(--card) 70%); }
+  .pcm b { display: block; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); margin-bottom: 5px; }
+  .pcm i { display: block; font-style: normal; font-family: 'Montserrat', sans-serif; font-size: 17px; font-weight: 900; color: var(--text); line-height: 1; }
+  .pcm.dom i { color: var(--amber); }
+  .pcm u { display: block; text-decoration: none; font-size: 9px; color: var(--text-3); margin-top: 3px; }
+  .paq-tabla-wrap { overflow: visible; }
+  .paq-tabla { min-width: 0; display: block; }
+  .paq-tabla thead { display: none; }
+  .paq-tabla tbody { display: block; }
+  .paq-tabla tbody tr { display: grid; grid-template-columns: 1fr auto auto auto; align-items: center; gap: 8px; padding: 11px 13px; border: 1px solid var(--line-soft); border-bottom: none; background: var(--card); }
+  .paq-tabla tbody tr:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+  .paq-tabla tbody tr:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); border-bottom: 1px solid var(--line-soft); }
+  .paq-tabla tbody th, .paq-tabla tbody td { padding: 0; border: none !important; background: none !important; }
+  .paq-tabla tbody th { font-size: 12.2px; line-height: 1.35; }
+  .paq-tabla tbody td { min-width: 42px; text-align: center; position: relative; padding-top: 15px !important; }
+  .paq-tabla tbody td::before { content: attr(data-paq); position: absolute; top: 0; left: 0; right: 0; font-family: 'Montserrat', sans-serif; font-size: 8px; font-weight: 900; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-3); }
+  .paq-tabla tbody td:nth-child(3)::before { color: var(--amber); }
+}
 
 </style>
 </head>
@@ -787,55 +867,6 @@ html, body { overflow-x: clip; max-width: 100%; }
   </div>
 </section>
 
-<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
-<section id="equipo">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
-      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web.</p>
-    </div>
-
-    <div class="caras">
-      <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
-        <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
-      </figure>
-      <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
-        <b>Valeria</b><span class="cara-rol">Directora creativa</span>
-      </figure>
-    </div>
-
-
-    <div class="equipo-red reveal">
-      <p class="red-intro">Detrás de cada entrega hay un equipo de <strong>especialistas freelance</strong> de distintos departamentos de Bolivia. Cada uno en lo suyo.</p>
-      <ul class="red-lista">
-        <li>Editores de video</li>
-        <li>Diseñadores gráficos</li>
-        <li>Desarrollador</li>
-        <li>Trafficker digital</li>
-        <li>Community manager</li>
-      </ul>
-    </div>
-
-    <div class="bts reveal">
-      <span class="bts-label">Detrás de cámara</span>
-      <div class="bts-grid">
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
-      </div>
-      <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
-    </div>
-
-    <div class="equipo-firma reveal">Trabajamos online con negocios de todo el país y del exterior.</div>
-  </div>
-</section>
-
 <!-- ═══════════ S2 · TIRA DINÁMICA DE TRABAJOS ═══════════ -->
 <section class="strip-sec" id="trabajos">
   <div class="container">
@@ -848,28 +879,28 @@ html, body { overflow-x: clip; max-width: 100%; }
     <div class="logos-cinta reveal">
       <span class="logos-label">Marcas cuyo contenido producimos</span>
       <div class="logos-pista">
-      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
-      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
-      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
-      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
-      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" loading="lazy" width="220" height="220"><i>Abbanissi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" loading="lazy" width="220" height="220"><i>Marena</i></span>
-      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" loading="lazy" width="220" height="220"><i>Tiendas Gloria</i></span>
-      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" loading="lazy" width="220" height="220"><i>El Clásico</i></span>
-      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" loading="lazy" width="220" height="220"><i>Milena Solórzano</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" loading="lazy" width="220" height="220"><i>Abigail Zegarra</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" loading="lazy" width="220" height="220"><i>Versus Yacuiba</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" loading="lazy" width="220" height="220"><i>Yummy</i></span>
-      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" loading="lazy" width="220" height="220"><i>Pastela</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
+      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
+      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
+      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" decoding="async" width="220" height="220"><i>Versus Yacuiba</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
+      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
+      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
+      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
+      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
+      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yacuibavs.webp" alt="Versus Yacuiba" decoding="async" width="220" height="220"><i>Versus Yacuiba</i></span>
+      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
+      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
       </div>
     </div>
 
@@ -890,16 +921,16 @@ html, body { overflow-x: clip; max-width: 100%; }
     <div class="logos-cinta logos-pauta reveal">
       <span class="logos-label">Cuentas publicitarias que gestionamos</span>
       <div class="logos-pista">
-      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
-      <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
-      <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
-      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" loading="lazy" width="220" height="220"><i>femmeninas.cl</i></span>
-      <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" loading="lazy" width="220" height="220"><i>VisionArq</i></span>
-      <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" loading="lazy" width="220" height="220"><i>ProGaming EC</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" loading="lazy" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" loading="lazy" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" decoding="async" width="220" height="220"><i>femmeninas.cl</i></span>
+      <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
+      <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
+      <span class="logo-item"><img src="/logos/clientes/femmeninas.webp" alt="femmeninas.cl" decoding="async" width="220" height="220"><i>femmeninas.cl</i></span>
+      <span class="logo-item"><img src="/logos/clientes/visionarq.webp" alt="VisionArq" decoding="async" width="220" height="220"><i>VisionArq</i></span>
+      <span class="logo-item"><img src="/logos/clientes/progaming.webp" alt="ProGaming EC" decoding="async" width="220" height="220"><i>ProGaming EC</i></span>
+      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
+      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
       </div>
     </div>
 
@@ -994,58 +1025,157 @@ html, body { overflow-x: clip; max-width: 100%; }
         <div class="inc"><span class="inc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><b>Sitio web</b><span>Landing lista para recibir tus anuncios y convertir.</span></div>
       </div>
     </div>
-    <div class="rutas">
-      <a href="/servicios#escalar" class="ruta reveal">
-        <span class="ruta-kicker">Para empezar a vender</span>
-        <h3>Inicial</h3>
-        <div class="paq-precio"><b>2.500</b><span>Bs / mes</span></div>
-        <ul class="ruta-lista">
-          <li>Planificación estratégica</li>
-          <li>Dirección creativa</li>
-          <li>Gestión de anuncios en Facebook e Instagram</li>
+    <div class="arranque reveal">
+      <div class="arr-txt">
+        <span class="arr-tag">Para empezar</span>
+        <h3>Paquete de arranque</h3>
+        <p>Si tu marca todavía no tiene contenido, esto es lo primero. Planificamos, grabamos y editamos. <strong>Vos publicás.</strong></p>
+        <ul class="arr-lista">
           <li><b>4 videos</b> con edición profesional</li>
-          <li><b>4 artes</b></li>
+          <li><b>4 artes</b> para tus redes</li>
+          <li><b>Manual de marca básico</b> — perfil, portada y miniaturas para tus destacadas de Instagram</li>
+          <li><b>Multienlace de redes</b> — de regalo si es tu primera vez con nosotros</li>
         </ul>
-        <span class="ruta-link">Ver qué incluye →</span>
-      </a>
-      <a href="/servicios#escalar" class="ruta ruta-dom reveal">
-        <span class="ruta-badge">El más elegido</span>
-        <span class="ruta-kicker">Para escalar lo que funciona</span>
-        <h3>Escala</h3>
-        <div class="paq-precio"><b>3.500</b><span>Bs / mes</span></div>
-        <p class="paq-hereda">Todo lo del paquete Inicial, y además:</p>
-        <ul class="ruta-lista">
-          <li><b>8 videos</b> con edición profesional</li>
-          <li><b>6 artes</b></li>
-          <li>Asesoría para creación de contenido</li>
-        </ul>
-        <span class="ruta-link">Ver qué incluye →</span>
-      </a>
-      <a href="/servicios#web" class="ruta reveal">
-        <span class="ruta-kicker">Para vender también fuera de redes</span>
-        <h3>Integral</h3>
-        <div class="paq-precio"><b>4.250</b><span>Bs / mes</span></div>
-        <p class="paq-hereda">Todo lo del paquete Escala, y además:</p>
-        <ul class="ruta-lista">
-          <li><b>Sitio web</b> (landing page) lista para tus anuncios</li>
-        </ul>
-        <span class="ruta-link">Ver qué incluye →</span>
-      </a>
+      </div>
+      <div class="arr-precio">
+        <b>1.450</b><span>Bs</span>
+        <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20consultar%20por%20el%20paquete%20de%20arranque." target="_blank" rel="noopener" class="btn btn-orange">Consultar</a>
+      </div>
     </div>
 
-    <p class="paq-nota reveal">Trabajamos con negocios que buscan crecer en un plazo de <strong>1 a 3 meses</strong>. Podés arrancar con el paquete que más necesitás y seguir el mes siguiente con uno más bajo.</p>
+    <div class="paq-bloque reveal">
+      <span class="paq-kicker">Para vender con anuncios en Meta</span>
+      <h3 class="paq-titulo">Gestión de campañas <span class="grad">+ contenido todos los meses</span></h3>
+      <p class="paq-sub">Nosotros definimos qué contenido, qué guiones y qué dirección creativa necesita cada campaña. Para negocios que invierten entre <strong>2.000 y 10.000 Bs por mes</strong> en pauta.</p>
 
-    <a href="/servicios" class="combo-cta reveal">
-      <span class="combo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
-      <span class="combo-txt"><b>¿Necesitás algo distinto?</b> Eventos, sesiones de estudio o aprender el método por tu cuenta.</span>
-      <span class="combo-link">Ver todo →</span>
-    </a>
+      <div class="paq-cabecera-movil">
+        <div class="pcm"><b>Inicial</b><i>2.500</i><u>Bs/mes</u></div>
+        <div class="pcm dom"><b>Escala</b><i>3.500</i><u>Bs/mes</u></div>
+        <div class="pcm"><b>Integral</b><i>4.250</i><u>Bs/mes</u></div>
+      </div>
+
+      <div class="paq-tabla-wrap">
+        <table class="paq-tabla">
+          <thead>
+            <tr>
+              <td></td>
+              <th scope="col"><span class="pt-nom">Inicial</span><span class="pt-precio">2.500 <i>Bs/mes</i></span></th>
+              <th scope="col" class="pt-dom"><span class="pt-badge">El más elegido</span><span class="pt-nom">Escala</span><span class="pt-precio">3.500 <i>Bs/mes</i></span></th>
+              <th scope="col"><span class="pt-nom">Integral</span><span class="pt-precio">4.250 <i>Bs/mes</i></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Planificación estratégica</th>
+              <td data-paq="Inicial"><span class="tick">✓</span></td><td data-paq="Escala"><span class="tick">✓</span></td><td data-paq="Integral"><span class="tick">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Dirección creativa y guiones</th>
+              <td data-paq="Inicial"><span class="tick">✓</span></td><td data-paq="Escala"><span class="tick">✓</span></td><td data-paq="Integral"><span class="tick">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Gestión de anuncios en Facebook e Instagram</th>
+              <td data-paq="Inicial"><span class="tick">✓</span></td><td data-paq="Escala"><span class="tick">✓</span></td><td data-paq="Integral"><span class="tick">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Videos con edición profesional</th>
+              <td data-paq="Inicial"><b>4</b></td><td data-paq="Escala"><b>8</b></td><td data-paq="Integral"><b>8</b></td>
+            </tr>
+            <tr>
+              <th scope="row">Artes</th>
+              <td data-paq="Inicial"><b>4</b></td><td data-paq="Escala"><b>6</b></td><td data-paq="Integral"><b>6</b></td>
+            </tr>
+            <tr>
+              <th scope="row">Asesoría para creación de contenido</th>
+              <td data-paq="Inicial"><span class="nope">—</span></td><td data-paq="Escala"><span class="tick">✓</span></td><td data-paq="Integral"><span class="tick">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Sitio web (landing page)</th>
+              <td data-paq="Inicial"><span class="nope">—</span></td><td data-paq="Escala"><span class="nope">—</span></td><td data-paq="Integral"><span class="tick">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="paq-nota">Trabajamos con negocios que buscan crecer en un plazo de <strong>1 a 3 meses</strong>. Podés arrancar con el paquete que más necesitás y seguir el mes siguiente con uno más bajo.</p>
+    </div>
+
+    <div class="sueltos reveal">
+      <div class="suelto">
+        <b>Edición de video</b>
+        <span>Si ya tenés el material grabado y solo necesitás el armado.</span>
+        <i>desde 120 Bs<u>por video</u></i>
+      </div>
+      <div class="suelto">
+        <b>¿Necesitás otra cosa?</b>
+        <span>Manejo de redes, más contenido, sitio web, eventos o estudio: los hacemos por separado y se cotizan aparte.</span>
+        <i>a cotizar</i>
+      </div>
+    </div>
+
+    <p class="paq-legal reveal">Los precios son <strong>referenciales</strong>. Para marcas con mayor inversión publicitaria o proyectos integrales, la propuesta se arma a medida.</p>
+
+    <div class="serv-ctas reveal">
+      <a href="/servicios" class="btn btn-ghost">Ver todos los servicios</a>
+      <a href="https://wa.me/59177897077?text=Hola%20D%C3%9AO%20%F0%9F%91%8B%20Quiero%20una%20propuesta%20para%20mi%20marca." target="_blank" rel="noopener" class="btn btn-orange">Pedir mi propuesta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
 
     <div style="text-align:center;margin-top:36px" class="reveal">
       <a href="/servicios" class="btn btn-orange">Ver todos los servicios
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════ S11 · QUIÉNES SOMOS ═══════════ -->
+<section id="equipo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
+      <h2>Somos un dúo. <span class="grad">Y un equipo.</span></h2>
+      <p>Nos encargamos de todo: planificación, dirección creativa, guiones, producción, edición, artes, campañas y sitio web.</p>
+    </div>
+
+    <div class="caras">
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
+      </figure>
+      <figure class="cara reveal">
+        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
+        <b>Valeria</b><span class="cara-rol">Directora creativa</span>
+      </figure>
+    </div>
+
+
+    <div class="equipo-red reveal">
+      <p class="red-intro">Detrás de cada entrega hay un equipo de <strong>especialistas freelance</strong> de distintos departamentos de Bolivia. Cada uno en lo suyo.</p>
+      <ul class="red-lista">
+        <li>Editores de video</li>
+        <li>Diseñadores gráficos</li>
+        <li>Desarrollador</li>
+        <li>Trafficker digital</li>
+        <li>Community manager</li>
+      </ul>
+    </div>
+
+    <div class="bts reveal">
+      <span class="bts-label">Detrás de cámara</span>
+      <div class="bts-grid">
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+      </div>
+      <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
+    </div>
+
+    <div class="equipo-firma reveal">Trabajamos online con negocios de todo el país y del exterior.</div>
   </div>
 </section>
 
