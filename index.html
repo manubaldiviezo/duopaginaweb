@@ -490,19 +490,24 @@ section { padding: 88px 0; position: relative; }
 
 /* ── Tira dinámica de reels (S2) ── */
 .strip-sec { padding: 78px 0 70px; border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+/* Las dos cintas de #trabajos comparten paso, aire y duracion de vuelta: por
+   eso el logo de arriba viaja siempre encima del clip de su propio cliente.
+   Para cambiar la velocidad de ambas, se toca solo --cinta-vuelta. */
+#trabajos { --cinta-paso: 186px; --cinta-aire: 14px; --cinta-vuelta: 28s; }
+@media (max-width: 600px) { #trabajos { --cinta-paso: 156px; } }
 .reel-strip {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.reel-track { display: flex; width: max-content; gap: 14px; padding: 6px 0 12px; will-change: transform; }
-.reel-strip { cursor: grab; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; overscroll-behavior-x: contain; }
-.reel-strip::-webkit-scrollbar { display: none; }
-.reel-strip.arrastrando { cursor: grabbing; }
-.reel-strip.arrastrando .reel { pointer-events: none; }
+/* El aire va como margen de cada tarjeta y no como gap del flex: asi la mitad
+   de la pista mide exactamente diez pasos y la vuelta cierra sin dar el salto
+   de los pocos pixeles que sobran cuando el gap no entra en la cuenta.
+   El movimiento lo hace la misma animacion CSS que mueve los logos: corre en
+   el compositor, no en el hilo principal, y por eso no se entrecorta. */
+.reel-track { display: flex; width: max-content; padding: 6px 0 12px; will-change: transform; animation: scroll var(--cinta-vuelta) linear infinite; }
+.reel-track .reel { width: var(--cinta-paso); margin-right: var(--cinta-aire); flex-shrink: 0; }
 /* El muro nunca se detiene: en tactil el :hover queda pegado al tocar. */
-.reel-track .reel { width: 186px; flex-shrink: 0; }
-@media (max-width: 600px) { .reel-track .reel { width: 156px; } }
 
 .reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: transparent center/cover no-repeat; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
 .reel:hover { transform: translateY(-4px); border-color: var(--orange-line); }
@@ -723,6 +728,15 @@ html, body { overflow-x: clip; max-width: 100%; }
 
 .logos-pauta .logos-pista { animation-direction: reverse; }
 .logos-pauta { margin-bottom: 34px; }
+
+/* La cinta de logos de #trabajos adopta el paso, el aire y la vuelta de los
+   clips de abajo, para que cada logo quede centrado sobre su propio clip.
+   La cinta de pauta (Resultados) conserva su medida original. */
+#trabajos .logos-cinta { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+#trabajos .logos-pista { gap: 0; animation-duration: var(--cinta-vuelta); }
+#trabajos .logo-item { width: var(--cinta-paso); margin-right: var(--cinta-aire); }
+/* Si el sistema pide menos movimiento, las dos cintas se detienen juntas: de
+   eso ya se encarga la regla general que apaga toda animacion. */
 
 /* ── Paquete de arranque ── */
 .arranque { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 1000px; margin: 0 auto 40px; padding: 28px 26px; background: linear-gradient(150deg, rgba(249,178,51,0.10), var(--bg-3) 60%); border: 1px solid rgba(249,178,51,0.34); border-radius: var(--radius-lg); }
@@ -1080,30 +1094,9 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
   </div>
     <div class="logos-cinta reveal">
       <span class="logos-label">Marcas cuyo contenido producimos</span>
-      <div class="logos-pista">
-      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
-      <span class="logo-item"><img src="/logos/clientes/cahighli.webp" alt="CaHighLi" width="220" height="220" decoding="async"><i>CaHighLi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
-      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
-      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
-      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
-      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abbanissi.webp" alt="Abbanissi" decoding="async" width="220" height="220"><i>Abbanissi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/climere.webp" alt="Climere" decoding="async" width="220" height="220"><i>Climere</i></span>
-      <span class="logo-item"><img src="/logos/clientes/cahighli.webp" alt="CaHighLi" width="220" height="220" decoding="async"><i>CaHighLi</i></span>
-      <span class="logo-item"><img src="/logos/clientes/nanitos.webp" alt="Ñañitos" decoding="async" width="220" height="220"><i>Ñañitos</i></span>
-      <span class="logo-item"><img src="/logos/clientes/marena.webp" alt="Marena" decoding="async" width="220" height="220"><i>Marena</i></span>
-      <span class="logo-item"><img src="/logos/clientes/gloria.webp" alt="Tiendas Gloria" decoding="async" width="220" height="220"><i>Tiendas Gloria</i></span>
-      <span class="logo-item"><img src="/logos/clientes/elclasico.webp" alt="El Clásico" decoding="async" width="220" height="220"><i>El Clásico</i></span>
-      <span class="logo-item"><img src="/logos/clientes/milena.webp" alt="Milena Solórzano" decoding="async" width="220" height="220"><i>Milena Solórzano</i></span>
-      <span class="logo-item"><img src="/logos/clientes/abigail.webp" alt="Abigail Zegarra" decoding="async" width="220" height="220"><i>Abigail Zegarra</i></span>
-      <span class="logo-item"><img src="/logos/clientes/yummy.webp" alt="Yummy" decoding="async" width="220" height="220"><i>Yummy</i></span>
-      <span class="logo-item"><img src="/logos/clientes/pastela.webp" alt="Pastela" decoding="async" width="220" height="220"><i>Pastela</i></span>
-      </div>
+      <!-- La pista se arma desde la misma lista que los clips de abajo, para
+           que las dos cintas no se puedan desfasar nunca. -->
+      <div class="logos-pista" id="logos-pista"></div>
     </div>
 
   <div class="reel-strip" id="reel-strip">
@@ -1218,12 +1211,12 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
     <div class="bts reveal">
       <span class="bts-label">Detrás de cámara</span>
       <div class="bts-grid">
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
-          <video class="bts-clip" muted loop playsinline preload="none" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
       </div>
       <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
     </div>
@@ -1755,8 +1748,12 @@ casosGrid.innerHTML = CASOS.map(c => `
   </div>`).join('');
 casosGrid.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-/* Tira dinámica de reels (loop continuo + lazy-load) */
-const reelTrack = document.getElementById('reel-track');
+/* Las dos cintas de "Trabajos" —los logos arriba y los clips abajo— salen de
+   esta misma lista y en este mismo orden. Cada fila es un cliente: si se
+   agrega o se saca uno, las dos cintas se mueven juntas y no hay manera de
+   que el logo deje de corresponder al clip que viaja debajo. */
+const reelTrack  = document.getElementById('reel-track');
+const logosPista = document.getElementById('logos-pista');
 
 function reelCard(r) {
   return `
@@ -1775,107 +1772,82 @@ function reelCard(r) {
     </a>`;
 }
 
+function logoItem(r) {
+  return `<span class="logo-item"><img src="${r.logo}" alt="${r.cliente}" decoding="async" width="220" height="220"><i>${r.cliente}</i></span>`;
+}
+
 /* Muro de trabajos — clips reales de los compartidos de TikTok. */
 const REELS = [
-  { cliente: "Abbanissi", nicho: "Juguetería", metrica: "667.3K", videoSrc: "/reels/01-abbanissi.mp4", poster: "/reels/posters/01-abbanissi.jpg", urlReal: "https://www.tiktok.com/@jugueteriaabbanissi/video/7481773766524013830" },
-  { cliente: "Climere", nicho: "Estética", metrica: "295.1K", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
-  { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
-  { cliente: "Marena", nicho: "Moda", metrica: "193.5K", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
-  { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
-  { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
-  { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
-  { cliente: "Abigail Zegarra", nicho: "Pastelería", metrica: "47.1K", videoSrc: "/reels/10-abigail.mp4", poster: "/reels/posters/10-abigail.jpg", urlReal: "https://www.tiktok.com/@abigailzegarrapasteleria/video/7522470708639730950" },
-  { cliente: "Yacuiba VS", nicho: "Eventos", metrica: "45.5K", videoSrc: "/reels/11-yacuibavs.mp4", poster: "/reels/posters/11-yacuibavs.jpg", urlReal: "https://www.tiktok.com/@yacuibavs/video/7447700376570088709" },
-  { cliente: "Yummy", nicho: "Café", metrica: "40.4K", videoSrc: "/reels/12-yummy.mp4", poster: "/reels/posters/12-yummy.jpg", urlReal: "https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214" }
+  { cliente: "Abbanissi", nicho: "Juguetería", metrica: "667.3K", logo: "/logos/clientes/abbanissi.webp", videoSrc: "/reels/01-abbanissi.mp4", poster: "/reels/posters/01-abbanissi.jpg", urlReal: "https://www.tiktok.com/@jugueteriaabbanissi/video/7481773766524013830" },
+  { cliente: "Climere", nicho: "Estética", metrica: "295.1K", logo: "/logos/clientes/climere.webp", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
+  { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", logo: "/logos/clientes/nanitos.webp", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
+  { cliente: "Marena", nicho: "Moda", metrica: "193.5K", logo: "/logos/clientes/marena.webp", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
+  /* TODO: faltan el contador de vistas y el link al TikTok de Pastela. Hasta
+     que lleguen, la tarjeta va sin el globo de vistas y sin enlace. */
+  { cliente: "Pastela", nicho: "Pastelería", logo: "/logos/clientes/pastela.webp", videoSrc: "/reels/05-pastela.mp4", poster: "/reels/posters/05-pastela.jpg" },
+  { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", logo: "/logos/clientes/gloria.webp", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
+  { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", logo: "/logos/clientes/elclasico.webp", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
+  { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", logo: "/logos/clientes/milena.webp", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
+  { cliente: "Abigail Zegarra", nicho: "Pastelería", metrica: "47.1K", logo: "/logos/clientes/abigail.webp", videoSrc: "/reels/10-abigail.mp4", poster: "/reels/posters/10-abigail.jpg", urlReal: "https://www.tiktok.com/@abigailzegarrapasteleria/video/7522470708639730950" },
+  { cliente: "Yummy", nicho: "Café", metrica: "40.4K", logo: "/logos/clientes/yummy.webp", videoSrc: "/reels/12-yummy.mp4", poster: "/reels/posters/12-yummy.jpg", urlReal: "https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214" }
 ];
 
-/* Pista duplicada para el loop infinito del marquee */
+/* Cada cinta lleva la lista dos veces: la animacion recorre la primera mitad y
+   al volver al arranque la segunda ya ocupa el lugar exacto de la primera, asi
+   que el corte no se ve. */
 reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join('');
+if (logosPista) logosPista.innerHTML = REELS.map(logoItem).join('') + REELS.map(logoItem).join('');
 
-/* Carrusel del muro: avanza solo, se puede arrastrar sin frenarse, y los
-   videos se reproducen segun su posicion dentro de la propia cinta. */
+/* Las dos animaciones se reinician en el mismo cuadro. Sin esto, la de los
+   logos arranca con el HTML y la de los clips recien cuando termina de armarse
+   la pista, y las cintas quedan corridas una de la otra. */
+[logosPista, reelTrack].forEach(el => {
+  if (!el) return;
+  el.style.animation = 'none';
+  void el.offsetWidth;
+  el.style.animation = '';
+});
+
+/* Si el navegador se niega a reproducir —ahorro de energia, ahorro de datos,
+   autoplay bloqueado—, al menos se pinta un cuadro real del video. Sin esto el
+   clip queda como un rectangulo vacio y parece que falta. */
+function primerCuadro(v) {
+  if (v.dataset.cuadro) return;
+  v.dataset.cuadro = '1';
+  const ir = () => { try { v.currentTime = 0.08; } catch (e) {} };
+  if (v.readyState >= 1) ir();
+  else v.addEventListener('loadedmetadata', ir, { once: true });
+}
+
+function reproducir(v) {
+  if (!v.src && v.dataset.src) v.src = v.dataset.src;
+  const pl = v.play();
+  if (pl) pl.catch(() => primerCuadro(v));
+}
+
+/* Muro de trabajos: el movimiento lo hace la animacion CSS, en el compositor.
+   Aca solo se decide, cada medio segundo, que clip suena y cual se pausa.
+   Antes esta cuenta vivia dentro del mismo requestAnimationFrame que movia la
+   cinta a mano, y ese trabajo en el hilo principal era el tironeo que se veia. */
 (function () {
   const tira = document.querySelector(".reel-strip");
   if (!tira || !reelTrack) return;
   const videos = [...reelTrack.querySelectorAll("video")];
-  const lento = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let visible = false, arrastrando = false, xInicio = 0, scrollInicio = 0, ultimoGesto = 0;
 
-  /* La visibilidad se mide directamente en el bucle: un IntersectionObserver
-     sobre un scroller horizontal no dispara de forma confiable. */
-  function seccionVisible() {
-    const r = tira.getBoundingClientRect();
-    return r.bottom > -200 && r.top < innerHeight + 200;
-  }
-
-  /* (b) Dentro de la cinta: se reproduce lo que se ve, se pausa lo que salio.
-     El margen extra hace que el de al lado ya este listo al entrar. */
   function repartir() {
-    visible = seccionVisible();
     const r = tira.getBoundingClientRect();
-    if (!visible) { videos.forEach(v => { if (!v.paused) v.pause(); }); return; }
+    const aLaVista = !document.hidden && r.bottom > -200 && r.top < innerHeight + 200;
+    if (!aLaVista) { videos.forEach(v => { if (!v.paused) v.pause(); }); return; }
     videos.forEach(v => {
       const b = v.getBoundingClientRect();
-      const dentro = b.right > r.left - 300 && b.left < r.right + 300;
-      if (dentro) {
-        if (!v.src && v.dataset.src) v.src = v.dataset.src;
-        if (v.paused) { const pl = v.play(); if (pl) pl.catch(() => {}); }
-      } else if (!v.paused) {
-        v.pause();
-      }
+      /* El margen extra deja listo al vecino antes de que asome. */
+      const dentro = b.right > r.left - 240 && b.left < r.right + 240;
+      if (dentro) { if (v.paused) reproducir(v); }
+      else if (!v.paused) v.pause();
     });
   }
 
-  function mitad() { return reelTrack.scrollWidth / 2; }
-  function normalizar() {
-    const m = mitad();
-    if (m <= 0) return;
-    if (tira.scrollLeft >= m) tira.scrollLeft -= m;
-    else if (tira.scrollLeft < 0) tira.scrollLeft += m;
-  }
-
-  let previo = 0, desdeReparto = 0;
-  function avanzar(ahora) {
-    const dt = previo ? Math.min(ahora - previo, 50) : 16;
-    previo = ahora;
-    if (visible && !arrastrando && !lento && ahora - ultimoGesto > 220) {
-      tira.scrollLeft += (mitad() / 7000) * dt;    /* la pista completa en ~7 s */
-      normalizar();
-    }
-    desdeReparto += dt;
-    if (desdeReparto > 400) { desdeReparto = 0; repartir(); }
-    requestAnimationFrame(avanzar);
-  }
-  requestAnimationFrame(avanzar);
-
-  const baja = e => {
-    arrastrando = true; tira.classList.add("arrastrando");
-    xInicio = e.touches ? e.touches[0].clientX : e.clientX;
-    scrollInicio = tira.scrollLeft;
-  };
-  const mueve = e => {
-    if (!arrastrando) return;
-    const x = e.touches ? e.touches[0].clientX : e.clientX;
-    tira.scrollLeft = scrollInicio - (x - xInicio);
-    normalizar();
-  };
-  const sube = () => {
-    arrastrando = false; ultimoGesto = performance.now();
-    tira.classList.remove("arrastrando");
-    repartir();
-  };
-  tira.addEventListener("mousedown", baja);
-  window.addEventListener("mousemove", mueve);
-  window.addEventListener("mouseup", sube);
-  tira.addEventListener("touchstart", baja, { passive: true });
-  tira.addEventListener("touchmove", mueve, { passive: true });
-  tira.addEventListener("touchend", sube);
-  tira.addEventListener("scroll", () => { if (!arrastrando) ultimoGesto = performance.now(); }, { passive: true });
-
-  /* Si el sistema pide menos movimiento, la cinta no se desplaza sola pero
-     los videos igual se reproducen y se puede arrastrar a mano. */
-  /* Respaldos: si el navegador frena el bucle de animacion (pestaña en segundo
-     plano, ahorro de bateria), el scroll y el regreso a la pestaña reactivan. */
+  setInterval(repartir, 500);
   addEventListener("scroll", repartir, { passive: true });
   addEventListener("resize", repartir);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) repartir(); });
@@ -1883,21 +1855,24 @@ reelTrack.innerHTML = REELS.map(reelCard).join('') + REELS.map(reelCard).join(''
 })();
 
 /* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
+const enPantalla = new Set();
 const videoObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     const v = e.target;
-    if (e.isIntersecting) {
-      if (!v.src && v.dataset.src) v.src = v.dataset.src;
-      const play = v.play(); if (play) play.catch(() => {});
-    } else {
-      v.pause();
-    }
+    if (e.isIntersecting) { enPantalla.add(v); reproducir(v); }
+    else { enPantalla.delete(v); v.pause(); }
   });
 }, { threshold: 0.2 });
-/* El muro tiene su propio manejo mas abajo: al ser un scroller horizontal,
-   observar contra el viewport no alcanzaba y los videos nunca recibian src. */
-/* Los clips de "detrás de cámara" usan el mismo observador: cargan y se pausan solos. */
+/* El muro tiene su propio manejo mas arriba: al ser una cinta que se mueve
+   sola, observar contra el viewport no alcanzaba y los videos nunca recibian src. */
+/* Los clips de "detrás de cámara" usan este observador. */
 document.querySelectorAll('.bts-clip').forEach(v => videoObserver.observe(v));
+/* Al volver a la pestaña se reintenta: el navegador pausa el video sin sonido
+   cuando la pestaña queda de fondo, y el observador ya no vuelve a disparar. */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  enPantalla.forEach(v => { if (v.paused) reproducir(v); });
+});
 
 /* Formulario de contacto → arma mensaje de WhatsApp con los datos */
 document.getElementById('contacto-form').addEventListener('submit', (e) => {
