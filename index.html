@@ -738,7 +738,12 @@ html, body { overflow-x: clip; max-width: 100%; }
 .logo-item i { font-style: normal; font-size: 10px; font-weight: 600; color: var(--text-2); text-align: center; line-height: 1.25; }
 @media (max-width: 560px) { .ig-feed { grid-template-columns: repeat(3, 1fr); } .ig-ver { display: none; } }
 
-.logos-pauta .logos-pista { animation-direction: reverse; }
+/* El aire va como margen y no como gap, igual que en la cinta de trabajos:
+   asi media pista mide un numero entero de pasos y la vuelta no da el salto
+   de los pixeles que sobran. La duracion la calcula el script, para que
+   viaje a los mismos pixeles por segundo que la cinta de videos. */
+.logos-pauta .logos-pista { animation-direction: reverse; gap: 0; }
+.logos-pauta .logo-item { margin-right: 34px; }
 .logos-pauta { margin-bottom: 34px; }
 
 /* La cinta de logos de #trabajos adopta el paso, el aire y la vuelta de los
@@ -1052,7 +1057,7 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
         <canvas id="duo-canvas" aria-label="Isotipo Ü de DÚO ensamblándose con píxeles naranja y ámbar" role="img"></canvas>
       </div>
       <h1 class="reveal">No salgas a perseguir clientes.<br><span class="grad">Haz que te busquen.</span></h1>
-      <p class="hero-sub reveal">Planificamos la estrategia, manejamos tus campañas y producimos el contenido que las sostiene. Las tres cosas, adaptadas a tu marca — porque separadas no funcionan.</p>
+      <p class="hero-sub reveal">Planificamos la estrategia, manejamos tu publicidad y producimos el contenido que la sostiene. Las tres cosas, adaptadas a tu marca — porque separadas no funcionan.</p>
       <div class="hero-ctas reveal">
         <button type="button" class="btn btn-orange js-precalifica" data-origen="Hero">Agendar mi reunión
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1099,7 +1104,7 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
 <section class="strip-sec" id="trabajos">
   <div class="container">
     <div class="sec-head reveal" style="margin-bottom: 34px;">
-      <span class="eyebrow" style="display:inline-flex">Contenido orgánico · sin pauta</span>
+      <span class="eyebrow" style="display:inline-flex">Contenido sin publicidad pagada</span>
       <h2>Esto lo vio la gente <span class="grad">sin que pagáramos un peso.</span></h2>
       <p>Producción audiovisual y estrategia de contenido orgánico: videos que la gente eligió ver y compartir. <strong>Cero publicidad pagada detrás.</strong></p>
     </div>
@@ -1121,9 +1126,9 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
   <canvas class="cosmos" aria-hidden="true"></canvas>
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow" style="display:inline-flex">Campañas pagadas · Meta Ads</span>
-      <h2>No son campañas que arrancan. <span class="grad">Son campañas que se sostienen.</span></h2>
-      <p>Cualquiera prende una campaña. Lo difícil es que siga vendiendo el mes doce. Resultados en Bolivia y en 5 países.</p>
+      <span class="eyebrow" style="display:inline-flex">Publicidad en Facebook e Instagram</span>
+      <h2>Lo difícil no es vender una vez. <span class="grad">Es seguir vendiendo el mes doce.</span></h2>
+      <p>Manejamos la inversión publicitaria de marcas que ya están creciendo y no quieren que eso se frene. Resultados en Bolivia y en 5 países.</p>
     </div>
     <div class="logos-cinta logos-pauta reveal">
       <span class="logos-label">Cuentas publicitarias que gestionamos</span>
@@ -1172,7 +1177,7 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
           <li><b>Una sola estructura consolidada.</b> Reconstruida desde cero según el objetivo real del negocio, no según lo que ya estaba corriendo.</li>
           <li><b>Optimización y escala continua.</b> Lo que funciona se amplía, lo que no se corta. Todas las semanas, durante un año.</li>
         </ul>
-        <p class="ch-nota">De acá salió el método que hoy aplicamos en cada cuenta: definir el objetivo comercial real, elegir los tipos de campaña que le corresponden y construir un embudo que escale con el tiempo. <strong>Funciona igual si vendes por WhatsApp o por un sitio web</strong> — lo que cambia es el camino, no el criterio.</p>
+        <p class="ch-nota">De acá salió el método que hoy aplicamos en cada cuenta: definir el objetivo comercial real, elegir la publicidad que le corresponde y armar el camino que lleva a una persona de conocerte a comprarte. <strong>Funciona igual si vendes por WhatsApp o por un sitio web</strong> — lo que cambia es el camino, no el criterio.</p>
       </div>
     </article>
 
@@ -1199,11 +1204,11 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
 
     <div class="caras">
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/manu-retrato.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
+        <span class="cara-foto"><img src="/images/equipo/manu-retrato-v2.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
         <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
       </figure>
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/valeria-retrato.webp" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
+        <span class="cara-foto"><img src="/images/equipo/valeria-retrato-v2.webp" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
         <b>Valeria</b><span class="cara-rol">Directora creativa</span>
       </figure>
     </div>
@@ -1275,8 +1280,8 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Servicios</span>
-      <h2>Producimos tu contenido. <span class="grad">Y lo convertimos en ventas.</span></h2>
-      <p>Grabamos, editamos y pautamos nosotros. Elige cuánto volumen necesitas por mes.</p>
+      <h2>Todo lo que tu marca necesita, <span class="grad">en un solo equipo.</span></h2>
+      <p>Grabamos, editamos y manejamos la publicidad nosotros mismos. Elige cuánto volumen necesitas por mes.</p>
     </div>
     <div class="incluye reveal">
       <span class="incluye-label">Lo que hacemos por tu marca, todos los meses</span>
@@ -1310,7 +1315,7 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
     <div class="paq-bloque reveal">
       <span class="paq-kicker">Para vender con anuncios en Meta</span>
       <h3 class="paq-titulo">Gestión de campañas <span class="grad">+ contenido todos los meses</span></h3>
-      <p class="paq-sub">Nosotros definimos qué contenido, qué guiones y qué dirección creativa necesita cada campaña. Para negocios que invierten entre <strong>2.000 y 10.000 Bs por mes</strong> en pauta.</p>
+      <p class="paq-sub">Nosotros definimos qué contenido, qué guiones y qué dirección creativa necesita cada campaña. Para negocios que invierten entre <strong>2.000 y 10.000 Bs por mes</strong> en publicidad.</p>
 
       <div class="paq-cabecera-movil">
         <div class="pcm"><b>Inicial</b><i>2.500</i><u>Bs/mes</u></div>
@@ -1863,6 +1868,28 @@ function reproducir(v) {
   addEventListener("resize", repartir);
   document.addEventListener("visibilitychange", () => { if (!document.hidden) repartir(); });
   repartir();
+})();
+
+/* La cinta de cuentas publicitarias viaja a los mismos pixeles por segundo
+   que la de videos, aunque tenga menos logos: la duracion sale de su propio
+   ancho. Asi las dos se sienten iguales y sigue valiendo si se suma o se
+   saca un cliente. */
+(function () {
+  const pauta = document.querySelector(".logos-pauta .logos-pista");
+  if (!pauta || !reelTrack) return;
+  function emparejar() {
+    /* Con "reducir movimiento" no hay animacion que medir: la duracion llega
+       en 0 y no se toca nada, que es lo correcto porque nada se mueve. */
+    pauta.style.animationDuration = "";
+    const vuelta = parseFloat(getComputedStyle(reelTrack).animationDuration);
+    if (!(vuelta > 0)) return;
+    const velocidad = (reelTrack.scrollWidth / 2) / vuelta;
+    if (velocidad > 0) pauta.style.animationDuration = ((pauta.scrollWidth / 2) / velocidad) + "s";
+  }
+  /* Se recalcula al cambiar el ancho porque el paso de la cinta de videos es
+     mas chico en movil, y con el paso cambia la velocidad. */
+  addEventListener("resize", emparejar);
+  emparejar();
 })();
 
 /* Lazy-load: los videos solo cargan/reproducen dentro del viewport y se pausan al salir */
