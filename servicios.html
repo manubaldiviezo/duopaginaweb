@@ -513,6 +513,18 @@ footer { border-top: 1px solid var(--line-soft); padding: 56px 0 40px; }
 }
 .tab:hover { color: var(--orange); }
 .tab.on { background: var(--orange); color: #1D1D1B; }
+/* Banda visual de cada panel: corta el bloque de texto con material real de
+   rodaje. Los clips cargan y se reproducen solos al entrar en pantalla. */
+.banda { max-width: 900px; margin: 0 auto 38px; }
+.banda-pista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.banda-pista > * {
+  display: block; width: 100%; aspect-ratio: 1; object-fit: cover; min-width: 0;
+  border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3);
+}
+.banda-pie { text-align: center; font-size: 12.4px; color: var(--text-3); margin-top: 13px; }
+.banda-pie strong { color: var(--text-2); font-weight: 600; }
+@media (max-width: 560px) { .banda-pista { gap: 6px; } .banda { margin-bottom: 30px; } }
+
 .panel { display: none; animation: panelIn 0.45s ease; }
 .panel.on { display: block; }
 @keyframes panelIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
@@ -787,6 +799,16 @@ html { scroll-behavior: smooth; }
       <p>Los tres incluyen estrategia, dirección creativa y gestión de campañas. Lo que cambia es el volumen de contenido.</p>
     </div>
 
+    <div class="banda reveal">
+      <div class="banda-pista">
+      <img src="/images/equipo/valeria-2026.webp" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620">
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+      <img src="/images/equipo/manu-2026.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620">
+      </div>
+      <p class="banda-pie">Detrás de cada paquete estamos <strong>nosotros dos</strong>, con producción propia.</p>
+    </div>
+
+
     <div class="incluye reveal">
       <span class="incluye-label">Lo que hacemos por tu marca, todos los meses</span>
       <div class="incluye-grid">
@@ -906,6 +928,15 @@ html { scroll-behavior: smooth; }
       <h2>Nosotros grabamos. <span class="grad">Tu marca aparece.</span></h2>
       <p>Vamos a tu local, grabamos con equipo propio y te lo entregamos listo para publicar.</p>
     </div>
+    <div class="banda reveal">
+      <div class="banda-pista">
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Valeria grabando durante un rodaje"></video>
+      </div>
+      <p class="banda-pie">Grabamos con <strong>equipo propio</strong>: en tu local o en nuestro estudio.</p>
+    </div>
+
     <div class="sv-grid reveal">
         <article class="sv sv-dom">
           <span class="sv-badge">El más pedido</span>
@@ -965,6 +996,15 @@ html { scroll-behavior: smooth; }
       <h2>Sitios que convierten. <span class="grad">Como este que estás viendo.</span></h2>
       <p>Esta web la hicimos nosotros, con el mismo cuidado que le pondríamos a la tuya.</p>
     </div>
+    <div class="banda reveal">
+      <div class="banda-pista">
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+      </div>
+      <p class="banda-pie">Antes de diseñar, <strong>definimos qué tiene que lograr</strong> la página.</p>
+    </div>
+
     <div class="sv-grid reveal">
         <article class="sv sv-dom">
           <span class="sv-badge">Incluido en el paquete Integral</span>
@@ -1004,6 +1044,15 @@ html { scroll-behavior: smooth; }
       <h2>Tu evento y tus fotos, <span class="grad">como se merecen.</span></h2>
       <p>Cobertura de 6 horas: un video de 12 a 15 minutos más un reel de 1 minuto, entregado en 10 días.</p>
     </div>
+    <div class="banda reveal">
+      <div class="banda-pista">
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Valeria grabando durante un rodaje"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+      </div>
+      <p class="banda-pie">Vamos con <strong>cámara, luces y estabilizador</strong> propios.</p>
+    </div>
+
     <div class="sv-grid reveal">
         <article class="sv">
           <span class="sv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
@@ -1050,6 +1099,15 @@ html { scroll-behavior: smooth; }
       <h2>La metodología, <span class="grad">en tus manos.</span></h2>
       <p>Somos la única agencia que te vende su propia cocina, documentada y a tu alcance.</p>
     </div>
+    <div class="banda reveal">
+      <div class="banda-pista">
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
+      <video class="banda-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
+      <img src="/images/equipo/manu-2026.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620">
+      </div>
+      <p class="banda-pie">El método que enseñamos es <strong>el mismo que usamos</strong> todos los días.</p>
+    </div>
+
     <div class="sv-grid reveal">
         <article class="sv sv-dom">
           <span class="sv-badge">Servicio estrella</span>
@@ -1198,6 +1256,41 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* Clips de las bandas: cargan y se reproducen solos al entrar en pantalla, y
+   se pausan al salir. Los paneles ocultos no disparan el observador hasta que
+   se abre su pestana, asi que no se descarga nada de mas. */
+function primerCuadro(v) {
+  if (v.dataset.cuadro) return;
+  v.dataset.cuadro = '1';
+  const ir = () => { try { v.currentTime = 0.08; } catch (e) {} };
+  if (v.readyState >= 1) ir();
+  else v.addEventListener('loadedmetadata', ir, { once: true });
+}
+
+/* Si el navegador niega la reproduccion —ahorro de energia, ahorro de datos,
+   autoplay bloqueado—, al menos queda pintado un cuadro real del video. */
+function reproducir(v) {
+  if (!v.src && v.dataset.src) v.src = v.dataset.src;
+  const pl = v.play();
+  if (pl) pl.catch(() => primerCuadro(v));
+}
+
+const enPantalla = new Set();
+const clipObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { enPantalla.add(v); reproducir(v); }
+    else { enPantalla.delete(v); v.pause(); }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.banda-clip').forEach(v => clipObserver.observe(v));
+/* Al volver a la pestana se reintenta: el navegador pausa el video sin sonido
+   cuando queda de fondo, y el observador ya no vuelve a disparar. */
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) return;
+  enPantalla.forEach(v => { if (v.paused) reproducir(v); });
+});
 
 /* Tabs */
 const tabs = document.querySelectorAll('.tab');

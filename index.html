@@ -585,23 +585,38 @@ section { padding: 88px 0; position: relative; }
 .red-lista li { font-family: 'Montserrat', sans-serif; font-size: 11.5px; font-weight: 700; letter-spacing: 0.03em; color: var(--text-2); background: rgba(255,255,255,0.05); border: 1px solid var(--line-soft); padding: 7px 13px; border-radius: 999px; }
 
 /* ── Detrás de cámara ── */
-.bts { max-width: 620px; margin: 34px auto 0; }
-.bts-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
-.bts-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
-
-
-
-
-
-.bts-clip { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3); display: block; }
-.bts-pie { text-align: center; font-size: 12.8px; color: var(--text-3); margin-top: 14px; }
+.bts { max-width: 880px; margin: 40px auto 0; }
+.bts-label { display: block; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9.5px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+/* Collage: los dos retratos entre los clips de rodaje. Cada pieza llena su
+   celda, asi que la medida la pone la grilla y no el archivo: un video y una
+   foto vertical conviven sin deformarse. La grilla lleva aspect-ratio para
+   que las celdas queden cuadradas a cualquier ancho. */
+.bts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 8px;
+  aspect-ratio: 4 / 3;
+}
+.bts-alto { grid-row: span 2; }
+.bts-ancho { grid-column: span 2; }
+.bts-clip, .bts-foto {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  /* Sin esto, el tamano propio de la foto vertical estira su fila y la grilla
+     deja de respetar el aspect-ratio del contenedor. */
+  min-width: 0; min-height: 0;
+  border-radius: var(--radius-sm); border: 1px solid var(--line-soft); background: var(--bg-3);
+}
+.bts-foto { transition: transform 0.5s ease; }
+.bts-grid:hover .bts-foto { transform: scale(1.03); }
+.bts-pie { text-align: center; font-size: 12.8px; color: var(--text-3); margin-top: 16px; }
 .bts-pie strong { color: var(--text-2); font-weight: 600; }
 
-@media (max-width: 559px) {
-  .bts-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (min-width: 900px) {
-  .bts { max-width: 700px; }
+@media (max-width: 600px) {
+  /* En dos columnas el collage se reordena solo: las dos fotos siguen altas y
+     las piezas anchas pasan a ocupar una sola columna. */
+  .bts-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(5, 1fr); aspect-ratio: 2 / 5; }
+  .bts-ancho { grid-column: span 1; }
 }
 
 /* ── Contacto (S12) ── */
@@ -1177,24 +1192,23 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow" style="display:inline-flex">Quiénes somos</span>
-      <h2>Empezamos con una laptop <span class="grad">y un celular.</span></h2>
-      <p>Hace dos años. Lo único que teníamos de sobra era ganas de entender por qué a unos les funcionaba y a otros no.</p>
+      <h2>Dos formados en negocios. <span class="grad">Los dos ya emprendían antes de conocerse.</span></h2>
+      <p>Cada uno tenía lo suyo andando. La misma pasión por construir algo propio nos terminó juntando — y de ahí salió DÚO.</p>
     </div>
 
     <div class="historia reveal">
-      <p>Esa obsesión por entender se volvió un método. No un plan de contenido: un <strong>plan de marketing digital armado como se arma una investigación</strong> — diagnóstico, hipótesis, medición y corrección. Si un negocio no vende, primero averiguamos por qué. Recién después grabamos.</p>
-      <p>Lo mejoramos con cada cuenta. Hoy trabajamos con agentes de inteligencia artificial entrenados con nuestra propia base: libros, metodologías y los procesos que fuimos documentando. Investigan el mercado, cruzan datos y arman el diagnóstico. <strong>Nosotros decidimos.</strong> Eso es lo que no se delega.</p>
-      <p class="historia-dato">Un ejemplo concreto: las campañas de <b>femmeninas.cl</b> quedaron automatizadas, con revisión y optimización diaria. Ya no hay que tocarlas a mano — se supervisa que todo marche y se decide lo importante. <span>Eso libera horas que van a pensar tu cuenta, no a ejecutarla.</span></p>
-      <p>Creemos que este método puede ayudar a muchos más negocios a crecer de forma sostenida. Por eso lo documentamos, lo enseñamos y lo seguimos afinando.</p>
+      <p>Venimos de <strong>carreras empresariales</strong>, y antes de cruzarnos cada uno ya llevaba su propio emprendimiento. Por eso miramos tu negocio desde el lado del que lo sostiene, no desde un manual.</p>
+      <p>Esa manera de mirar se volvió método: <strong>diagnóstico, hipótesis, medición y corrección</strong>. Si un negocio no vende, primero averiguamos por qué. Recién después grabamos.</p>
+      <p class="historia-dato">Las campañas de <b>femmeninas.cl</b> quedaron automatizadas, con revisión y optimización diaria, apoyadas en agentes que entrenamos con nuestros propios procesos. <span>Las decisiones las tomamos nosotros: eso no se delega. Lo que se automatiza son las horas, y esas van a pensar tu cuenta.</span></p>
     </div>
 
     <div class="caras">
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/manu.jpg" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
+        <span class="cara-foto"><img src="/images/equipo/manu-2026.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="620" height="620"></span>
         <b>Manu Baldiviezo</b><span class="cara-rol">Estratega digital</span>
       </figure>
       <figure class="cara reveal">
-        <span class="cara-foto"><img src="/images/equipo/valeria.jpg" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
+        <span class="cara-foto"><img src="/images/equipo/valeria-2026.webp" alt="Valeria, directora creativa de DÚO" loading="lazy" width="620" height="620"></span>
         <b>Valeria</b><span class="cara-rol">Directora creativa</span>
       </figure>
     </div>
@@ -1213,12 +1227,14 @@ html { scrollbar-color: rgba(236,103,48,0.5) transparent; scrollbar-width: thin;
     <div class="bts reveal">
       <span class="bts-label">Detrás de cámara</span>
       <div class="bts-grid">
+          <img class="bts-foto bts-alto" src="/images/equipo/valeria-mosaico.webp" alt="Valeria, directora creativa de DÚO" loading="lazy" width="760" height="1520">
           <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-1-estudio.mp4" aria-label="El estudio de DÚO durante una jornada de trabajo"></video>
           <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-2-plan.mp4" aria-label="Planificación del contenido antes de grabar"></video>
-          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
-          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
+          <img class="bts-foto bts-alto" src="/images/equipo/manu-mosaico.webp" alt="Manu Baldiviezo, estratega digital de DÚO" loading="lazy" width="760" height="1520">
+          <video class="bts-clip bts-ancho" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-3-camara.mp4" aria-label="Cámara Sony grabando en set"></video>
           <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-4-tienda.mp4" aria-label="Rodaje en el local de un cliente"></video>
-          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Producción con estabilizador"></video>
+          <video class="bts-clip" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-5-rodaje.mp4" aria-label="Valeria grabando durante un rodaje"></video>
+          <video class="bts-clip bts-ancho" muted loop playsinline preload="metadata" data-src="/reels/bts/bts-6-direccion.mp4" aria-label="Dirección de contenido frente a la pizarra de trabajo"></video>
       </div>
       <p class="bts-pie">Producción audiovisual propia en <strong>Yacuiba</strong> — y en otros departamentos según el proyecto.</p>
     </div>
