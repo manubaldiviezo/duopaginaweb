@@ -507,6 +507,8 @@ section { padding: 88px 0; position: relative; }
    el compositor, no en el hilo principal, y por eso no se entrecorta. */
 .reel-track { display: flex; width: max-content; padding: 6px 0 12px; will-change: transform; animation: scroll var(--cinta-vuelta) linear infinite; }
 .reel-track .reel { width: var(--cinta-paso); margin-right: var(--cinta-aire); flex-shrink: 0; }
+/* La tarjeta que todavia no tiene link al TikTok no se hace pasar por clickeable. */
+.reel:not([href]) { cursor: default; }
 /* El muro nunca se detiene: en tactil el :hover queda pegado al tocar. */
 
 .reel { position: relative; aspect-ratio: 9/16; border-radius: 14px; overflow: hidden; background: transparent center/cover no-repeat; border: 1px solid var(--line-soft); cursor: pointer; transition: transform 0.3s, border-color 0.3s; display: block; }
@@ -1782,9 +1784,9 @@ const REELS = [
   { cliente: "Climere", nicho: "Estética", metrica: "295.1K", logo: "/logos/clientes/climere.webp", videoSrc: "/reels/02-climere.mp4", poster: "/reels/posters/02-climere.jpg", urlReal: "https://www.tiktok.com/@estetica_climere/video/7440293894295784759" },
   { cliente: "Ñañitos", nicho: "Juguetería", metrica: "244.6K", logo: "/logos/clientes/nanitos.webp", videoSrc: "/reels/03-nanitos.mp4", poster: "/reels/posters/03-nanitos.jpg", urlReal: "https://www.tiktok.com/@jugueteria.nanitos/video/7528796945821879558" },
   { cliente: "Marena", nicho: "Moda", metrica: "193.5K", logo: "/logos/clientes/marena.webp", videoSrc: "/reels/04-marena.mp4", poster: "/reels/posters/04-marena.jpg", urlReal: "https://www.tiktok.com/@marena.yba/video/7636902240296406279" },
-  /* TODO: faltan el contador de vistas y el link al TikTok de Pastela. Hasta
-     que lleguen, la tarjeta va sin el globo de vistas y sin enlace. */
-  { cliente: "Pastela", nicho: "Pastelería", logo: "/logos/clientes/pastela.webp", videoSrc: "/reels/05-pastela.mp4", poster: "/reels/posters/05-pastela.jpg" },
+  /* TODO: falta el link al TikTok de Pastela. Hasta que llegue, la tarjeta
+     muestra las vistas pero no se puede abrir. */
+  { cliente: "Pastela", nicho: "Pastelería", metrica: "171K", logo: "/logos/clientes/pastela.webp", videoSrc: "/reels/05-pastela.mp4", poster: "/reels/posters/05-pastela.jpg" },
   { cliente: "Gloria", nicho: "Calzado", metrica: "165.4K", logo: "/logos/clientes/gloria.webp", videoSrc: "/reels/06-gloria.mp4", poster: "/reels/posters/06-gloria.jpg", urlReal: "https://www.tiktok.com/@gloriabolivia/video/7524066637134302470" },
   { cliente: "El Clásico", nicho: "Pizzería", metrica: "81.3K", logo: "/logos/clientes/elclasico.webp", videoSrc: "/reels/07-elclasico.mp4", poster: "/reels/posters/07-elclasico.jpg", urlReal: "https://www.tiktok.com/@elclasico_pizzeria/video/7517805002396650757" },
   { cliente: "Milena Solórzano", nicho: "Maquillaje", metrica: "76.4K", logo: "/logos/clientes/milena.webp", videoSrc: "/reels/08-milena.mp4", poster: "/reels/posters/08-milena.jpg", urlReal: "https://www.tiktok.com/@milenasolorzanomakeup/video/7675009735778733313" },
