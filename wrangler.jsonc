@@ -1,0 +1,29 @@
+{
+  // Proyecto de Cloudflare PAGES en modo avanzado: publico/_worker.js atiende
+  // todas las peticiones (API, redirecciones, video por rangos, configuración).
+  // Desplegar: npm run deploy  (build + pruebas + wrangler pages deploy)
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "duo-web",
+  "compatibility_date": "2026-10-01",
+  "pages_build_output_dir": "publico",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "duo-web",
+      "database_id": "4de757cd-4dbb-4754-858a-8efadb0cf7c9"
+    }
+  ],
+
+  "vars": {
+    // El noindex no es una variable: el Worker lo pone solo en *.pages.dev.
+    // VERIFICAR — es el MISMO número que usa el Restobar Alameda.
+    "WHATSAPP_NUMBER": "59175175144",
+    // Vacío = sin píxel y sin CAPI. Lo decide Emanuel (no hay píxel propio de DÚO).
+    "PIXEL_ID": ""
+  }
+
+  // SECRETOS (no van acá):
+  //   npx wrangler pages secret put META_CAPI_TOKEN --project-name duo-web
+  //   npx wrangler pages secret put AVISO_WEBHOOK_URL --project-name duo-web   (opcional)
+}

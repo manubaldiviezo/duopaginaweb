@@ -7,3 +7,12 @@ i?.html
 p?.html
 prod*.html
 live*.html
+
+# Dependencias y estado local de wrangler
+node_modules/
+.wrangler/
+
+
+# Capturas de verificación: se quedan en la compu
+capturas/
+.dev.vars

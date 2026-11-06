@@ -1,51 +1,55 @@
-# DÚO Marketing Digital — Web
+# DÚO Marketing Digital — Web (v2, Cloudflare Pages)
 
-Sitio de la agencia DÚO. **Proyecto independiente** de la landing personal de Manu (`manubaldiviezo.lat`), que queda intacta.
-
-## Stack
-Sitio **estático**: un único `index.html` con CSS y JS embebidos (mismo enfoque que la landing personal, para reutilizar la animación de canvas sin build). No requiere Node ni compilación. Deploy directo en **Vercel** (framework: "Other" / static).
+Sitio de la agencia. Una sola página con resultados, videos, servicios **sin precios**
+y un formulario de cotización que guarda cada pedido en D1.
 
 ## Estructura
+
 ```
-duo-marketing-web/
-├── index.html        ← todo el sitio (13 secciones, CSS + JS inline)
-├── vercel.json       ← cleanUrls + headers + cache de assets
-├── .gitattributes
-├── README.md
-├── /images/          ← fotos por sección (ver nombres abajo)
-├── /logos/           ← logos de clientes (monocromo) + duo-icon.png
-└── /reels/           ← clips .mp4 del muro de trabajos
+datos/datos.mjs       ← ÚNICA fuente de cifras, casos, marcas y contactos (// VERIFICAR = falta confirmar)
+fuente/pagina.mjs     ← plantilla de la portada (sin cifras propias)
+scripts/build.mjs     ← escribe publico/*.html y versiona cada archivo con ?v=<huella>
+publico/              ← lo que se publica en Cloudflare Pages
+  _worker.js          ← API /api/cotizacion, 301 de /servicios, video por rangos, cabeceras
+  js/cotizacion.js    ← validación y segmentos: lo usan el navegador y el Worker
+  js/app.js           ← hero, pestañas, muro de videos, formulario, píxel
+  css/estilos.css
+migrations/           ← esquema de la tabla `cotizaciones` (D1 «duo-web»)
+tests/                ← node --test
+scripts/servidor-local.mjs · capturar.mjs · probar-formulario.mjs · medir-secciones.mjs
 ```
 
-## Reutilizado de la landing personal (copiado, sin modificar el original)
-- **Animación del isotipo Ü**: el sistema de píxeles que se ensamblan hacia los 4 cuadros y la U, adaptado a la paleta naranja/ámbar de DÚO (bloque al final de `index.html`).
-- **Datos de casos** (array `CASOS`): Femmeninas 10.55x, Vision Arq, ProGaming, Ñañitos, Climere — cifras exactas.
+## Comandos
 
-## Identidad
-Naranja `#EC6730` · Ámbar `#F9B233` · Negro carbón `#1D1D1B`. **Sin verde lima** (ese es de la marca personal). Montserrat (fallback de Gotham) + Inter + Caveat (acentos tipo Live Wire).
+```
+npm run build      # genera las páginas
+npm test           # pruebas
+npm run deploy     # build + pruebas + despliegue a Cloudflare Pages (proyecto duo-web)
+node scripts/servidor-local.mjs   # mirar en http://localhost:8788 (wrangler dev no arranca acá)
+```
 
----
+## Medición
 
-## ⚠️ PENDIENTES — requieren datos del dueño
-Buscá estos marcadores en el código:
+- El navegador manda solo `PageView`, `ViewContent`, `FormStart`, `Contact` y `VerVideo`.
+- La conversión la manda **solo la CAPI desde el Worker, después del INSERT**:
+  `Lead` para el segmento CALIENTE (servicio de agencia + invierte desde Bs 2.000 + empieza
+  este mes o el próximo) y `LeadSecundario` para TIBIO y CONSULTORIA.
+- Sin `PIXEL_ID` no se carga el píxel y la CAPI queda como `sin_pixel`.
 
-| Pendiente | Dónde | Marcador |
+## Variables y secretos (Pages → duo-web → Settings)
+
+| Nombre | Dónde | Qué |
 |---|---|---|
-| **Número de WhatsApp de DÚO** | `index.html` JS | `const WHATSAPP = "59100000000"` |
-| **VSL (video 3 min)** | `index.html` JS | `const VSL_URL = ""` |
-| **Duración soporte asesoría** | Puerta 1 | (dejado en "1 mes" — confirmar) |
-| **Precio eventos sociales (bodas/cumpleaños)** | S8 | "A definir" |
-| **Logos de clientes** | `/logos/` | placeholders de texto en la cinta |
-| **Clips de reels + métricas + URLs reales** | array `REELS` en JS | `videoSrc / poster / urlReal` vacíos |
-| **Fotos** | `/images/` | placeholders con nombre |
+| `WHATSAPP_NUMBER` | wrangler.jsonc | VERIFICAR: hoy es el mismo número del Restobar Alameda |
+| `PIXEL_ID` | wrangler.jsonc | vacío hasta que Emanuel elija el píxel |
+| `META_CAPI_TOKEN` | secreto | `npx wrangler pages secret put META_CAPI_TOKEN --project-name duo-web` |
+| `AVISO_WEBHOOK_URL` | secreto, opcional | aviso de cada pedido (Apps Script, etc.) |
 
-### Imágenes esperadas en `/images/`
-Ver **PROMPTS.md**: tiene el prompt de ChatGPT listo para generar cada imagen, con nombre de archivo exacto y proporción. Mientras no existan, se muestran placeholders oscuros con el nombre del archivo.
+## Mover el dominio
 
-### Assets de marca ya cargados
-`/logos/duo-icon.png` (isotipo Ü degradado) · `/logos/duo-wordmark-white.png` (logotipo blanco, header/footer) · `/logos/duo-wordmark-gradient.png` · `/images/casos/*.webp` (capturas reales de Ads Manager, reutilizadas de la landing personal).
+El Worker ya está listo para el dominio real: `*.pages.dev` lleva `X-Robots-Tag: noindex`
+y `duomarketingdigital.com` se indexa normal; `www.duomarketingdigital.com` redirige 301 al
+dominio sin www, con la misma ruta y consulta. Falta conectar los dos dominios al proyecto
+`duo-web` en Cloudflare (y los DNS), que no se hace desde este repo.
 
-## Deploy en Vercel
-1. Importar el repo `duo-marketing-web`.
-2. Framework Preset: **Other** (static). Sin build command, output = raíz.
-3. Deploy.
+🔴 Repo público: acá no van precios, tokens ni datos de clientes que no estén ya en la web.
