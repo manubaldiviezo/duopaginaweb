@@ -93,18 +93,66 @@ test('sin visor ni videos que ya no se usan', async () => {
 
 test('textos nuevos de la portada', () => {
   for (const t of [
-    'Armamos la estrategia, escribimos los guiones y manejamos tu publicidad en Facebook e Instagram. Y lo medimos con lo que importa: lo que vendes.',
+    'Especialistas en Meta Ads · Facebook e Instagram',
+    'Planificamos, lanzamos y optimizamos tus campañas en Facebook e Instagram, y las medimos con lo que importa: lo que vendes.',
     'Cualquier campaña puede tener un buen mes.',
     'Lo nuestro es sostener las ventas un año completo, sin apagar las campañas.',
     'Dos cuentas que manejamos hoy. Cada número lleva su período y la captura real del Administrador de anuncios.',
-    'Vistas orgánicas en TikTok de marcas con las que trabajamos. Cada uno salió de un guion: un gancho, una estructura y un objetivo.',
+    'Tu equipo de publicidad en Meta, sin armarlo dentro de tu empresa.',
     'Un especialista para cada parte. Eliges lo que necesitas, o armamos el sistema completo.',
+    'Las planificamos, las lanzamos y las optimizamos cada semana según el objetivo de tu negocio: ampliamos lo que vende y apagamos lo que no.',
+    'Qué vender, a quién y con qué mensaje, y cuánto puedes pagar por cada cliente antes de invertir en anuncios.',
+    'Píxel, API de conversiones y eventos bien configurados, para que Meta optimice hacia ventas reales y no hacia clics.',
+    'Ganchos, guiones y escenas pensados para vender en Meta. Tu equipo graba con nuestras pautas; si lo necesitas, editamos.',
+    'Comunidad gratuita',
+    'Resolvemos dudas sobre anuncios en Meta, entre todos.',
+    'En nuestro grupo de WhatsApp compartimos lo que aprendemos manejando cuentas reales y respondemos las dudas que van surgiendo. Sin costo.',
+    'Grupo «Traffickers del mundo» en WhatsApp',
+    'El anuncio empieza en el guion.',
+    'Escribimos el contenido que alimenta tus campañas. Estas son vistas orgánicas en TikTok de marcas con las que trabajamos.',
     'Un equipo chico que conoce cada cuenta por dentro.',
     'Somos cinco. Nacimos en Yacuiba y trabajamos en línea con marcas de Bolivia, Chile, Ecuador y España. Usamos inteligencia artificial para leer los números de cada cuenta y decidir más rápido.',
     'Más de un millón de dólares en ventas para una tienda online de Chile.',
     'Treinta y cuatro mil conversaciones por WhatsApp, a quince centavos de dólar cada una.',
+    'Agencia de Meta Ads · Facebook e Instagram.',
   ]) assert.ok(visible.replace(/\s+/g, ' ').includes(t), t);
-  assert.match(html, /<meta name="description" content="Agencia de marketing digital en Bolivia\. Estrategia, guiones y publicidad en Facebook e Instagram medidos con tus ventas: \+US\$1 millón vendido en 13 meses para una tienda online\. Pide tu cotización\.">/);
+  assert.match(html, /<meta name="description" content="Especialistas en publicidad en Facebook e Instagram \(Meta Ads\) en Bolivia\. \+US\$1 millón en ventas en 13 meses para una tienda online\. Pide tu cotización\.">/);
+  assert.doesNotMatch(visible, /Agencia de marketing digital estratégico|Tu departamento de marketing|Videos que la gente eligió ver/);
+});
+
+test('el title y los metadatos dicen Meta Ads', () => {
+  assert.match(html, /<title>DÚO — Agencia de Meta Ads en Bolivia<\/title>/);
+  assert.match(html, /<meta property="og:title" content="DÚO — Agencia de Meta Ads en Bolivia">/);
+  const ld = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
+  assert.match(ld.description, /Meta Ads/);
+  assert.ok(ld.knowsAbout.includes('Meta Ads'));
+});
+
+test('orden de secciones y menú: Meta Ads primero, el contenido después', () => {
+  const ids = [...html.matchAll(/<(?:section|div) class="[^"]*" (?:id|aria-label)="([^"]+)"/g)].map((m) => m[1])
+    .filter((id) => ['inicio', 'Marcas con las que trabajamos', 'resultados', 'servicios', 'como', 'comunidad', 'videos', 'equipo', 'cotizar', 'preguntas'].includes(id));
+  assert.deepEqual(ids, ['inicio', 'Marcas con las que trabajamos', 'resultados', 'servicios', 'como', 'comunidad', 'videos', 'equipo', 'cotizar', 'preguntas']);
+  const menu = html.match(/<nav class="barra-nav"[\s\S]*?<\/nav>/)[0];
+  assert.deepEqual([...menu.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ['Resultados', 'Servicios', 'Cómo trabajamos', 'Comunidad']);
+  const servicios = [...html.matchAll(/<li class="serv">[\s\S]*?<h3>([^<]+)<\/h3>/g)].map((m) => m[1]);
+  assert.deepEqual(servicios, ['Campañas en Facebook e Instagram', 'Estrategia y plan', 'Medición y píxel', 'Guiones para tus anuncios', 'Video animado con IA', 'Landing para tus anuncios']);
+});
+
+test('la comunidad abre el grupo en pestaña nueva, también desde el pie', () => {
+  const grupo = 'https://chat.whatsapp.com/J9AZ2CWy0FE3xkOhp43wpx';
+  const seccion = html.match(/<section class="comunidad" id="comunidad">[\s\S]*?<\/section>/)[0];
+  const boton = seccion.match(/<a [^>]*id="unirme-comunidad"[^>]*>/)[0];
+  assert.ok(boton.includes(`href="${grupo}"`));
+  assert.ok(boton.includes('target="_blank"'));
+  assert.match(boton, /rel="noopener"/);
+  assert.match(seccion, /Unirme al grupo<\/a>/);
+  const pie = html.match(/<footer[\s\S]*?<\/footer>/)[0];
+  assert.match(pie, new RegExp(`<a href="${grupo.replace(/[.]/g, '\\.')}" class="comunidad-enlace" target="_blank" rel="noopener">Comunidad en WhatsApp</a>`));
+});
+
+test('unirse a la comunidad avisa al píxel con un evento propio', async () => {
+  const app = await readFile(join(PUBLICO, 'js', 'app.js'), 'utf8');
+  assert.match(app, /senal\('UnirseComunidad', \{\}, true\)/);
 });
 
 test('el muro sigue mostrando los TikTok de clientes', () => {

@@ -13,6 +13,7 @@ const ICONOS = {
   guiones: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/>',
   animado: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/><path d="M7 2v3M17 2v3"/>',
   web: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 14h5"/>',
+  medicion: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"/>',
   escudo: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
   whatsapp: null,
 };
@@ -38,9 +39,9 @@ function cabecera() {
     </a>
     <nav class="barra-nav" aria-label="Secciones">
       <a href="#resultados">Resultados</a>
-      <a href="#videos">Videos</a>
       <a href="#servicios">Servicios</a>
       <a href="#como">Cómo trabajamos</a>
+      <a href="#comunidad">Comunidad</a>
     </nav>
     <a href="#cotizar" class="boton boton-chico">Cotizar</a>
   </div>
@@ -65,8 +66,9 @@ function hero({ TABLERO, VIDEO_HERO: V, PAISES }) {
   <div class="contenedor hero-in">
     <div class="hero-txt">
       <div class="hero-u"><canvas id="duo-canvas" role="img" aria-label="La U de DÚO atrayendo píxeles naranjas y ámbar"></canvas></div>
+      <p class="hero-kicker">Especialistas en Meta Ads · Facebook e Instagram</p>
       <h1>No salgas a perseguir clientes. <span class="h1-acento">Haz que te busquen.</span></h1>
-      <p class="hero-sub">Armamos la estrategia, escribimos los guiones y manejamos tu publicidad en Facebook e Instagram. Y lo medimos con lo que importa: lo que vendes.</p>
+      <p class="hero-sub">Planificamos, lanzamos y optimizamos tus campañas en Facebook e Instagram, y las medimos con lo que importa: lo que vendes.</p>
       <div class="hero-acciones">
         <a href="#cotizar" class="boton" data-origen="hero">Cotizar mi proyecto ${FLECHA}</a>
         <a href="#resultados" class="boton boton-linea">Ver resultados</a>
@@ -153,8 +155,8 @@ function videos(VIDEOS) {
 <section class="videos" id="videos">
   <div class="contenedor">
     <div class="titulo-sec">
-      <h2>Videos que la gente eligió ver.</h2>
-      <p>Vistas orgánicas en TikTok de marcas con las que trabajamos. Cada uno salió de un guion: un gancho, una estructura y un objetivo.</p>
+      <h2>El anuncio empieza en el guion.</h2>
+      <p>Escribimos el contenido que alimenta tus campañas. Estas son vistas orgánicas en TikTok de marcas con las que trabajamos.</p>
     </div>
   </div>
   <div class="muro" aria-label="Videos de clientes en TikTok">
@@ -164,12 +166,14 @@ function videos(VIDEOS) {
 </section>`;
 }
 
+/* Meta Ads primero: el contenido está para alimentar los anuncios. */
 const SERVICIOS = [
-  ['estrategia', 'Estrategia y plan', 'Qué vender, a quién y con qué mensaje, y cuánto puedes pagar por cada cliente antes de invertir.'],
-  ['campanas', 'Publicidad en Facebook e Instagram', 'Campañas según el objetivo de tu negocio. Ampliamos lo que vende y apagamos lo que no.'],
-  ['guiones', 'Guiones y dirección de contenido', 'Guiones y escenas para que tu equipo grabe con nuestras pautas. Si lo necesitas, editamos.'],
+  ['campanas', 'Campañas en Facebook e Instagram', 'Las planificamos, las lanzamos y las optimizamos cada semana según el objetivo de tu negocio: ampliamos lo que vende y apagamos lo que no.'],
+  ['estrategia', 'Estrategia y plan', 'Qué vender, a quién y con qué mensaje, y cuánto puedes pagar por cada cliente antes de invertir en anuncios.'],
+  ['medicion', 'Medición y píxel', 'Píxel, API de conversiones y eventos bien configurados, para que Meta optimice hacia ventas reales y no hacia clics.'],
+  ['guiones', 'Guiones para tus anuncios', 'Ganchos, guiones y escenas pensados para vender en Meta. Tu equipo graba con nuestras pautas; si lo necesitas, editamos.'],
   ['animado', 'Video animado con IA', 'Guion, voz y animación hechos con inteligencia artificial, con tu marca y tus clips reales.'],
-  ['web', 'Sitio web y landing', 'Páginas que reciben a quien hace clic en tu anuncio y guardan cada contacto.'],
+  ['web', 'Landing para tus anuncios', 'Páginas que reciben a quien hace clic en tu anuncio y guardan cada contacto.'],
 ];
 
 function servicios() {
@@ -177,7 +181,7 @@ function servicios() {
 <section class="servicios" id="servicios">
   <div class="contenedor">
     <div class="titulo-sec">
-      <h2>Tu departamento de marketing, sin armarlo dentro de tu empresa.</h2>
+      <h2>Tu equipo de publicidad en Meta, sin armarlo dentro de tu empresa.</h2>
       <p>Un especialista para cada parte. Eliges lo que necesitas, o armamos el sistema completo.</p>
     </div>
     <ul class="serv-lista">
@@ -214,6 +218,25 @@ function como(GARANTIA) {
         <h3>${esc(GARANTIA.titular)}</h3>
         <p>${esc(GARANTIA.detalle)}</p>
       </div>
+    </div>
+  </div>
+</section>`;
+}
+
+/* Comunidad gratuita: el grupo de WhatsApp. Banda verde oscura, distinta al
+ * resto, y compacta. El clic manda «UnirseComunidad» al píxel (app.js). */
+function comunidad(C) {
+  return `
+<section class="comunidad" id="comunidad">
+  <div class="contenedor comunidad-in">
+    <div class="comunidad-txt">
+      <p class="comunidad-kicker">Comunidad gratuita</p>
+      <h2>Resolvemos dudas sobre anuncios en Meta, entre todos.</h2>
+      <p>En nuestro grupo de WhatsApp compartimos lo que aprendemos manejando cuentas reales y respondemos las dudas que van surgiendo. Sin costo.</p>
+    </div>
+    <div class="comunidad-accion">
+      <a href="${C.url}" class="boton boton-wa" id="unirme-comunidad" target="_blank" rel="noopener">${WA_SVG} Unirme al grupo</a>
+      <p class="comunidad-nombre">Grupo «${esc(C.nombre)}» en WhatsApp</p>
     </div>
   </div>
 </section>`;
@@ -336,13 +359,13 @@ function preguntas(PAISES) {
 </section>`;
 }
 
-export function pie({ CONTACTO, REDES }) {
+export function pie({ CONTACTO, REDES, COMUNIDAD }) {
   return `
 <footer class="pie">
   <div class="contenedor pie-in">
     <div class="pie-marca">
       <img src="/logos/duo-wordmark-white.png" alt="DÚO Marketing Digital" width="908" height="678" loading="lazy">
-      <p>Agencia de marketing digital estratégico.<br>${esc(CONTACTO.ciudad)}</p>
+      <p>Agencia de Meta Ads · Facebook e Instagram.<br>${esc(CONTACTO.ciudad)}</p>
     </div>
     <nav class="pie-col" aria-label="Redes">
       ${REDES.map((r) => `<a href="${r.url}" target="_blank" rel="noopener">${esc(r.red)} · ${esc(r.usuario)}</a>`).join('\n      ')}
@@ -350,6 +373,7 @@ export function pie({ CONTACTO, REDES }) {
     <nav class="pie-col" aria-label="Contacto">
       <a href="${waEnlace(CONTACTO.whatsapp, 'Hola DÚO, quiero una cotización.')}" class="wa-enlace" data-wa="Hola DÚO, quiero una cotización." target="_blank" rel="noopener">WhatsApp</a>
       <a href="#cotizar">Cotizar un proyecto</a>
+      ${COMUNIDAD ? `<a href="${COMUNIDAD.url}" class="comunidad-enlace" target="_blank" rel="noopener">Comunidad en WhatsApp</a>` : ''}
       <a href="/privacidad/">Privacidad</a>
     </nav>
   </div>
@@ -399,14 +423,19 @@ ${extra}
 }
 
 export function portada(D) {
-  const descripcion = 'Agencia de marketing digital en Bolivia. Estrategia, guiones y publicidad en Facebook e Instagram medidos con tus ventas: +US$1 millón vendido en 13 meses para una tienda online. Pide tu cotización.';
+  const titulo = 'DÚO — Agencia de Meta Ads en Bolivia';
+  const descripcion = 'Especialistas en publicidad en Facebook e Instagram (Meta Ads) en Bolivia. +US$1 millón en ventas en 13 meses para una tienda online. Pide tu cotización.';
   const jsonld = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'DÚO Marketing Digital',
+    alternateName: 'DÚO — Agencia de Meta Ads',
     url: 'https://duomarketingdigital.com/',
     image: 'https://duomarketingdigital.com/images/og-duo.jpg',
     description: descripcion,
+    knowsAbout: ['Meta Ads', 'Publicidad en Facebook', 'Publicidad en Instagram', 'Píxel de Meta y API de conversiones'],
+    serviceType: 'Gestión de publicidad en Facebook e Instagram (Meta Ads)',
+    areaServed: ['Bolivia', 'Chile', 'Ecuador', 'España'],
     address: { '@type': 'PostalAddress', addressLocality: 'Yacuiba', addressRegion: 'Tarija', addressCountry: 'BO' },
     sameAs: D.REDES.map((r) => r.url),
   };
@@ -418,7 +447,7 @@ export function portada(D) {
   const precarga = `<script>document.documentElement.classList.add('js');setTimeout(function(){var h=document.getElementById('inicio');if(h)h.classList.add('listo')},2500)</script>
 <link rel="preload" as="image" href="${D.VIDEO_HERO.poster}" fetchpriority="high">
 <script type="application/ld+json">${JSON.stringify(jsonld).replace(/</g, '\\u003c')}</script>`;
-  return `${cabezaHtml({ titulo: 'DÚO — Agencia de marketing digital en Bolivia', descripcion, extra: precarga })}
+  return `${cabezaHtml({ titulo, descripcion, extra: precarga })}
 <body>
 <a class="saltar" href="#cotizar">Ir al formulario de cotización</a>
 ${cabecera()}
@@ -426,9 +455,10 @@ ${cabecera()}
 ${hero(D)}
 ${cintaMarcas(D.MARCAS_CINTA)}
 ${resultados(D.CASOS)}
-${videos(D.VIDEOS)}
 ${servicios()}
 ${como(D.GARANTIA)}
+${comunidad(D.COMUNIDAD)}
+${videos(D.VIDEOS)}
 ${equipo(D.EQUIPO, D.PAISES)}
 ${formulario(D.CONTACTO)}
 ${preguntas(D.PAISES)}

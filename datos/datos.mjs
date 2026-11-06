@@ -29,6 +29,12 @@ export const REDES = [
   { red: 'Facebook', usuario: 'DÚO Marketing Digital', url: 'https://www.facebook.com/61565101730927' }, // VERIFICAR
 ];
 
+/* Comunidad gratuita de DÚO: el grupo de WhatsApp. */
+export const COMUNIDAD = {
+  url: 'https://chat.whatsapp.com/J9AZ2CWy0FE3xkOhp43wpx',
+  nombre: 'Traffickers del mundo',
+};
+
 /* Una sola formulación de alcance en todo el sitio. */
 export const PAISES = 'Bolivia, Chile, Ecuador y España';
 

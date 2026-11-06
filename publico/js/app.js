@@ -41,6 +41,9 @@ document.addEventListener('click', (e) => {
   if (a) senal('Contact');
 });
 
+/* Comunidad: el botón de la sección y el enlace del pie avisan al píxel. */
+$$('#unirme-comunidad, .comunidad-enlace').forEach((a) => a.addEventListener('click', () => senal('UnirseComunidad', {}, true)));
+
 $$('[data-anio]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
 
 /* ─── Barra superior y barra móvil ─────────────────────────────────────── */
