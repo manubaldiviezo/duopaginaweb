@@ -241,17 +241,113 @@ const heroSuena = () => conSonido && !!videoHero && !videoHero.muted && !videoHe
   document.addEventListener('sonido', repartir);
 })();
 
-/* ─── Cómo trabajamos: la línea se dibuja una vez al entrar ────────────── */
-(function linea() {
-  const pasos = $('#pasos');
-  if (!pasos || sinMovimiento) return;
-  if (pasos.getBoundingClientRect().top < innerHeight) return; // ya a la vista: se queda dibujada
-  pasos.classList.add('por-dibujar');
+/* ─── Cómo trabajamos: el recorrido se dibuja con el scroll ─────────────
+ * La línea va del centro del primer ícono al del último (horizontal en
+ * escritorio, vertical en celular). Su avance sigue al scroll; cada nodo se
+ * marca «llegado» cuando la línea lo alcanza y su ícono se traza (CSS). */
+(function recorrido() {
+  const ol = $('#recorrido');
+  if (!ol) return;
+  const linea = $('.recorrido-linea', ol);
+  const trazo = $('i', linea);
+  const nodos = $$('.nodo', ol);
+  const iconos = nodos.map((n) => $('.nodo-ico', n));
+  let horizontal = false;
+  let largo = 0;
+
+  function medir() {
+    const base = ol.getBoundingClientRect();
+    const centro = (el) => { const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2 - base.left, y: r.top + r.height / 2 - base.top }; };
+    const a = centro(iconos[0]); const z = centro(iconos.at(-1));
+    horizontal = Math.abs(z.x - a.x) > Math.abs(z.y - a.y);
+    largo = horizontal ? z.x - a.x : z.y - a.y;
+    Object.assign(linea.style, horizontal
+      ? { left: `${a.x}px`, top: `${a.y - 1}px`, width: `${largo}px`, height: '2px' }
+      : { left: `${a.x - 1}px`, top: `${a.y}px`, width: '2px', height: `${largo}px` });
+  }
+
+  function pintar(p) {
+    trazo.style.transform = horizontal ? `scaleX(${p})` : `scaleY(${p})`;
+    nodos.forEach((n, i) => n.classList.toggle('llegado', p >= i / (nodos.length - 1) - 0.001));
+  }
+
+  const actualizar = () => { medir(); if (sinMovimiento) pintar(1); else avanzar(); };
+  medir();
+  addEventListener('resize', actualizar);
+  addEventListener('load', actualizar); // las fuentes cambian el alto de los textos
+  if (sinMovimiento) { pintar(1); return; }
+  ol.classList.add('animable');
+
+  // 0 cuando el recorrido asoma por abajo, 1 cuando su línea pasa el 55 % de la pantalla.
+  function avanzar() {
+    const r = linea.getBoundingClientRect();
+    const fin = innerHeight * 0.55;
+    const p = horizontal
+      ? (innerHeight * 0.9 - r.top) / (innerHeight * 0.9 - fin)
+      : (fin - r.top) / Math.max(1, r.height);
+    pintar(Math.min(1, Math.max(0, p)));
+  }
+  let pendiente = false;
+  addEventListener('scroll', () => {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(() => { pendiente = false; avanzar(); });
+  }, { passive: true });
+  avanzar();
+})();
+
+/* ─── Gráfico de ventas: las barras crecen al entrar y el contador suma ── */
+(function grafico() {
+  const fig = $('[data-grafico]');
+  if (!fig) return;
+  const lienzo = $('.grafico-lienzo', fig);
+  const tip = $('.grafico-tip', fig);
+  const barras = $$('.g-barra', fig);
+  const contador = $('[data-contador-final]', fig);
+
+  // Detalle de cada mes al pasar el mouse o tocar la barra.
+  function mostrar(z) {
+    const i = Number(z.dataset.i);
+    barras.forEach((b, j) => b.classList.toggle('activa', j === i));
+    lienzo.classList.add('con-foco');
+    tip.textContent = z.dataset.tip;
+    tip.style.left = `${Math.min(84, Math.max(16, Number(z.dataset.x)))}%`;
+    tip.style.top = `${z.dataset.y}%`;
+    tip.hidden = false;
+  }
+  function ocultar() { lienzo.classList.remove('con-foco'); barras.forEach((b) => b.classList.remove('activa')); tip.hidden = true; }
+  $$('.barra-zona', fig).forEach((z) => {
+    z.addEventListener('pointerenter', () => mostrar(z));
+    z.addEventListener('click', () => mostrar(z));
+  });
+  lienzo.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') ocultar(); });
+  document.addEventListener('click', (e) => { if (!lienzo.contains(e.target)) ocultar(); });
+
+  if (sinMovimiento) return; // estado final, sin animar
+  fig.classList.add('por-animar');
+  const final = contador.dataset.contadorFinal;
   new IntersectionObserver(([e], obs) => {
     if (!e.isIntersecting) return;
     obs.disconnect();
-    pasos.classList.add('dibujada');
-  }, { threshold: 0.35 }).observe(pasos);
+    fig.classList.add('visible');
+    // El contador sube junto con las barras: 13 barras × 55 ms + 700 ms.
+    const dur = barras.length * 55 + 700;
+    const t0 = performance.now();
+    const paso = (t) => {
+      const k = Math.min(1, (t - t0) / dur);
+      const v = Math.round((1 - Math.pow(1 - k, 3)) * 1000000);
+      contador.textContent = k < 1 ? `US$ ${String(v).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}` : final;
+      if (k < 1) requestAnimationFrame(paso);
+    };
+    requestAnimationFrame(paso);
+  }, { threshold: 0.35 }).observe(fig);
+})();
+
+/* La U del agente solo se mueve mientras su tarjeta está a la vista. */
+(function agente() {
+  const t = $('.cara-agente');
+  if (!t) return;
+  new IntersectionObserver(([e]) => t.classList.toggle('en-vista', e.isIntersecting)).observe(t);
 })();
 
 /* ─── Formulario de cotización ─────────────────────────────────────────── */

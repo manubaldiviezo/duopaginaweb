@@ -62,7 +62,7 @@ test('el mensaje de WhatsApp lleva nombre, pedido y negocio, en primera persona'
   const m = mensajeWhatsApp(BASE);
   assert.match(m, /^Hola DÚO, soy Ana Pérez\. Les pedí una cotización desde la web\./);
   assert.match(m, /Necesito: publicidad en Facebook e Instagram\./);
-  assert.match(mensajeWhatsApp({ ...BASE, necesita: ['animado', 'web'], inversion: 'alto' }), /video animado con IA; sitio web o landing\.[\s\S]*más de Bs 10\.000 al mes/);
+  assert.match(mensajeWhatsApp({ ...BASE, necesita: ['animado', 'web'], inversion: 'alto' }), /videos animados; sitio web o landing\.[\s\S]*más de Bs 10\.000 al mes/);
   assert.match(m, /Mi negocio: Ropa de mujer \(Santa Cruz\)\./);
   assert.match(m, /Quiero empezar: este mes\./);
 });

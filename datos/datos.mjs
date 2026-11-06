@@ -68,11 +68,7 @@ export const CASOS = [
     capturaAlto: 722,
     capturaAlt: 'Administrador de anuncios de Meta con el retorno de las campañas de femmeninas.cl',
     titular: 'Más de un millón de dólares en ventas para una tienda online de Chile.',
-    pasos: [
-      ['Lo que encontramos', 'Quince campañas compitiendo entre sí por el mismo presupuesto.'],
-      ['Lo que hicimos', 'Ordenamos la cuenta en una sola estructura pensada para vender. Desde entonces, cada semana ampliamos lo que vende y cortamos lo que no.'],
-      ['Dónde está hoy', 'Octubre de 2026 fue el mejor mes de la cuenta desde que existe.'],
-    ],
+    grafico: 'ventas-mensuales', // gráfico animado con VENTAS_MENSUALES_FEMMENINAS
     cifras: [
       ['+US$1 millón', 'en ventas desde la web'],
       ['10,4x', 'de retorno: cada dólar invertido volvió diez veces'],
@@ -91,16 +87,32 @@ export const CASOS = [
     captura: '/images/casos/05-progaming-ads-manager-whatsapp.webp',
     capturaAlt: 'Administrador de anuncios de Meta con las conversaciones de ProGaming EC',
     titular: 'Treinta y cuatro mil conversaciones por WhatsApp, a quince centavos de dólar cada una.',
-    pasos: [
-      ['El objetivo', 'Que cada anuncio termine en una conversación con alguien que quiere comprar.'],
-      ['Lo que hicimos', 'Campañas pensadas para abrir conversaciones, con el costo de cada una a la vista todas las semanas.'],
-    ],
     cifras: [
       ['+34.000', 'conversaciones por WhatsApp'],
       ['US$ 0,15', 'por conversación'],
       ['+530 mil', 'personas alcanzadas'],
     ],
   },
+];
+
+/* Ventas mensuales de femmeninas.cl, solo campañas a la web, en millones de
+   CLP. Verificado en Meta (cuenta 609065404340814) por el coordinador.
+   Totales: 96,30 invertidos · 1.005,7 en ventas → 10,44x. Retorno mensual
+   entre 8,7x (ene 2026) y 12,7x (dic 2025). */
+export const VENTAS_MENSUALES_FEMMENINAS = [
+  { mes: '2025-10', inversion: 7.23, ventas: 88.4 },
+  { mes: '2025-11', inversion: 6.48, ventas: 70.0 },
+  { mes: '2025-12', inversion: 6.81, ventas: 86.3 },
+  { mes: '2026-01', inversion: 6.79, ventas: 59.1 },
+  { mes: '2026-02', inversion: 7.26, ventas: 73.2 },
+  { mes: '2026-03', inversion: 7.76, ventas: 79.5 },
+  { mes: '2026-04', inversion: 6.90, ventas: 61.7 },
+  { mes: '2026-05', inversion: 7.13, ventas: 85.5 },
+  { mes: '2026-06', inversion: 5.99, ventas: 71.2 },
+  { mes: '2026-07', inversion: 5.91, ventas: 60.7 },
+  { mes: '2026-08', inversion: 7.75, ventas: 75.5 },
+  { mes: '2026-09', inversion: 9.40, ventas: 87.7 },
+  { mes: '2026-10', inversion: 10.90, ventas: 107.1 },
 ];
 
 /* Videos orgánicos en TikTok de marcas con las que trabajamos. Cada fila es
@@ -119,14 +131,14 @@ export const VIDEOS = [
   { marca: 'Yummy', rubro: 'Café', vistas: '40,5 mil', logo: '/logos/clientes/yummy.webp', video: '/reels/12-yummy.mp4', poster: '/reels/posters/12-yummy.jpg', url: 'https://www.tiktok.com/@yummy.cafebistro/video/7501116547402878214' },
 ];
 
-/* El teléfono del hero: el video animado del método, hecho con IA. En la
-   portada no van los TikTok de clientes (pedido de Emanuel, 06/11/2026).
-   Corre completo, mudo y en bucle; el botón «Activar sonido» lo reinicia
-   con sonido. */
+/* El teléfono del hero: el video animado del método. En la portada no van
+   los TikTok de clientes (pedido de Emanuel, 06/11/2026). Corre completo,
+   mudo y en bucle; el botón «Activar sonido» lo reinicia con sonido.
+   🔴 Emanuel (07/11/2026): no se dice en ningún lado cómo se hizo el video. */
 export const VIDEO_HERO = {
   src: '/video/duo-metodo-completo-540.mp4',
   poster: '/video/duo-metodo-loop-poster.webp',
-  etiqueta: 'Hecho con IA · Método DÚO3X',
+  etiqueta: 'Método DÚO3X',
   duracion: '1:18',
 };
 
@@ -137,17 +149,18 @@ export const MARCAS_CINTA = [
   ...VIDEOS.map(({ marca, logo }) => ({ marca, logo })),
 ];
 
+/* Somos dos personas y un agente propio (Emanuel, 07/11/2026). */
 export const EQUIPO = {
-  personas: 5, // Emanuel, Valeria, Nilverth, Leonardo y Oscar (memoria duo-como-explicar-la-agencia)
-  retratos: [
-    { nombre: 'Manu Baldiviezo', rol: 'Estratega digital', foto: '/images/equipo/manu-retrato-v2.webp' },
-    // VERIFICAR — la web anterior dice «Directora creativa»; la memoria de la agencia dice PM
-    { nombre: 'Valeria', rol: 'Directora creativa', foto: '/images/equipo/valeria-retrato-v2.webp' },
+  personas: 2,
+  miembros: [
+    { nombre: 'Emanuel Baldiviezo', rol: 'Ingeniero comercial', foto: '/images/equipo/manu-retrato-v2.webp' },
+    { nombre: 'Valeria', rol: 'Técnica superior en marketing digital', foto: '/images/equipo/valeria-retrato-v2.webp' },
+    { nombre: 'Agente DÚO', rol: 'Inteligencia artificial propia', agente: true },
   ],
 };
 
 export const GARANTIA = {
   // VERIFICAR — texto exacto de la garantía: es una decisión de plata de Emanuel
   titular: 'Si el primer mes no entregamos lo acordado, te devolvemos el mes.',
-  detalle: 'Garantizamos nuestro trabajo: lo que firmamos en cantidad, calidad y plazos. Las ventas dependen también de tu producto, tu precio y tu mercado, y eso no lo prometemos.',
+  detalle: 'Garantizamos lo que firmamos: cantidad, calidad y plazos.',
 };

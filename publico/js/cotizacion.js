@@ -9,7 +9,7 @@ export const OPCIONES = {
   necesita: {
     campanas: 'Publicidad en Facebook e Instagram',
     contenido: 'Contenido y videos para redes',
-    animado: 'Video animado con IA',
+    animado: 'Videos animados',
     web: 'Sitio web o landing',
     todo: 'Todo el sistema: estrategia, contenido y publicidad',
     aprender: 'Aprender a hacerlo yo (consultoría)',

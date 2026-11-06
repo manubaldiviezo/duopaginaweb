@@ -33,8 +33,10 @@ test('DÚO no dice que graba el contenido de los clientes', () => {
 });
 
 test('sin cifras viejas ni superlativos que no se pueden probar', () => {
-  assert.doesNotMatch(visible, /9,7x|9\.7x|10[.,]55|US\$\s?50\s?K|US\$\s?50 mil|el mes doce|14 marcas|5 países|menos de 24 horas|único en Bolivia|la única agencia|sin pagar un peso/i);
-  assert.doesNotMatch(html, /9,7x|10[.,]55x|\+US\$50K|el mes doce/i, 'tampoco en metadatos');
+  // «9,7x» sí puede aparecer como el retorno de agosto 2026 en el gráfico;
+  // lo que no vuelve es la cifra vieja de toda la cuenta.
+  assert.doesNotMatch(visible, /9[.,]7x\s+(de retorno|en 13)|10[.,]55|US\$\s?50\s?K|US\$\s?50 mil|el mes doce|14 marcas|5 países|menos de 24 horas|único en Bolivia|la única agencia|sin pagar un peso/i);
+  assert.doesNotMatch(html, /9[.,]7x\s+(de retorno|en 13)|10[.,]55x|\+US\$50K|el mes doce/i, 'tampoco en metadatos');
   assert.doesNotMatch(visible, /Ñañitos[^<]{0,40}US\$|Climere[^<]{0,40}30/);
 });
 
@@ -72,7 +74,7 @@ test('toda referencia a un archivo propio lleva ?v= y el archivo existe', async 
 test('portada: el teléfono pasa el video del método, no TikTok de clientes', () => {
   const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)[0];
   assert.match(hero, /data-src="\/video\/duo-metodo-completo-540\.mp4\?v=[0-9a-f]{8}"/);
-  assert.match(hero, /Hecho con IA<span class="tel-red-extra"> · Método DÚO3X<\/span>/);
+  assert.match(hero, /<span class="tel-red">Método DÚO3X<\/span>/);
   assert.doesNotMatch(hero, /\/reels\/|tel-red">TikTok/);
   assert.doesNotMatch(html, /Un minuto para conocernos|id="video"|href="#video"/);
 });
@@ -97,27 +99,84 @@ test('textos nuevos de la portada', () => {
     'Planificamos, lanzamos y optimizamos tus campañas en Facebook e Instagram, y las medimos con lo que importa: lo que vendes.',
     'Cualquier campaña puede tener un buen mes.',
     'Lo nuestro es sostener las ventas un año completo, sin apagar las campañas.',
-    'Dos cuentas que manejamos hoy. Cada número lleva su período y la captura real del Administrador de anuncios.',
     'Tu equipo de publicidad en Meta, sin armarlo dentro de tu empresa.',
-    'Un especialista para cada parte. Eliges lo que necesitas, o armamos el sistema completo.',
-    'Las planificamos, las lanzamos y las optimizamos cada semana según el objetivo de tu negocio: ampliamos lo que vende y apagamos lo que no.',
-    'Qué vender, a quién y con qué mensaje, y cuánto puedes pagar por cada cliente antes de invertir en anuncios.',
-    'Píxel, API de conversiones y eventos bien configurados, para que Meta optimice hacia ventas reales y no hacia clics.',
-    'Ganchos, guiones y escenas pensados para vender en Meta. Tu equipo graba con nuestras pautas; si lo necesitas, editamos.',
+    'Eliges lo que necesitas o armamos el sistema completo.',
+    'Planificadas, lanzadas y optimizadas cada semana.',
+    'Qué vender, a quién y cuánto pagar por cada cliente.',
+    'Para que Meta optimice hacia ventas, no hacia clics.',
+    'Ganchos y escenas pensados para vender en Meta.',
+    'Tu marca explicada en movimiento.',
+    'Páginas que convierten el clic en contacto.',
+    'Tus números, tu mercado y tu margen.',
+    'Objetivo, mensajes y campañas.',
+    'Guiones, piezas y campañas al aire.',
+    'Cada semana, escalar lo que vende.',
+    'Garantizamos lo que firmamos: cantidad, calidad y plazos.',
     'Comunidad gratuita',
     'Resolvemos dudas sobre anuncios en Meta, entre todos.',
     'En nuestro grupo de WhatsApp compartimos lo que aprendemos manejando cuentas reales y respondemos las dudas que van surgiendo. Sin costo.',
     'Grupo «Traffickers del mundo» en WhatsApp',
     'El anuncio empieza en el guion.',
-    'Escribimos el contenido que alimenta tus campañas. Estas son vistas orgánicas en TikTok de marcas con las que trabajamos.',
-    'Un equipo chico que conoce cada cuenta por dentro.',
-    'Somos cinco. Nacimos en Yacuiba y trabajamos en línea con marcas de Bolivia, Chile, Ecuador y España. Usamos inteligencia artificial para leer los números de cada cuenta y decidir más rápido.',
+    'Vistas orgánicas en TikTok de marcas con las que trabajamos.',
+    'Hablas directo con quien maneja tu cuenta.',
+    'Somos dos especialistas y un agente de inteligencia artificial propio que automatiza el trabajo repetitivo. Así escalamos cada cuenta con más precisión.',
+    'Cinco preguntas, menos de un minuto. Te escribimos por WhatsApp con la propuesta.',
+    'Ventas desde la web, mes a mes. Ningún mes por debajo de 8,7x.',
     'Más de un millón de dólares en ventas para una tienda online de Chile.',
     'Treinta y cuatro mil conversaciones por WhatsApp, a quince centavos de dólar cada una.',
     'Agencia de Meta Ads · Facebook e Instagram.',
   ]) assert.ok(visible.replace(/\s+/g, ' ').includes(t), t);
   assert.match(html, /<meta name="description" content="Especialistas en publicidad en Facebook e Instagram \(Meta Ads\) en Bolivia\. \+US\$1 millón en ventas en 13 meses para una tienda online\. Pide tu cotización\.">/);
-  assert.doesNotMatch(visible, /Agencia de marketing digital estratégico|Tu departamento de marketing|Videos que la gente eligió ver/);
+  assert.doesNotMatch(visible, /Agencia de marketing digital estratégico|Tu departamento de marketing|Videos que la gente eligió ver|Dos cuentas que manejamos hoy|Un especialista para cada parte|Lo que encontramos|Lo que hicimos|Dónde está hoy|El objetivo|Ustedes graban/);
+  assert.equal((html.match(/<details>/g) || []).length, 4, 'quedan cuatro preguntas');
+});
+
+test('el equipo son dos personas y el agente', () => {
+  assert.doesNotMatch(visible, /Somos cinco|equipo de 5|5 personas|cinco personas/i);
+  const equipo = html.match(/<section class="equipo"[\s\S]*?<\/section>/)[0];
+  const nombres = [...equipo.matchAll(/<figcaption><b>([^<]+)<\/b><span>([^<]+)<\/span>/g)].map((m) => `${m[1]} — ${m[2]}`);
+  assert.deepEqual(nombres, ['Emanuel Baldiviezo — Ingeniero comercial', 'Valeria — Técnica superior en marketing digital', 'Agente DÚO — Inteligencia artificial propia']);
+  assert.equal((equipo.match(/<img /g) || []).length, 2, 'el agente no lleva foto de persona');
+  assert.match(equipo, /<svg class="agente-u"/);
+});
+
+test('en ningún lado se dice que el video se hizo con IA', () => {
+  // Ni texto visible, ni alt, ni aria-label, ni texto oculto: el HTML entero.
+  assert.doesNotMatch(html, /hecho con IA|hechos con IA|con inteligencia artificial|voz clonada|video animado con IA|videos? animados? con IA|Animación con IA/i);
+  const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)[0];
+  assert.doesNotMatch(hero, /\bIA\b|inteligencia artificial/i);
+  // La IA solo aparece donde es el agente del equipo.
+  const fuera = html.replace(/<section class="equipo"[\s\S]*?<\/section>/, '');
+  assert.doesNotMatch(fuera.replace(/<script[\s\S]*?<\/script>/g, ''), /inteligencia artificial|\bIA\b/);
+});
+
+test('gráfico de ventas: datos verificados, accesible y sin pasos', async () => {
+  const { VENTAS_MENSUALES_FEMMENINAS: v } = await import('../datos/datos.mjs');
+  assert.equal(v.length, 13);
+  const inv = v.reduce((s, m) => s + m.inversion, 0);
+  const ventas = v.reduce((s, m) => s + m.ventas, 0);
+  assert.ok(Math.abs(inv - 96.3) < 0.05, `inversión ${inv}`);
+  assert.ok(Math.abs(ventas - 1005.7) < 0.5, `ventas ${ventas}`);
+  assert.ok(Math.abs(ventas / inv - 10.44) < 0.02);
+  const retornos = v.map((m) => m.ventas / m.inversion);
+  assert.ok(Math.min(...retornos) >= 8.7 && Math.max(...retornos) < 12.75);
+  const fig = html.match(/<figure class="grafico"[\s\S]*?<\/figure>/)[0];
+  assert.equal((fig.match(/class="g-barra"/g) || []).length, 13);
+  assert.match(fig, /<svg [^>]*role="img" aria-label="Ventas mensuales[^"]+"/);
+  assert.match(fig, /<div class="sr-only"><table>[\s\S]*<tbody>(<tr>[\s\S]*?<\/tr>){13}<\/tbody>/);
+  assert.match(fig, /data-tip="oct 2026 · 107 M CLP en ventas · 9,8x"/);
+  assert.match(fig, /data-contador-final="\+US\$1 millón"/);
+  assert.doesNotMatch(html, /class="caso-pasos"/);
+  const progaming = html.match(/<article class="caso"[^>]*id="caso-progaming"[\s\S]*?<\/article>/)[0];
+  assert.doesNotMatch(progaming, /<dl|grafico/);
+});
+
+test('cómo trabajamos: recorrido de cuatro nodos con ícono de línea', () => {
+  const ol = html.match(/<ol class="recorrido"[\s\S]*?<\/ol>/)[0];
+  const titulos = [...ol.matchAll(/<h3>([^<]+)<\/h3>/g)].map((m) => m[1]);
+  assert.deepEqual(titulos, ['Diagnóstico', 'Planificación', 'Lanzamiento', 'Optimización']);
+  assert.equal((ol.match(/<svg /g) || []).length, 4);
+  assert.match(ol, /pathLength="1"/);
 });
 
 test('el title y los metadatos dicen Meta Ads', () => {
@@ -135,7 +194,7 @@ test('orden de secciones y menú: Meta Ads primero, el contenido después', () =
   const menu = html.match(/<nav class="barra-nav"[\s\S]*?<\/nav>/)[0];
   assert.deepEqual([...menu.matchAll(/>([^<]+)<\/a>/g)].map((m) => m[1]), ['Resultados', 'Servicios', 'Cómo trabajamos', 'Comunidad']);
   const servicios = [...html.matchAll(/<li class="serv">[\s\S]*?<h3>([^<]+)<\/h3>/g)].map((m) => m[1]);
-  assert.deepEqual(servicios, ['Campañas en Facebook e Instagram', 'Estrategia y plan', 'Medición y píxel', 'Guiones para tus anuncios', 'Video animado con IA', 'Landing para tus anuncios']);
+  assert.deepEqual(servicios, ['Campañas en Facebook e Instagram', 'Estrategia y plan', 'Medición y píxel', 'Guiones para tus anuncios', 'Videos animados', 'Landing para tus anuncios']);
 });
 
 test('la comunidad abre el grupo en pestaña nueva, también desde el pie', () => {

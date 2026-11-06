@@ -72,9 +72,7 @@ function hero({ TABLERO, VIDEO_HERO: V, PAISES }) {
       <div class="hero-acciones">
         <a href="#cotizar" class="boton" data-origen="hero">Cotizar mi proyecto ${FLECHA}</a>
         <a href="#resultados" class="boton boton-linea">Ver resultados</a>
-      </div>
-      <p class="hero-paises">Trabajamos con marcas de ${esc(PAISES)}.</p>
-    </div>
+      </div>    </div>
 
     <div class="escena">
       <div class="telefono-pie">
@@ -106,7 +104,64 @@ function cintaMarcas(MARCAS_CINTA) {
 </div>`;
 }
 
-function resultados(CASOS) {
+/* ─── Gráfico de ventas mensuales (SVG generado en el build) ──────────────
+ * Una serie, un acento (naranja de marca sobre blanco, ≥ 3:1). Sin eje Y con
+ * números: la escala la dan la etiqueta directa del mes más alto, el
+ * contador y la tabla oculta. El detalle de cada mes aparece al pasar o
+ * tocar la barra (app.js). Las barras crecen una tras otra al entrar en vista. */
+const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const INICIAL = ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+const decimal = (n, d = 1) => n.toFixed(d).replace('.', ',');
+const miles = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+export function graficoVentas(serie) {
+  // 480 unidades de ancho: en el celular el texto del eje queda ~10 px, en escritorio ~15 px.
+  const W = 480; const BASE = 200; const ALTO = 170; const TOPE = Math.ceil(Math.max(...serie.map((m) => m.ventas)) * 1.08);
+  const paso = W / serie.length; const ancho = Math.round(paso * 0.72);
+  const filas = serie.map((m, i) => {
+    const [anio, mm] = m.mes.split('-').map(Number);
+    const h = (m.ventas / TOPE) * ALTO;
+    const x = +(i * paso + (paso - ancho) / 2).toFixed(1);
+    const y = +(BASE - h).toFixed(1);
+    return { ...m, i, anio, mes: mm, x, y, h, retorno: m.ventas / m.inversion, etiqueta: `${MESES[mm - 1]} ${anio}` };
+  });
+  const total = serie.reduce((s, m) => s + m.ventas, 0);
+  const totalInv = serie.reduce((s, m) => s + m.inversion, 0);
+  const retornos = filas.map((f) => f.retorno);
+  const minR = Math.min(...retornos); const maxR = Math.max(...retornos);
+  const mayor = filas.reduce((a, b) => (b.ventas > a.ventas ? b : a));
+  const menor = filas.reduce((a, b) => (b.ventas < a.ventas ? b : a));
+  const r = 4;
+  const barra = (f) => `<path class="g-barra" style="--i:${f.i}" d="M${f.x},${BASE} V${f.y + r} Q${f.x},${f.y} ${f.x + r},${f.y} H${f.x + ancho - r} Q${f.x + ancho},${f.y} ${f.x + ancho},${f.y + r} V${BASE} Z"/>`;
+  const zona = (f) => `<rect class="barra-zona" x="${(f.i * paso).toFixed(1)}" y="0" width="${paso.toFixed(1)}" height="${BASE}" data-i="${f.i}" data-x="${((f.x + ancho / 2) / W * 100).toFixed(2)}" data-y="${((f.y + 14) / (BASE + 58) * 100).toFixed(2)}" data-tip="${esc(`${f.etiqueta} · ${Math.round(f.ventas)} M CLP en ventas · ${decimal(f.retorno)}x`)}"/>`;
+  const mes = (f) => `<text class="eje-mes" x="${(f.x + ancho / 2).toFixed(1)}" y="${BASE + 20}">${INICIAL[f.mes - 1]}</text>`;
+  const anios = filas.filter((f, i) => i === 0 || f.mes === 1).map((f) => `<text class="eje-anio" x="${f.x.toFixed(1)}" y="${BASE + 40}">${f.anio}</text>`).join('');
+  const resumen = `Ventas mensuales desde la web de femmeninas.cl entre ${filas[0].etiqueta} y ${filas.at(-1).etiqueta}: de ${Math.round(menor.ventas)} a ${Math.round(mayor.ventas)} millones de pesos chilenos por mes, ${miles(Math.round(total))} millones en total con ${decimal(totalInv)} millones invertidos. Retorno mensual entre ${decimal(minR)}x y ${decimal(maxR)}x.`;
+  return `
+        <figure class="grafico" data-grafico>
+          <div class="grafico-cabeza">
+            <span class="grafico-contador"><b data-contador-final="+US$1 millón">+US$1 millón</b><i>en 13 meses</i></span>
+          </div>
+          <div class="grafico-lienzo">
+            <svg viewBox="0 -14 ${W} ${BASE + 58}" role="img" aria-label="${esc(resumen)}" preserveAspectRatio="xMidYMid meet">
+              <line class="eje-base" x1="0" y1="${BASE + 0.5}" x2="${W}" y2="${BASE + 0.5}"/>
+              <g class="barras">${filas.map(barra).join('')}</g>
+              <text class="etiqueta-directa" x="${(mayor.x + ancho / 2).toFixed(1)}" y="${(mayor.y - 8).toFixed(1)}">${Math.round(mayor.ventas)} M</text>
+              <g class="ejes" aria-hidden="true">${filas.map(mes).join('')}${anios}</g>
+              <g class="zonas">${filas.map(zona).join('')}</g>
+            </svg>
+            <span class="grafico-tip" role="status" hidden></span>
+          </div>
+          <figcaption>Ventas desde la web, mes a mes. Ningún mes por debajo de ${decimal(Math.floor(minR * 10) / 10)}x.</figcaption>
+          <div class="sr-only"><table>
+            <caption>Ventas y retorno por mes, campañas a la web de femmeninas.cl (millones de CLP)</caption>
+            <thead><tr><th scope="col">Mes</th><th scope="col">Inversión</th><th scope="col">Ventas</th><th scope="col">Retorno</th></tr></thead>
+            <tbody>${filas.map((f) => `<tr><th scope="row">${f.etiqueta}</th><td>${decimal(f.inversion, 2)}</td><td>${decimal(f.ventas)}</td><td>${decimal(f.retorno)}x</td></tr>`).join('')}</tbody>
+          </table></div>
+        </figure>`;
+}
+
+function resultados(CASOS, VENTAS) {
   const tab = (c, i) => `<button type="button" role="tab" class="pestana" id="tab-${c.id}" aria-controls="caso-${c.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}"><img src="${c.logo}" alt="" width="220" height="220">${esc(c.marca)}</button>`;
   const panel = (c, i) => `
     <article class="caso" role="tabpanel" id="caso-${c.id}" aria-labelledby="tab-${c.id}" ${i === 0 ? '' : 'hidden'}>
@@ -117,13 +172,11 @@ function resultados(CASOS) {
       <div class="caso-cuerpo">
         <p class="caso-meta">${esc(c.rubro)} · ${esc(c.pais)} · ${esc(c.periodo)}</p>
         <h3>${esc(c.titular)}</h3>
-        <dl class="caso-pasos">
-          ${c.pasos.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join('\n          ')}
-        </dl>
+        ${c.grafico === 'ventas-mensuales' ? graficoVentas(VENTAS) : ''}
         <ul class="caso-cifras">
           ${c.cifras.map(([v, e]) => `<li><b>${esc(v)}</b><span>${esc(e)}</span></li>`).join('\n          ')}
         </ul>
-        <p class="caso-periodo">Período: ${esc(c.periodo)}.${c.perfil ? ` <a href="${c.perfil.url}" target="_blank" rel="noopener">${esc(c.perfil.usuario)}</a>, ${esc(c.perfil.seguidores)} seguidores en Instagram.` : ''}</p>
+        ${c.perfil ? `<p class="caso-periodo"><a href="${c.perfil.url}" target="_blank" rel="noopener">${esc(c.perfil.usuario)}</a> · ${esc(c.perfil.seguidores)} seguidores en Instagram</p>` : ''}
       </div>
     </article>`;
   return `
@@ -132,7 +185,6 @@ function resultados(CASOS) {
     <div class="titulo-sec">
       <h2>Cualquier campaña puede tener un buen mes.</h2>
       <p class="titulo-destacado">Lo nuestro es sostener las ventas un año completo, sin apagar las campañas.</p>
-      <p>Dos cuentas que manejamos hoy. Cada número lleva su período y la captura real del Administrador de anuncios.</p>
     </div>
     <div class="pestanas" role="tablist" aria-label="Casos">
       ${CASOS.map(tab).join('\n      ')}
@@ -148,7 +200,7 @@ function videos(VIDEOS) {
         <img class="clip-poster" src="${v.poster}" alt="" width="480" height="854" loading="lazy" decoding="async">
         <video muted loop playsinline preload="none" data-src="${v.video}" aria-hidden="true"></video>
         ${v.vistas ? `<span class="clip-vistas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>${esc(v.vistas)}</span>` : ''}
-        <span class="clip-pie"><b>${esc(v.marca)}</b><i>${esc(v.rubro)}</i></span>
+        <span class="clip-pie"><b>${esc(v.marca)}</b></span>
       </${v.url ? 'a' : 'div'}>`;
   const logo = (v) => `<span class="muro-logo"><img src="${v.logo}" alt="" width="220" height="220" loading="lazy" decoding="async"></span>`;
   return `
@@ -156,7 +208,7 @@ function videos(VIDEOS) {
   <div class="contenedor">
     <div class="titulo-sec">
       <h2>El anuncio empieza en el guion.</h2>
-      <p>Escribimos el contenido que alimenta tus campañas. Estas son vistas orgánicas en TikTok de marcas con las que trabajamos.</p>
+      <p>Vistas orgánicas en TikTok de marcas con las que trabajamos.</p>
     </div>
   </div>
   <div class="muro" aria-label="Videos de clientes en TikTok">
@@ -168,12 +220,12 @@ function videos(VIDEOS) {
 
 /* Meta Ads primero: el contenido está para alimentar los anuncios. */
 const SERVICIOS = [
-  ['campanas', 'Campañas en Facebook e Instagram', 'Las planificamos, las lanzamos y las optimizamos cada semana según el objetivo de tu negocio: ampliamos lo que vende y apagamos lo que no.'],
-  ['estrategia', 'Estrategia y plan', 'Qué vender, a quién y con qué mensaje, y cuánto puedes pagar por cada cliente antes de invertir en anuncios.'],
-  ['medicion', 'Medición y píxel', 'Píxel, API de conversiones y eventos bien configurados, para que Meta optimice hacia ventas reales y no hacia clics.'],
-  ['guiones', 'Guiones para tus anuncios', 'Ganchos, guiones y escenas pensados para vender en Meta. Tu equipo graba con nuestras pautas; si lo necesitas, editamos.'],
-  ['animado', 'Video animado con IA', 'Guion, voz y animación hechos con inteligencia artificial, con tu marca y tus clips reales.'],
-  ['web', 'Landing para tus anuncios', 'Páginas que reciben a quien hace clic en tu anuncio y guardan cada contacto.'],
+  ['campanas', 'Campañas en Facebook e Instagram', 'Planificadas, lanzadas y optimizadas cada semana.'],
+  ['estrategia', 'Estrategia y plan', 'Qué vender, a quién y cuánto pagar por cada cliente.'],
+  ['medicion', 'Medición y píxel', 'Para que Meta optimice hacia ventas, no hacia clics.'],
+  ['guiones', 'Guiones para tus anuncios', 'Ganchos y escenas pensados para vender en Meta.'],
+  ['animado', 'Videos animados', 'Tu marca explicada en movimiento.'],
+  ['web', 'Landing para tus anuncios', 'Páginas que convierten el clic en contacto.'],
 ];
 
 function servicios() {
@@ -182,7 +234,7 @@ function servicios() {
   <div class="contenedor">
     <div class="titulo-sec">
       <h2>Tu equipo de publicidad en Meta, sin armarlo dentro de tu empresa.</h2>
-      <p>Un especialista para cada parte. Eliges lo que necesitas, o armamos el sistema completo.</p>
+      <p>Eliges lo que necesitas o armamos el sistema completo.</p>
     </div>
     <ul class="serv-lista">
       ${SERVICIOS.map(([ic, t, d]) => `<li class="serv">${icono(ic)}<h3>${esc(t)}</h3><p>${esc(d)}${ic === 'animado' ? ' <a href="#inicio" class="serv-ejemplo" data-sonido>Ver un ejemplo</a>' : ''}</p></li>`).join('\n      ')}
@@ -195,11 +247,19 @@ function servicios() {
 </section>`;
 }
 
+/* Cómo trabajamos: un recorrido que se dibuja con el scroll y une cuatro
+ * nodos. Cada ícono es de línea (pathLength=1) y se traza al llegar la línea. */
+const ICONOS_PASO = {
+  lupa: '<circle cx="10.5" cy="10.5" r="6.5" pathLength="1"/><path d="M15.4 15.4 21 21" pathLength="1"/>',
+  plano: '<path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z" pathLength="1"/><path d="M9 4v13.5M15 6.5V20" pathLength="1"/>',
+  cohete: '<path d="M12 16c-1.8-1.6-2.8-4.4-2.3-7.6C10.3 5.4 12 3 12 3s1.7 2.4 2.3 5.4c.5 3.2-.5 6-2.3 7.6z" pathLength="1"/><path d="M9.6 12.6 7 14.8l.6 3.2 2.8-1.7M14.4 12.6l2.6 2.2-.6 3.2-2.8-1.7" pathLength="1"/><path d="M12 18.5V21" pathLength="1"/>',
+  barras: '<path d="M3 21h18" pathLength="1"/><path class="sube" d="M6 21v-5" pathLength="1"/><path class="sube" d="M11 21v-9" pathLength="1"/><path class="sube" d="M16 21v-7" pathLength="1"/><path class="sube" d="M21 21V5" pathLength="1"/>',
+};
 const PASOS = [
-  ['Diagnóstico', 'Estudiamos tu negocio, tus números y tu competencia, y cuánto puedes pagar por un cliente sin perder plata.'],
-  ['Planificación', 'El objetivo, los mensajes para cada tipo de cliente y el contenido de cada campaña.'],
-  ['Creación', 'Escribimos los guiones, tu equipo graba con nuestras pautas y lanzamos las campañas.'],
-  ['Optimización', 'Medimos con los datos de tu negocio, no solo con los de Meta. Cada semana: qué ampliar y qué apagar.'],
+  ['lupa', 'Diagnóstico', 'Tus números, tu mercado y tu margen.'],
+  ['plano', 'Planificación', 'Objetivo, mensajes y campañas.'],
+  ['cohete', 'Lanzamiento', 'Guiones, piezas y campañas al aire.'],
+  ['barras', 'Optimización', 'Cada semana, escalar lo que vende.'],
 ];
 
 function como(GARANTIA) {
@@ -209,8 +269,9 @@ function como(GARANTIA) {
     <div class="titulo-sec">
       <h2>Sistemas de venta que se miden, no se prometen.</h2>
     </div>
-    <ol class="pasos" id="pasos">
-      ${PASOS.map(([t, d], i) => `<li class="paso"><span class="paso-n">${i + 1}</span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join('\n      ')}
+    <ol class="recorrido" id="recorrido">
+      <li class="recorrido-linea" aria-hidden="true"><i></i></li>
+      ${PASOS.map(([ic, t, d], i) => `<li class="nodo nodo-${ic}" data-n="${i}"><span class="nodo-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONOS_PASO[ic]}</svg></span><h3>${esc(t)}</h3><p>${esc(d)}</p></li>`).join('\n      ')}
     </ol>
     <div class="garantia">
       ${icono('escudo', 'garantia-ico')}
@@ -242,16 +303,28 @@ function comunidad(C) {
 </section>`;
 }
 
-function equipo(EQUIPO, PAISES) {
+/* La U de la marca en SVG, para la tarjeta del agente: los cuadros ámbar
+ * persiguen a los naranjas (que van sobre los palos de la U) y unos píxeles
+ * viajan hacia ella. Movimiento suave en bucle; quieto con movimiento reducido. */
+const U_AGENTE = `<svg class="agente-u" viewBox="22 22 136 150" role="img" aria-label="La U de DÚO, el logo del agente">
+  <circle class="agente-orbita" cx="90" cy="100" r="62" pathLength="1"/>
+  <rect class="px px-1" x="30" y="58" width="5" height="5"/><rect class="px px-2" x="146" y="70" width="5" height="5"/><rect class="px px-3" x="84" y="26" width="4" height="4"/>
+  <rect class="cuadro cuadro-a1" x="43" y="43" width="15" height="15"/><rect class="cuadro cuadro-a2" x="96" y="43" width="15" height="15"/>
+  <rect class="cuadro cuadro-n" x="58" y="68" width="15" height="15"/><rect class="cuadro cuadro-n" x="107" y="68" width="15" height="15"/>
+  <path class="agente-letra" d="M57 88h17v38c0 20 32 20 32 0V88h17v39c0 39-66 39-66 0z"/>
+</svg>`;
+
+function equipo(EQUIPO) {
+  const tarjeta = (m) => `<figure class="cara${m.agente ? ' cara-agente' : ''}"><span class="cara-foto">${m.agente ? U_AGENTE : `<img src="${m.foto}" alt="${esc(m.nombre)}, ${esc(m.rol.toLowerCase())} de DÚO" width="620" height="620" loading="lazy" decoding="async">`}</span><figcaption><b>${esc(m.nombre)}</b><span>${esc(m.rol)}</span></figcaption></figure>`;
   return `
 <section class="equipo" id="equipo">
   <div class="contenedor equipo-in">
     <div class="equipo-txt">
-      <h2>Un equipo chico que conoce cada cuenta por dentro.</h2>
-      <p>Somos ${EQUIPO.personas === 5 ? 'cinco' : EQUIPO.personas}. Nacimos en Yacuiba y trabajamos en línea con marcas de ${esc(PAISES)}. Usamos inteligencia artificial para leer los números de cada cuenta y decidir más rápido.</p>
+      <h2>Hablas directo con quien maneja tu cuenta.</h2>
+      <p>Somos dos especialistas y un agente de inteligencia artificial propio que automatiza el trabajo repetitivo. Así escalamos cada cuenta con más precisión.</p>
     </div>
     <div class="caras">
-      ${EQUIPO.retratos.map((p) => `<figure class="cara"><span class="cara-foto"><img src="${p.foto}" alt="${esc(p.nombre)}, ${esc(p.rol.toLowerCase())} de DÚO" width="620" height="620" loading="lazy" decoding="async"></span><figcaption><b>${esc(p.nombre)}</b><span>${esc(p.rol)}</span></figcaption></figure>`).join('\n      ')}
+      ${EQUIPO.miembros.map(tarjeta).join('\n      ')}
     </div>
   </div>
 </section>`;
@@ -266,7 +339,7 @@ function formulario(CONTACTO) {
   <div class="contenedor cotizar-in">
     <div class="cotizar-txt">
       <h2>Cuéntanos tu proyecto. Te enviamos la cotización.</h2>
-      <p>Cinco preguntas, menos de un minuto. Después te escribimos por WhatsApp para coordinar una reunión corta y enviarte la propuesta.</p>
+      <p>Cinco preguntas, menos de un minuto. Te escribimos por WhatsApp con la propuesta.</p>
       <p class="cotizar-directo">¿Prefieres escribirnos ya? <a href="${waDirecto}" class="wa-enlace" data-wa="Hola DÚO, quiero una cotización." target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
     </div>
 
@@ -340,7 +413,6 @@ function formulario(CONTACTO) {
 
 const PREGUNTAS = [
   ['¿Cuánto cuesta trabajar con ustedes?', 'Depende de lo que necesites: qué servicios, cuántas campañas y cuánto contenido por mes. Por eso cotizamos cada proyecto: completas el formulario, nos reunimos y te enviamos una propuesta con lo que haríamos y lo que cuesta.'],
-  ['¿Ustedes graban el contenido?', 'Escribimos los guiones y las escenas, y tu equipo graba con esas pautas. Si lo necesitas, editamos lo que grabaste. Los videos animados con IA los hacemos completos.'],
   ['¿Trabajan con negocios de otras ciudades o países?', null],
   ['¿La inversión en anuncios está incluida?', 'No. Lo que inviertes en Meta va aparte de nuestro trabajo. En la propuesta te decimos cuánto conviene invertir según tu objetivo.'],
   ['¿En cuánto tiempo se ven resultados?', 'Los primeros datos llegan en las primeras semanas de campaña, y con ellos decidimos qué ampliar y qué apagar. No prometemos ventas: dependen también de tu producto, tu precio y tu mercado.'],
@@ -454,12 +526,12 @@ ${cabecera()}
 <main>
 ${hero(D)}
 ${cintaMarcas(D.MARCAS_CINTA)}
-${resultados(D.CASOS)}
+${resultados(D.CASOS, D.VENTAS_MENSUALES_FEMMENINAS)}
 ${servicios()}
 ${como(D.GARANTIA)}
 ${comunidad(D.COMUNIDAD)}
 ${videos(D.VIDEOS)}
-${equipo(D.EQUIPO, D.PAISES)}
+${equipo(D.EQUIPO)}
 ${formulario(D.CONTACTO)}
 ${preguntas(D.PAISES)}
 </main>
